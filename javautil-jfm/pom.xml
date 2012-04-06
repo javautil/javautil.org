@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+	<modelVersion>4.0.0</modelVersion>
+		<groupId>org.javautil</groupId>
+	<artifactId>javautil-jfm</artifactId>
+		<version>0.11.0</version>
+	<packaging>jar</packaging>
+	<name>javautil-jfm</name>
+	<url>http://maven.apache.org</url>
+  
+	<parent>
+		<artifactId>javautil-pom</artifactId>
+		<groupId>org.javautil</groupId>
+		<version>0.11.0</version>
+		<relativePath>../javautil-pom</relativePath>
+	</parent>
+  	<!--  TODO eliminate oracle dependencies -->
+	<dependencies>
+		 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-commandline</artifactId>
+			<version>${org.javautil.commandline.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-core</artifactId>
+			<version>${org.javautil.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-jdbc</artifactId>
+			<version>${org.javautil.jdbc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${org.apache.commons.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${org.freemarker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${org.apache.openejb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+   		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>oracle-jdbc6</artifactId>
+			<version>${com.oracle.version}</version>
+		</dependency>
+	</dependencies>
+  
+  	<build>
+		<plugins>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		
+		</plugins>
+	</build>
+  
+</project>

@@ -1,0 +1,77 @@
+Address Validation and Standardization
+
+Validation
+
+* Description
+
+ Validation is the process of obtaining an authoritative address for an input address.
+ 
+ Validation is accomplished by referencing address databases or web services.
+  
+* Validation Providers
+
+** Supported
+
+   Only the USPS web service is implemented at this time.
+   
+** Additional
+
+   DHL, UPS and FedEx provide validation services
+ 
+Standardization
+
+   Standardization is the process of transforming an address to a different format
+   without modifying or correcting the data.
+   
+	* Standardizations
+	
+		* Street Direction
+		
+		* Road Type
+ 		
+		* Subunit
+ 		
+		* Post Office Box
+ 		
+		* Rural Route
+ 		
+		* City Name
+ 		
+		* State Name
+		
+   []
+   
+Modes
+
+	* Synchrononous
+
+	* Batch
+
+	* Service
+
+		* Direct
+
+		* Batch
+		
+Persistence
+
+	Persistence is supported through DAOs (Data Access Objects).
+	
+* Persistence Support
+
+	* Database
+	
+	Using Hibernate for Object Relational Mapping data can be persisted in a table for
+	the following DDL.
+	
+	* Comma Separated Values
+	
+		An input file is read at the results are put into an output file
+		
+Deduplication
+
+	Addresses that match based on the authoritative address.
+	
+	see {{{Deduplication.html} more}}.
+	
+Principle of Operation

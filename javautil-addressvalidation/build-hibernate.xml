@@ -1,0 +1,69 @@
+<project name="Javautil-Address Validation" default="generate">
+
+	<property name="hbm.pkg.name" value="org.javautil.address.dto" />
+	<property name="gensource.dir" location="target/generated-sources/hibernate3" />
+	<property name="lib.dir" location="../HibernateRevEng/lib" />
+	<property name="etc.dir" location="src/main/resources" />
+	<property name="classes.dir" location="target/classes" />
+	<property name="reveng.strategy" value="org.javautil.address.reveng.RevEngStrategy" />
+	<property name="reveng.strategy.file" value="org/javautil/address/reveng/RevEngStrategy.java" />
+	<property name="src.dir" value="src/main/java" />
+
+	<property name="hbm.cfg.file" value="${etc.dir}/hibernate.cfg.xml" />
+	<property name="hbm.rev.file" location="${etc.dir}/hibernate.reveng.xml" />
+
+	<path id="build.classpath">	
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+		
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${gensource.dir}" />
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask">
+			<classpath refid="build.classpath" />
+		</taskdef>
+		<path id="classpath">	
+			<pathelement location="${classes.dir}" />	
+			<path refid="build.classpath" />
+		</path>
+	</target>
+
+	<target name="clean" description="remove hibernate generated files">
+		<delete dir="${classes.dir}" />
+		<delete dir="${gensource.dir}" />		
+	</target>
+
+	<target name="generate" depends="clean,init,compile-strategy,generate-hbms,generate-pojos" />
+
+	<target name="compile-strategy" depends="init">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" debugLevel="lines,vars,source">			
+			<include name="${reveng.strategy.file}" />
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+	
+	<target name="generate-hbms" description="generate hibernate mapping files" depends="init">
+		<hibernatetool destdir="${gensource.dir}">
+			<jdbcconfiguration configurationfile="${hbm.cfg.file}" packagename="${hbm.pkg.name}"
+				revengfile="${hbm.rev.file}" 
+				reversestrategy="${reveng.strategy}" />
+			<hbm2hbmxml />
+			<classpath refid="classpath" />
+		</hibernatetool>
+	</target>
+
+	<target name="generate-pojos" description="generate hibernate pojos" depends="init">
+		<hibernatetool destdir="${gensource.dir}">
+			<configuration>
+				<fileset dir="${gensource.dir}">
+					<include name="**/*.hbm.xml" />
+				</fileset>
+			</configuration>
+			<classpath refid="classpath" />
+			<hbm2java jdk5="true"   />
+		</hibernatetool>
+	</target>
+
+</project>

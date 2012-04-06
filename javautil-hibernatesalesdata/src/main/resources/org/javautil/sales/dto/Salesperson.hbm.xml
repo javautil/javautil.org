@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 10, 2011 3:06:10 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.sales.dto.Salesperson" table="SALESPERSON" >
+        <id name="salespersonId" type="java.lang.Integer">
+            <column name="SALESPERSON_ID" precision="9" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">SALESPERSON_SEQ</param>
+            </generator>
+        </id>
+        <property name="displayName" type="string">
+            <column name="DISPLAY_NAME" length="40" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="16" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="20" />
+        </property>
+        <set name="customers" inverse="true">
+            <key>
+                <column name="INSIDE_SALESPERSON_ID" precision="9" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="org.javautil.sales.dto.Customer" />
+        </set>
+    </class>
+</hibernate-mapping>

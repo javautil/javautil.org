@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.javautil</groupId>
+	<artifactId>javautil-jdbc</artifactId>
+	<version>0.11.0</version>
+	<packaging>jar</packaging>
+	<name>javautil-jdbc</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<artifactId>javautil-pom</artifactId>
+		<groupId>org.javautil</groupId>
+		<version>0.11.0</version>
+		<relativePath>../javautil-pom</relativePath>
+	</parent>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-core</artifactId>
+			<version>${org.javautil.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-commandline</artifactId>
+			<version>${org.javautil.commandline.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- This should be moved to test -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${com.h2database.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>${commons.configuration.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${com.mchange.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${org.freemarker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${org.apache.openejb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>oracle-jdbc6</artifactId>
+			<version>${com.oracle.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+
+</project>

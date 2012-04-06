@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>org.javautil</groupId>
+ <artifactId>javautil-mp3</artifactId>
+ <version>0.11.0</version>
+ <name>MP3 Utilities to extract information from mp3 and persist in CSV or RDBMS</name>
+ <parent>
+  <artifactId>javautil-pom</artifactId>
+  <groupId>org.javautil</groupId>
+  <version>0.11.0</version>
+  <relativePath>../javautil-pom</relativePath>
+ </parent>
+
+ <build>
+  <plugins>
+
+
+
+
+
+
+   <!--- hibernate mojo -->
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>hibernate3-maven-plugin</artifactId>
+    <version>2.2</version>
+    <configuration>
+     <components>
+      <component>
+       <name>hbm2ddl</name>
+       <implementation>jdbcconfiguration</implementation>
+      </component>
+      <component>
+       <name>hbm2hbmxml</name>
+       <!-- <outputDirectory>src/main/resources</outputDirectory> -->
+      </component>
+      <component>
+       <name>hbm2doc</name>
+       <outputDirectory>src/main/doc</outputDirectory>
+      </component>
+      <component>
+       <name>hbm2java</name>
+       <outputDirectory>target/generated-sources/hibernate3
+       </outputDirectory>
+      </component>
+
+     </components>
+     <componentProperties>
+      <drop>true</drop>
+      <package>org.javautil.mp3.hibernate</package>
+      <configurationfile>src/main/resources/hibernate.cfg.xml
+      </configurationfile>
+     </componentProperties>
+    </configuration>
+   </plugin>
+
+  </plugins>
+ </build>
+ <dependencies>
+
+  <dependency>
+   <groupId>commons-dbcp</groupId>
+   <artifactId>commons-dbcp</artifactId>
+   <version>1.2.2</version>
+   <!-- TODO use version -->
+   <scope>test</scope>
+  </dependency>
+  <dependency>
+   <groupId>net.jthink</groupId>
+   <artifactId>jaudiotagger</artifactId>
+   <version>2.0.4-SNAPSHOT</version>
+  </dependency>
+  <!-- <dependency> <groupId>org.farng</groupId> <artifactId>jid3lib</artifactId> 
+   <version>0.5.4-patched</version> </dependency> -->
+  <dependency>
+   <groupId>log4j</groupId>
+   <artifactId>log4j</artifactId>
+   <version>${log4j.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>com.h2database</groupId>
+   <artifactId>h2</artifactId>
+   <version>${com.h2database.version}</version>
+  </dependency>
+  <!-- move to parent hell, everything is tested -->
+  <dependency>
+   <groupId>junit</groupId>
+   <artifactId>junit</artifactId>
+   <version>${junit.version}</version>
+   <scope>test</scope>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-diff-match</artifactId>
+   <version>${org.javautil.diff-match.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-commandline</artifactId>
+   <version>${org.javautil.commandline.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-jdbc</artifactId>
+   <version>${org.javautil.jdbc.version}</version>
+  </dependency>
+  <!-- need to have in repository for the ant build.xml -->
+  <dependency>
+   <groupId>commons-logging</groupId>
+   <artifactId>commons-logging</artifactId>
+   <version>1.1</version>
+   <scope>compile</scope>
+   <exclusions>
+    <exclusion>
+     <groupId>log4j</groupId>
+     <artifactId>log4j</artifactId>
+    </exclusion>
+    <exclusion>
+     <groupId>logkit</groupId>
+     <artifactId>logkit</artifactId>
+    </exclusion>
+    <exclusion>
+     <groupId>avalon-framework</groupId>
+     <artifactId>avalon-framework</artifactId>
+    </exclusion>
+    <exclusion>
+     <groupId>javax.servlet</groupId>
+     <artifactId>servlet-api</artifactId>
+    </exclusion>
+   </exclusions>
+  </dependency>
+  <dependency>
+   <groupId>org.hibernate</groupId>
+   <artifactId>hibernate-core</artifactId>
+   <version>${org.hibernate.core.version}</version>
+   <exclusions>
+    <exclusion>
+     <groupId>org.slf4j</groupId>
+     <artifactId>slf4j-api</artifactId>
+    </exclusion>
+   </exclusions>
+  </dependency>
+
+  <dependency>
+   <groupId>org.hibernate</groupId>
+   <artifactId>hibernate-ehcache</artifactId>
+   <version>${org.hibernate.ehcache.version}</version>
+   <exclusions>
+    <exclusion>
+     <groupId>org.slf4j</groupId>
+     <artifactId>slf4j-api</artifactId>
+    </exclusion>
+   </exclusions>
+  </dependency>
+
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-orm</artifactId>
+   <version>${org.springframework.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>hibernate</groupId>
+   <artifactId>hibernate-tools</artifactId>
+   <version>${hibernate.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>javassist</groupId>
+   <artifactId>javassist</artifactId>
+   <version>${javassist.version}</version>
+  </dependency>
+
+ </dependencies>
+
+
+
+</project>

@@ -1,0 +1,12 @@
+ERROR=
+#ERROR=$ERROR
+mvn $ERROR install:install-file -DgroupId=com.oracle -DartifactId=oracle-jdbc6 -Dversion=11.1 -Dfile=oracle-jdbc6-11.1.jar -Dpackaging=jar \
+	-DgeneratePom=true
+mvn $ERROR install:install-file -DgroupId=jcmdline -DartifactId=jcmdline -Dversion=1.0.3 -Dfile=jcmdline-1.0.3.jar -Dpackaging=jar \
+	-DgeneratePom=true
+mvn $ERROR install:install-file -DgroupId=com.mchange  -DartifactId=c3p0 -Dversion=0.9.1 -Dfile=c3p0-0.9.1.jar -Dpackaging=jar \
+	-DgeneratePom=true
+mvn $ERROR install:install-file -DgroupId=com.google.code.gson  -DartifactId=gson -Dversion=1.3 -Dfile=gson-1.3.jar -Dpackaging=jar \
+	-DgeneratePom=true
+mvn $ERROR install:install-file -DgroupId=com.h2database  -DartifactId=h2 -Dversion=1.3.159 -Dfile=h2-1.3.159.jar -Dpackaging=jar \
+

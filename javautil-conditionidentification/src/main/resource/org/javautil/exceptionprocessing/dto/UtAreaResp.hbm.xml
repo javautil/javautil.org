@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtAreaResp"
+		table="UT_AREA_RESP">
+		<comment>Classification of business areas of functional
+			responsibility. The primary key should be populated from sequence
+			ut_area_resp_nbr_seq</comment>
+		<id name="utAreaRespNbr" type="java.lang.Integer" >
+			<column name="UT_AREA_RESP_NBR" precision="9" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">UT_AREA_RESP_NBR_SEQ</param>
+			</generator>
+		</id>
+		<property name="funcAreaCd" type="string">
+			<column name="FUNC_AREA_CD" length="8" not-null="true" unique="true">
+				<comment>Description of functional area for display on
+					reports and screens</comment>
+			</column>
+		</property>
+		<property name="funcShortDescr" type="string">
+			<column name="FUNC_SHORT_DESCR" length="60" not-null="true">
+				<comment>Short description of the business area of
+					responsibility</comment>
+			</column>
+		</property>
+		<property name="funcLongDescr" type="string">
+			<column name="FUNC_LONG_DESCR">
+				<comment>Long description of the business area of responsibility</comment>
+			</column>
+		</property>
+		<set name="utTableRuleHists" inverse="true">
+			<key>
+				<column name="UT_AREA_RESP_NBR" precision="9" scale="0" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRuleHist" />
+		</set>
+		<set name="utTableRules" inverse="true">
+			<key>
+				<column name="UT_AREA_RESP_NBR" precision="9" scale="0" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRule" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,56 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+\usepackage{alltt} 
+\usepackage{moreverb}
+ \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry} 
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{underscore}
+%opening
+\title{JDBC utilities}
+\author{jjs@javautil.org}
+\hypersetup{
+pdfauthor = {jjs@javutil.org},
+pdftitle = {Hibernate Sales Data},
+pdfsubject = {Hibernate Sales Data},
+pdfkeywords = {JDBC},
+pdfcreator = {LaTeX with hyperref package},
+pdfproducer = {dvips + ps2pdf}}
+\begin{document}
+\title{Hibernate Sales Data}
+\author{Jim Schmidt\\
+  \texttt{jjs@javautil.org}}
+\date{\today}
+\maketitle
+\tableofcontents
+\chapter{Introduction}
+Guide you through
+
+Configuring your hibernate file.
+Configuring the spring configuration file.
+Populating the Data
+
+\section{Populating the Data}
+DataPopulatorTests
+
+The problem with creating a database schema and then populating.
+
+The SchemaExport utility wants a Configuration which comes from a hibernate.cfg.xml file
+
+SessionFactory such as org.springframework.orm.hibernate3.LocalSessionFactoryBean are configure through
+an Spring application context
+
+When trying to use hibernate in memory database a Connection cannot be shared, when closed the database goes away
+
+\section{Problems}
+currently using etc/hibernate.cfg.xml and application-context.xml must be configured the same
+
+\section{Configuration Files}
+\subsection {hibernate.cfg.xml}
+\verbatiminput{../../../etc/hibernate.cfg.xml}
+\subsection{Spring configuration}
+\verbatiminput{../../../src/test/resources/application-context.xml}
+
+\end{document}

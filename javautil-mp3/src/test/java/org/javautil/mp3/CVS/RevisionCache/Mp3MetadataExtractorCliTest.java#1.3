@@ -1,0 +1,59 @@
+package org.javautil.mp3;
+
+import java.io.FileNotFoundException;
+import java.util.Collection;
+
+import org.javautil.core.CommandLineTokenizer;
+import org.javautil.mp3.persistence.Mp3Persistence;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "classpath:ExtractorTestH2HibernateApplicationContext.xml" })
+public class Mp3MetadataExtractorCliTest {
+
+	@Autowired
+	private Mp3Persistence persistence;
+
+	public void before() {
+		final CreateDatabaseObjectsJDBCTest createDatabase = new CreateDatabaseObjectsJDBCTest();
+		createDatabase.createDatabaseTest();
+	}
+
+	@Ignore
+	@Test
+	public void populate() throws FileNotFoundException {
+		before();
+		final String argString = "-directory /media/signature_/music -outputFile target/test.out";
+		final String[] args = new CommandLineTokenizer().tokenize(argString);
+		Mp3MetadataExtractorCli.main(args);
+	}
+	
+	// TODO create alternate command line that inherits
+
+	// TODO create stress test flag
+    // TODO why does this throw and error about org.javautil.mp.Mp3 not found
+	@Test
+	public void populateMyCollection() throws FileNotFoundException {
+		// String argString = "-directory tunes -outputFile target/test.out";
+		final String argString = "-directory /media/signature_/music -outputFile target/test.out -applicationContextFile src/test/resources/ExtractorTestCsvFileApplicationContext.xml";
+		final String[] args = new CommandLineTokenizer().tokenize(argString);
+		Mp3MetadataExtractorCli.main(args);
+	}
+
+	Collection<Mp3> getAll() {
+		return persistence.getAll();
+	}
+
+//	@Ignore
+//	@Test
+//	public void check() {
+//		populate();
+//
+//	}
+}

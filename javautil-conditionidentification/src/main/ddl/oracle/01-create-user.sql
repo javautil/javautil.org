@@ -1,0 +1,10 @@
+grant connect to &&user identified by &&userpassword;
+grant create table to &&user;
+grant create procedure to &&user;
+grant create sequence to &&user;
+alter user &&user default tablespace &&user_default_tablespace;
+alter user &&user quota unlimited on &&user_default_tablespace;
+grant alter session to &&user;
+grant select on sys.v_$sesstat  to &&user with grant option;
+grant select on sys.v_$session  to &&user with grant option;
+grant select on sys.v_$mystat   to &&user with grant option;

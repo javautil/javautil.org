@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtDataLocation"
+		table="UT_DATA_LOCATION">
+		<composite-id name="id"
+			class="org.javautil.exceptionprocessing.dto.UtDataLocationId">
+			<key-property name="schema" type="string">
+				<column name="SCHEMA" length="30" />
+			</key-property>
+			<key-property name="tableName" type="string">
+				<column name="TABLE_NAME" length="30" />
+			</key-property>
+		</composite-id>
+		<set name="utTableRules" inverse="true">
+			<key>
+				<column name="SCHEMA" length="30" not-null="true" />
+				<column name="TABLE_NAME" length="30" not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRule" />
+		</set>
+		<set name="utQueries" inverse="true">
+			<key>
+				<column name="SCHEMA" length="30" not-null="true" />
+				<column name="TABLE_NAME" length="30" not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtQuery" />
+		</set>
+		<set name="utTableRuleHists" inverse="true">
+			<key>
+				<column name="SCHEMA" length="30" not-null="true" />
+				<column name="TABLE_NAME" length="30" not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRuleHist" />
+		</set>
+	</class>
+</hibernate-mapping>

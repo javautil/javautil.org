@@ -1,0 +1,15 @@
+Native Queries
+
+Unless You are returning an object things get goofy
+
+todo show the hql and native way
+\begin{verbatim}
+public int getTableCount(String tableName) {
+		daoFactory.beginTransaction();
+		// todo this is not associated with any persistence, why do I need a transaction?
+		SQLQuery q   = daoFactory.getSession().createSQLQuery("select count(*) from " + tableName).
+		addScalar("COUNT(*)",Hibernate.INTEGER);
+		Integer c = (Integer) q.list().get(0);
+	return c.intValue();
+	}
+\end{verbatim}

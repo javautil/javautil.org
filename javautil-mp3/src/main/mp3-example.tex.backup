@@ -1,0 +1,159 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+\usepackage{alltt} 
+\usepackage{moreverb} 
+ \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry} 
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{underscore}
+%opening
+\title{JDBC utilities}
+\author{jjs@javautil.org}
+\hypersetup{
+pdfauthor = {jjs@javutil.org},
+pdftitle = {Whirlwind tour of Spring, Hibernate and Maven},
+pdfsubject = {A quick introduction to Spring, Hibernate and Maven},
+pdfkeywords = {JDBC},
+pdfcreator = {LaTeX with hyperref package},
+pdfproducer = {dvips + ps2pdf}}
+\begin{document}
+\title{Whirlwind tour of Spring, Hibernate and Maven}
+\author{Jim Schmidt\\
+  \texttt{jjs@javautil.org}}
+\date{\today}
+\maketitle
+\tableofcontents
+\chapter{Introduction}
+You've just been assigned to a new project group that uses some of the most popular development libraries and 
+methodologies.
+
+This is a series of lessons designed to quickly give you an introduction to Maven, Spring and Hibernate.
+\section{Project Specs}
+Design a program to scan a disk drive and store the contents of an MP3 files into an open ended number of formats ad 
+\section{Steps}
+Download and install Maven.
+
+Create your directories.
+
+create new directory in Eclipse
+
+Domain model
+
+create project 
+
+in eclipse install maven plugin
+
+enable dependence management (show screen shots)
+
+We want to use the features available in version 1.5 of java
+
+A lot of tabs, describe them
+
+
+
+plugins
+
+click add
+
+need to add 
+
+Now add the following property
+
+    <junit.version>4.4</junit.version>
+because the build tool defaulted to a different version.
+
+Working from the command line so that we can isolate out eclipse configuration problems.
+
+maven from the command line
+
+mvn eclipse:clean
+mvn eclipse:eclipse
+
+configure in junit 4.4
+
+\section{installing library}
+We have decided to use jidlib now we must install it into our repository
+
+Need to
+
+run src/main/lib/install_jars_to_maven_repository.sh 
+
+Need to change to use java 1.6 but unable to configure through gui in eclipse need to edit pom.
+
+Create a bean for the MP3 metadata 
+
+\section{Design}
+Need a bean to hold the information from an MP3 file.
+TODO need to preserve tabs
+\verbatiminput{../../src/main/java/org/javautil/mp3/MP3MetaData.java}
+TODO want to test that it works correctly
+
+test the class
+
+\section{Create the database objects}
+Talk about what comes first database objects or domain objects.
+
+\section{Creating an argument Beans}
+see javautil-commandline
+alter the pom.
+
+Cut and paste this into the pom.
+\begin{verbatim}
+   <dependency>
+                        <groupId>org.javautil</groupId>
+                        <artifactId>javautil-commandline</artifactId>
+                        <version>${org.javautil.commandline.version}</version>
+    </dependency>
+
+
+
+\end{verbatim}
+Create the bean
+Create the properties file, we will show you how to use to process command line arguments later.
+
+configure a log4j.xml in src/test/resources and make sure it gets deployed.
+
+How much have we tested?  Code coverage.
+
+CSV's as test and expected results.
+
+\section{Now what}
+Now we have MP3MetaDataExtractorTest how can we configure this another way?
+
+\section{Inject over factories}
+public interface Mp3Persistence
+
+How the persistence came into being is not a matter of concern of the application that wishes to store data.
+
+Is it writing to a socket? A database? A file?  Why do I care?
+
+Every one of these implementations require different constuctors 
+and or setter methods before than can do their work
+
+\section{write to flat file as }
+
+\section{Implementations}
+Document Object Model
+Streaming XML
+CSV
+Excel Workbook
+HTML
+JASON
+Serialized Java Object
+JDBC
+Hibernate
+Service Call
+Dataset
+EBCDIC
+
+\section{The canonical representation, the domain model}
+
+\chapter{Logging}
+
+\chapter{Private Methods}
+\chapter{TODO}
+show cascading inherited beans.
+
+\end{document}

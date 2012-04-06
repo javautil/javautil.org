@@ -1,0 +1,23 @@
+
+\section{What is Hibernate}
+Relational mapping tool ....
+
+\subsection{Mapping File}
+Generally there is one mapping file and one Data Transfer Object (DTO) class per table or view.
+The mapping file specifies the class to which the table will be mapped and associations between class members and database columns.
+It also specifies imported and exported foreign keys.
+
+
+
+A session managed bean is a simple java bean with some ``magic glue'' that associates the bean with a row in a table.
+Updates to the bean can be reflected in the database with minimal coding, far less work than it would take to do the same thing in 
+standard JDBC or even PL/SQL.
+
+\maketitle
+
+todo validation
+
+
+
+
+\end{document}

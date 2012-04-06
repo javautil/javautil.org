@@ -1,0 +1,195 @@
+head	1.1;
+access;
+symbols;
+locks
+	jjs:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2012.03.01.21.08.00;	author jjs;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<project name="build-tasks" default="generateCode"> 
+	<property name="source.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="lib.dir" value="../javautil-lib" />
+	<property name="etc.dir" value="etc" />
+	<property name="classes.dir" value="target/classes" />
+	<property name="gensource.dir" value="${build.dir}/src" />
+
+	<property name="hbm.pkg.name" value="org.javautil.${schema.packageName}" />
+	<property name="hbm.cfg.file" value="${etc.dir}/hibernate.cfg.xml" />
+	<property name="hbm.rev.file" value="${etc.dir}/hibernate.reveng.xml" />
+	
+	<property name="hibernate.properties" value="${etc.dir}/hibernate.properties" />
+	<path id="class.path">
+		<pathelement location="${classes.dir}" />
+		<fileset dir="${lib.dir}">
+ 			<include name="**/*.jar" />
+		</fileset>
+	</path>
+   <target name="init">
+                <mkdir dir="${classes.dir}" />
+                <mkdir dir="${gensource.dir}" />
+        </target>
+
+	<property name="class.path.string" refid="class.path" />
+
+	    <target name="compile-strategy" depends="init">
+
+                <javac includeantruntime="false" srcdir="." destdir="${classes.dir}" debug="true" debugLevel="lines,vars,source">
+                        <include name="${reveng.strategy.file}" />
+                        <classpath refid="classpath" />
+                </javac>
+        </target>
+
+	<taskdef name="hibernatetool" 
+		classname="org.hibernate.tool.ant.HibernateToolTask" 
+		classpathref="class.path" />
+
+	<target name="clean" 
+		description="remove hibernate generated files">
+		<delete dir="${gensource.dir}" 
+			failonerror="false" />
+		<mkdir dir="${gensource.dir}" />
+	</target>
+
+	<!-- todo reuse the other two tasks -->
+	<target name="generateCode" 
+		description="generate hibernate pojos" depends="clean">
+
+		<echo level="info">using classpath: ${class.path.string}</echo>
+
+
+		<hibernatetool 
+			destdir="${gensource.dir}" 
+			classpath="${class.path.string}">
+			<jdbcconfiguration 
+				configurationfile="${hbm.cfg.file}" 
+				packagename="${hbm.pkg.name}" 
+				revengfile="${hbm.rev.file}" 
+				reversestrategy="org.javautil.persist.hibernate.RevEngStrategy" />
+			<hbm2hbmxml />
+		
+		</hibernatetool>
+		
+		
+		<hibernatetool 
+			destdir="${gensource.dir}" 
+			classpath="${class.path.string}">
+					<jdbcconfiguration 
+						configurationfile="${hbm.cfg.file}" 
+						packagename="${hbm.pkg.name}"
+						revengfile="${hbm.rev.file}" 
+						reversestrategy="org.javautil.persist.hibernate.RevEngStrategy" />
+					<hbm2java jdk5="true" />
+				</hibernatetool>
+	</target>
+	
+	<target name="generateHBM" 
+		description="generate hibernate mapping files" >
+
+			<echo level="info">using classpath: ${class.path.string}</echo>
+			<hibernatetool destdir="${gensource.dir}" 
+				classpath="${class.path.string}">
+				<jdbcconfiguration 
+					configurationfile="${hbm.cfg.file}" 
+					packagename="${hbm.pkg.name}" 
+					revengfile="${hbm.rev.file}" 
+					reversestrategy="org.javautil.persist.hibernate.RevEngStrategy"  />
+				<hbm2hbmxml />
+			
+			</hibernatetool>
+			
+		
+		</target>
+	
+	<target name="generateHibernatePojosFromJdbcMeta" description="generate hibernate pojos from hbm files">
+
+			<echo level="info">using classpath: ${class.path.string}</echo>
+			
+		<hibernatetool destdir="${gensource.dir}" 
+			classpath="${class.path.string}">
+			<jdbcconfiguration 
+				configurationfile="${hbm.cfg.file}" 
+				packagename="${hbm.pkg.name}" 
+				revengfile="${hbm.rev.file}" 
+				reversestrategy="org.javautil.persist.hibernate.RevEngStrategy" />
+			<hbm2hbmxml />
+		
+		</hibernatetool>
+		</target>
+		
+	
+
+	<target name="generateHibernatePojos" description="generate hibernate pojos from hbm files">
+
+		<echo level="info">using classpath: ${class.path.string}</echo>
+		
+		<hibernatetool destdir="${gensource.dir}" 
+			classpath="${class.path.string}">
+				<configuration>
+					<fileset dir="${gensource.dir}">
+						<include name="**/*.hbm.xml" />
+					</fileset>
+				</configuration>
+			
+					<hbm2java jdk5="true" ejb3="true"/>
+		</hibernatetool>
+	</target>
+
+	
+	<target name="generateSchema" description="generate schema from hbm files">
+		<taskdef name="schemaexport" 
+	                   classname="org.hibernate.tool.hbm2ddl.SchemaExportTask"
+	                   classpathref="class.path"
+	   />
+		<!--	
+			properties="hibernate.properties" 
+			-->
+		<schemaexport 
+			properties="${hibernate.properties}"
+		    quiet="no"
+		    text="yes"
+		   drop="no"
+			
+		   delimiter=";"
+		   output="generated-schema.sql">
+		
+		<fileset dir="${gensource.dir}" >
+			<include name="**/*.hbm.xml"/>
+	    </fileset>
+		</schemaexport>
+		
+		</target>
+
+		<!--
+		<echo level="info">using classpath: ${class.path.string}</echo>
+		
+		<hibernatetool destdir="${gensource.dir}" 
+			classpath="${class.path.string}">
+				<configuration>
+					<fileset dir="${gensource.dir}">
+						<include name="**/*.hbm.xml" />
+					</fileset>
+				</configuration>
+			
+					<hbm2java jdk5="true" />
+		</hibernatetool>
+	</target>
+	-->
+
+</project> 
+@

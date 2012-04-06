@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ERDiagram version="1.1">
+  <Connection session="test" database="TEST" />
+  <Drawing gridVisible="false" snapOn="false" fastRouting="false" labelsVisible="true" />
+  <Tables>
+    <Table name="DS_TABLE">
+      <Drawing expanded="true" location="438,490" dimensions="228,69" />
+      <Columns>
+        <Column name="SCHEMA" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="TABLE_NAME" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_PROCESS_LOG">
+      <Drawing expanded="true" location="948,16" dimensions="462,269" />
+      <Columns>
+        <Column name="UT_PROCESS_LOG_NBR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="UT_PROCESS_STATUS_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="LOG_MSG_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="8" />
+        </Column>
+        <Column name="LOG_MSG" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="256" />
+        </Column>
+        <Column name="LOG_MSG_CLOB" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="CLOB" size="4000" />
+        </Column>
+        <Column name="LOG_MSG_TS" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TIMESTAMP(6)" size="10,6" />
+        </Column>
+        <Column name="ELAPSED_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INTERVAL DAY(2) TO SECOND(6)" size="10,6" />
+        </Column>
+        <Column name="LOG_SEQ_NBR" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="CALLER_NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="100" />
+        </Column>
+        <Column name="LINE_NBR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="5" />
+        </Column>
+        <Column name="CALL_STACK" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="CLOB" size="4000" />
+        </Column>
+        <Column name="LOG_LEVEL" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="2" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_PROCESS_STAT">
+      <Drawing expanded="true" location="1100,344" dimensions="309,128" />
+      <Columns>
+        <Column name="UT_PROCESS_STATUS_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="LOG_SEQ_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="SID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="22" />
+        </Column>
+        <Column name="STATISTIC#" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="22" />
+        </Column>
+        <Column name="VALUE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="22" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_PROCESS_STATUS">
+      <Drawing expanded="true" location="425,52" dimensions="462,270" />
+      <Columns>
+        <Column name="UT_PROCESS_STATUS_NBR" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="SCHEMA_NM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="PROCESS_NM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="128" />
+        </Column>
+        <Column name="THREAD_NM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="128" />
+        </Column>
+        <Column name="PROCESS_RUN_NBR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="STATUS_MSG" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="256" />
+        </Column>
+        <Column name="STATUS_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="1" />
+        </Column>
+        <Column name="STATUS_TS" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TIMESTAMP(6)" size="10,6" />
+        </Column>
+        <Column name="TOTAL_ELAPSED" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INTERVAL DAY(2) TO SECOND(6)" size="10,6" />
+        </Column>
+        <Column name="SID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="22" />
+        </Column>
+        <Column name="SERIAL#" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="22" />
+        </Column>
+        <Column name="IGNORE_FLG" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="1" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_QUERY">
+      <Drawing expanded="true" location="731,413" dimensions="279,188" />
+      <Columns>
+        <Column name="UT_QUERY_NBR" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="QUERY_NM" primary_key="false" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR2" size="32" />
+        </Column>
+        <Column name="QUERY_DESCR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="128" />
+        </Column>
+        <Column name="SCHEMA" primary_key="false" foreign_key="true" required="true" unique="true">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="TABLE_NAME" primary_key="false" foreign_key="true" required="true" unique="true">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="QUERY_TEXT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="CLOB" size="4000" />
+        </Column>
+        <Column name="APEX_RPT_HEADING" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="4000" />
+        </Column>
+        <Column name="TABLE_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="8" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_RULE_GRP">
+      <Drawing expanded="true" location="56,210" dimensions="312,150" />
+      <Columns>
+        <Column name="UT_RULE_GRP_NM" primary_key="false" foreign_key="false" required="false" unique="true">
+          <Data type="VARCHAR2" size="32" />
+        </Column>
+        <Column name="UT_RULE_GRP_DESCR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="60" />
+        </Column>
+        <Column name="UT_RULE_GRP_LONG_DESCR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="CLOB" size="4000" />
+        </Column>
+        <Column name="UT_RULE_GRP_NBR" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="THREAD_CNT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="3" />
+        </Column>
+        <Column name="MAX_QUERY_SEC_DFLT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="5" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_RULE_GRP_DTL">
+      <Drawing expanded="true" location="-26,531" dimensions="271,89" />
+      <Columns>
+        <Column name="UT_TABLE_RULE_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="UT_RULE_GRP_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="RUN_SEQ" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="5" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_RULE_GRP_RUN">
+      <Drawing expanded="true" location="-362,27" dimensions="339,148" />
+      <Columns>
+        <Column name="UT_RULE_GRP_RUN_NBR" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="UT_RULE_GRP_NBR" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="UT_RUN_GRP_DESCR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="80" />
+        </Column>
+        <Column name="LAST_RUN_TM" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP(6)" size="10,6" />
+        </Column>
+        <Column name="CTRL_PT_NBR" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="UT_PROCESS_STATUS_NBR" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="NUMBER" size="18" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_RULE_GRP_RUN_PARM">
+      <Drawing expanded="true" location="-267,869" dimensions="312,129" />
+      <Columns>
+        <Column name="UT_RULE_GRP_RUN_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="PARM_NM" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="PARM_VALUE_STRING" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="255" />
+        </Column>
+        <Column name="PARM_VALUE_NUMBER" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="22" />
+        </Column>
+        <Column name="PARM_VALUE_DATE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATE" size="7" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_TABLE_MSG">
+      <Drawing expanded="true" location="-152,1260" dimensions="304,91" />
+      <Columns>
+        <Column name="UT_RULE_GRP_RUN_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="UT_TABLE_RULE_NBR" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="MSG" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="64" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_TABLE_ROW_MSG">
+      <Drawing expanded="true" location="222,1350" dimensions="304,168" />
+      <Columns>
+        <Column name="PRIMARY_KEY" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="MSG" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="64" />
+        </Column>
+        <Column name="UT_TABLE_RULE_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="UT_RULE_GRP_RUN_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="UT_USER_NBR_ALLOW" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="DISP_CD_ENUM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="1" />
+        </Column>
+        <Column name="UT_USER_NBR_DISP" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="9" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_TABLE_RULE">
+      <Drawing expanded="true" location="262,718" dimensions="343,506" />
+      <Columns>
+        <Column name="TABLE_ID" primary_key="false" foreign_key="false" required="false" unique="true">
+          <Data type="VARCHAR2" size="8" />
+        </Column>
+        <Column name="MSG_ID" primary_key="false" foreign_key="false" required="false" unique="true">
+          <Data type="VARCHAR2" size="16" />
+        </Column>
+        <Column name="SQL_TEXT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="4000" />
+        </Column>
+        <Column name="MSG_DESCR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="4000" />
+        </Column>
+        <Column name="RULE_TYPE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="8" />
+        </Column>
+        <Column name="QUERY_NM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="32" />
+        </Column>
+        <Column name="CORRECTIVE_ACTION_SCRIPT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="255" />
+        </Column>
+        <Column name="MENU_NBR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="DATA_SRC_NM_SRC" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="20" />
+        </Column>
+        <Column name="DATA_SRC_NM_DEST" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="20" />
+        </Column>
+        <Column name="UT_TABLE_RULE_NBR" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="UT_QUERY_NBR" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="NUMBER" size="9" />
+        </Column>
+        <Column name="SCHEMA" primary_key="false" foreign_key="true" required="true" unique="true">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="TABLE_NAME" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="SCHEMA_GRP_NM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="16" />
+        </Column>
+        <Column name="MAX_QUERY_SEC" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="5" />
+        </Column>
+        <Column name="SEVERE_RULE_FLG" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR2" size="1" />
+        </Column>
+        <Column name="HELP_URL" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="128" />
+        </Column>
+        <Column name="SHORT_DESCR" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="80" />
+        </Column>
+        <Column name="EXCEPTION_TYPE_CD" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR2" size="1" />
+        </Column>
+        <Column name="UT_TABLE_RULE_NBR_EXCLUDE" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="DISP_CD_ENUM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="1" />
+        </Column>
+        <Column name="LOG_LVL" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="NUMBER" size="1" />
+        </Column>
+        <Column name="PERSISTENCE_POLICY_CD" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="UT_TABLE_RULE_PARM">
+      <Drawing expanded="true" location="818,1117" dimensions="282,89" />
+      <Columns>
+        <Column name="UT_TABLE_RULE_NBR" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="NUMBER" size="18" />
+        </Column>
+        <Column name="PARM_NM" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR2" size="30" />
+        </Column>
+        <Column name="PARM_DATA_TYPE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR2" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+  </Tables>
+  <Relationships>
+    <Relationship name="UPL_UPS_FK">
+      <Details primary_table="UT_PROCESS_STATUS" foreign_table="UT_PROCESS_LOG">
+        <PrimaryKeys>
+          <ColumnName name="UT_PROCESS_STATUS_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_PROCESS_STATUS_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UP_PROCESS_STAT_FK">
+      <Details primary_table="UT_PROCESS_LOG" foreign_table="UT_PROCESS_STAT">
+        <PrimaryKeys>
+          <ColumnName name="UT_PROCESS_STATUS_NBR" />
+          <ColumnName name="LOG_SEQ_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_PROCESS_STATUS_NBR" />
+          <ColumnName name="LOG_SEQ_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UQ_DT_FK">
+      <Details primary_table="DS_TABLE" foreign_table="UT_QUERY">
+        <PrimaryKeys>
+          <ColumnName name="SCHEMA" />
+          <ColumnName name="TABLE_NAME" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="SCHEMA" />
+          <ColumnName name="TABLE_NAME" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="URGD_UTR_FK">
+      <Details primary_table="UT_TABLE_RULE" foreign_table="UT_RULE_GRP_DTL">
+        <PrimaryKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="URGD_URG_FK">
+      <Details primary_table="UT_RULE_GRP" foreign_table="UT_RULE_GRP_DTL">
+        <PrimaryKeys>
+          <ColumnName name="UT_RULE_GRP_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_RULE_GRP_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="URGN_URG_FK">
+      <Details primary_table="UT_RULE_GRP" foreign_table="UT_RULE_GRP_RUN">
+        <PrimaryKeys>
+          <ColumnName name="UT_RULE_GRP_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_RULE_GRP_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="1">
+        <Bendpoints>
+          <Point location="100,148" />
+        </Bendpoints>
+      </Drawing>
+    </Relationship>
+    <Relationship name="URGR_UPS_FK">
+      <Details primary_table="UT_PROCESS_STATUS" foreign_table="UT_RULE_GRP_RUN">
+        <PrimaryKeys>
+          <ColumnName name="UT_PROCESS_STATUS_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_PROCESS_STATUS_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="URGRP_URGR_FK">
+      <Details primary_table="UT_RULE_GRP_RUN" foreign_table="UT_RULE_GRP_RUN_PARM">
+        <PrimaryKeys>
+          <ColumnName name="UT_RULE_GRP_RUN_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_RULE_GRP_RUN_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UTM_URGRN_FK">
+      <Details primary_table="UT_RULE_GRP_RUN" foreign_table="UT_TABLE_MSG">
+        <PrimaryKeys>
+          <ColumnName name="UT_RULE_GRP_RUN_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_RULE_GRP_RUN_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UTRM_UTR_FK">
+      <Details primary_table="UT_TABLE_RULE" foreign_table="UT_TABLE_ROW_MSG">
+        <PrimaryKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UTRM_URGR_FK">
+      <Details primary_table="UT_RULE_GRP_RUN" foreign_table="UT_TABLE_ROW_MSG">
+        <PrimaryKeys>
+          <ColumnName name="UT_RULE_GRP_RUN_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_RULE_GRP_RUN_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UTR_DT_FK">
+      <Details primary_table="DS_TABLE" foreign_table="UT_TABLE_RULE">
+        <PrimaryKeys>
+          <ColumnName name="SCHEMA" />
+          <ColumnName name="TABLE_NAME" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="SCHEMA" />
+          <ColumnName name="TABLE_NAME" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UTR_UTR_FK">
+      <Details primary_table="UT_TABLE_RULE" foreign_table="UT_TABLE_RULE">
+        <PrimaryKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR_EXCLUDE" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UTR_UQ_FK">
+      <Details primary_table="UT_QUERY" foreign_table="UT_TABLE_RULE">
+        <PrimaryKeys>
+          <ColumnName name="UT_QUERY_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_QUERY_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="UTRP_UTR_FK">
+      <Details primary_table="UT_TABLE_RULE" foreign_table="UT_TABLE_RULE_PARM">
+        <PrimaryKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="UT_TABLE_RULE_NBR" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+  </Relationships>
+</ERDiagram>
+

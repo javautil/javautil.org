@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>org.javautil</groupId>
+ <artifactId>javautil-oracle</artifactId>
+ <version>0.11.0</version>
+ <packaging>jar</packaging>
+ <name>javautil-oracle</name>
+ <url>http://maven.apache.org</url>
+
+ <parent>
+  <groupId>org.javautil</groupId>
+  <artifactId>javautil-pom</artifactId>
+  <version>0.11.0</version>
+  <relativePath>../javautil-pom</relativePath>
+ </parent>
+
+ <dependencies>
+
+  <dependency>
+   <groupId>jaxen</groupId>
+   <artifactId>jaxen</artifactId>
+   <version>1.1.1</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-test</artifactId>
+   <version>${org.javautil.test.version}</version>
+   <scope>test</scope>
+  </dependency>
+
+
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-jdbc</artifactId>
+   <version>${org.javautil.jdbc.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-core</artifactId>
+   <version>${org.javautil.core.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-jdbc</artifactId>
+   <version>${org.javautil.jdbc.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-commandline</artifactId>
+   <version>${org.javautil.commandline.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>com.oracle</groupId>
+   <artifactId>oracle-jdbc6</artifactId>
+   <version>${com.oracle.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>commons-dbcp</groupId>
+   <artifactId>commons-dbcp</artifactId>
+   <version>20030818.201141</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.openjpa</groupId>
+   <artifactId>openjpa-all</artifactId>
+   <version>2.0.0-beta2</version>
+  </dependency>
+ </dependencies>
+
+</project>

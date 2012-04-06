@@ -1,0 +1,150 @@
+Reverse Engineering
+
+\section{Introduction}
+Reverse Engineering is the process of generating 
+   mapping logic
+   java DTO / beans / POJOs for holding tuples 
+
+For a huge variety of reasons, I believe that the data model should be optimized for its purpose, both logically and physically.
+
+The abstraction of the data model from the 
+
+Let us assume that, being the rational Savvy DBA that you are that you presume more value in the data you hold than in the processes that manipulate 
+that data.
+
+Furthermore, you understand that an ORM tool will not generate DML to reflect an optimal physical model,
+ have little or no faith in the ability of an ORM tool to generate DML 
+todo review
+
+A reverse engineering strategy
+
+The reveng.xml
+
+The ant task
+
+
+todo the clob, what are you going to do?  should you check the size and make a determination,
+
+resolving blobs thats another story an depends on the data model.
+
+
+Tuning the configuration files maps, sequence id generators 
+
+\section{Components}
+\begin{itemize}
+ \item The ant script 
+ \item the reveng.xml
+ \item The reverse engineering class
+ \item 
+\end{itemize}
+
+
+\section{TODO}
+
+The default behavior of the reverse engineering is to create a class for the reference,
+Todo examine how the id is stored and when the dereferencing occurs.
+
+\section{A mapping file}
+The result of the following table definition
+\begin{verbatim}
+
+  CREATE TABLE "SALES"."CUSTOMER"   (	
+	"CUSTOMER_ID" NUMBER(9,0) NOT NULL ENABLE, 
+	"CUSTOMER_STATUS" VARCHAR2(1 BYTE), 
+	"NAME" VARCHAR2(30 BYTE), 
+	"ADDR_1" VARCHAR2(30 BYTE), 
+	"ADDR_2" VARCHAR2(30 BYTE), 
+	"CITY" VARCHAR2(25 BYTE), 
+	"STATE" VARCHAR2(2 BYTE), 
+	"ZIP_CD" VARCHAR2(10 BYTE), 
+	"OUTSIDE_SALESPERSON_ID" NUMBER(9,0), 
+	"INSIDE_SALESPERSON_ID" NUMBER(9,0) NOT NULL ENABLE, 
+	 CONSTRAINT "CUSTOMER_PK" PRIMARY KEY ("CUSTOMER_ID")
+   )  ;
+ 
+
+  CREATE BITMAP INDEX "SALES"."CUSTOMER_AK1" ON "SALES"."CUSTOMER" ("OUTSIDE_SALESPERSON_ID");
+ 
+  CREATE BITMAP INDEX "SALES"."CUSTOMER_AK2" ON "SALES"."CUSTOMER" ("INSIDE_SALESPERSON_ID");
+ 
+  CREATE UNIQUE INDEX "SALES"."CUSTOMER_PK" ON "SALES"."CUSTOMER" ("CUSTOMER_ID");
+ 
+
+\end{verbatim}
+Note that the sequence was generated based on the name pattern.
+
+The optimal sequence generation strategy was not used.
+
+
+Now I hand tweak the generated hbm.xml file and regenerate the pojo
+\begin{verbatim}
+
+  <many-to-one name="salesperson" class="com.dbexperts.sales.Salesperson" fetch="select">
+            <column name="INSIDE_SALESPERSON_ID" precision="9" scale="0" not-null="true" />
+        </many-to-one>
+         <property name="insideSalespersonId" type="java.lang.Integer">
+            <column name="INSIDE_SALESPERSON_ID" length="9" />
+        </property>
+        <property name="customerStatus" type="string">
+            <column name="CUSTOMER_STATUS" length="1" />
+        </property>
+\end{verbatim}
+
+Now I have anInsideSalespersonId in the DTO
+
+\begin{verbatim}
+ <?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2009 7:18:46 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.dbexperts.sales.Customer" table="CUSTOMER">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" precision="9" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">CUSTOMER_SEQ</param>
+            </generator>
+        </id>
+        <many-to-one name="salesperson" class="com.dbexperts.sales.Salesperson" fetch="select">
+            <column name="INSIDE_SALESPERSON_ID" precision="9" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="customerStatus" type="string">
+            <column name="CUSTOMER_STATUS" length="1" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="30" />
+        </property>
+        <property name="addr1" type="string">
+            <column name="ADDR_1" length="30" />
+        </property>
+        <property name="addr2" type="string">
+            <column name="ADDR_2" length="30" />
+        </property>
+        <property name="city" type="string">
+            <column name="CITY" length="25" />
+        </property>
+        <property name="state" type="string">
+            <column name="STATE" length="2" />
+        </property>
+        <property name="zipCd" type="string">
+            <column name="ZIP_CD" length="10" />
+        </property>
+        <property name="outsideSalespersonId" type="java.lang.Integer">
+            <column name="OUTSIDE_SALESPERSON_ID" precision="9" scale="0" />
+        </property>
+        <set name="sales" inverse="true">
+            <key>
+                <column name="CUSTOMER_ID" precision="9" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.dbexperts.sales.Sale" />
+        </set>
+    </class>
+</hibernate-mapping>
+\end{verbatim}
+
+ <many-to-one name="salesperson" class="com.dbexperts.sales.Salesperson" fetch="select">
+            <column name="INSIDE_SALESPERSON_ID" precision="9" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="insideSalespersonId" type="java.lang.Integer">
+            <column name="INSIDE_SALESPERSON_ID" length="9" />
+        </property>

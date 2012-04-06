@@ -1,0 +1,184 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+\usepackage{alltt} 
+\usepackage{moreverb} 
+ \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry} 
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{underscore}
+\usepackage{boxedminipage}
+\usepackage{float}
+\usepackage{hyperref}
+
+%opening
+\title{JDBC utilities}
+\author{jjs@javautil.org}
+\hypersetup{
+pdfauthor = {jjs@javutil.org},
+pdftitle = {Whirlwind tour of Spring, Hibernate and Maven},
+pdfsubject = {A quick introduction to Spring, Hibernate and Maven},
+pdfkeywords = {JDBC},
+pdfcreator = {LaTeX with hyperref package},
+pdfproducer = {dvips + ps2pdf}}
+% Alter some LaTeX defaults for better treatment of figures:
+%http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
+    % See p.105 of "TeX Unbound" for suggested values.
+    % See pp. 199-200 of Lamport's "LaTeX" book for details.
+    %   General parameters, for ALL pages:
+    %\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+    %\renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+    %   Parameters for TEXT pages (not float pages):
+    %\setcounter{topnumber}{2}
+    %\setcounter{bottomnumber}{2}
+    %\setcounter{totalnumber}{4}     % 2 may work better
+    %\setcounter{dbltopnumber}{2}    % for 2-column pages
+    %\renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+    %\renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    %\renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    %\renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+	% remember to use [htp] or [htpb] for placement
+\floatstyle{ruled}
+\newfloat{program}{thp}{lop}
+\floatname{program}{Program}
+\setlength{\parindent}{0pt}  % don't indent paragraphs?
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex} % inter paragraph spacing
+
+
+\begin{document}
+\chapter{Artist Resolution}
+Let us start with the simple assertion ``An artist is defined by what I want it to be''
+
+After examing hundreds of thousands of mp3s we find that artists are defined by their name.
+
+As there is not a standards agency that doles out band identifiers. We must derive one.
+
+I start with the assertion that each ``band'' must be assigned an immutable arbitrarily assigned identifier.
+
+\begin{itemize}
+ \item Beatles
+ \item The Beatles
+ \item Beatles, The  
+\end{itemize}
+
+What is the ``Name by which you would like to have The Beatles identified?''
+
+Simple is good.
+
+Let us define a table and call it artist.
+
+The unique identifier for artist shall be ``artist_id''.
+
+This identifier should be immutable, that is should never change.
+
+A property of artist is the preferred name for the artist.
+
+Natural keys.
+
+\begin{tabular}{ l | l | l }
+artist_id & artist identifier & immutable means of specifying an artist \\
+artist_name & The preferred user friendly representation of an artist's name 
+ 
+\end{tabular} 
+
+The artist will be referred to in relational objects by the identifier.
+
+Now we need some way of assigning an artist_id to various representations of artists names.
+
+
+todo with various singers?
+\begin{verbatim}
+select artist_name, count(*) 
+from mp3 
+where upper(artist_name) like '%BEATLES%' 
+group by upper(artist_name)
+\end{verbatim}
+
+
+\begin{tabular}{l | l}
+Artist Name	& Count \\ 
+Beatles, The	& 28 \\
+Beatles	 & 81 \\
+ The Beatles	& 2 \\
+Beatlesles	& 1 \\
+The Beatles	& 559
+\end{tabular} 
+
+Popularity is a good indicator of preference. 
+Based on the above one might be inclined to name the band ``The Beatles''.  
+
+should be able to group
+"Allman Brothers",6
+"Allman Brothers Band",36
+"Allman Brothers Band, The",1
+"Allmon Brothers Band",1
+"Alman Brothers Band",1
+
+"Beatles",31
+"Beatles, The",16
+"Beatlesles",1
+"The Beatles",34
+
+"Blood Sweat & Tears",1
+"Blood Sweat And Tears",1
+"Blood Sweat and Tears",1
+"Blood, Sweat & Tears",5
+"Blood, Sweat And Tears",2
+"Blood, Sweat, And Tears",2
+
+"Christina Aguilera",14
+"Christina Agularia",1
+
+
+should be able 
+
+\subsection{Word Extractor}
+TODO describe
+package org.javautil.mp3;
+
+public interface WordExtractor {
+	
+	public String[] getWords(String text);
+}
+
+don't get carried away, don't write an interface and require injection of everything you write.
+
+comment on AutoWired why it is bad.
+
+http://www.javacodegeeks.com/2011/01/10-tips-proper-application-logging.html
+
+testing each test should stand alone, not be dependent on prior tests or ordering
+
+http://code.google.com/p/google-diff-match-patch/
+
+We can pair every artist name with every other artist name that comes close.
+
+Now how do we create a group?  What will be the group identifier
+
+csv tokenizers and readers
+
+\subsection{Sort Name}
+processor chains 
+
+Band names should upper case 
+'The' and '.*The' should be stripped
+
+
+notes 
+
+in
+
+todo explain insertCountBetweenCommits
+
+null empty strings
+
+Review and take actions  don't try to write too much code, too many exceptions.
+
+todo create a separate file for Session Factory and use with other files in spring configuration
+
+make sure .hbm.xml files are in right place get sllly messages
+\end{document}

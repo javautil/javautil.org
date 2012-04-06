@@ -1,0 +1,59 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+\usepackage{alltt} 
+\usepackage{alltt} 
+ \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry} 
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{underscore}
+%opening
+\title{Exception Generation with Javautil}
+\author{jim.schmidt@dbexperts.com}
+\hypersetup{
+pdfauthor = {jjs-javautil@dbexperts.com},
+pdftitle = {Sales Analysis with Open Source Software},
+pdfsubject = {Sales Analysis with Open Source Software},
+pdfkeywords = {Open Source, Spring, Hibernate},
+pdfcreator = {LaTeX with hyperref package},
+pdfproducer = {dvips + ps2pdf}}
+\begin{document}
+\title{Sales Analysis with Open Source Software}
+\author{Jim Schmidt\\
+  \texttt{jjs-javautil@dbexperts.com}}
+\date{\today}
+\maketitle
+\tableofcontents
+\chapter{Introduction}
+javautil-core
+
+
+
+\section{Matrices}
+
+\section{Crosstabbing}
+
+\section{Rendering}
+  \subsection{csv}
+  \subsection{xhtml}
+
+\section{Validators}
+
+\section{Standards}
+Standardized date format.
+Declarative Columns
+XSLT Transforms
+
+Server Side XSLT Sucks
+
+Declarative Formatting including formulas
+
+Parsers Fixed Length
+        CSV
+
+Cross tabbing
+
+
+
+\end{document}

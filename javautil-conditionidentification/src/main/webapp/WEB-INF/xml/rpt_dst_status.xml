@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+    <dst_rpt_status>
+      <row>
+        <org_nm_dst>HFC Direct</org_nm_dst>
+        <rpt_cycle>W</rpt_cycle>
+        <last_rptd_dt>02/31/08</last_rptd_dt>
+      </row>
+      <row>
+        <org_nm_dst>Vistar/Roma of Southern California</org_nm_dst>
+        <rpt_cycle>W</rpt_cycle>
+        <last_rptd_dt>05/31/08</last_rptd_dt>
+      </row>
+      <row>
+        <org_nm_dst>Vistar/Roma of Denver</org_nm_dst>
+        <rpt_cycle>M</rpt_cycle>
+        <last_rptd_dt>08/01/08</last_rptd_dt>
+      </row>
+      <row>
+        <org_nm_dst>Vistar Springfield</org_nm_dst>
+        <rpt_cycle>W</rpt_cycle>
+        <last_rptd_dt>08/05/08</last_rptd_dt>
+      </row>
+      <row>
+        <org_nm_dst>Vistar HQ</org_nm_dst>
+        <rpt_cycle>Y</rpt_cycle>
+        <last_rptd_dt>08/01/08</last_rptd_dt>
+      </row>
+    </dst_rpt_status>

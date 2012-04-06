@@ -1,0 +1,288 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{verbatim}
+\usepackage{moreverb}
+\usepackage{underscore}
+%opening
+\title{}
+\author{jim.schmidt@dbexperts.com}
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This article introduces a simple mechanism for declaratively creating a robust command line interface.
+This mechanism extends the functionality of the SourceForge jcmdline project available at http://jcmdline.sourceforge.net/
+by providing declative arguments and options functionality using java annotations.
+
+The code was mostly written by one of my favorite programmers, Bryan Mason.
+\end{abstract}
+
+\section{Introduction}
+
+
+The javautil-commandline contains classes used to parse and process command line options and arguments from a Java program. This package was written with the following goals:
+\begin{itemize}
+   \item support option and argument processing described declarative fashion using java annotations in a java argument bean class
+   \item support locale specific messages for command line processes using resource bundles 
+   \item Support the declaration, description and help displays for command line options in a declarative fashion using Java Annotations.
+   \item Encourage uniformity of command line conventions and usage display throughout a project.
+   \item Make it difficult to add a command line option without its being documented in the command usage.
+\end{itemize}
+\subsection{Features}
+\begin{itemize}
+    \item  Parses command line options and arguments.
+    \item Supports frequently used parameter types - booleans, strings, integers, dates, file names...
+    \item Performs common validation tasks - checks for number ranges, file/directory attributes, values that must be from a specified set, etc..
+    \item Displays neatly formatted usage and error message in response to parameter specification errors.
+    \item Provides support for commonly used command line options (such as -help and -version) and a means to standardize command line options across all executables of a project.
+    \item Supports hidden options.
+\end{itemize}
+\begin{itemize}
+	\item Create Command Line Switch Processing with very little effort
+	\begin{itemize}
+		\item Create a class (a bean) for the arguments 
+		\item Annotate the fields of the bean to indicate 
+		\begin{itemize}
+		   \item is this getting too deep?
+	   \end{itemize}
+	\end{itemize}
+\end{itemize} 
+
+\section{Components}
+An emph{argument bean} that holds the arguments annotated with the rules.
+
+An emph{properties file[s]} that provide help messages and field descriptions.
+
+\section{The Argument Bean}
+Supported argument types:
+
+\begin{tabular}{l | l }
+  Boolean & \\ \hline
+  Date & \\ \hline
+  File & \\ \hline
+  Integer & \\ \hline
+  String & \\ \hline
+\end{tabular}
+\section{Annotations}
+
+ \begin{tabular}{  l | l }
+    DirectoryExists & The specified directory exists. \\ \hline
+   DirectoryReadable &  The specified directory is readable. \\ \hline
+    DirectoryWritable & The specified directory is writable. \\ \hline
+    Exclusive  & The parameter is mutually exclusive with the named parameter.  example 	
+                \\begin{verbatim}
+                 // not annotated should not be set
+		private String parts;
+		
+		@Exclusive(property="parts")
+		private String bits; 
+                \\end{verbatim}
+	
+	        \\ \hline
+    FileExists & The specified file exists\\  \hline
+    FileReadable & The user running the program has permissions to read the specified file.  
+                   The file must exist.\\ \hline
+    FileWritable & The user running the program has permissions to modify the specified file.
+                   The file must exist prior to running this program.\\ \hline
+    Multivalue & The argument may specified more than once.
+           @MultiValue(type = ParamType.Boolean)
+           @MultiValue(type = ParamType.DATE) \\ \hline
+
+    Optional & A non-required argument.\\ \hline
+    Required & This argument must be specified.\\ \hline
+    RequiredBy & This argument is required if the specified argument is declared.\\ \hline
+    RequiredUnless & This argument is mandatory if the specified argument is not declared. \\ \hline
+    
+%\hline
+    \end{tabular}
+%\end{center}
+
+\section{Terminology}
+\paragraph{Option}
+\paragraph{Argument}
+
+\section{jcmdline}
+\subsection{Overview}
+% http://jcmdline.sourceforge.net/jcmdline/api/jcmdline/doc-files/userguide.html#toc1
+The jcmdline package contains classes used to parse and process command line options and arguments from a Java program. This package was written with the following goals:
+\begin{itemize}
+    \item Simplify processing of command line options and parameters.
+    \item Encourage uniformity of command line conventions and usage display throughout a project.
+    \item Make it difficult to add a command line option without its being documented in the command usage.
+\end{itemize}
+\subsection{Features}
+\begin{itemize}
+    \item  Parses command line options and arguments.
+    \item Supports frequently used parameter types - booleans, strings, integers, dates, file names...
+    \item Performs common validation tasks - checks for number ranges, file/directory attributes, 
+          values that must be from a specified set, etc..
+    \item Displays neatly formatted usage and error message in response to parameter specification errors.
+    \item Provides support for commonly used command line options (such as -help and -version) and a 
+          means to standardize command line options across all executables of a project.
+    \item Supports hidden options.
+\end{itemize}
+\paragraph{option}
+    A command line option is comprised of an identifying "tag", typically preceded by a dash or two, and optionally requires a value. A typical option might be "-outfile /tmp/myfile".
+\paragraph{argument}
+    A command line argument is specified on the command line after all of the options and their values.
+\paragraph{parameter}
+    A command line parameter is an option or an argument. 
+\subsection{Parameter}
+\subsubsection{tag}
+The tag is used to identify the parameter.
+
+For options, the tag indicates how the option is specified, for instance, a tag of "outfile" indicates an option specified like "-outfile /tmp/myfile".
+
+For command line arguments, the tag is typically used by the usage display formatter to identify the argument.
+\subsubsection{description}
+The description is used by the usage display formatter to describe a parameter.
+optional indicator. The optional indicator indicates whether a parameter is optional or required.
+ If a parameter is configured to be required, the CmdLineHandler will reject the command line if the parameter is not specified.
+\subsubsection{multi-valued}
+A parameter that is multi-valued can be specified more than once. 
+This is frequently used with the final command line argument when the command accepts multiple instances. 
+The above example demonstrates this type of usage.
+acceptable values 	
+Most Parameter types allow the programmer to specify a set of values that the parameter will accept. 
+The command line is rejected if a user attempts to set the parameter to any non-specified value.
+\subsection{hidden indicator} 	The hidden indicator is used to indicate whether a parameter is hidden or public. By default, all parameters are public, meaning that they will be described in a regular usage statement.
+
+Optionally, a parameter may be designated hidden, in which case it may still be specified by the user, but is not displayed in a normal usage statement. Who has not shipped code supporting "debug" or "trace" options that might be performance impacting and thus not be suitable for publication to the casual user? This indicator is for that type of option.
+
+Both the DefaultCmdLineHandler and HelpCmdLineHandler support (hidden) command line options that will cause hidden options and help to be displayed.
+
+\subsection{Help}
+
+\section{Annotations}
+\subsection{DirectoryExists}
+The argument represented by the field must specify an existing directory.
+\subsection{DirectoryReadable}
+The argument represented by the field must specify an existing readable directory.
+\subsection{DirectoryWritable}
+The argument represented by the field must specify an existing readable directory.
+\subsection{Exclusive}
+The argument represented by the specified field name is mutually exclusive with respect to the annotated field.
+
+
+\verbatimtabinput{../../../src/test/java/org/javautil/commandline/ExclusiveArguments.java}
+\subsection{FieldValue}
+TODO this is completely unnecessary.
+\subsection{FileExists}
+Applied to a File object, the file specified file must exist.
+\subsection{FileReadable}
+Applied to a File object, the file must exist and be readable. 
+\subsection{FileWritable}
+Applied to a File object, the file must exist and be writable.
+\subsection{MultiValue}
+Applied to a collection of objects when the argument may be specified more than once assumuning a collection of values.
+
+ParamType must be one of FILE,INTEGER,STRING,DATE,BOOLEAN
+
+\verbatimtabinput{../../../src/test/java/org/javautil/commandline/MultiValueBean.java}
+\subsection{Optional}
+Every argument must be emph{Optional} or emph{Required}
+\subsection{RequiredBy}
+If the specified argument is on the command line, the member annoted with this value must be specified.
+\subsection{Required}
+Every argument must be \emph{Optional} or \emph{Required}
+\subsection{RequiredUnless}
+\verbatimtabinput{../../../src/test/java/org/javautil/commandline/MultiValueBean.java}
+\subsection{ResourceTag}
+\subsection{StringSet}
+An enumeration of the assumable values of this tag.                
+
+
+\subsection{Option Types}
+\label{Option Types} 
+\subsubsection{boolean}
+boolean (true / false ) switch.  Defaults to false;  f specified on the commandline is true. 
+Of course this argument type should be specified as optional.
+\subsubsection{File}
+Handles filename parameters
+\subsubsection{Int}
+Numeric Integer Parameters
+\subsubsection{Date}
+\subsubsection{Time}
+\subsubsection{DirectoryExists}
+\subsubsection{DirectoryWritable}
+\subsection{MultiValued}
+If an option may be specified multiple times use the emph{MultiValue} tag to annotate a Collection:
+\begin{verbatim}
+    @Optional
+    @MultiValue
+    private Collection<String>words;
+\end{verbatim}
+
+\pagebreak
+\section{Cookbook}
+\subsection{The Argument Bean}
+An ArgumentBean is any class that contains the variables to be set based on command line arguments augmented by annotations
+that specify the properties (see \ref{Option Types} on page \pageref{Option Types})
+
+\section{Features}
+\subsection{Multi Language Support}
+Different Resource bundles per language.
+\subsection{Messages and Help}
+\section{Notes}
+Every field in the argument class must have an annotation.  Why, I have no idea.
+but this isn't true for booleans?
+
+Every argument should be specified in resource bundle.  
+
+The entry is of the form 
+
+Must be one of optional or mandatory.
+
+\subsection{ArgumentBean}
+Write a bean with objects and accessors.
+
+Annotate each argument with either @Optional or @Required.
+
+
+\subsubsection{Example Argument Bean}
+\verbatimtabinput{../../test/java/org/javautil/commandline/ArgumentBean.java}
+
+\subsection{Properties File}
+Each object used should have an entry in a properties file with the name of the object 
+followed by ``.description''
+
+Any argument or option not defined in the properties file will result in a message of the formatted
+\textit{No description for 'argumentName' found}
+
+Special words are
+\begin{itemize}
+ \item application.description
+ \item application.name
+ \item application.helpText
+\end{itemize}
+
+
+
+\section{Argument Bean}
+An argument bean is a class of Objects that hold the arguments used by the program.
+\subsubsection{Properties File}
+The argument bean should be described in a properties file.
+
+By convention the file should be named the name of the bean followed by .properties.
+ 
+\verbatimtabinput{../../test/resources/org/javautil/commandline/CommandLineArguments.properties}
+
+\section{Invocation}
+\verbatimtabinput{../../../src/test/java/org/javautil/commandline/CommandLineMain.java}
+\subsection{Optional}
+
+\verbatimtabinput{../../../src/test/java/org/javautil/commandline/IntegerArguments.java}
+\section{Exceptions}
+
+\section{More}
+setDieOnParseError
+
+ignoreUnrecognizedOptions
+
+\end{document}

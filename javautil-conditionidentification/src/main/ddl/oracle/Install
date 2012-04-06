@@ -1,0 +1,21 @@
+echo dropping user test 
+sqlplus / as sysdba <<EOF
+	set echo on 
+	drop user test cascade;
+ 	exit;
+EOF
+
+pushd ../oracle/logger
+echo creating  logger objects
+sqlplus / as sysdba <<EOF
+	set echo on
+	@ Install
+	exit;
+EOF
+echo created  logger objects 
+
+popd 
+echo about to run install_exception_processing
+sqlplus test/test @ install_exception_processing
+
+

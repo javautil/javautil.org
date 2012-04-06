@@ -1,0 +1,122 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+\usepackage{alltt} 
+\usepackage{alltt} 
+ \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry} 
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{underscore}
+%opening
+\title{Exception Generation with Javautil}
+\author{jim.schmidt@dbexperts.com}
+\hypersetup{
+pdfauthor = {jim.schmidt@dbexperts.com},
+pdftitle = {Exception Generation with Javautil},
+pdfsubject = {Exception Generation with Javautil},
+pdfkeywords = {Exception, Installation, Configuration, Dexterous},
+pdfcreator = {LaTeX with hyperref package},
+pdfproducer = {dvips + ps2pdf}}
+\begin{document}
+\title{Exception Generation with Javautil}
+\author{Jim Schmidt\\
+  \texttt{jjs-javautil@dbexperts.com}}
+\date{\today}
+\maketitle
+\tableofcontents
+\chapter{Introduction}
+Relational databases have a great number of features to enforce data integrity such as
+
+\section{todo}
+\begin{itemize} 
+ \item fix schema tables with no surrogate key, no foreign keys etc. See exception processing.mer
+ \item document the package
+ \item document logging
+ \item document metrics
+ \item document ut_table_msg
+ \item document ut_table_report_sum
+ \item document exclusion rules
+ \item need functional area
+ \item document calling as a procedure
+ \item what does ut_query do with anything
+ \item no real support for ut_table_msg
+  \item todo what is ds_table and why does ut_query reference it?
+ \item document ut_table_rule and hist figure out what all of these columns are used for
+ \begin{itemize}
+  \item is ut_query used
+ \end{itemize}
+
+\end{itemize}
+
+\begin{itemize}
+ \item Primary Keys
+ \item Foreign Keys
+ \item Not Null
+ \item Check Constraints
+\end{itemize}
+However, there are many logical conditions which are beyond the scope of available functionality.
+
+The Javautil Exception Generator allows you to set up simple rules to identify records or tables that fail
+to meet business requirements.
+
+\section{Benefits}
+
+\chapter{Pre-requisites}
+\begin{itemize}
+ \item Obtain javautil code
+ \item configure machine
+ \item configure datasources
+\end{itemize}
+\chapter{How it works}
+\section{Overview}
+\begin{itemize}
+ \item getParms();
+ \item getRun();
+ \item getRules();
+ \item getBinds();
+ \item createProcessLog();
+ \item processRules();
+ \item updateRunStatus();
+ \item acknowledge()
+\end{itemize}
+\section{Creating the User}
+grant create sequence to &&user;
+\section{Parameters}
+\subsection{Run Number}
+\paragraph{UT_RULE_GRP_RUN_NBR}
+\section{Get UtRuleGrpRun}
+\section{Get UT_TABLE_RULE}
+Get the rules for the run.
+\section{Get UT_RULE_GRP_RUN_PARMS}
+\section{Process Rules}
+Connect to source - todo describe data
+Connect to destination
+binds
+Run the query
+insert into gtt_ut_table_row_msg
+merge into ut_table_row
+delete where they don't exist
+\chapter {Database Objects}
+Also depends on the logging tables in Dbexperts3/ddl/oracle/logging
+%\includegraphics*[width=\textwidth,viewport=0 0 3046 1632, bb=0 0  0 0]{ExceptionProcessing.jpeg}
+
+\includegraphics*[width=\textwidth,viewport=0 0 3046 1632, bb=0 0 3046 1632]{ExceptionProcessing.jpeg}
+
+\begin{itemize}
+	\item huh
+\end{itemize}
+
+To generate the tables not only are the mapping files required, the associated beans are even though they are 
+never used. 
+
+The dto's must be in the classpath.
+
+http://docs.jboss.org/hibernate/core/3.3/reference/en/html/toolsetguide.html#toolsetguide-s1-2
+
+
+
+
+
+
+\end{document}

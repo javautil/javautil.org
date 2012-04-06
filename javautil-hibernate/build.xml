@@ -1,0 +1,6 @@
+<project name="javautil-hibernate" default="all">
+ 	<property name="RevEngStrategyClass" value="org.javautil.hibernate.reveng.RevEngStrategy" />
+	<property name="reveng.strategy.file" value="${RevEngStrategyClass}.java" />
+	<property name="schema.packageName" value="sales" />
+	<import file="../javautil-pom/build-tasks.xml"/>
+</project>

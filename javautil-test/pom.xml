@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.javautil</groupId>
+	<artifactId>javautil-test</artifactId>
+	<packaging>jar</packaging>
+	<version>0.11.0</version>
+	<name>javautil test classes</name>
+	<url>http://maven.apache.org</url>
+	<parent>
+		<artifactId>javautil-pom</artifactId>
+		<groupId>org.javautil</groupId>
+		<version>0.11.0</version>
+		<relativePath>../javautil-pom</relativePath>
+	</parent>
+
+	<dependencies>
+	    <!--  TODO get test base classes into javautil-test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+
+		</dependency>
+	
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons.lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-jxpath</groupId>
+			<artifactId>commons-jxpath</artifactId>
+			<version>1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>xerces</groupId>
+					<artifactId>xerces</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>${commons.configuration.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.beanshell</groupId>
+			<artifactId>bsh</artifactId>
+			<version>${bsh.version}</version>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-core</artifactId>
+			<version>${org.javautil.core.version}</version>
+		</dependency>
+		-->
+              <!-- hibernate -->
+                <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-ehcache</artifactId>
+                        <version>${org.hibernate.ehcache.version}</version>
+                </dependency>
+                <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-core</artifactId>
+                        <version>${org.hibernate.core.version}</version>
+                </dependency>
+                <dependency>
+                        <groupId>hibernate</groupId>
+                        <artifactId>hibernate-tools</artifactId>
+                        <version>${hibernate.version}</version>
+                </dependency>
+                <dependency>
+                        <groupId>javassist</groupId>
+                        <artifactId>javassist</artifactId>
+                        <version>${javassist.version}</version>
+                </dependency>
+  
+	</dependencies>
+
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4.2</version>
+				<configuration>
+					<excludes>
+						<exclude>**/ClassPathResourceResolverTest.java</exclude>
+						<exclude>**/FileSystemResourceResolverTest.java</exclude>
+						<exclude>**/ResourceHelperTest.java</exclude>
+					</excludes>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>com.sun.tools.xjc.maven2</groupId> <artifactId>maven-jaxb-plugin</artifactId> 
+				<executions> <execution> <goals> <goal>generate</goal> </goals> </execution> 
+				</executions> </plugin> -->
+			<!--
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			-->
+		</plugins>
+
+	</build>
+</project>

@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>org.javautil</groupId>
+ <artifactId>javautil-conditionidentification</artifactId>
+ <packaging>war</packaging>
+ <version>0.11.0</version>
+ <name>javautil-conditionidentification</name>
+ <url>javautil.org/javautil-conditionidentification</url>
+
+ <parent>
+  <groupId>org.javautil</groupId>
+  <artifactId>javautil-pom</artifactId>
+  <version>0.11.0</version>
+  <relativePath>../javautil-pom</relativePath>
+ </parent>
+
+ <dependencies>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-hibernate</artifactId>
+   <version>${org.javautil.core.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-commandline</artifactId>
+   <version>${org.javautil.core.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-jdbc</artifactId>
+   <version>${org.javautil.core.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-core</artifactId>
+   <version>${org.javautil.core.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>junit</groupId>
+   <artifactId>junit</artifactId>
+   <version>4.4</version>
+   <scope>test</scope>
+  </dependency>
+  <dependency>
+   <groupId>com.oracle</groupId>
+   <artifactId>oracle-jdbc6</artifactId>
+   <version>11.1</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-commandline</artifactId>
+   <version>${org.javautil.commandline.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-jdbc</artifactId>
+   <version>${org.javautil.jdbc.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-core</artifactId>
+   <version>${org.javautil.core.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-web</artifactId>
+   <version>2.5.6</version>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring</artifactId>
+   <version>2.0-rc1</version>
+  </dependency>
+ </dependencies>
+ <build>
+  <plugins>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+     <skip>false</skip>
+    </configuration>
+   </plugin>
+
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>2.0.2</version>
+    <configuration>
+     <source>1.6</source>
+     <target>1.6</target>
+    </configuration>
+   </plugin>
+
+  </plugins>
+
+ </build>
+</project>

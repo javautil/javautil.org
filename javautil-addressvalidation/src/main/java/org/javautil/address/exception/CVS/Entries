@@ -1,0 +1,9 @@
+/AddressStandardizationException.java/1.1/Sun Mar  4 12:31:16 2012//
+/MultiplePoBoxAddressException.java/1.1/Sun Mar  4 12:31:16 2012//
+/MultiplePoBoxesException.java/1.1/Sun Mar  4 12:31:16 2012//
+/MultipleRuralRoutesException.java/1.1/Sun Mar  4 12:31:17 2012//
+/MultipleStreetAddressesException.java/1.1/Sun Mar  4 12:31:17 2012//
+/MultipleSubunitException.java/1.1/Sun Mar  4 12:31:16 2012//
+/NoDeliveryLocationFoundException.java/1.1/Sun Mar  4 12:31:16 2012//
+/RuralRouteAndStreetAddressException.java/1.1/Sun Mar  4 12:31:17 2012//
+/StandardizedAddressLineWouldBeTooLongException.java/1.1/Sun Mar  4 12:31:16 2012//

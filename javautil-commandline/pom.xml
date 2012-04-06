@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+		<groupId>org.javautil</groupId>
+	<artifactId>javautil-commandline</artifactId>
+		<version>0.11.0</version>
+	<packaging>jar</packaging>
+	<name>javautil-commandline</name>
+	<description>Support for declarative command line processing using annotated argument beahs.</description>
+	<url>http://maven.apache.org</url>
+	
+	<parent>
+		<groupId>org.javautil</groupId>
+		<artifactId>javautil-pom</artifactId>
+		<version>0.11.0</version>
+		<relativePath>../javautil-pom</relativePath>
+	</parent>
+	
+	<organization>
+		<name>org.javautil</name>
+		<url>http://javautil.org</url>
+	</organization>
+	
+	<dependencies>
+ <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-test</artifactId>
+   <version>${org.javautil.test.version}</version>
+   <scope>test</scope>
+  </dependency>
+ 
+		
+		<dependency>
+			<groupId>jcmdline</groupId>
+			<artifactId>jcmdline</artifactId>
+			<version>${jcmdline.version}</version>
+		</dependency>
+			<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>${commons.configuration.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-core</artifactId>
+			<version>${org.javautil.core.version}</version>
+		</dependency>
+	</dependencies>
+
+	
+</project>

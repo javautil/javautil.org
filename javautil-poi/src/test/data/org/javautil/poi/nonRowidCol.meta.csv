@@ -1,0 +1,6 @@
+"CY_CASES",0,"NUMERIC","Current\nYear\nCases","Current Year Cases",0,-127,9,"Current Year Total Cases,",FALSE,,,"#,##0.00","###,###,###,##0.00#","RIGHT","SUM"
+"PY_CASES",1,"NUMERIC","Prior\nYear\nCases","Prior Year Cases",0,-127,9,"Total Cases shipped in the Prior Year,",FALSE,,,"#,##0.00","###,###,###,##0.00#","RIGHT",
+"CASES_VARIANT",2,"NUMERIC","Cases\nVariant","Cases Variant",9,-127,,"Difference between the Current Year and Previous Year Cases.",FALSE,,"${CY_CASES} - ${PY_CASES}","###,###,###.00","###,###,###,##0.00","RIGHT","sum"
+"CY_EXT_NET",3,"NUMERIC","Current\nYear\nExt Net","Current Year Ext Net",0,-127,12,"Current Year Total Sales Amount,",FALSE,,,"#,##0.00","###,###,###,##0.00#","RIGHT","SUM"
+"PY_EXT_NET",4,"NUMERIC","Prior\nYear\nExt Net","Prior Year Ext Net",0,-127,12,"Total Sales Amount in the Prior Year,",FALSE,,,"#,##0.00","###,###,###,##0.00#","RIGHT",
+"EXT_NET_VARIANT",5,"NUMERIC","Ext Net\nVariant","Ext Net Variant",9,-127,,"Difference between the Current Year and Previous Year Sales Amount",FALSE,,"${CY_EXT_NET} - ${PY_EXT_NET}","###,###,###.00","###,###,###,##0.00","RIGHT","sum"

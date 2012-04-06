@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtProcessStat"
+		table="UT_PROCESS_STAT">
+		<composite-id name="id"
+			class="org.javautil.exceptionprocessing.dto.UtProcessStatId">
+			<key-property name="utProcessStatusNbr" type="int">
+				<column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" />
+			</key-property>
+			<key-property name="logSeqNbr" type="int">
+				<column name="LOG_SEQ_NBR" precision="9" scale="0" />
+			</key-property>
+			<key-property name="statistic" type="java.lang.Integer">
+				<column name="STATISTIC" precision="22" scale="0" />
+			</key-property>
+		</composite-id>
+		<many-to-one name="utProcessLog"
+			class="org.javautil.exceptionprocessing.dto.UtProcessLog" update="false"
+			insert="false" fetch="select">
+			<column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0"
+				not-null="true" />
+			<column name="LOG_SEQ_NBR" precision="9" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="utProcessStatus"
+			class="org.javautil.exceptionprocessing.dto.UtProcessStatus" update="false"
+			insert="false" fetch="select">
+			<column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0"
+				not-null="true" />
+		</many-to-one>
+		<property name="sid" type="java.lang.Integer">
+			<column name="SID" precision="22" scale="0" />
+		</property>
+		<property name="value" type="java.lang.Integer">
+			<column name="VALUE" precision="22" scale="0" />
+		</property>
+	</class>
+</hibernate-mapping>

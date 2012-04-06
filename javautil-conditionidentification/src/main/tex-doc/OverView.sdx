@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram>
+<source><![CDATA[job:ExceptionRuleRun
+DAO:ExceptionProcessingDAO
+/ruleProcessor:ExceptionRuleProcessor[x]
+
+#
+#provided a run number 
+#    put an entry in ut_process status (job log header) 
+#	read the record in ut_rule_grp_run where ut_rule_grp_run_Nbr = :run_nbr
+#	get the associated run parameters from ut_rule_grp_run_parm
+#	get the ut_rule_grp 
+#		get the ut_rule_grp_dtl 1 to 1 ut_table_rule 
+#		for each rule
+#			put an entry in ut_process_log (log entry for the step ( in this case a single rule) 
+#			get the ut_query
+#				run the query 
+#					for each row returned put an entry into ut_table_row_msg
+#		
+#	update ut_process_status job is done	
+
+
+job:processArguments(ExceptionRuleRunArguments args)
+job:DAO.getRules(args.getRunNbr())
+job:processRules()
+
+job:getSourceConnection()
+job:getDestinationConnection()
+job:DAO.getParms()
+[c rule processing thread]
+    job:ruleProcessor.new(sourceConnection, destinationConnection, utTableRule, runNbr, binds)[t]
+    job:>ruleProcessor[j].start
+    
+[/c]
+
+ruleProcessor:run() 
+ruleProcessor:prepareIn()
+ruleProcessor:pump()
+ruleProcessor:DAO.persist(runNbr,ruleNbr)]]></source>
+<configuration>
+<property name="actorWidth" value="25"/>
+<property name="arrowSize" value="6"/>
+<property name="colorizeThreads" value="true"/>
+<property name="destructorWidth" value="30"/>
+<property family="Dialog" name="font" size="12" style="0"/>
+<property name="fragmentMargin" value="8"/>
+<property name="fragmentPadding" value="10"/>
+<property name="fragmentTextPadding" value="3"/>
+<property name="generateActorAnswers" value="false"/>
+<property name="glue" value="10"/>
+<property name="headHeight" value="35"/>
+<property name="headLabelPadding" value="5"/>
+<property name="headWidth" value="100"/>
+<property name="initialSpace" value="10"/>
+<property name="leftMargin" value="5"/>
+<property name="lineWrap" value="false"/>
+<property name="lowerMargin" value="5"/>
+<property name="mainLifelineWidth" value="8"/>
+<property name="messageLabelSpace" value="3"/>
+<property name="messagePadding" value="6"/>
+<property name="noteMargin" value="6"/>
+<property name="notePadding" value="6"/>
+<property name="opaqueMessageText" value="false"/>
+<property name="rightMargin" value="5"/>
+<property name="selfMessageHorizontalSpace" value="15"/>
+<property name="separatorBottomMargin" value="8"/>
+<property name="separatorTopMargin" value="15"/>
+<property name="spaceBeforeActivation" value="2"/>
+<property name="spaceBeforeAnswerToSelf" value="10"/>
+<property name="spaceBeforeConstruction" value="6"/>
+<property name="spaceBeforeSelfMessage" value="7"/>
+<property name="subLifelineWidth" value="6"/>
+<property name="threadNumbersVisible" value="false"/>
+<property name="threaded" value="true"/>
+<property name="upperMargin" value="5"/>
+<property name="verticallySplit" value="true"/>
+</configuration>
+</diagram>

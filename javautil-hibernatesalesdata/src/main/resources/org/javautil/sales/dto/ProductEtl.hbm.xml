@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 10, 2011 3:06:10 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.sales.dto.ProductEtl" table="PRODUCT_ETL" >
+        <composite-id name="id" class="org.javautil.sales.dto.ProductEtlId">
+            <key-property name="productEtlId" type="int">
+                <column name="PRODUCT_ETL_ID" precision="9" scale="0" />
+            </key-property>
+            <key-property name="upc10" type="string">
+                <column name="UPC10" length="10" />
+            </key-property>
+            <key-property name="productStatus" type="string">
+                <column name="PRODUCT_STATUS" length="1" />
+            </key-property>
+            <key-property name="descr" type="string">
+                <column name="DESCR" length="50" />
+            </key-property>
+            <key-property name="narrative" type="string">
+                <column name="NARRATIVE" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

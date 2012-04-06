@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+    <!--  TODO convert to XE datasource -->
+	<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:dev10" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="10" />
+	</bean>
+
+	<!-- runtime hibernate config properties set here -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<!--
+			property name="mappingLocations" value="classpath*:/hbm/*.hbm.xml" /
+		-->
+		<property name="mappingLocations" value="classpath*:**/*.hbm.xml" />
+
+		<property name="hibernateProperties">
+			<value>
+
+
+
+
+				<!-- DB dialect -->
+				hibernate.dialect=org.hibernate.dialect.Oracle9Dialect
+
+				<!--
+					2nd level cache
+				-->
+				<!--
+					hibernate.cache.provider_class=org.hibernate.cache.jbc2.JBossCacheRegionFactory
+					hibernate.cache.provider_class=org.hibernate.cache.TreeCacheProvider
+				-->
+				hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+				
+				<!--
+					repeatable read isolation
+				-->
+
+
+				<!-- 2nd level cache debugging -->
+
+
+
+				<!-- sql debugging -->
+				hibernate.show_sql=false
+				hibernate.format_sql=true
+
+				<!--
+					following causes sql to fail w/ derby DB
+				-->
+				hibernate.use_sql_comments=true
+
+			</value>
+		</property>
+	</bean>
+
+	<bean id="daoFactory" class="com.dbexperts.persist.hibernate.Persistence">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

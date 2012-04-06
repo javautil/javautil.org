@@ -1,0 +1,41 @@
+Installing
+
+\section{Download the Source}
+\section{Create the Database Objects}
+\subsection{Create The Schema}
+The most succinct way to describe the user and privileges required is to show the create user 
+script.  
+
+%See \ref{subsectionCreateUser} (page \pageRef{subsectionCreateUser})
+
+%\paragraph{src/ddl/create_user.sql}
+
+\verbatiminput{../src/ddl/create_user.sql}
+ 
+
+
+
+\subsection{Create the database Objects}
+
+See \ref{subsectionDDL} (page \pageref{subsectionDDL})
+
+\section{Configure Your Connections}
+todo edit etc/application-context
+
+
+\section{Reverse Engineer into Hibernate}
+todo describe the Revenge class 
+
+\subsection{Create mapping files}
+\subsection{Create POJOS}
+\section{Populate the data}
+package com.dbexperts.sales.populate.DataPopulator 
+\section{Run the tests}
+
+\section{The Scripts}
+\label{subsectionCreateUser}
+\subsection{Creating the User}
+\verbatiminput{../src/ddl/create_user.sql}
+\label{subsectionDDL} 
+\subsection{DDL}
+\verbatiminput{../src/ddl/sales.sql}

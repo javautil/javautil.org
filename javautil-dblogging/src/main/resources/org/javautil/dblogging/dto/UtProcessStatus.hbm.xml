@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 10, 2011 1:41:20 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.dblogging.dto.UtProcessStatus" table="UT_PROCESS_STATUS" schema="PUBLIC" catalog="DBLOGGING">
+        <id name="utProcessStatusNbr" type="java.lang.Integer">
+            <column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">UT_PROCESS_STATUS_NBR_SEQ</param>
+            </generator>
+        </id>
+        <property name="schemaNm" type="string">
+            <column name="SCHEMA_NM" length="30" />
+        </property>
+        <property name="processNm" type="string">
+            <column name="PROCESS_NM" length="128" />
+        </property>
+        <property name="threadNm" type="string">
+            <column name="THREAD_NM" length="128" />
+        </property>
+        <property name="processRunNbr" type="java.lang.Integer">
+            <column name="PROCESS_RUN_NBR" precision="9" scale="0" />
+        </property>
+        <property name="statusMsg" type="string">
+            <column name="STATUS_MSG" length="256" />
+        </property>
+        <property name="statusId" type="string">
+            <column name="STATUS_ID" length="1" />
+        </property>
+        <property name="statusTs" type="timestamp">
+            <column name="STATUS_TS" length="23" />
+        </property>
+        <property name="totalElapsedSeconds" type="big_decimal">
+            <column name="TOTAL_ELAPSED_SECONDS" precision="11" scale="5" />
+        </property>
+        <property name="sid" type="java.lang.Integer">
+            <column name="SID" precision="9" scale="0" />
+        </property>
+        <property name="serialNbr" type="java.lang.Integer">
+            <column name="SERIAL_NBR" precision="9" scale="0" />
+        </property>
+        <property name="ignoreFlg" type="string">
+            <column name="IGNORE_FLG" length="1" />
+        </property>
+        <set name="utProcessLogs" inverse="true">
+            <key>
+                <column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="org.javautil.dblogging.dto.UtProcessLog" />
+        </set>
+    </class>
+</hibernate-mapping>

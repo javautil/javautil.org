@@ -1,0 +1,15 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [1][-]{section.1.1}{Project Specs}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Steps}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{installing library}{chapter.1}
+\BOOKMARK [1][-]{section.1.4}{Design}{chapter.1}
+\BOOKMARK [1][-]{section.1.5}{Create the database objects}{chapter.1}
+\BOOKMARK [1][-]{section.1.6}{Creating an argument Beans}{chapter.1}
+\BOOKMARK [1][-]{section.1.7}{Now what}{chapter.1}
+\BOOKMARK [1][-]{section.1.8}{Inject over factories}{chapter.1}
+\BOOKMARK [1][-]{section.1.9}{write to flat file as }{chapter.1}
+\BOOKMARK [1][-]{section.1.10}{Implementations}{chapter.1}
+\BOOKMARK [1][-]{section.1.11}{The canonical representation, the domain model}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Logging}{}
+\BOOKMARK [0][-]{chapter.3}{Private Methods}{}
+\BOOKMARK [0][-]{chapter.4}{TODO}{}

@@ -1,0 +1,36 @@
+/Artist.java/1.3/Sat Aug 20 14:08:08 2011//
+/ArtistAlias.java/1.3/Sat Aug 20 14:08:08 2011//
+/ArtistCsvExtractor.java/1.2/Sat Feb 25 21:11:41 2012//
+/ArtistCsvExtractorArguments.java/1.1/Tue Jan 18 15:25:55 2011//
+/ArtistCsvExtractorSpringArguments.java/1.1/Tue Jan 18 15:25:55 2011//
+/ArtistCsvListExtractor.java/1.1/Tue Jan 18 15:25:55 2011//
+/ArtistGroup.java/1.2/Sat Aug 20 14:08:08 2011//
+/ArtistGrouper.java/1.3/Sun Aug 21 02:41:12 2011//
+/ArtistSortName.java/1.2/Sat Aug 20 14:08:07 2011//
+/ArtistSuspect.java/1.3/Sun Aug 21 02:41:12 2011//
+/ArtistSuspectGroup.java/1.2/Sat Aug 20 14:08:11 2011//
+/ArtistSuspectGroups.java/1.2/Sat Aug 20 14:08:08 2011//
+/ArtistTagged.java/1.2/Sat Aug 20 14:08:08 2011//
+/FileIterator.java/1.9/Sun Aug 21 15:49:36 2011//
+/InvalidFileNameException.java/1.2/Tue Jan 18 15:25:55 2011//
+/MP3SpringMetadataExtractor.java/1.5/Wed Aug 24 15:45:51 2011//
+/MetadataExtractor.java/1.9/Wed Aug 24 15:45:51 2011//
+/MetadataExtractorFileWriter.java/1.4/Sat Aug 20 14:08:08 2011//
+/MetadataPopulationException.java/1.2/Sun Aug 21 02:41:14 2011//
+/Mp3.java/1.5/Sat Aug 20 14:08:08 2011//
+/Mp3Arguments.java/1.1/Fri Jan 14 12:05:03 2011//
+/Mp3FileFilter.java/1.5/Tue Jan 18 15:25:55 2011//
+/Mp3Metadata.java/1.1/Fri Jan 14 12:05:15 2011//
+/Mp3MetadataExtractorArguments.java/1.4/Sun Aug 21 02:41:13 2011//
+/Mp3MetadataExtractorCli.java/1.4/Sat Aug 20 17:43:47 2011//
+/Mp3MetadataExtractorCsvCli.java/1.2/Sat Aug 20 14:08:08 2011//
+/Mp3MetadataHelper.java/1.1/Fri Jan 14 12:05:51 2011//
+/Mp3MetadataPopulator.java/1.4/Wed Aug 24 15:45:51 2011//
+/Mp3MetadataPopulatorImpl.java/1.1/Wed Aug 24 15:45:51 2011//
+/Mp3MetadataProcessor.java/1.4/Wed Aug 24 15:45:51 2011//
+/NameVariant.java/1.1/Mon Jan 17 19:19:44 2011//
+/UnprocessableFileException.java/1.2/Tue Jan 18 15:25:55 2011//
+D/ddl////
+D/formatter////
+D/hibernate////
+D/persistence////

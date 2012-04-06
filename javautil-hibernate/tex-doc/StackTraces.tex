@@ -1,0 +1,148 @@
+What can go wrong?
+\section{Example 1}
+Exception in thread "main" org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [com.dbexperts.persist.hibernate.DaoFactory] for bean with name 'daoFactory' defined in class path resource [application-context.xml]; nested exception is java.lang.ClassNotFoundException: com.dbexperts.persist.hibernate.DaoFactory
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1141)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:758)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:422)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:728)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:380)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at com.dbexperts.sales.populate.DataPopulator.main(DataPopulator.java:60)
+Caused by: java.lang.ClassNotFoundException: com.dbexperts.persist.hibernate.DaoFactory
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:200)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:188)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:276)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:211)
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:385)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1138)
+	... 9 more
+\section{Example 2}
+\begin{verbatim}
+INFO  - 22:45:08,045 SessionFactoryObjectFactory - Not binding factory to JNDI, no JNDI name configured
+2168 [main] INFO org.hibernate.impl.SessionFactoryObjectFactory  - Not binding factory to JNDI, no JNDI name configured
+ERROR - 22:45:08,047 SessionFactoryImpl - Unable to construct current session context [thread	]
+java.lang.ClassNotFoundException: thread	
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:200)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:188)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:276)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
+	at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:319)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:169)
+	at org.hibernate.util.ReflectHelper.classForName(ReflectHelper.java:123)
+	at org.hibernate.impl.SessionFactoryImpl.buildCurrentSessionContext(SessionFactoryImpl.java:1043)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:366)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1327)
+	at org.springframework.orm.hibernate3.LocalSessionFactoryBean.newSessionFactory(LocalSessionFactoryBean.java:814)
+	at org.springframework.orm.hibernate3.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:732)
+	at org.springframework.orm.hibernate3.AbstractSessionFactoryBean.afterPropertiesSet(AbstractSessionFactoryBean.java:211)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1369)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1335)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:473)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory$1.run(AbstractAutowireCapableBeanFactory.java:409)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:380)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:264)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:261)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:185)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:164)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:423)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:728)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:380)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at com.dbexperts.sales.populate.DataPopulator.main(DataPopulator.java:60)
+2170 [main] ERROR org.hibernate.impl.SessionFactoryImpl  - Unable to construct current session context [thread	]
+java.lang.ClassNotFoundException: thread	
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:200)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:188)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:276)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
+	at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:319)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:169)
+	at org.hibernate.util.ReflectHelper.classForName(ReflectHelper.java:123)
+	at org.hibernate.impl.SessionFactoryImpl.buildCurrentSessionContext(SessionFactoryImpl.java:1043)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:366)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1327)
+	at org.springframework.orm.hibernate3.LocalSessionFactoryBean.newSessionFactory(LocalSessionFactoryBean.java:814)
+	at org.springframework.orm.hibernate3.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:732)
+	at org.springframework.orm.hibernate3.AbstractSessionFactoryBean.afterPropertiesSet(AbstractSessionFactoryBean.java:211)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1369)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1335)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:473)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory$1.run(AbstractAutowireCapableBeanFactory.java:409)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:380)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:264)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:261)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:185)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:164)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:423)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:728)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:380)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at com.dbexperts.sales.populate.DataPopulator.main(DataPopulator.java:60)
+INFO  - 22:45:08,127 HibernateTransactionManager - Using DataSource [org.apache.commons.dbcp.BasicDataSource@1397e5c] of Hibernate SessionFactory for HibernateTransactionManager
+2250 [main] INFO org.springframework.orm.hibernate3.HibernateTransactionManager  - Using DataSource [org.apache.commons.dbcp.BasicDataSource@1397e5c] of Hibernate SessionFactory for HibernateTransactionManager
+Exception in thread "main" org.hibernate.HibernateException: No CurrentSessionContext configured!
+	at org.hibernate.impl.SessionFactoryImpl.getCurrentSession(SessionFactoryImpl.java:572)
+	at com.dbexperts.persist.hibernate.Persistence.getSession(Persistence.java:33)
+	at com.dbexperts.persist.hibernate.Persistence.beginTransaction(Persistence.java:93)
+	at com.dbexperts.sales.populate.DataPopulator.populate(DataPopulator.java:39)
+	at com.dbexperts.sales.populate.DataPopulator.main(DataPopulator.java:65)
+
+\end{verbatim}
+
+
+
+
+
+
+
+
+
+\section{}
+\begin{verbatim}
+WARN  - 23:02:09,673 ConfigurationFactory - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/home/jjs/workspace/HibernateForOracleDbas/lib/hibernate/ehcache-1.2.3.jar!/ehcache-failsafe.xml
+1651 [main] WARN net.sf.ehcache.config.ConfigurationFactory  - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/home/jjs/workspace/HibernateForOracleDbas/lib/hibernate/ehcache-1.2.3.jar!/ehcache-failsafe.xml
+INFO  - 23:02:09,984 SessionFactoryObjectFactory - Not binding factory to JNDI, no JNDI name configured
+1962 [main] INFO org.hibernate.impl.SessionFactoryObjectFactory  - Not binding factory to JNDI, no JNDI name configured
+INFO  - 23:02:10,017 HibernateTransactionManager - Using DataSource [org.apache.commons.dbcp.BasicDataSource@9300cc] of Hibernate SessionFactory for HibernateTransactionManager
+1995 [main] INFO org.springframework.orm.hibernate3.HibernateTransactionManager  - Using DataSource [org.apache.commons.dbcp.BasicDataSource@9300cc] of Hibernate SessionFactory for HibernateTransactionManager
+customers added elapsed Millis 11859
+Exception in thread "main" org.hibernate.PropertyValueException: not-null property references a null or transient value: com.dbexperts.sales.Product.productStatus
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:95)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:313)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:204)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:144)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:210)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:56)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:195)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:50)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:93)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:562)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:550)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:546)
+	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.hibernate.context.ThreadLocalSessionContext$TransactionProtectionWrapper.invoke(ThreadLocalSessionContext.java:342)
+	at $Proxy0.save(Unknown Source)
+	at com.dbexperts.sales.populate.ProductPopulator.populateProducts(ProductPopulator.java:30)
+	at com.dbexperts.sales.populate.DataPopulator.populate(DataPopulator.java:47)
+	at com.dbexperts.sales.populate.DataPopulator.main(DataPopulator.java:65)
+\end{verbatim}

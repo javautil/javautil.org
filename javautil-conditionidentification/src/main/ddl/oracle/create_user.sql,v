@@ -1,0 +1,75 @@
+head	1.1;
+access;
+symbols
+	V2007-06-08-22-40:1.1
+	V2007-05-30-11-18:1.1
+	jdbc4:1.1.0.6
+	Root_jdbc4:1.1
+	V2007-05-18-22-16:1.1
+	V2-1:1.1.0.4
+	Root_V2-1:1.1
+	V2007-04-24-14-59:1.1
+	V2007-04-10-12-12:1.1
+	V2-0-0:1.1.0.2
+	Root_V2-0-0:1.1
+	V2007-03-25-18-23:1.1;
+locks
+	jjs:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2006.10.13.17.45.08;	author siyer;	state Exp;
+branches;
+next	;
+commitid	4065452fd0a44567;
+
+
+desc
+@@
+
+
+1.1
+log
+@script for creating user.
+
+Run as sys
+@
+text
+@CREATE USER dex IDENTIFIED BY dex ;
+
+GRANT CONNECT TO dex ;
+
+ALTER USER dex DEFAULT TABLESPACE users ;
+
+ALTER USER dex TEMPORARY TABLESPACE temp ;
+
+ALTER USER dex QUOTA UNLIMITED ON users ;
+
+
+GRANT CREATE TABLE TO dex ;
+GRANT CREATE VIEW TO dex ;
+GRANT CREATE PROCEDURE TO dex ;
+GRANT CREATE TRIGGER TO dex ;
+GRANT CREATE SYNONYM TO dex ;
+GRANT CREATE SEQUENCE TO dex ;
+GRANT CREATE DATABASE LINK TO dex ;
+GRANT CREATE TYPE TO dex ;
+GRANT SELECT ANY TABLE TO dex ;
+
+
+GRANT SELECT ON v_$session TO dex ;
+GRANT SELECT ON v_$mystat TO dex ;
+GRANT SELECT ON v_$instance TO dex ;
+GRANT SELECT ON v_$process TO dex ;
+GRANT SELECT ON v_$parameter TO dex ;
+GRANT EXECUTE ON DBMS_PIPE TO dex ;
+GRANT EXECUTE ON DBMS_APPLICATION_INFO TO dex ;
+
+
+undefine userid
+undefine passwd
+undefine deftab
+undefine temptab
+undefine more_tab1
+@

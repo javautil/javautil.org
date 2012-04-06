@@ -1,0 +1,10 @@
+/AbstractDataSource.java/1.4/Fri Feb 24 22:50:39 2012//
+/C3P0Datasource.java/1.3/Thu Oct 14 21:56:23 2010//
+/ConnectionCacheEntry.java/1.1/Mon Mar  1 00:28:53 2010//
+/DataSourceInstantiationException.java/1.1/Mon Mar  1 00:28:53 2010//
+/H2InMemoryDataSource.java/1.2/Sat Sep 25 12:40:28 2010//
+/InvalidDataSourceException.java/1.1/Mon Mar  1 00:28:53 2010//
+/NonConnectionPooledDatasource.java/1.2/Sat Sep 25 12:40:28 2010//
+/ReflectionDataSource.java/1.1/Sat Feb 25 02:03:51 2012//
+/SimpleDatasourcesFactory.java/1.1/Sat Feb 25 21:11:42 2012//
+/SystemOrEnvironmentDataSourceFactory.java/1.3/Sat Feb 25 21:11:42 2012//

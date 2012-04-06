@@ -1,0 +1,30 @@
+<!-- http://maven.apache.org/plugins/maven-site-plugin/examples/sitedescriptor.html -->
+<project name="Address Validation and Standardization">
+  <publishDate position="right"/> <!-- values:  left, right, navigation-top, navigation-bottom, bottom, none -->
+   <version position="right"/>     <!-- values:  left, right, navigation-top, navigation-bottom, bottom, none -->
+    <poweredBy>
+    <logo name="Maven" href="http://maven.apache.org/"
+          img="http://maven.apache.org/images/logos/maven-feather.png"/>
+  </poweredBy>
+    <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-classic-skin</artifactId>
+    <version>1.0</version>
+  </skin>
+  <body>
+     <menu name="Projects" inherit="top"> 
+     			<item name="Introduction" href="Introduction.html"/>
+				<item name="Usage"        href="Usage.html" />
+				<item name="FAQ"          href="FAQ.html" />
+				<item name="Structure"    href="Structure.html" />
+				<item name="Apt Examples" href="Apt_Examples.html" />         
+            </menu>
+            
+           <menu name="Reports" inherit="top"> 
+     			<item name="Project Reports" href="project-reports.html"/>        
+            </menu>   
+       <menu name="External" inherit="top"> 
+     			<item name="References" href="References.html"/>        
+            </menu>   
+  </body>
+</project>

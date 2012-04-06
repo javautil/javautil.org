@@ -1,0 +1,51 @@
+\contentsline {part}{I\hspace {1em}I}{5}{part.1}
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Maven}{7}{section.1.1}
+\contentsline {section}{\numberline {1.2}Hibernate}{7}{section.1.2}
+\contentsline {section}{\numberline {1.3}Spring}{7}{section.1.3}
+\contentsline {section}{\numberline {1.4}H2}{7}{section.1.4}
+\contentsline {section}{\numberline {1.5}The Application}{8}{section.1.5}
+\contentsline {chapter}{\numberline {2}Installation}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Prerequisites}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Download}{9}{section.2.2}
+\contentsline {section}{\numberline {2.3}Extract}{9}{section.2.3}
+\contentsline {section}{\numberline {2.4}Install objects not in repository}{9}{section.2.4}
+\contentsline {section}{\numberline {2.5}Project Specs}{9}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Initial Request}{9}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Support Multiple drives and systems}{10}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Command Line}{10}{section.2.6}
+\contentsline {section}{\numberline {2.7}Build the code}{10}{section.2.7}
+\contentsline {section}{\numberline {2.8}Systems Analyst}{11}{section.2.8}
+\contentsline {section}{\numberline {2.9}installing library}{11}{section.2.9}
+\contentsline {section}{\numberline {2.10}Design}{11}{section.2.10}
+\contentsline {section}{\numberline {2.11}Create the database objects}{18}{section.2.11}
+\contentsline {section}{\numberline {2.12}Creating an argument Beans}{18}{section.2.12}
+\contentsline {section}{\numberline {2.13}Now what}{18}{section.2.13}
+\contentsline {section}{\numberline {2.14}Inject over factories}{18}{section.2.14}
+\contentsline {section}{\numberline {2.15}write to flat file as }{19}{section.2.15}
+\contentsline {section}{\numberline {2.16}Implementations}{19}{section.2.16}
+\contentsline {section}{\numberline {2.17}The canonical representation, the domain model}{19}{section.2.17}
+\contentsline {chapter}{\numberline {3}Miscellaneous}{21}{chapter.3}
+\contentsline {section}{\numberline {3.1}Logging}{21}{section.3.1}
+\contentsline {section}{\numberline {3.2}Private Methods}{21}{section.3.2}
+\contentsline {section}{\numberline {3.3}TODO}{21}{section.3.3}
+\contentsline {section}{\numberline {3.4}JDBC}{21}{section.3.4}
+\contentsline {section}{\numberline {3.5}Creating The Schema}{21}{section.3.5}
+\contentsline {section}{\numberline {3.6}HenPlus}{21}{section.3.6}
+\contentsline {section}{\numberline {3.7}H2}{21}{section.3.7}
+\contentsline {section}{\numberline {3.8}Oracle}{21}{section.3.8}
+\contentsline {chapter}{\numberline {4}Hibernate}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Reverse Engineering}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Ant}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}hibernate.cfg.xml}{23}{section.4.3}
+\contentsline {section}{\numberline {4.4}hibernate.reveng.xml}{23}{section.4.4}
+\contentsline {section}{\numberline {4.5}Strategy}{23}{section.4.5}
+\contentsline {section}{\numberline {4.6}Dialect}{23}{section.4.6}
+\contentsline {section}{\numberline {4.7}Dependencies}{23}{section.4.7}
+\contentsline {section}{\numberline {4.8}Transaction}{24}{section.4.8}
+\contentsline {part}{II\hspace {1em}Hibernate}{25}{part.2}
+\contentsline {part}{III\hspace {1em}Maven}{29}{part.3}
+\contentsline {section}{\numberline {4.9}Scrolling Results}{31}{section.4.9}
+\contentsline {chapter}{\numberline {5}The data model}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}The DDL}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Data Scrubbing}{33}{section.5.2}

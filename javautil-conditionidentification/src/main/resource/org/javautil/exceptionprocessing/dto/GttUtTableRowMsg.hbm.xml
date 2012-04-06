@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.GttUtTableRowMsg"
+		table="GTT_UT_TABLE_ROW_MSG">
+		<composite-id name="id"
+			class="org.javautil.exceptionprocessing.dto.GttTableRowMsgId">
+			<key-property name="utTableRuleNbr" type="java.lang.Integer">
+				<column name="UT_TABLE_RULE_NBR" precision="18" scale="0" />
+			</key-property>
+			<key-property name="utRuleGrpRunNbr" type="java.lang.Integer">
+				<column name="UT_RULE_GRP_RUN_NBR" precision="18" scale="0" />
+			</key-property>
+			<key-property name="primaryKey" type="java.lang.Integer">
+				<column name="PRIMARY_KEY" precision="18" scale="0" />
+			</key-property>
+		</composite-id>
+		<property name="msg" type="string">
+			<column name="MSG" length="64" />
+		</property>
+	</class>
+</hibernate-mapping>

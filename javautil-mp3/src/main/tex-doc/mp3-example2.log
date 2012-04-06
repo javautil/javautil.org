@@ -1,0 +1,177 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.6.12)  12 NOV 2010 19:37
+entering extended mode
+ %&-line parsing enabled.
+**mp3-example2.tex
+(./mp3-example2.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/book.cls
+Document Class: book 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/bk10.clo
+File: bk10.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./mp3-example2.aux)
+\openout1 = `mp3-example2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 12.
+ [1
+
+
+{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+] (./mp3-example2.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+)
+\tf@toc=\write3
+\openout3 = `mp3-example2.toc'.
+
+ [3]
+[4] [5
+
+] [6]
+Chapter 1.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 19.
+(/usr/share/texmf/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
+ [7
+
+] [8]
+Overfull \hbox (17.24684pt too wide) in paragraph at lines 121--121
+[]                        \OT1/cmtt/m/n/10 <artifactId>javautil-commandline</ar
+tifactId>[] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 121--121
+[]                        \OT1/cmtt/m/n/10 <version>${org.javautil.commandline.
+version}</version>[] 
+ []
+
+[9] [10
+
+]
+Chapter 2.
+[11] [12
+
+]
+Chapter 3.
+
+Overfull \hbox (211.49515pt too wide) in paragraph at lines 194--194
+[]\OT1/cmtt/m/n/10 http://docs.jboss.org/tools/2.1.0.Beta1/hibernatetools/html/
+reverseengineering.html#custom-reveng-strategy[] 
+ []
+
+
+Overfull \hbox (211.49515pt too wide) in paragraph at lines 198--198
+[]\OT1/cmtt/m/n/10 http://docs.jboss.org/tools/2.1.0.Beta1/hibernatetools/html/
+reverseengineering.html#custom-reveng-strategy[] 
+ []
+
+
+Overfull \hbox (17.66739pt too wide) in paragraph at lines 200--201
+\OT1/cmr/m/n/10 org.hibernate.cfg.reveng.dialect.JDBCMetaDataDialect con-tribut
+e for or-a-cle TODO 
+ []
+
+
+Overfull \hbox (35.59335pt too wide) in paragraph at lines 218--220
+\OT1/cmr/m/n/10 venge? Oth-er-wise con-nect but don't find any ob-jects. http:/
+/mojo.codehaus.org/maven-
+ []
+
+[13]
+Overfull \hbox (1008.18326pt too wide) in paragraph at lines 229--257
+[]\OT1/cmr/m/n/10 hibernate3:hbm2cfgxml Gen-er-ates hi-ber-nate.cfg.xml [] 
+ []
+
+
+Overfull \hbox (269.64034pt too wide) in paragraph at lines 258--264
+\OT1/cmr/m/n/10 <drop>true</drop> <pack-age>org.javautil.mp3.hibernate</package
+> <con-fig-u-ra-tionfile>/src/main/resources/hibernate.cfg.xml</configurationfi
+le>
+ []
+
+
+Overfull \hbox (24.75072pt too wide) in paragraph at lines 269--270
+[]\OT1/cmr/m/n/10 http://stackoverflow.com/questions/1900234/maven-java-source-
+code-generation-
+ []
+
+[14] [15
+
+] [16]
+Overfull \hbox (98.30656pt too wide) in paragraph at lines 276--306
+[]\OT1/cmr/m/n/10 http://mojo.codehaus.org/maven-hibernate3/hibernate3-maven-pl
+ugin/componentproperties.html
+ []
+
+
+Overfull \hbox (144.83435pt too wide) in paragraph at lines 276--306
+[] 
+ []
+
+[17] [18
+
+] [19] [20] (./mp3-example2.aux) ) 
+Here is how much of TeX's memory you used:
+ 285 strings out of 256216
+ 3154 string characters out of 1917072
+ 52804 words of memory out of 1500000
+ 3636 multiletter control sequences out of 10000+200000
+ 9797 words of font info for 35 fonts, out of 1200000 for 2000
+ 645 hyphenation exceptions out of 8191
+ 23i,6n,19p,151b,271s stack positions out of 5000i,500n,6000p,200000b,15000s
+</usr/share/texmf/fonts/type1/bluesky/cm/cmbx
+10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fo
+nts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmr17.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb>
+</usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/typ
+e1/bluesky/cm/cmtt12.pfb>
+Output written on mp3-example2.pdf (20 pages, 85408 bytes).
+PDF statistics:
+ 103 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

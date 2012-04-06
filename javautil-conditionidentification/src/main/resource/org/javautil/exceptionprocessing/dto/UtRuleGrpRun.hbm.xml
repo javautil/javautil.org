@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtRuleGrpRun"
+		table="UT_RULE_GRP_RUN">
+		<id name="utRuleGrpRunNbr" type="java.lang.Integer" >
+			<column name="UT_RULE_GRP_RUN_NBR" precision="18" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">UT_RULE_GRP_RUN_NBR_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="utProcessStatus"
+			class="org.javautil.exceptionprocessing.dto.UtProcessStatus" fetch="select">
+			<column name="UT_PROCESS_STATUS_NBR" precision="18" scale="0" />
+		</many-to-one>
+		<many-to-one name="utRuleGrp"
+			class="org.javautil.exceptionprocessing.dto.UtRuleGrp" fetch="select">
+			<column name="UT_RULE_GRP_NBR" precision="18" scale="0"
+				not-null="true" />
+		</many-to-one>
+		<property name="utRunGrpDescr" type="string">
+			<column name="UT_RUN_GRP_DESCR" length="80" />
+		</property>
+		<property name="lastRunTm" type="date">
+			<column name="LAST_RUN_TM" not-null="true" />
+		</property>
+		<property name="ctrlPtNbr" type="java.lang.Integer">
+			<column name="CTRL_PT_NBR" precision="18" scale="0" not-null="true" />
+		</property>
+		<set name="utTableRowMsgs" inverse="true">
+			<key>
+				<column name="UT_RULE_GRP_RUN_NBR" precision="18" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRowMsg" />
+		</set>
+		<set name="utTableMsgs" inverse="true">
+			<key>
+				<column name="UT_RULE_GRP_RUN_NBR" precision="18" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableMsg" />
+		</set>
+		<set name="utRuleGrpRunParms" inverse="true" lazy="false">
+			<key>
+				<column name="UT_RULE_GRP_RUN_NBR" precision="18" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtRuleGrpRunParm" />
+		</set>
+	</class>
+</hibernate-mapping>

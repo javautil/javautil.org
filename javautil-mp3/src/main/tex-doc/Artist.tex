@@ -1,0 +1,726 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+\usepackage{alltt} 
+\usepackage{moreverb} 
+ \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry} 
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{underscore}
+\usepackage{boxedminipage}
+\usepackage{float}
+\usepackage{hyperref}
+
+%opening
+\title{JDBC utilities}
+\author{jjs@javautil.org}
+\hypersetup{
+pdfauthor = {jjs@javutil.org},
+pdftitle = {Whirlwind tour of Spring, Hibernate and Maven},
+pdfsubject = {A quick introduction to Spring, Hibernate and Maven},
+pdfkeywords = {JDBC},
+pdfcreator = {LaTeX with hyperref package},
+pdfproducer = {dvips + ps2pdf}}
+% Alter some LaTeX defaults for better treatment of figures:
+%http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
+    % See p.105 of "TeX Unbound" for suggested values.
+    % See pp. 199-200 of Lamport's "LaTeX" book for details.
+    %   General parameters, for ALL pages:
+    %\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+    %\renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+    %   Parameters for TEXT pages (not float pages):
+    %\setcounter{topnumber}{2}
+    %\setcounter{bottomnumber}{2}
+    %\setcounter{totalnumber}{4}     % 2 may work better
+    %\setcounter{dbltopnumber}{2}    % for 2-column pages
+    %\renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+    %\renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    %\renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    %\renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+	% remember to use [htp] or [htpb] for placement
+\floatstyle{ruled}
+\newfloat{program}{thp}{lop}
+\floatname{program}{Program}
+\setlength{\parindent}{0pt}  % don't indent paragraphs?
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex} % inter paragraph spacing
+
+
+\begin{document}
+\title{Whirlwind tour of Spring, Hibernate and Maven}
+\author{Jim Schmidt\\
+  \texttt{jjs@javautil.org}}
+\date{\today}
+\maketitle
+\tableofcontents
+\part{I}
+\chapter{Introduction}
+You've just been assigned to a new project group that uses some of the most popular development libraries and 
+methodologies.
+
+This is a series of lessons designed to quickly give you an introduction to Maven on page Maven , Spring and Hibernate.
+
+During the course of this the project specifications will be continually revised.
+
+The author of this book found code snippets but no examples of real applications that used these practices.
+
+What are the practices we are going to cover?
+\label{Maven}
+\section{Maven}
+
+\begin{quotation}
+Apache Maven is a software project management and comprehension tool. 
+Based on the concept of a project object model (POM), Maven can manage a project's build, 
+reporting and documentation from a central piece of information.
+\end{quotation}
+\section{Hibernate}
+\url{http://en.wikipedia.org/wiki/Hibernate_Java}
+\begin{quotation}
+Hibernate is an object-relational mapping (ORM) library for the Java language, 
+providing a framework for mapping an object-oriented domain model to a traditional relational database. Hibernate solves object-relational impedance mismatch problems by replacing direct persistence-related database accesses with high-level object handling functions.
+
+Hibernate is free software that is distributed under the GNU Lesser General Public License.
+
+Hibernate's primary feature is mapping from Java classes to database tables (and from Java data types to SQL data types). 
+Hibernate also provides data query and retrieval facilities. 
+Hibernate generates the SQL calls and relieves the developer from manual result set handling and object conversion, 
+keeping the application portable to all supported SQL databases, with database portability delivered at very little performance overhead. 
+\end{quotation}
+\section{Spring}
+Spring is a framework... todo
+
+\section{H2}
+\url{http://www.h2database.com/html/main.html}
+\begin{quotation}
+ Welcome to H2, the Java SQL database. The main features of H2 are:
+
+    * Very fast, open source, JDBC API
+    * Embedded and server modes; in-memory databases
+    * Browser based Console application
+    * Small footprint: around 1 MB jar file size 
+\end{quotation}
+When you are done with this you should be able to build projects using the primary components of the above frameworks.  This is an introduction
+to tying all of these technologies together.  After you are done you should be pretty excited and want to get some books that I going
+to recommend and apply these to your projects.
+
+I will show you best practices with respect to database design but not dwell on them.
+
+The concepts in this application apply to a broad range of data acquisition projects.
+\section{The Application}
+Hopefully you'll find the application interesting enough that you will want to play with long after your done.  Tweak it, add some 
+features.  Maybe you can contribute some back to the project. That's a big part of open source.
+
+We will write a program that will read all of your MP3 files (or those in the directories you specify and write the information somewhere.
+
+What is somewhere?  We write it to a relational database using jdbc, hibernate, java persistence api 2.0, comma separated values files, excel
+spreadsheets, html files, pdfs, xml.  We will ``wire'' the application using Spring to use each of the difference persistence classes. The 
+application is dependent on a large amount of open source code, but maven will do the work of downloading and installing those.
+
+Having specified that the destination is a relational database will allow us to get right into the data model
+that is to be created and circumvent the argument as to which comes first the domain model or the data model.
+
+TODO what is the difference?
+\chapter{Installation}
+
+\section{Prerequisites}
+Install java 1.6 or higher
+Install maven
+
+
+Create a workspace
+
+\section{Download} 
+download javautil-mp3-src.taz from \url{http://javautil.org/download/javautil-mp3-src.taz} 
+\section{Extract}
+Extract the file using winzip or on linux 
+tar xvfz javautil-mp3-src.taz
+
+TODO find example
+TODO what about javautil-pom
+
+javautil-core
+javautil-commandline
+javautil-pom
+maven-artifacts
+
+\section{Install objects not in repository}
+Maven will locate artifacts from web resources
+
+There are a few objects that are not in any online repositories at the time of this writing.  We will install them manually.
+
+\begin{program}
+ \verbatiminput{../../../../maven-artifacts/mvn-install-artifacts}
+\end{program}
+What just happened?
+
+Well if everything worked, those jar files were put in a common location that maven uses.  In your home directory .m2/repository.
+Under windows your home directory varies from version to version.  But this is nice, all the projects that use these files automatically know
+where to look for them.  It makes them very easy to share.  This is one of the many examples of TODO over configuration.
+Kind of a heavy handed ``do it my way and no one will get hurt'' Most of these standard places can be over-ridden but it is work and 
+makes your project not look like the next guys.   Find the repository and browse around. Then read TODO THIS.
+
+What are these jar files?
+\begin{tabular}{ l | l | l | l | l}
+Group Id & Artifact Id & Version & jarfile & Description \\
+\hline
+jcmdline  & jcmdline & 1.0.3 & jcmdline-1.0.3.jar & Java Command Line Processor\\
+\hline
+com.mchange & c3p0  & 0.9.1 & c3p0-0.9.1.jar  & A DataSource implementation\\
+\hline
+com.google.code.gson & gson & 1.3 & gson-1.3.jar & Google support for JSON \\
+\end{tabular}
+
+\section{Project Specs}
+\subsection{Initial Request}
+Design a program to scan a disk drive and store the contents of an MP3 files into an open ended number of formats 
+and persistence mechanisms.
+
+As with any data gathering exercise it is expected that ...
+
+Need the ability to normalize and identify the artist.
+
+
+
+
+\subsection{Support Multiple drives and systems}
+\section{Command Line}
+I love eclipse, but everything should be supportable from the command line.   If you want to use Maven in eclipse GO
+TODO.  I frequently find troubles for programmers by trying mvn from the command line.  If that doesn't work I fix the offending problem.
+If it does, I usually do a 
+\begin{verbatim}
+mvn eclipse:clean
+mvn eclipse:eclipse 
+\end{verbatim}
+If you know eclipse, great, I couldn't code without it anymore, it is too configurable, my screenshots might not look like yours, it changes
+from version to version and the screenshots would really bloat this document.  Besides, it is nice to know what is going on behind the scenes.
+Java server apps are usually deployed on ``headless'' computers, with no graphics software installed, the less installed, the few conflicts and 
+security holes.
+
+\section{Build the code}
+remove any old versions
+mvn clean
+compile
+mvn install
+
+Phases but the code was compiled and unit tests were run.
+
+build a website for our project
+mvn site
+
+Browse around
+firefox target/site/index.html
+
+Pretty cool, you have javadoc. We ran a bunch of unit tests and we see that, hopefully everything passed,  you can see what code was tested what was not
+
+\section{Systems Analyst}
+A disk drive?  A variety of data persistent stores, the internet, the local area network
+
+Domain model
+
+create project 
+
+in eclipse install maven plugin
+
+enable dependence management (show screen shots)
+
+We want to use the features available in version 1.5 of java
+
+A lot of tabs, describe them
+
+
+
+plugins
+
+click add
+
+need to add 
+
+Now add the following property
+
+    <junit.version>4.4</junit.version>
+because the build tool defaulted to a different version.
+
+Working from the command line so that we can isolate out eclipse configuration problems.
+
+maven from the command line
+
+mvn eclipse:clean
+mvn eclipse:eclipse
+
+configure in junit 4.4
+ \begin{minipage}[b]{1.5in}
+  Beans Cause Farts.
+ \end{minipage}
+
+Please read \url{http://maven.apache.org/pom.html#Maven_Coordinates}
+
+\section{installing library}
+We have decided to use jidlib now we must install it into our repository
+
+Need to
+
+run src/main/lib/install_jars_to_maven_repository.sh 
+
+Need to change to use java 1.6 but unable to configure through gui in eclipse need to edit pom.
+
+Create a bean for the MP3 metadata 
+
+\section{Design}
+Need a bean to hold the information from an MP3 file.
+TODO need to preserve tabs
+\verbatiminput{../java/org/javautil/mp3/MP3Metadata.java}
+TODO want to test that it works correctly
+
+test the class
+
+\section{Create the database objects}
+Talk about what comes first database objects or domain objects.
+
+\section{Creating an argument Beans}
+see javautil-commandline
+alter the pom.
+
+Cut and paste this into the pom.
+\begin{verbatim}
+   <dependency>
+               <groupId>org.javautil</groupId>
+               <artifactId>javautil-commandline</artifactId>
+               <version>${org.javautil.commandline.version}</version>
+    </dependency>
+\end{verbatim}
+Create the bean
+Create the properties file, we will show you how to use to process command line arguments later.
+
+configure a log4j.xml in src/test/resources and make sure it gets deployed.
+
+How much have we tested?  Code coverage.
+
+CSV's as test and expected results.
+
+\section{Now what}
+Now we have MP3MetaDataExtractorTest how can we configure this another way?
+
+\section{Inject over factories}
+public interface Mp3Persistence
+
+How the persistence came into being is not a matter of concern of the application that wishes to store data.
+
+Is it writing to a socket? A database? A file?  Why do I care?
+
+Every one of these implementations require different constuctors 
+and or setter methods before than can do their work
+
+\section{write to flat file as }
+
+\section{Implementations}
+Document Object Model
+Streaming XML
+CSV
+Excel Workbook
+HTML
+JASON
+Serialized Java Object
+JDBC
+Hibernate
+Service Call
+Dataset
+EBCDIC
+
+\section{The canonical representation, the domain model}
+
+\chapter{Miscellaneous}
+\section{Logging}
+
+\section{Private Methods}
+\section{TODO}
+show cascading inherited beans.
+
+\section{JDBC}
+now we add a dependency on javautil-jdbc to the project configuration, rebuild the eclipse project.
+
+\section{Creating The Schema}
+In the real world large amounts of data are stored in relational databases. 
+
+Without support, based on my experience, scripts are used to create database objects in production
+databases.  These scripts are reviewed by Database Administrators. 
+
+We will be creating database objects programmatically for small apps this is fairly common also we
+want to start fresh for our automated testing.
+
+The data generally outlives the applications that created them. This is a fairly safe statement.
+
+Generally use scripts, for the purpose of partitions etc.  Table comments, column comments.
+
+Script runner
+\section{HenPlus}
+\section{H2}
+What is H2?  From its website
+\begin{quotation}
+ Welcome to H2, the Java SQL database. The main features of H2 are:
+
+    * Very fast, open source, JDBC API
+    * Embedded and server modes; in-memory databases
+    * Browser based Console application
+    * Small footprint: around 1 MB jar file size 
+Let's start up an H2 database and create some tables.
+\end{quotation}
+\section{Oracle}
+
+\chapter{Hibernate}
+\section{Reverse Engineering}
+Reverse Engineering database tables consists of four files
+\section{Ant}
+build.xml
+\section{hibernate.cfg.xml}
+\section{hibernate.reveng.xml}
+\url{http://docs.jboss.org/tools/2.1.0.Beta1/hibernatetools/html/reverseengineering.html}
+\section{Strategy}
+
+
+
+\section{Dialect} 
+ org.hibernate.cfg.reveng.dialect.JDBCMetaDataDialect  contribute for oracle TODO
+
+TODO sequences for primary keys
+
+edit the build.xml file.
+
+\section{Dependencies}
+Build schema
+Build Reverse engineer strategy
+build maps
+
+TODO now it gets ugly how do we define the location of all of the files necessary to make this work? Input into lib?  
+Why can't we reference our maven repository.
+
+Now the ant file has a dependency on the reverse strategy that has not yet been built.
+
+After a clean the test database needs to be created which requires
+
+does database username in hibernate.cfg.xml have to be in upper case for revenge?  Otherwise connect but don't find any objects.
+\url{http://mojo.codehaus.org/maven-hibernate3/hibernate3-maven-plugin/usage.html}
+
+The code in the repositories is different than the compiled code in Eclipse.
+
+TODO get rid of /etc entries
+
+building with passwords for the database in the project
+Build the mapping files from the database
+mvn hibernate3:hbm2hbmxml
+
+hibernate3:hbm2cfgxml
+  Generates hibernate.cfg.xml
+\begin{tabular}{ l | l}
+ 
+hibernate3:hbm2dao &
+  Base class for the different hibernate3 goals based on the Ant tasks of
+  hibernate tools. \\ \newline
+
+hibernate3:hbm2ddl &
+  Generates database schema \\.
+
+hibernate3:hbm2doc &
+  Generates HTML documentation for the database schema. \\
+
+hibernate3:hbm2hbmxml &
+  Generates a set of hbm.xml files \\
+
+hibernate3:hbm2java &
+  Generates Java classes from set of *.hbm.xml files  \\
+
+hibernate3:hbmtemplate &  Generic exporter that can be controlled by a user provided template or class. \\
+
+hibernate3:help
+  Display help information on hibernate3-maven-plugin. Call
+    mvn hibernate3:help -Ddetail=true -Dgoal=<goal-name>
+  to display parameter details.
+
+\end{tabular}
+
+The package name should be specified as package
+\begin{program}
+ \begin{verbatim}
+   <componentProperties>
+            <drop>true</drop>
+            <package>org.javautil.mp3.hibernate</package>
+            <configurationfile>/src/main/resources/hibernate.cfg.xml</configurationfile>
+   </componentProperties>
+ \end{verbatim}
+  \caption{The Hibernate Reverse Engineering}
+\end{program}
+
+ 
+
+Not TODO packagename as specified in the documentation.
+
+failure to specify a package name will result in no package.
+
+\url{http://stackoverflow.com/questions/1900234/maven-java-source-code-generation-for-hibernate}
+
+\section{Transaction}
+Track artists.
+Musicians by song.
+Found Name vs
+\part{Hibernate}
+\url{http://mojo.codehaus.org/maven-hibernate3/hibernate3-maven-plugin/componentproperties.html}
+
+\begin{tabular}{l | l | l}
+configurationfile & String & src/main/resources/hibernate.cfg.xml \\ 
+\hline
+propertyfile & String & src/main/resources/database.properties \\ 
+\hline
+entityresolver & String & org.xml.sax.EntityResolver \\ 
+\hline
+namingstrategy & String & org.hibernate.cfg.DefaultNamingStrategy \\
+\hline
+persistenceunit & String & \\ 
+\hline
+packagename & String & \\ 
+\hline
+revengfile & String & \\ 
+\hline
+reversestrategy & String & \\
+\hline
+detectmanytomany & boolean & true \\ 
+\hline
+detectoptmisticlock & boolean & true \\ 
+\hline
+export & boolean & true \\ 
+\hline
+update & boolean & false \\ 
+\hline
+drop & boolean & false \\ 
+\hline
+create & boolean & true \\ 
+\hline
+outputfilename & String & \\ 
+\hline
+delimiter & String & \\ 
+\hline
+format & boolean & false \\ 
+\hline
+jdk5 & boolean & false \\ 
+\hline
+ejb3 & boolean & false \\ 
+\hline
+filepattern & String & package-name/class-name.ftl \\ 
+\hline
+template & String & \\
+
+basedir/
+exporterclass	String	
+scan-classes	boolean	false
+\end{tabular} 
+
+should one have a separate class that is an InitializingBean that extends a bean
+
+InitializingBean afterPropertiesSet
+
+eliminate Spring depenendencies
+\part{Maven}
+
+questions 
+
+where does this go in the file  dbcommons in the pom.xml
+
+test test tst
+
+diagrams
+
+code coverage testing
+
+regression
+
+consistent versions
+
+transactional integrity, recovery restart
+%http://www.andy-roberts.net/misc/latex/latextutorial6.html
+\begin{figure}[htpb]
+	\begin{boxedminipage}{2in}
+		What is the point of maven?
+
+	        What is a duck?
+	\end{boxedminipage}
+	%\cite{My Text Box}
+	\label{box:mybox}
+\end{figure}
+\section{Scrolling Results}
+\begin{verbatim}
+ http://www.mastertheboss.com/jboss-howto/65-hibernate/220-how-to-open-an-online-cursor-with-hibernate.html
+
+http://en.wikipedia.org/wiki/ID3
+\end{verbatim}
+
+\chapter{The data model}
+Having asserted that the objective of this project is to populate a database we have bypassed the argument
+of what drives the model, the domain model or the database model.
+
+Hibernate will allow a data model to be created using java classes or mapping files but this is contrary
+to a pattern familiar to a database administrator.  The best practice for database models is that the database 
+objects are owned by one TODO schema and the rights to insert and update the model are granted to another 
+database user.  Database objects are generally not created and modified on the fly in production by 
+programmers.   
+
+There are tools that allow a data modeller to graphically design a data model and then generate DDL
+but most expert database administrators find it far superior to just write the DDL and reverse engineer
+the diagrams, for a variety of reasons.  It is far faster, version control management is easier.
+
+What is preserved.
+
+What is not preserved
+   Check Constraints
+
+
+\section{The DDL}
+
+
+\verbatiminput{../resources/create_tables.h2.sql}
+
+Create
+
+\section{Data Scrubbing}
+
+\section{Operation}
+\subsection{Data Aquisition}
+Compressed Files of Data
+Directory trees containing data
+Comma Separated Files of data from other systems
+\subsection{Initial Persistence}
+
+\subsection{Data Scrubbing}
+Update artist ID on mp3 for exact hits.
+Populate Artist and Artist_Alias
+
+\subsection(Operation)
+Merge artist into artist
+TODO show how to do in database, locking with transaction number.  Should this be called transaction number or action number.
+TODO need the ability to identify error conditions on data using declarative and procedural techniques.
+
+TODO log transaction details
+
+\subsection{Posting}
+\subsection{Extraction and Reporting}
+Comma Separated Values
+XML
+Spread Sheets
+\subsection{Web Services}
+
+\subsection{Updating}
+
+W
+
+
+TODO remove cache provider from javautil-mp3 pom.xml and figure out the problem
+
+TODO then have to add javassist
+
+TODO JDBC Template example
+
+Artist
+
+TODO tune 
+
+http://www.slf4j.org/faq.html
+
+mvn dependency:tree
+
+TODO
+add dropIfExists options on tables , run for both h2 and
+
+big fat jarfile
+
+-DdownloadJavadocs=true
+
+install maven plugin eclipse
+
+install plugin to eclipse
+
+mvn dependency:sources
+
+performance monitoring under eclipse
+
+configure a logger for errors
+
+don't build database if it exists.
+
+-----------
+Extract artists
+create artist to normalize
+
+populate artist
+
+add transaction number to various tables so we know who changed it and  why?
+
+there is an id v2 band tag
+
+eliminate need for outputFile have a different argument class for Csv extractor
+
+exercise change the password on the database and the associated files (from build.xml etc )
+
+Create character scrubber 
+
+modify revenge strategy so that mp_seq becomes mp3_id_seq
+
+don't have schema generated in hbm.xml and explain why
+
+public static byte[] hexStringToByteArray(String s) {
+    int len = s.length();
+    byte[] data = new byte[len / 2];
+    for (int i = 0; i < len; i += 2) {
+        data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                             + Character.digit(s.charAt(i+1), 16));
+    }
+    return data;
+}
+Reasons why it is an improvement:
+
+Safe with leading zeros (unlike BigInteger) and with negative byte values (unlike Byte.parseByte)
+
+Doesn't convert the String into a char[], or create StringBuilder and String objects for every single byte.
+
+Feel free to add argument checking via assert or exceptions if the argument is not known to be safe.
+
+----------------------------------
+
+Describe intermittent commits
+
+Need the ability to specify the log file name on the command line
+
+Need the ability to see output from the command runner.
+
+Todo check encoding language 
+
+support for transaction number to back track as to how data got some way.  Including service, version and rule name.
+
+strip out non ascii characters and all control characters from data persisted in database.  It is difficult to type and display these characters.
+
+
+create tables by running script runner
+
+reverse engineer, where should the class files go and the mapping files
+
+the beauty of naming conventions  Reverse Engineering.
+
+TODO
+   reverse engineering get the schema out of the name  
+   match schema in hibernate.reveng.xml
+
+https://forum.hibernate.org/viewtopic.php?f=6&t=995548&start=0/url
+
+references
+
+http://docs.jboss.org/tools/3.0.1.GA/en/hibernatetools/html_single/index.html#hibernaterevengxmlfile
+
+unit testing 
+
+functional testing
+
+\chapter{Tests}
+\section{Eclipse}
+
+
+
+\end{document}

@@ -1,0 +1,40 @@
+\chapter{Introduction to Hibernate}
+\section{Preface}
+This chapter is an introduction to Hibernate, intended for \textit{knowledgable Oracle Database Administrators} working with Java Developers 
+who are actively using Hibernate or are considering doing so.
+
+How knowledgeable should you be to read this?
+
+I assume that Hibernate is being used with an existing Oracle Database.  In an interest of replicating the situation a reference model
+has been provided in the form a simplistic sales database. 
+
+You will be guided through the process of 
+
+\section{stolen}
+See 18 Collection modification
+
+Automatic dirty checking, does this include the deletion of entries from the collection or just modifications?
+
+Can we have an 
+
+\begin{enumerate}
+ \item reverse engineering the schema into hibernate 
+ \item populating the schema with test data
+ \item transactionally operating on the data
+..
+\end{enumerate}
+
+
+\section{Prequisites}
+\subsection{Oracle}
+
+I expect that the following needs no explanation
+
+todo verify
+\begin{verbatim}
+ select * from v$session_wait where sid = (select sid from v$mystat where rownum = 1)
+\end{verbatim}
+
+
+
+

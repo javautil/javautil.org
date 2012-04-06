@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtTableRule"
+		table="UT_TABLE_RULE">
+		<id name="utTableRuleNbr" type="java.lang.Integer">
+			<column name="UT_TABLE_RULE_NBR" precision="9" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">UT_TABLE_RULE_NBR_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="utAreaResp"
+			class="org.javautil.exceptionprocessing.dto.UtAreaResp" fetch="select">
+			<column name="UT_AREA_RESP_NBR" precision="9" scale="0" />
+		</many-to-one>
+		<many-to-one name="utDataLocation"
+			class="org.javautil.exceptionprocessing.dto.UtDataLocation" fetch="select">
+			<column name="SCHEMA" length="30" not-null="true" />
+			<column name="TABLE_NAME" length="30" not-null="true" />
+		</many-to-one>
+		<many-to-one name="utTableRule"
+			class="org.javautil.exceptionprocessing.dto.UtTableRule" fetch="select">
+			<column name="UT_TABLE_RULE_NBR_EXCLUDE" precision="18" scale="0" />
+		</many-to-one>
+		<many-to-one name="utQuery"
+			class="org.javautil.exceptionprocessing.dto.UtQuery" fetch="select">
+			<column name="UT_QUERY_NBR" precision="9" scale="0" />
+		</many-to-one>
+		<property name="msgId" type="string">
+			<column name="MSG_ID" length="16" unique="true" />
+		</property>
+		<property name="sqlText" type="string">
+			<column name="SQL_TEXT" />
+		</property>
+		<property name="msgDescr" type="string">
+			<column name="MSG_DESCR" />
+		</property>
+		<property name="ruleType" type="string">
+			<column name="RULE_TYPE" length="8" />
+		</property>
+		<property name="dataSrcNmSrc" type="string">
+			<column name="DATA_SRC_NM_SRC" length="20" />
+		</property>
+		<property name="dataSrcNmDest" type="string">
+			<column name="DATA_SRC_NM_DEST" length="20" />
+		</property>
+		<property name="maxQuerySec" type="java.lang.Integer">
+			<column name="MAX_QUERY_SEC" precision="5" scale="0" />
+		</property>
+		<property name="severeRuleFlg" type="string">
+			<column name="SEVERE_RULE_FLG" length="1" not-null="true" />
+		</property>
+		<property name="shortDescr" type="string">
+			<column name="SHORT_DESCR" length="80" />
+		</property>
+		<property name="exceptionTypeCd" type="string">
+			<column name="EXCEPTION_TYPE_CD" length="1" not-null="true" />
+		</property>
+		<property name="dispCdEnum" type="string">
+			<column name="DISP_CD_ENUM" length="1" />
+		</property>
+		<property name="logLvl" type="java.lang.Integer">
+			<column name="LOG_LVL" precision="1" scale="0" />
+		</property>
+		<set name="utTableRuleParms" inverse="true">
+			<key>
+				<column name="UT_TABLE_RULE_NBR" precision="18" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRuleParm" />
+		</set>
+		<set name="utTableRuleHistsForUtTableRuleNbr" inverse="true">
+			<key>
+				<column name="UT_TABLE_RULE_NBR" precision="9" scale="0" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRuleHist" />
+		</set>
+		<set name="utTableRuleHistsForUtTableRuleNbrExclude" inverse="true">
+			<key>
+				<column name="UT_TABLE_RULE_NBR_EXCLUDE" precision="18"
+					scale="0" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRuleHist" />
+		</set>
+		<set name="utTableRuleRptSums" inverse="true">
+			<key>
+				<column name="UT_TABLE_RULE_NBR" precision="18" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRuleRptSum" />
+		</set>
+		<set name="utTableRowMsgs" inverse="true">
+			<key>
+				<column name="UT_TABLE_RULE_NBR" precision="18" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRowMsg" />
+		</set>
+		<set name="utTableRules" inverse="true">
+			<key>
+				<column name="UT_TABLE_RULE_NBR_EXCLUDE" precision="18"
+					scale="0" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRule" />
+		</set>
+		<set name="utRuleGrpDtls" inverse="true">
+			<key>
+				<column name="UT_TABLE_RULE_NBR" precision="18" scale="0"
+					not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtRuleGrpDtl" />
+		</set>
+	</class>
+</hibernate-mapping>

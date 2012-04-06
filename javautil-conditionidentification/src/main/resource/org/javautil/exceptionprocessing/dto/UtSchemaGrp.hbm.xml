@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtSchemaGrp"
+		table="UT_SCHEMA_GRP">
+		<id name="utSchemaGrpNbr" type="java.lang.Integer">
+			<column name="UT_SCHEMA_GRP_NBR" precision="9" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">UT_SCHEMA_GRP_NBR_SEQ</param>
+			</generator>
+		</id>
+		<property name="schemaGrpNm" type="string">
+			<column name="SCHEMA_GRP_NM" length="16" unique="true" />
+		</property>
+		<property name="schemaGrpDescr" type="string">
+			<column name="SCHEMA_GRP_DESCR" length="30" />
+		</property>
+		<set name="utSchemas" inverse="false" table="UT_SCHEMA_GRP_DTL">
+			<key>
+				<column name="UT_SCHEMA_GRP_NBR" precision="9" scale="0"
+					not-null="true" />
+			</key>
+			<many-to-many entity-name="org.javautil.exceptionprocessing.dto.UtSchema">
+				<column name="SCHEMA_NM" length="30" not-null="true" />
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

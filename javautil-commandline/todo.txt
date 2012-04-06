@@ -1,0 +1,21 @@
+make the test programs not exit on failure
+
+find bryans non terminating test
+
+need the ability to call parse and not have the program terminate
+*  accomplished through evaluateArguments
+
+need the ability to examine the properties on a populated bean
+If a bean has been populated rather than parsing the args it should be evaluated for compliance,
+return 
+
+Integer and int and int must be required
+
+problem with the ability to assign inappropriate tags to a field, directoryRequired to an integer
+
+
+@DirectoryExists should only be permissible on a File or String field.
+
+--from-properties test and document
+
+validate properties of an argument bean populated as other than through command line.

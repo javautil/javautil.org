@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean name="proxyParameterChecker" class="org.javautil.proxy.util.ProxyParameterChecker">		
+		<property name="decorator" ref="proxyRequestDecorator" />
+	</bean>
+	
+	<bean name="proxyRequestDecorator" class="org.javautil.proxy.util.ProxyRequestDecorator">
+		<property name="disallowedParameters">
+		    <list>
+        		<value>destname</value>
+		    </list>
+  		</property>
+		<property name="stripPrefix" value="http://internalproxy.custdata.com:8080/docServer/view/princetonproxy/"/>		
+	</bean>
+	
+</beans>

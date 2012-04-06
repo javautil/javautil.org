@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtTableRowMeasure"
+		table="UT_TABLE_ROW_MEASURE">
+		<composite-id name="id"
+			class="org.javautil.exceptionprocessing.dto.UtTableRowMeasureId">
+			<key-property name="factTableId" type="string">
+				<column name="FACT_TABLE_ID" length="8" />
+			</key-property>
+			<key-property name="factTablePk" type="java.lang.Integer">
+				<column name="FACT_TABLE_PK" precision="18" scale="0" />
+			</key-property>
+			<key-property name="measNbr" type="java.lang.Integer">
+				<column name="MEAS_NBR" precision="9" scale="0" />
+			</key-property>
+			<key-property name="meas" type="java.lang.Integer">
+				<column name="MEAS" precision="22" scale="0" />
+			</key-property>
+		</composite-id>
+	</class>
+</hibernate-mapping>

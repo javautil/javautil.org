@@ -1,0 +1,164 @@
+
+\maketitle
+
+\section{Todo}
+
+\begin{itemize}
+ \item Need to get all of the events, waits and sql from v\$session to see what is truly going on.
+ \item Get correct Sequence generation Strategy 
+ \item Get the ant file to use the hbm.xml when generating the pojos, not doing it directly
+ \item Show how to use the ejb style
+ \item show how to get a native oracle connection and process arrays for fetching
+ \item show how to customize the OracleDatasource and how it can be tuned 
+ \item show how to generate and view Javadoc in eclipse
+ \item create a generate javadoc task
+ \item exclude from cvs 
+ \item get column comments in the javadoc
+ \item after you add a foreign key a reference to the object 
+ \item show various ways to implement persistence including delimited files
+ \item explain the difference between an interface and a package specification, multiple implementations
+\end{itemize}
+
+
+
+Hibernate is a widely used Object Relational Mapping tool, used to facilitate interaction with a SQL database from Java.
+
+During the 2009 Hotsos Oracle Performance meeting it was widely accepted that there are many performance problems associated
+with Hibernate but that ``nothing could be done about it''.
+
+This article intends to dispel that myth with a brief description of the configuration of Hibernate and some small working
+examples that demonstrate the points made in this article.  This is not a tutorial on Java or Hibernate.  It is expected that
+these working examples will function as a prototype for in house use when warranted.  
+
+A 99 percent improvement performance on something that burns a few CPU seconds a day and takes weeks to get into production is 
+hardly cost effective.   Frequently run queries that burn large amounts of computer resources and create contention for Oracle 
+serialized (latched, locked, enqueued, pinned...) resources are candidates for modification.
+.
+Just because something is sub-optimal does not mean that it should be improved.
+The cost of ``implementing'' an improvement must be less than the value of the benefit derived from the improvement.  
+
+
+
+Note that the default behavior of Object representation of  foreign keys are to objects of the type being referenced, which can be goofy.
+
+
+
+Reverse Engineering,
+
+Get the correct sequence generator in place
+
+
+
+In or
+\subsection{Install}
+Create a working environment
+\begin{itemize}
+
+\item install the Operating System (centos / kubuntu / ??????)
+
+\item install Oracle RDBMS
+\item install Oracle EM
+\item install Apex
+\item Install Eclipse
+\item Install SQLdeveloper
+\item Install Apache
+\item Install Tomcat
+
+\end{itemize}
+
+
+
+\section{Unit tests}
+
+
+
+
+
+
+
+\section{todo}
+Why Datasources.xml
+
+\section{Introduction}
+I intend to show various ways to improve Oracle performance when using Hibernate.  The java developers may not like all of these
+techniques.   Hibernate does a good job when used as intended... (todo elaborate) 
+
+It's payback time.  
+
+DBA: Your execution plan is seriously suboptimal due to latch contention on busy block buffers due to consistent read on the application 
+control table accross all of these sessions.
+
+Java: I could read and cache the application control table entries and associate them with a HashMap to my detail entries and write a strategy
+to control my secondary cache in attempt to keep in sync with committed transactions but the change notification mechanism doesn't ship until
+Oracle 11 which sure isn't ready for production use yet.  Seems like you're putting the work of database management on the app side and we are
+re-inventing the wheel.  Now I could create a AOP cut point to send a JMS ....
+
+
+todo transaction demarcation 
+
+\subsection{Terminology}
+Child Relation - Frequently referred to as a detail table, this the ``many end'' of a ``one to many'' relationship.  
+
+\subsection{Hibernate Strengths}
+todo flesh out
+\subsection{Hibernate Weakness}
+To properly 
+
+
+\begin{enumerate}
+ \item Why you should create constraints on views if you are using Hibernate Reverse Engineering.
+ \item Describe the various fetch strategies and how they can be modified
+ \item Describe a mechanism to reduce hard parses. 
+ \item Key generation
+ \item Using Views with Relations   
+ 
+\end{enumerate}
+
+\subsection{Improving Performance}
+With a Session Managed Bean in hand 
+a traversal to a \textit{child relation} Hibernate may find it appropriate 
+to fetch all of the todo associated with the other \textit{Parent relation} records.
+
+
+
+
+\subsection{More Tips}
+
+
+
+\section{Fetching Policies}
+\subsection{Eager Fetch}
+An eager fetch assumes that the child tables of a given table will be visited and so will be fetched by Hibernate in advance of
+any attempt to reference the child relation.
+
+
+\subsection{Lazy Fetch}
+
+
+\section{Declarative Fetch Policy}
+
+\begin{itemize}
+ \item Eager fetching.
+\end{itemize}
+
+\section{Lets Get On With Tutorial}
+\subsection{Create The Schema}
+I assume that the dba creates the schema and that the java developers reverse engineer the schema into hibernate.
+
+Let's assume a schema \ref{CreateTheSchema} on \pageref{CreateTheSchema}
+
+\subsection{Create a Reverse Engineering Strategy}
+
+\subsection{Generate the mapping files}
+
+\subsection{  }
+Now Fetch the masters, create an ID list and fetch the details followed by a mapped association of details to master.
+
+
+\label{CreateTheSchema}
+% todo create a link to sales.sql
+%! \verbatiminput{../../ddl/bank.sql} 
+
+
+
+\end{document}

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtMetricThreshold"
+		table="UT_METRIC_THRESHOLD">
+		<id name="utMetricThresholdNbr" type="java.lang.Integer">
+			<column name="UT_METRIC_THRESHOLD_NBR" precision="9" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">UT_METRIC_THRESHOLD_NBR_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="utMeasure"
+			class="org.javautil.exceptionprocessing.dto.UtMeasure" fetch="select">
+			<column name="MEAS_NBR" precision="9" scale="0" not-null="true" />
+		</many-to-one>
+		<many-to-one name="utTableByDimenTableId"
+			class="org.javautil.exceptionprocessing.dto.UtTable" fetch="select">
+			<column name="DIMEN_TABLE_ID" length="8" />
+		</many-to-one>
+		<many-to-one name="utTableByFactTableId"
+			class="org.javautil.exceptionprocessing.dto.UtTable" fetch="select">
+			<column name="FACT_TABLE_ID" length="8" not-null="true" />
+		</many-to-one>
+		<property name="orgNbrSrc" type="java.lang.Integer">
+			<column name="ORG_NBR_SRC" precision="9" scale="0" not-null="true" />
+		</property>
+		<property name="dimenPk" type="java.lang.Integer">
+			<column name="DIMEN_PK" precision="18" scale="0" />
+		</property>
+		<property name="thresholdValLowerFatal" type="java.lang.Integer">
+			<column name="THRESHOLD_VAL_LOWER_FATAL" precision="22" scale="0" />
+		</property>
+		<property name="thresholdValLowerSevere" type="java.lang.Integer">
+			<column name="THRESHOLD_VAL_LOWER_SEVERE" precision="22"
+				scale="0" />
+		</property>
+		<property name="thresholdValLowerWarn" type="java.lang.Integer">
+			<column name="THRESHOLD_VAL_LOWER_WARN" precision="22" scale="0" />
+		</property>
+		<property name="thresholdValUpperWarn" type="java.lang.Integer">
+			<column name="THRESHOLD_VAL_UPPER_WARN" precision="22" scale="0" />
+		</property>
+		<property name="thresholdValUpperSevere" type="java.lang.Integer">
+			<column name="THRESHOLD_VAL_UPPER_SEVERE" precision="22"
+				scale="0" />
+		</property>
+		<property name="thresholdValUpperFatal" type="java.lang.Integer">
+			<column name="THRESHOLD_VAL_UPPER_FATAL" precision="22" scale="0" />
+		</property>
+		<property name="thresholdOrder" type="string">
+			<column name="THRESHOLD_ORDER" length="1" not-null="true" />
+		</property>
+		<property name="entryUser" type="java.lang.Integer">
+			<column name="ENTRY_USER" precision="9" scale="0" not-null="true" />
+		</property>
+		<property name="entryTm" type="serializable">
+			<column name="ENTRY_TM" not-null="true" />
+		</property>
+		<property name="modUser" type="java.lang.Integer">
+			<column name="MOD_USER" precision="9" scale="0" />
+		</property>
+		<property name="modTm" type="serializable">
+			<column name="MOD_TM" />
+		</property>
+	</class>
+</hibernate-mapping>

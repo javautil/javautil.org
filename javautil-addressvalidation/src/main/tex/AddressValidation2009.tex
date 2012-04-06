@@ -1,0 +1,33 @@
+Address Validation Service
+
+tables used
+
+ut_addr_validate
+
+create a datasource file
+
+create a document on using datasources
+
+
+
+\includeverbatim{../DataSources/DataSources.xml}
+
+
+create the table
+
+reference to ut_addr_valid
+usps_acct
+usps_err_msg
+
+\includeverbatim{../../ddl/address/address_addr_validate.sql}
+
+\section{running the program}
+need a run nbr
+
+set the USPS_ACCT environment variable 
+java org.javautil.address.service -runnbr -1 -dataSource address
+
+describe usps_acct table
+
+
+\begin{Operation}

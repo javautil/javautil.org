@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtTable" table="UT_TABLE">
+		<id name="tableId" type="string">
+			<column name="TABLE_ID" length="8" />
+			<generator class="sequence">
+				<param name="sequence">UT_TABLE_NBR_SEQ</param>
+			</generator>
+		</id>
+		<property name="tableName" type="string">
+			<column name="TABLE_NAME" length="30" unique="true" />
+		</property>
+		<set name="utMetricThresholdsForDimenTableId" inverse="true">
+			<key>
+				<column name="DIMEN_TABLE_ID" length="8" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtMetricThreshold" />
+		</set>
+		<set name="utMetricThresholdsForFactTableId" inverse="true">
+			<key>
+				<column name="FACT_TABLE_ID" length="8" not-null="true" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtMetricThreshold" />
+		</set>
+	</class>
+</hibernate-mapping>

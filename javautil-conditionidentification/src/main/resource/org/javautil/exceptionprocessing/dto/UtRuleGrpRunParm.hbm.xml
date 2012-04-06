@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtRuleGrpRunParm"
+		table="UT_RULE_GRP_RUN_PARM">
+		<composite-id name="id"
+			class="org.javautil.exceptionprocessing.dto.UtRuleGrpRunParmId">
+			<key-property name="utRuleGrpRunNbr" type="int">
+				<column name="UT_RULE_GRP_RUN_NBR" length="18" />
+			</key-property>
+			<key-property name="parmNm" type="string">
+				<column name="PARM_NM" length="30" />
+			</key-property>
+		</composite-id>
+		<many-to-one name="utRuleGrpRun"
+			class="org.javautil.exceptionprocessing.dto.UtRuleGrpRun" update="false"
+			insert="false" fetch="select">
+			<column name="UT_RULE_GRP_RUN_NBR" precision="18" scale="0"
+				not-null="true" />
+		</many-to-one>
+		<property name="parmValueString" type="string">
+			<column name="PARM_VALUE_STRING" />
+		</property>
+		<property name="parmValueNumber" type="java.lang.Integer">
+			<column name="PARM_VALUE_NUMBER" precision="22" scale="0" />
+		</property>
+		<property name="parmValueDate" type="java.sql.Date">
+			<column name="PARM_VALUE_DATE" length="7" />
+		</property>
+	</class>
+</hibernate-mapping>

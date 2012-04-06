@@ -1,0 +1,648 @@
+SQL> @ut_data_location.sql
+SQL> CREATE TABLE UT_DATA_LOCATION (
+  2  	     SCHEMA						     VARCHAR2(30)    NOT NULL,
+  3  	     TABLE_NAME 					     VARCHAR2(30)    NOT NULL,
+  4  		     CONSTRAINT UT_DATA_LOCATION_PK PRIMARY KEY (SCHEMA, TABLE_NAME) ENABLE )
+  5  ORGANIZATION INDEX ;
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_area_resp.sql
+SQL> create sequence ut_area_resp_nbr_seq;
+
+Sequence created.
+
+SQL> 
+SQL> create table ut_area_resp
+  2  (
+  3  	     ut_area_resp_nbr number(9),
+  4  	     func_area_cd     varchar2(8) not null,
+  5  	     func_short_descr varchar2(60) not null,
+  6  	     func_long_descr  clob
+  7  );
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> alter table ut_area_resp add constraint ut_area_resp_pk primary key (ut_area_resp_nbr);
+
+Table altered.
+
+SQL> 
+SQL> alter table ut_area_resp add constraint ut_area_resp_uk unique (func_area_cd);
+
+Table altered.
+
+SQL> 
+SQL> comment on  table ut_area_resp is
+  2  'Classification of business areas of functional responsibility.
+  3  The primary key should be populated from sequence ut_area_resp_nbr_seq ';
+
+Comment created.
+
+SQL> 
+SQL> 
+SQL> comment on column ut_area_resp.ut_area_resp_nbr is
+  2  'Surrogate primary key';
+
+Comment created.
+
+SQL> 
+SQL> comment on column ut_area_resp.func_area_cd is
+  2  'Description of functional area for display on reports and screens';
+
+Comment created.
+
+SQL> 
+SQL> comment on column ut_area_resp.func_short_descr is
+  2  'Short description of the business area of responsibility';
+
+Comment created.
+
+SQL> 
+SQL> comment on column ut_area_resp.func_long_descr is
+  2  'Long description of the business area of responsibility';
+
+Comment created.
+
+SQL> @ut_process_status.sql
+SQL> CREATE TABLE UT_PROCESS_STATUS
+  2  (
+  3    UT_PROCESS_STATUS_NBR  NUMBER(9),
+  4    SCHEMA_NM	      VARCHAR2(30 BYTE),
+  5    PROCESS_NM	      VARCHAR2(128 BYTE),
+  6    THREAD_NM	      VARCHAR2(128 BYTE),
+  7    PROCESS_RUN_NBR	      NUMBER(9),
+  8    STATUS_MSG	      VARCHAR2(256 BYTE),
+  9    STATUS_ID	      VARCHAR2(1 BYTE),
+ 10    STATUS_TS	      TIMESTAMP(6),
+ 11    TOTAL_ELAPSED	      INTERVAL DAY(2) TO SECOND(6),
+ 12    SID		      NUMBER,
+ 13    SERIAL#		      NUMBER,
+ 14    IGNORE_FLG	      VARCHAR2(1 BYTE)	     DEFAULT 'N'
+ 15  );
+CREATE TABLE UT_PROCESS_STATUS
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> 
+SQL> 
+SQL> CREATE UNIQUE INDEX UT_PROCESS_STATUS_PK ON UT_PROCESS_STATUS
+  2  (UT_PROCESS_STATUS_NBR);
+CREATE UNIQUE INDEX UT_PROCESS_STATUS_PK ON UT_PROCESS_STATUS
+                    *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> 
+SQL> 
+SQL> ALTER TABLE UT_PROCESS_STATUS ADD (
+  2    CHECK ( IGNORE_FLG IN ('Y', 'N')));
+
+Table altered.
+
+SQL> 
+SQL> ALTER TABLE UT_PROCESS_STATUS ADD (
+  2    CONSTRAINT UT_PROCESS_STATUS_PK
+  3   PRIMARY KEY
+  4   (UT_PROCESS_STATUS_NBR));
+ PRIMARY KEY
+ *
+ERROR at line 3:
+ORA-02260: table can have only one primary key 
+
+
+SQL> @ut_process_log.sql
+SQL> 
+SQL> CREATE TABLE UT_PROCESS_LOG
+  2  (
+  3    UT_PROCESS_LOG_NBR     NUMBER(9),
+  4    UT_PROCESS_STATUS_NBR  NUMBER(9),
+  5    LOG_MSG_ID	      VARCHAR2(8 BYTE),
+  6    LOG_MSG		      VARCHAR2(256 BYTE),
+  7    LOG_MSG_CLOB	      CLOB,
+  8    LOG_MSG_TS	      TIMESTAMP(6),
+  9    ELAPSED_TIME	      INTERVAL DAY(2) TO SECOND(6),
+ 10    LOG_SEQ_NBR	      NUMBER(18)	     NOT NULL,
+ 11    CALLER_NAME	      VARCHAR2(100 BYTE),
+ 12    LINE_NBR 	      NUMBER(5),
+ 13    CALL_STACK	      CLOB,
+ 14    LOG_LEVEL	      NUMBER(2)
+ 15  );
+CREATE TABLE UT_PROCESS_LOG
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> 
+SQL> 
+SQL> CREATE UNIQUE INDEX UT_PROCESS_LOG_PK ON UT_PROCESS_LOG
+  2  (UT_PROCESS_STATUS_NBR, LOG_SEQ_NBR);
+CREATE UNIQUE INDEX UT_PROCESS_LOG_PK ON UT_PROCESS_LOG
+                    *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> 
+SQL> 
+SQL> ALTER TABLE UT_PROCESS_LOG ADD (
+  2    CONSTRAINT UT_PROCESS_LOG_PK
+  3   PRIMARY KEY
+  4   (UT_PROCESS_STATUS_NBR, LOG_SEQ_NBR));
+ PRIMARY KEY
+ *
+ERROR at line 3:
+ORA-02260: table can have only one primary key 
+
+
+SQL> 
+SQL> 
+SQL> ALTER TABLE UT_PROCESS_LOG ADD (
+  2    CONSTRAINT UPL_UPS_FK
+  3   FOREIGN KEY (UT_PROCESS_STATUS_NBR)
+  4   REFERENCES UT_PROCESS_STATUS (UT_PROCESS_STATUS_NBR));
+ FOREIGN KEY (UT_PROCESS_STATUS_NBR)
+ *
+ERROR at line 3:
+ORA-02275: such a referential constraint already exists in the table 
+
+
+SQL> @ut_process_stat.sql
+SQL> CREATE TABLE UT_PROCESS_STAT
+  2  (
+  3    UT_PROCESS_STATUS_NBR  NUMBER(9) 	     NOT NULL,
+  4    LOG_SEQ_NBR	      NUMBER(9) 	     NOT NULL,
+  5    SID		      NUMBER,
+  6    STATISTIC#	      NUMBER,
+  7    VALUE		      NUMBER
+  8  );
+CREATE TABLE UT_PROCESS_STAT
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> 
+SQL> 
+SQL> CREATE UNIQUE INDEX UT_PROCESS_STAT_PK ON UT_PROCESS_STAT
+  2  (UT_PROCESS_STATUS_NBR, LOG_SEQ_NBR, STATISTIC#);
+CREATE UNIQUE INDEX UT_PROCESS_STAT_PK ON UT_PROCESS_STAT
+                    *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> 
+SQL> 
+SQL> ALTER TABLE UT_PROCESS_STAT ADD (
+  2    CONSTRAINT UT_PROCESS_STAT_PK
+  3   PRIMARY KEY
+  4   (UT_PROCESS_STATUS_NBR, LOG_SEQ_NBR, STATISTIC#));
+ PRIMARY KEY
+ *
+ERROR at line 3:
+ORA-02260: table can have only one primary key 
+
+
+SQL> 
+SQL> 
+SQL> ALTER TABLE UT_PROCESS_STAT ADD (
+  2    CONSTRAINT UPSTAT_UPS_FK
+  3   FOREIGN KEY (UT_PROCESS_STATUS_NBR)
+  4   REFERENCES UT_PROCESS_STATUS (UT_PROCESS_STATUS_NBR));
+
+Table altered.
+
+SQL> @ut_table.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE
+  2  	(    TABLE_ID VARCHAR2(8),
+  3  	     TABLE_NAME VARCHAR2(30),
+  4  	      CONSTRAINT UT_TABLE_PK PRIMARY KEY (TABLE_ID) ENABLE,
+  5  	      CONSTRAINT UT_TABLE_UK UNIQUE (TABLE_NAME) ENABLE
+  6  	);
+
+Table created.
+
+SQL> @ut_query.sql
+SQL> 
+SQL>   CREATE TABLE UT_QUERY
+  2  	(    UT_QUERY_NBR NUMBER(18,0) NOT NULL ENABLE,
+  3  	     QUERY_NM VARCHAR2(32) NOT NULL ENABLE,
+  4  	     QUERY_DESCR VARCHAR2(128),
+  5  	     SCHEMA VARCHAR2(30) NOT NULL ENABLE,
+  6  	     TABLE_NAME VARCHAR2(30) NOT NULL ENABLE,
+  7  	     QUERY_TEXT CLOB,
+  8  	     APEX_RPT_HEADING VARCHAR2(4000),
+  9  	     TABLE_ID VARCHAR2(8),
+ 10  	      CONSTRAINT UT_QUERY_PK PRIMARY KEY (UT_QUERY_NBR),
+ 11  	      CONSTRAINT UT_QUERY_UK UNIQUE (SCHEMA, TABLE_NAME, QUERY_NM),
+ 12  	      CONSTRAINT UQ_UDL_FK FOREIGN KEY (SCHEMA, TABLE_NAME)
+ 13  	       REFERENCES UT_DATA_LOCATION (SCHEMA, TABLE_NAME) ENABLE
+ 14  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_table_rule.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_RULE (
+  2  	     UT_TABLE_RULE_NBR NUMBER(9,0),
+  3  	     MSG_ID VARCHAR2(16),
+  4  	     SQL_TEXT CLOB,
+  5  	     MSG_DESCR CLOB,
+  6  	     RULE_TYPE VARCHAR2(8),
+  7  	     DATA_SRC_NM_SRC VARCHAR2(20),
+  8  	     DATA_SRC_NM_DEST VARCHAR2(20),
+  9  	     UT_QUERY_NBR NUMBER(9,0),
+ 10  	     SCHEMA VARCHAR2(30) NOT NULL ENABLE,
+ 11  	     TABLE_NAME VARCHAR2(30) NOT NULL ENABLE,
+ 12  	     MAX_QUERY_SEC NUMBER(5,0) DEFAULT 30,
+ 13  	     SEVERE_RULE_FLG VARCHAR2(1) DEFAULT 'N' NOT NULL ENABLE,
+ 14  	     SHORT_DESCR VARCHAR2(80),
+ 15  	     EXCEPTION_TYPE_CD VARCHAR2(1) NOT NULL ENABLE,
+ 16  	     UT_TABLE_RULE_NBR_EXCLUDE NUMBER(18,0),
+ 17  	     DISP_CD_ENUM VARCHAR2(1),
+ 18  	     LOG_LVL NUMBER(1,0),
+ 19  	      CONSTRAINT UT_TABLE_RULE_PK PRIMARY KEY (UT_TABLE_RULE_NBR) ENABLE,
+ 20  	      CONSTRAINT UT_TABLE_RULE_UK UNIQUE (MSG_ID) ENABLE,
+ 21  	      CHECK ( severe_rule_flg in ('Y', 'N')) ENABLE,
+ 22  	      CONSTRAINT CHECK_EXCEPTION_TYPE_CD CHECK (exception_type_cd IN ('I', 'E')) ENABLE,
+ 23  	      CONSTRAINT UTR_CHECK_DISP_CD_ENUM CHECK ( DISP_CD_ENUM IN ('A', 'M', 'S')) ENABLE,
+ 24  	      CONSTRAINT MAX_QUERY_SEC_CHK CHECK (max_query_sec > 1 and max_query_sec <= 120) ENABLE,
+ 25  	      CONSTRAINT UTR_UDL_FK FOREIGN KEY (SCHEMA, TABLE_NAME)
+ 26  	       REFERENCES UT_DATA_LOCATION (SCHEMA, TABLE_NAME) ENABLE,
+ 27  	      CONSTRAINT UTR_UTR_FK FOREIGN KEY (UT_TABLE_RULE_NBR_EXCLUDE)
+ 28  	       REFERENCES UT_TABLE_RULE (UT_TABLE_RULE_NBR) ENABLE,
+ 29  	      CONSTRAINT UTR_UQ_FK FOREIGN KEY (UT_QUERY_NBR)
+ 30  	       REFERENCES UT_QUERY (UT_QUERY_NBR) ENABLE
+ 31  	);
+
+Table created.
+
+SQL> 
+SQL> alter table ut_table_rule add ut_area_resp_nbr number(9);
+
+Table altered.
+
+SQL> 
+SQL> alter table ut_table_rule add constraint utr_uar_fk
+  2  foreign key (ut_area_resp_nbr) references ut_area_resp(ut_area_resp_nbr);
+
+Table altered.
+
+SQL> 
+SQL> @ut_table_rule_hist.sql
+SQL> 
+SQL> create sequence ut_table_rule_hist_nbr_seq;
+
+Sequence created.
+
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_RULE_HIST
+  2  	(
+  3  	     UT_TABLE_RULE_HIST_NBR NUMBER(9,0),
+  4  	     UT_TABLE_RULE_NBR NUMBER(9,0),
+  5  	     MSG_ID VARCHAR2(16),
+  6  	     SQL_TEXT CLOB,
+  7  	     MSG_DESCR CLOB,
+  8  	     RULE_TYPE VARCHAR2(8),
+  9  	     DATA_SRC_NM_SRC VARCHAR2(20),
+ 10  	     DATA_SRC_NM_DEST VARCHAR2(20),
+ 11  	     UT_QUERY_NBR NUMBER(9,0),
+ 12  	     SCHEMA VARCHAR2(30) NOT NULL ENABLE,
+ 13  	     TABLE_NAME VARCHAR2(30) NOT NULL ENABLE,
+ 14  	     MAX_QUERY_SEC NUMBER(5,0) DEFAULT 30,
+ 15  	     SEVERE_RULE_FLG VARCHAR2(1) DEFAULT 'N' NOT NULL ENABLE,
+ 16  	     SHORT_DESCR VARCHAR2(80),
+ 17  	     EXCEPTION_TYPE_CD VARCHAR2(1) NOT NULL ENABLE,
+ 18  	     UT_TABLE_RULE_NBR_EXCLUDE NUMBER(18,0),
+ 19  	     DISP_CD_ENUM VARCHAR2(1),
+ 20  	     LOG_LVL NUMBER(1,0),
+ 21  	      CONSTRAINT UT_TABLE_RULE_HIST_PK PRIMARY KEY (UT_TABLE_RULE_HIST_NBR) ENABLE,
+ 22  	      CHECK ( severe_rule_flg in ('Y', 'N')) ENABLE,
+ 23  	      CONSTRAINT CHECK_HIST_EXCEPTION_TYPE_CD CHECK (exception_type_cd IN ('I', 'E')) ENABLE,
+ 24  	      CONSTRAINT UTR_CHECK_HIST_DISP_CD_ENUM CHECK ( DISP_CD_ENUM IN ('A', 'M', 'S')) ENABLE,
+ 25  	      CONSTRAINT HIST_MAX_QUERY_SEC_CHK CHECK (max_query_sec > 1 and max_query_sec <= 120) ENABLE,
+ 26  	      CONSTRAINT UTRH_UTR_FK FOREIGN KEY (UT_TABLE_RULE_NBR)
+ 27  	       REFERENCES UT_TABLE_RULE (UT_TABLE_RULE_NBR) ENABLE,
+ 28  	      CONSTRAINT UTRH_UDL_FK FOREIGN KEY (SCHEMA, TABLE_NAME)
+ 29  	       REFERENCES UT_DATA_LOCATION (SCHEMA, TABLE_NAME) ENABLE,
+ 30  	      CONSTRAINT UTRH_UTR_EXCLUDE_FK FOREIGN KEY (UT_TABLE_RULE_NBR_EXCLUDE)
+ 31  	       REFERENCES UT_TABLE_RULE (UT_TABLE_RULE_NBR) ENABLE,
+ 32  	      CONSTRAINT UTRH_UQ_FK FOREIGN KEY (UT_QUERY_NBR)
+ 33  	       REFERENCES UT_QUERY (UT_QUERY_NBR) ENABLE
+ 34  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> alter table ut_table_rule_hist add ut_area_resp_nbr number(9);
+
+Table altered.
+
+SQL> 
+SQL> alter table ut_table_rule_hist add constraint utrh_uar_fk
+  2  foreign key (ut_area_resp_nbr) references ut_area_resp(ut_area_resp_nbr);
+
+Table altered.
+
+SQL> 
+SQL> @ut_schema.sql
+SQL> 
+SQL>   CREATE TABLE UT_SCHEMA
+  2  	(    SCHEMA_NM VARCHAR2(30),
+  3  	     SCHEMA_DESCR VARCHAR2(60),
+  4  	      CONSTRAINT UT_SCHEMA_PK PRIMARY KEY (SCHEMA_NM)
+  5  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_schema_grp.sql
+SQL> 
+SQL>   CREATE TABLE UT_SCHEMA_GRP
+  2  	(
+  3  	     UT_SCHEMA_GRP_NBR NUMBER(9),
+  4  	     SCHEMA_GRP_NM VARCHAR2(16),
+  5  	     SCHEMA_GRP_DESCR VARCHAR2(30),
+  6  	      CONSTRAINT UT_SCHEMA_GRP_PK PRIMARY KEY (UT_SCHEMA_GRP_NBR),
+  7  	      CONSTRAINT UT_SCHEMA_GRP_UK UNIQUE (SCHEMA_GRP_NM)
+  8  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_schema_grp_dtl.sql
+SQL> set echo on
+SQL>   CREATE TABLE UT_SCHEMA_GRP_DTL
+  2  	(
+  3  	     UT_SCHEMA_GRP_NBR NUMBER(9),
+  4  	     SCHEMA_NM VARCHAR2(30),
+  5  	      CONSTRAINT UT_SCHEMA_GRP_DTL_PK PRIMARY KEY (UT_SCHEMA_GRP_NBR, SCHEMA_NM),
+  6  	      CONSTRAINT USGD_US_FK FOREIGN KEY (SCHEMA_NM)
+  7  	       REFERENCES UT_SCHEMA (SCHEMA_NM) ENABLE,
+  8  	      CONSTRAINT USGD_USG_FK FOREIGN KEY (ut_schema_grp_nbr)
+  9  	       REFERENCES UT_SCHEMA_GRP (UT_SCHEMA_GRP_NBR) ENABLE
+ 10  	);
+
+Table created.
+
+SQL> @ut_measure.sql
+SQL>   CREATE TABLE UT_MEASURE
+  2  	(    MEAS_NBR NUMBER(9,0) NOT NULL ENABLE,
+  3  	     MEAS_ID VARCHAR2(20) NOT NULL ENABLE,
+  4  	     SHORT_DESCR VARCHAR2(60) NOT NULL ENABLE,
+  5  	     LONG_DESCR CLOB,
+  6  	     ENTRY_USER NUMBER(9,0) NOT NULL ENABLE,
+  7  	     ENTRY_TM TIMESTAMP (0) NOT NULL ENABLE,
+  8  	     MOD_USER NUMBER(9,0),
+  9  	     MOD_TM TIMESTAMP (0),
+ 10  	      CONSTRAINT UT_MEAS_PK PRIMARY KEY (MEAS_NBR),
+ 11  	      CONSTRAINT UT_MEAS_UK UNIQUE (MEAS_ID)
+ 12  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_metric.sql
+SQL> 
+SQL>   CREATE TABLE UT_METRIC
+  2  	(    METRIC_NBR NUMBER(9,0),
+  3  	     METRIC_ID VARCHAR2(16),
+  4  	     METRIC_DESCR VARCHAR2(80),
+  5  	     METRIC_QRY CLOB,
+  6  	      CONSTRAINT UT_METRIC_PK PRIMARY KEY (METRIC_NBR),
+  7  	      CONSTRAINT UT_METRIC_UK UNIQUE (METRIC_ID)
+  8  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_metric_threshold.sql
+SQL> 
+SQL>   CREATE TABLE UT_METRIC_THRESHOLD
+  2  	(    UT_METRIC_THRESHOLD_NBR NUMBER(9,0) NOT NULL ENABLE,
+  3  	     MEAS_NBR NUMBER(9,0) NOT NULL ENABLE,
+  4  	     ORG_NBR_SRC NUMBER(9,0) NOT NULL ENABLE,
+  5  	     FACT_TABLE_ID VARCHAR2(8) NOT NULL ENABLE,
+  6  	     DIMEN_TABLE_ID VARCHAR2(8),
+  7  	     DIMEN_PK NUMBER(18,0),
+  8  	     THRESHOLD_VAL_LOWER_FATAL NUMBER,
+  9  	     THRESHOLD_VAL_LOWER_SEVERE NUMBER,
+ 10  	     THRESHOLD_VAL_LOWER_WARN NUMBER,
+ 11  	     THRESHOLD_VAL_UPPER_WARN NUMBER,
+ 12  	     THRESHOLD_VAL_UPPER_SEVERE NUMBER,
+ 13  	     THRESHOLD_VAL_UPPER_FATAL NUMBER,
+ 14  	     THRESHOLD_ORDER VARCHAR2(1) NOT NULL ENABLE,
+ 15  	     ENTRY_USER NUMBER(9,0) NOT NULL ENABLE,
+ 16  	     ENTRY_TM TIMESTAMP (0) NOT NULL ENABLE,
+ 17  	     MOD_USER NUMBER(9,0),
+ 18  	     MOD_TM TIMESTAMP (0),
+ 19  	      CONSTRAINT UT_METRIC_THERSHOLD_PK PRIMARY KEY (UT_METRIC_THRESHOLD_NBR),
+ 20  	      CONSTRAINT UMT_CHECK_THRESHOLD_ORDER CHECK ( THRESHOLD_ORDER IN ('A', 'D')) ENABLE,
+ 21  	      CONSTRAINT UMT_UM_FK FOREIGN KEY (MEAS_NBR)
+ 22  	       REFERENCES UT_MEASURE (MEAS_NBR) ENABLE,
+ 23  	      CONSTRAINT UMT_UT_FACT_FK FOREIGN KEY (FACT_TABLE_ID)
+ 24  	       REFERENCES UT_TABLE (TABLE_ID) ENABLE,
+ 25  	      CONSTRAINT UMT_UT_DIMEN_FK FOREIGN KEY (DIMEN_TABLE_ID)
+ 26  	       REFERENCES UT_TABLE (TABLE_ID) ENABLE
+ 27  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_rule_grp.sql
+SQL> 
+SQL>   CREATE TABLE UT_RULE_GRP
+  2  	(    UT_RULE_GRP_NM VARCHAR2(32),
+  3  	     UT_RULE_GRP_DESCR VARCHAR2(60),
+  4  	     UT_RULE_GRP_LONG_DESCR CLOB,
+  5  	     UT_RULE_GRP_NBR NUMBER(18,0) NOT NULL ENABLE,
+  6  	     THREAD_CNT NUMBER(3,0),
+  7  	     MAX_QUERY_SEC_DFLT NUMBER(5,0),
+  8  	      CONSTRAINT UT_RULE_GRP_PK PRIMARY KEY (UT_RULE_GRP_NBR),
+  9  	      CONSTRAINT UT_RULE_GRP_UK UNIQUE (UT_RULE_GRP_NM)
+ 10  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_rule_grp_dtl.sql
+SQL> 
+SQL>   CREATE TABLE UT_RULE_GRP_DTL
+  2  	(    UT_TABLE_RULE_NBR NUMBER(18,0),
+  3  	     UT_RULE_GRP_NBR NUMBER(18,0) NOT NULL ENABLE,
+  4  	     RUN_SEQ NUMBER(5,0),
+  5  	      CONSTRAINT UT_RULE_GRP_DTL_PK PRIMARY KEY (UT_RULE_GRP_NBR, UT_TABLE_RULE_NBR),
+  6  	      CONSTRAINT URGD_URG_FK FOREIGN KEY (UT_RULE_GRP_NBR)
+  7  	       REFERENCES UT_RULE_GRP (UT_RULE_GRP_NBR) ENABLE,
+  8  	      CONSTRAINT URGD_UTR_FK FOREIGN KEY (UT_TABLE_RULE_NBR)
+  9  	       REFERENCES UT_TABLE_RULE (UT_TABLE_RULE_NBR) ENABLE
+ 10  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_rule_grp_run.sql
+SQL> 
+SQL>   CREATE TABLE UT_RULE_GRP_RUN
+  2  	(    UT_RULE_GRP_RUN_NBR NUMBER(18,0) NOT NULL ENABLE,
+  3  	     UT_RULE_GRP_NBR NUMBER(18,0) NOT NULL ENABLE,
+  4  	     UT_RUN_GRP_DESCR VARCHAR2(80),
+  5  	     LAST_RUN_TM TIMESTAMP (6) NOT NULL ENABLE,
+  6  	     CTRL_PT_NBR NUMBER(18,0) NOT NULL ENABLE,
+  7  	     UT_PROCESS_STATUS_NBR NUMBER(18,0),
+  8  	      CONSTRAINT UT_RULE_GRP_RUN_PK PRIMARY KEY (UT_RULE_GRP_RUN_NBR),
+  9  	      CONSTRAINT URGN_URG_FK FOREIGN KEY (UT_RULE_GRP_NBR)
+ 10  	       REFERENCES UT_RULE_GRP (UT_RULE_GRP_NBR) ENABLE,
+ 11  	      CONSTRAINT URGR_UPS_FK FOREIGN KEY (UT_PROCESS_STATUS_NBR)
+ 12  	       REFERENCES UT_PROCESS_STATUS (UT_PROCESS_STATUS_NBR) ENABLE
+ 13  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_rule_grp_run_parm.sql
+SQL> 
+SQL>   CREATE TABLE UT_RULE_GRP_RUN_PARM
+  2  	(    UT_RULE_GRP_RUN_NBR NUMBER(18,0) NOT NULL ENABLE,
+  3  	     PARM_NM VARCHAR2(30) NOT NULL ENABLE,
+  4  	     PARM_VALUE_STRING VARCHAR2(255),
+  5  	     PARM_VALUE_NUMBER NUMBER,
+  6  	     PARM_VALUE_DATE DATE,
+  7  	      CONSTRAINT UT_RULE_GRP_RUN_PARM_PK PRIMARY KEY (UT_RULE_GRP_RUN_NBR, PARM_NM),
+  8  	      CONSTRAINT URGRP_URGR_FK FOREIGN KEY (UT_RULE_GRP_RUN_NBR)
+  9  	       REFERENCES UT_RULE_GRP_RUN (UT_RULE_GRP_RUN_NBR) ENABLE
+ 10  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_table_msg.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_MSG
+  2  	(    UT_RULE_GRP_RUN_NBR NUMBER(18,0) NOT NULL ENABLE,
+  3  	     UT_TABLE_RULE_NBR NUMBER(18,0) NOT NULL ENABLE,
+  4  	     MSG VARCHAR2(64)
+  5  	);
+
+Table created.
+
+SQL> 
+SQL> alter table ut_table_msg add constraint ut_table_msg_pk primary key(ut_rule_grp_run_nbr, ut_table_rule_nbr);
+
+Table altered.
+
+SQL> 
+SQL> alter table ut_table_msg add constraint utm_urgrn_fk foreign key (ut_rule_grp_run_nbr)
+  2  references ut_rule_grp_run(ut_rule_grp_run_nbr);
+
+Table altered.
+
+SQL> 
+SQL> rem @ut_table_note.sql
+SQL> rem @ut_table_note_type.sql
+SQL> rem @ut_table_priv.sql
+SQL> rem @ut_table_role_priv.sql
+SQL> @ut_table_row_dimen_measure.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_ROW_DIMEN_MEASURE
+  2  	(    FACT_TABLE_ID VARCHAR2(8) NOT NULL ENABLE,
+  3  	     FACT_TABLE_PK NUMBER(18,0) NOT NULL ENABLE,
+  4  	     DIMEN_PK NUMBER(18,0) NOT NULL ENABLE,
+  5  	     MEAS_NBR NUMBER(9,0) NOT NULL ENABLE,
+  6  	     MEAS NUMBER NOT NULL ENABLE
+  7  	) ;
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_table_row_measure.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_ROW_MEASURE
+  2  	(    FACT_TABLE_ID VARCHAR2(8) NOT NULL ENABLE,
+  3  	     FACT_TABLE_PK NUMBER(18,0) NOT NULL ENABLE,
+  4  	     MEAS_NBR NUMBER(9,0) NOT NULL ENABLE,
+  5  	     MEAS NUMBER NOT NULL ENABLE
+  6  	)  ;
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> @ut_table_row_msg.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_ROW_MSG
+  2  	(    PRIMARY_KEY NUMBER(18,0),
+  3  	     MSG VARCHAR2(64),
+  4  	     UT_TABLE_RULE_NBR NUMBER(18,0) NOT NULL ENABLE,
+  5  	     UT_RULE_GRP_RUN_NBR NUMBER(18,0) NOT NULL ENABLE,
+  6  	     UT_USER_NBR_ALLOW NUMBER(9,0),
+  7  	     DISP_CD_ENUM VARCHAR2(1),
+  8  	     UT_USER_NBR_DISP NUMBER(9,0),
+  9  	      CONSTRAINT UT_TABLE_ROW_MSG_PK
+ 10  		     PRIMARY KEY (UT_TABLE_RULE_NBR, UT_RULE_GRP_RUN_NBR, PRIMARY_KEY),
+ 11  	      CONSTRAINT UTRM_CHECK_DISP_CD_ENUM CHECK ( DISP_CD_ENUM IN ('A', 'M', 'S')) ENABLE,
+ 12  	      CONSTRAINT UTRM_URGR_FK FOREIGN KEY (UT_RULE_GRP_RUN_NBR)
+ 13  	       REFERENCES UT_RULE_GRP_RUN (UT_RULE_GRP_RUN_NBR) ENABLE,
+ 14  	      CONSTRAINT UTRM_UTR_FK FOREIGN KEY (UT_TABLE_RULE_NBR)
+ 15  	       REFERENCES UT_TABLE_RULE (UT_TABLE_RULE_NBR) ENABLE
+ 16  	);
+
+Table created.
+
+SQL> @ut_table_rule_parm.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_RULE_PARM
+  2  	(    UT_TABLE_RULE_NBR NUMBER(18,0) NOT NULL ENABLE,
+  3  	     PARM_NM VARCHAR2(30) NOT NULL ENABLE,
+  4  	     PARM_DATA_TYPE VARCHAR2(10),
+  5  	      CONSTRAINT UT_TABLE_RULE_PARM_PK PRIMARY KEY (UT_TABLE_RULE_NBR, PARM_NM) ENABLE,
+  6  	      CONSTRAINT UTRP_UTR_FK FOREIGN KEY (UT_TABLE_RULE_NBR)
+  7  	       REFERENCES UT_TABLE_RULE (UT_TABLE_RULE_NBR) ENABLE
+  8  	);
+
+Table created.
+
+SQL> rem @ut_table_rule_priv.sql
+SQL> @ut_table_rule_rpt_sum.sql
+SQL> 
+SQL>   CREATE TABLE UT_TABLE_RULE_RPT_SUM
+  2  	(    UT_TABLE_RULE_RPT_SUM_NBR NUMBER(18,0) NOT NULL ENABLE,
+  3  	     UT_TABLE_RULE_NBR NUMBER(18,0) NOT NULL ENABLE,
+  4  	     RPT_DESCR VARCHAR2(80) NOT NULL ENABLE,
+  5  	     APEX_PAGE_NBR NUMBER(5,0) NOT NULL ENABLE,
+  6  	      CONSTRAINT UT_TABLE_RULE_RPT_SUM_PK PRIMARY KEY (UT_TABLE_RULE_RPT_SUM_NBR) ENABLE,
+  7  	      CONSTRAINT UTRRS_UTR_FK FOREIGN KEY (UT_TABLE_RULE_NBR)
+  8  	       REFERENCES UT_TABLE_RULE (UT_TABLE_RULE_NBR) ENABLE
+  9  	);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> spool off

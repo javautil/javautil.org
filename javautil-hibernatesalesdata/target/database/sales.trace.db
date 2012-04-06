@@ -1,0 +1,114 @@
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CUSTOMER" not found; SQL statement:
+alter table SALES.PUBLIC.CUSTOMER drop constraint FK52C76FDE4DEAED2C [42102-159]
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "SALE" not found; SQL statement:
+alter table SALES.PUBLIC.SALE drop constraint FK26B847113F4349 [42102-159]
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "SALE" not found; SQL statement:
+alter table SALES.PUBLIC.SALE drop constraint FK26B84765E2CEEB [42102-159]
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "CUSTOMER_SEQ" not found; SQL statement:
+drop sequence CUSTOMER_SEQ [90036-159]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:45)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:212)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:125)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:110)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:383)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.drop(SchemaExport.java:358)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:258)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.create(SchemaExport.java:211)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:77)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:43)
+	at org.javautil.hibernate.CreateDatabaseSchema.process(CreateDatabaseSchema.java:91)
+	at org.javautil.hibernate.CreateDatabaseSchema.main(CreateDatabaseSchema.java:105)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.createDatabaseObjects(CreateSalesDatabaseObjects.java:15)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.main(CreateSalesDatabaseObjects.java:20)
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "GTT_NUMBER_SEQ" not found; SQL statement:
+drop sequence GTT_NUMBER_SEQ [90036-159]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:45)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:212)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:125)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:110)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:383)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.drop(SchemaExport.java:358)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:258)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.create(SchemaExport.java:211)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:77)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:43)
+	at org.javautil.hibernate.CreateDatabaseSchema.process(CreateDatabaseSchema.java:91)
+	at org.javautil.hibernate.CreateDatabaseSchema.main(CreateDatabaseSchema.java:105)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.createDatabaseObjects(CreateSalesDatabaseObjects.java:15)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.main(CreateSalesDatabaseObjects.java:20)
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "PRODUCT_SEQ" not found; SQL statement:
+drop sequence PRODUCT_SEQ [90036-159]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:45)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:212)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:125)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:110)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:383)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.drop(SchemaExport.java:358)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:258)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.create(SchemaExport.java:211)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:77)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:43)
+	at org.javautil.hibernate.CreateDatabaseSchema.process(CreateDatabaseSchema.java:91)
+	at org.javautil.hibernate.CreateDatabaseSchema.main(CreateDatabaseSchema.java:105)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.createDatabaseObjects(CreateSalesDatabaseObjects.java:15)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.main(CreateSalesDatabaseObjects.java:20)
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "SALESPERSON_SEQ" not found; SQL statement:
+drop sequence SALESPERSON_SEQ [90036-159]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:45)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:212)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:125)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:110)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:383)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.drop(SchemaExport.java:358)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:258)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.create(SchemaExport.java:211)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:77)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:43)
+	at org.javautil.hibernate.CreateDatabaseSchema.process(CreateDatabaseSchema.java:91)
+	at org.javautil.hibernate.CreateDatabaseSchema.main(CreateDatabaseSchema.java:105)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.createDatabaseObjects(CreateSalesDatabaseObjects.java:15)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.main(CreateSalesDatabaseObjects.java:20)
+09-10 15:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "SALE_SEQ" not found; SQL statement:
+drop sequence SALE_SEQ [90036-159]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:45)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:212)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:125)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:110)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:383)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.drop(SchemaExport.java:358)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.execute(SchemaExport.java:258)
+	at org.hibernate.tool.hbm2ddl.SchemaExport.create(SchemaExport.java:211)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:77)
+	at org.javautil.hibernate.CreateDatabaseSchema.createSchema(CreateDatabaseSchema.java:43)
+	at org.javautil.hibernate.CreateDatabaseSchema.process(CreateDatabaseSchema.java:91)
+	at org.javautil.hibernate.CreateDatabaseSchema.main(CreateDatabaseSchema.java:105)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.createDatabaseObjects(CreateSalesDatabaseObjects.java:15)
+	at org.javautil.sales.database.schema.CreateSalesDatabaseObjects.main(CreateSalesDatabaseObjects.java:20)

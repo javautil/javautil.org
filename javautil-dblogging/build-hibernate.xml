@@ -1,0 +1,113 @@
+<project name="javautil - dblogging" 
+	default="generate-hbms"
+>
+	<!-- the root directory for generated java classes
+             if we had full maven integration this would be under 
+		target/generated-sources but we can't do that
+             as every 'mvn clean' would wipe this out.
+       -->
+	<property name="hbm.dto.dir" 
+		location="src/main/java" />
+	<!-- directory under  ${hbm.dto.dir} -->
+	<property name="hbm.pkg.dir" value="org/javautil/dblogging/dto" />
+	<!-- package name of dto beans and path for hbm.xml files -->
+	<property name="hbm.pkg.name" value="org.javautil.dblogging.dto" />
+	<property name="lib.dir" location="../javautil-lib" />
+	<!-- TODO bad location -->
+	<property name="etc.dir" location="src/main/resources" />
+	<property name="classes.dir" location="target/classes" />
+	<!-- generate the .hbm.xml files here -->
+	<property name="hbm.xml.dir" location="src/main/resources" />
+	<property name="reveng.strategy" 
+		value="org.javautil.dblogging.reveng.RevEngStrategy" />
+	<!-- the java source that controls the Hibernate Reverse Engineering -->
+	<property name="reveng.strategy.file" 
+		value="src/main/java/org/javautil/dblogging/reveng/RevEngStrategy.java" />
+	<property name="hbm.cfg.file" 
+		value="${etc.dir}/hibernate.cfg.xml" />
+	<property name="hbm.rev.file" 
+		location="${etc.dir}/hibernate.reveng.xml" />
+
+	<path id="build.classpath">	
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+		
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${hbm.dto.dir}" />
+		<taskdef name="hibernatetool" 
+			classname="org.hibernate.tool.ant.HibernateToolTask">
+			<classpath refid="build.classpath" />
+		</taskdef>
+		<path id="classpath">	
+			<pathelement location="${classes.dir}" />	
+			<path refid="build.classpath" />
+		</path>
+	</target>
+	<!-- TODO clean up, find a gen dir or restrict  -->
+	<target name="clean" 
+		depends="generate-hbms" 
+		description="remove hibernate generated files">
+		<echo message="${hbm.dto.dir}/${hbm.pkg.dir}" />		
+		<!-- TODO restore 
+		<delete dir="${classes.dir}" />
+		<delete dir="${hbm.dto.dir}/${hbm.pkg.dir}" />		
+		-->
+	</target>
+	
+	<target name="generate" 
+		depends="clean,init,compile-strategy,generate-hbms,generate-pojos" />
+
+	<target name="compile-strategy" depends="init">
+		<javac srcdir="." destdir="${classes.dir}" 
+			debug="true" debugLevel="lines,vars,source">			
+			<include name="${reveng.strategy.file}" />
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+	
+	<target name="generate-hbms" 
+		description="generate hibernate mapping files" depends="init,compile-strategy">
+		<echo message="revengfile ${hbm.rev.file}"/>
+		<hibernatetool destdir="${hbm.xml.dir}">
+			<jdbcconfiguration configurationfile="${hbm.cfg.file}" 
+				packagename="${hbm.pkg.name}"
+				revengfile="${hbm.rev.file}" 
+				reversestrategy="${reveng.strategy}" />
+			<hbm2hbmxml />
+			<classpath refid="classpath" />
+		</hibernatetool>
+	</target>
+
+	<target name="generate-pojos" 
+		description="generate hibernate pojos" depends="init">
+		<hibernatetool destdir="${hbm.dto.dir}">
+			<configuration>
+				<fileset dir="${hbm.xml.dir}">
+					<include name="**/*.hbm.xml" />
+				</fileset>
+			</configuration>
+			<classpath refid="classpath" />
+			<hbm2java jdk5="true"  />
+		</hibernatetool>
+	</target>
+	
+	<target name="hbm2ddl" 
+		description="generate ddl from hbm" depends="init">
+	    <hibernatetool destdir="${gensource.dir}">
+			<configuration configurationfile="${hbm.cfg.file}">
+				<fileset dir="${gensource.dir}">
+					<include name="**/*.hbm.xml" />
+				</fileset>
+				
+			</configuration>
+			<classpath refid="classpath" />
+	         
+	     <hbm2ddl export="false" outputfilename="sql.ddl"/>
+	    </hibernatetool>         
+	</target>
+
+
+</project>

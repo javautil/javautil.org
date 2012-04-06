@@ -1,0 +1,6 @@
+<project name="javautil-mp3" default="generateCode">
+	<property name="reveng.strategy.file" value="${RevEngStrategyClass}.java" />
+	<property name="RevEngStrategyClass" value="org.javautil.mp3.hibernate.RevEngStrategy" />
+	<property name="schema.packageName" value="mp3" />
+	<import file="../javautil-pom/build-tasks.xml" />
+</project>

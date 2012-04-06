@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtTableRuleParm"
+		table="UT_TABLE_RULE_PARM">
+		<composite-id name="id"
+			class="org.javautil.exceptionprocessing.dto.UtTableRuleParmId">
+			<key-property name="utTableRuleNbr" type="int">
+				<column name="UT_TABLE_RULE_NBR" precision="18" scale="0" />
+			</key-property>
+			<key-property name="parmNm" type="string">
+				<column name="PARM_NM" length="30" />
+			</key-property>
+		</composite-id>
+		<many-to-one name="utTableRule"
+			class="org.javautil.exceptionprocessing.dto.UtTableRule" update="false"
+			insert="false" fetch="select">
+			<column name="UT_TABLE_RULE_NBR" precision="18" scale="0"
+				not-null="true" />
+		</many-to-one>
+		<property name="parmDataType" type="string">
+			<column name="PARM_DATA_TYPE" length="10" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,106 @@
+<project name="javautil-jdbc" default="make-noxjc">
+
+	<!-- properties for needed directories and filenames -->
+	<property name="build.version" value="1.0-SNAPSHOT" />
+	<property name="classes.dir" location="target/classes" />
+	<property name="dist.dir" location="target" />
+	<property name="jar.filename" value="${ant.project.name}-${build.version}" />
+	<property name="jar.file" location="${dist.dir}/${jar.filename}.jar" />
+	<property name="javadoc.dir" location="${dist.dir}/javadoc" />
+	<property name="srcjar.file" location="${dist.dir}/${jar.filename}-src.jar" />	
+	<path id="classpath">
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<property name="xjc.target.dir" location="target/generated-sources/xjc" />
+	<property name="xjc.schema.dir" location="src/main/resources" />
+	
+	<property environment="env" />
+	
+	<!-- created required directories -->
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${javadoc.dir}" />
+		<mkdir dir="${xjc.target.dir}" />
+	</target>
+
+	<target name="clean" description="deletes build artifacts">
+		<delete dir="${classes.dir}" />
+		<delete dir="${javadoc.dir}" />
+		<delete dir="${dist.dir}">
+			<include name="${ant.project.name}*.jar"/>
+		</delete>
+	</target>
+
+	<target name="xjc" description="invokes the jaxb-xjc command to create java POJOS from XSDs" depends="init" unless="skip-xjc">
+		<exec executable="${env.JAVA_HOME}/bin/xjc">
+			<arg value="-d" />
+			<arg value="${xjc.target.dir}" />
+			<arg value="${xjc.schema.dir}" />
+		</exec>
+	</target>
+	
+	<target name="build" description="compiles java sources" depends="xjc,build-generated,build-src" />
+	
+	<target name="build-src" depends="init,build-generated">
+		<javac srcdir="src/main/java" destdir="${classes.dir}" deprecation="off" 
+			optimize="on" debug="on" debuglevel="lines,vars,source">
+			<classpath refid="classpath" />
+			<classpath path="${classes.dir}" />
+		</javac>
+	</target>
+
+	<target name="build-generated" depends="init">
+		<javac srcdir="target/generated-sources/xjc" destdir="${classes.dir}" deprecation="off" 
+			optimize="on" debug="on" debuglevel="lines,vars,source">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+		
+	<target name="dist" depends="init,dist-src" description="creates a distributable jar file">		
+		<delete dir="${classes.dir}">
+			<include name="**/*.java" />
+		</delete>
+		<jar destfile="${jar.file}" index="true">
+			<fileset dir="${classes.dir}" includes="**/*" />
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Date" value="${jar.build.version}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="dist-src" depends="init" description="creates a distributable source jar file">
+		<copy todir="${classes.dir}">
+			<fileset dir="src/main/java" />
+			<fileset dir="src/main/resources" />
+			<fileset dir="target/generated-sources/xjc"/>
+		</copy>
+		<jar destfile="${srcjar.file}" index="true">
+			<fileset dir="${javadoc.dir}" includes="**/*" />
+			<fileset dir="${classes.dir}" includes="**/*" />
+		</jar>
+	</target>
+
+	<target name="doc" depends="init" description="creates project javadoc">
+		<path id="javadoc.sources">
+			<pathelement path="src/main/java" />
+			<pathelement path="src/main/resources" />
+			<pathelement path="target/generated-sources/xjc" />
+		</path>
+		<javadoc destdir="${javadoc.dir}" packagenames="*" private="on" sourcepathref="javadoc.sources"
+			windowtitle="${ant.project.name} API" doctitle="${ant.project.name}-${build.version} API">
+			<classpath refid="classpath" />
+		</javadoc>
+	</target>
+
+	<target name="make" depends="clean,build,dist,doc,dist-src" description="rebuild the project" />
+	
+	<target name="make-noxjc" description="rebuild the project,skipping xjc">
+		<property name="skip-xjc" value="skip-xjc" />
+		<antcall target="make" />
+	</target>
+
+</project>

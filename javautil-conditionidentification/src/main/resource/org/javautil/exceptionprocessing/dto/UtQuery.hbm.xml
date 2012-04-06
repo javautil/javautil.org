@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jun 7, 2009 8:20:09 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.exceptionprocessing.dto.UtQuery" table="UT_QUERY">
+		<id name="utQueryNbr" type="java.lang.Integer">
+			<column name="UT_QUERY_NBR" precision="18" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">UT_QUERY_NBR_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="utDataLocation"
+			class="org.javautil.exceptionprocessing.dto.UtDataLocation" fetch="select">
+			<column name="SCHEMA" length="30" not-null="true" />
+			<column name="TABLE_NAME" length="30" not-null="true" />
+		</many-to-one>
+		<property name="queryNm" type="string">
+			<column name="QUERY_NM" length="32" not-null="true" />
+		</property>
+		<property name="queryDescr" type="string">
+			<column name="QUERY_DESCR" length="128" />
+		</property>
+		<property name="queryText" type="string">
+			<column name="QUERY_TEXT" />
+		</property>
+		<property name="apexRptHeading" type="string">
+			<column name="APEX_RPT_HEADING" length="4000" />
+		</property>
+		<property name="tableId" type="string">
+			<column name="TABLE_ID" length="8" />
+		</property>
+		<set name="utTableRules" inverse="true">
+			<key>
+				<column name="UT_QUERY_NBR" precision="9" scale="0" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRule" />
+		</set>
+		<set name="utTableRuleHists" inverse="true">
+			<key>
+				<column name="UT_QUERY_NBR" precision="9" scale="0" />
+			</key>
+			<one-to-many class="org.javautil.exceptionprocessing.dto.UtTableRuleHist" />
+		</set>
+	</class>
+</hibernate-mapping>

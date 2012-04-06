@@ -1,0 +1,31 @@
+D/DatabaseMetaData////
+/DdScope.java/1.1/Mon Mar  1 00:29:06 2010//
+/ExportDDL.java/1.1/Mon Mar  1 00:29:04 2010//
+/OracleConnectionHelper.java/1.1/Mon Mar  1 00:29:06 2010//
+/OracleConnectionUtil.java/1.1/Mon Mar  1 00:29:06 2010//
+/OracleDataSourceFactory.java/1.1/Mon Mar  1 00:29:06 2010//
+/OracleDatabaseMetaData.java/1.1/Mon Mar  1 00:29:06 2010//
+/OracleDatabaseMetaDataHelper.java/1.1/Mon Mar  1 00:29:06 2010//
+/OracleSQLStatement.java/1.1/Mon Mar  1 00:29:04 2010//
+/OracleSessionStatSet.java/1.1/Mon Mar  1 00:29:04 2010//
+/RdbmsPipeException.java/1.1/Mon Mar  1 00:29:06 2010//
+/RdbmsPipeReadTimeOutException.java/1.1/Mon Mar  1 00:29:07 2010//
+/SequenceNumber.java/1.1/Mon Mar  1 00:29:07 2010//
+/StatNames.java/1.1/Mon Mar  1 00:29:07 2010//
+/TnsNames.java/1.1/Mon Mar  1 00:29:06 2010//
+/TnsnamesEntryBean.java/1.1/Mon Mar  1 00:29:04 2010//
+/UserEnv.java/1.1/Mon Mar  1 00:29:06 2010//
+/WrappedOracleConnection.java/1.1/Mon Mar  1 00:29:04 2010//
+D/apex////
+D/cache////
+D/command////
+D/dao////
+D/datasource////
+D/datasources////
+D/docgenerator////
+D/dto////
+D/jdbc////
+D/reports////
+D/security////
+D/servicerequest////
+D/trace////

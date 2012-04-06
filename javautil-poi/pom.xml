@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.javautil</groupId>
+	<artifactId>javautil-poi</artifactId>
+	<version>0.11.0</version>
+	<packaging>jar</packaging>
+	<name>javautil-poi</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>org.javautil</groupId>
+		<artifactId>javautil-pom</artifactId>
+		<version>0.11.0</version>
+		<relativePath>../javautil-pom</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-jdbc</artifactId>
+			<version>${org.javautil.jdbc.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-hibernatesalesdata</artifactId>
+			<version>${org.javautil.hibernatesalesdata.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
+			<artifactId>javautil-core</artifactId>
+			<version>${org.javautil.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${org.apache.poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.2</version>
+			<scope>test</scope>
+		</dependency>
+   <dependency>
+   <groupId>commons-collections</groupId>
+<artifactId>commons-collections</artifactId>
+<version>${org.apache.commons-collections.version}</version>
+  
+  </dependency>
+	</dependencies>
+
+
+
+</project>

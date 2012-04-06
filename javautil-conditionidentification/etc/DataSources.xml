@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:datasources xmlns:ns2="http://datasources.dbexperts.com">
+
+
+	<datasource>
+		<name>exceptions</name>
+		<classname>
+			org.javautil.jdbc.datasources.OracleDataSourceWrapper
+		</classname>
+		<property key="User">
+			<value>exceptions</value>
+		</property>
+		<property key="PortNumber">
+			<value>1526</value>
+		</property>
+		<property key="ServerName">
+			<value>localhost</value>
+		</property>
+		<property key="ServiceName">
+			<value>XE</value>
+		</property>
+		<property key="password">
+			<value>exceptions</value>
+		</property>
+
+		<property key="AbandonedConnectionTimeout">
+			<value>3</value>
+		</property>
+
+	</datasource>
+
+</ns2:datasources>

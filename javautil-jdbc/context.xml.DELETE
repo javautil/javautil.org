@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+  <entry key ="datasources">exception,gus2,gus,h2</entry>
+
+  <entry key="exception.user">exception</entry>
+  <entry key="exception.password">exception</entry>
+  <entry key="exception.url">jdbc:oracle:thin:@db1:1521:DEVEL</entry>
+  <entry key="exception.driver">oracle.jdbc.driver.OracleDriver</entry>
+  
+  <entry key="gus2.user">gus2</entry>
+  <entry key="gus2.password">test</entry>
+  <entry key="gus2.url">jdbc:oracle:thin:@db3:1521:TEST</entry>
+  <entry key="gus2.driver">oracle.jdbc.driver.OracleDriver</entry>
+  
+  <entry key="gus.user">gus</entry>
+  <entry key="gus.password">test</entry>
+  <entry key="gus.url">jdbc:oracle:thin:@db3:1521:TEST</entry>
+  <entry key="gus.driver">oracle.jdbc.driver.OracleDriver</entry>
+  
+  <entry key="h2.user">h2</entry>
+  <entry key="h2.password">h2</entry>
+  <entry key="h2.url">jdbc:h2:mem:</entry>
+  <entry key="h2.driver">org.h2.Driver</entry>
+  
+</properties>
