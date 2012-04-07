@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.javautil.jdbc.datasources.OracleDataSourceTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 1.45 sec

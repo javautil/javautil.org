@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 14, 2011 1:36:14 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.mp3.ArtistAlias" table="ARTIST_ALIAS" >
+        <comment>Contains authoritative and suspected aliases for an artist</comment>
+        <id name="artistAliasId" type="java.lang.Integer">
+            <column name="ARTIST_ALIAS_ID" precision="9" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">ARTIST_ALIAS_ID_SEQ</param>
+            </generator>
+        </id>
+        <many-to-one name="artist" class="org.javautil.mp3.Artist" fetch="select">
+            <column name="ARTIST_ID" precision="9" scale="0" />
+        </many-to-one>
+        <property name="artistAlias" type="string">
+            <column name="ARTIST_ALIAS" length="60" not-null="true">
+                <comment>Should be all upper case and stripped of leading and trailing spaces</comment>
+            </column>
+        </property>
+        <property name="statusCd" type="string">
+            <column name="STATUS_CD" length="1">
+                <comment>"S" Suggested or Suspected, "A" Authoritative</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

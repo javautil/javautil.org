@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+    <secure_deployment_files>
+      <row>
+        <org_id_mfr>KLLG</org_id_mfr>
+        <file_descr>Dis file is so sekur dat teh gov kant even c et!</file_descr>
+        <file_nm>sekur_filez_4_j00.shh</file_nm>
+        <file_sz>Ginormous</file_sz>
+        <web_rpt_deployment_file_nbr>1</web_rpt_deployment_file_nbr>
+      </row>
+      <row>
+        <org_id_mfr>HVEND</org_id_mfr>
+        <file_descr>Dis file also sekur dat teh gov kant even c et!</file_descr>
+        <file_nm>sekur_file_4_j00_2.shh</file_nm>
+        <file_sz>size is what it is</file_sz>
+        <web_rpt_deployment_file_nbr>2</web_rpt_deployment_file_nbr>
+      </row>
+      <row>
+        <org_id_mfr>HVEND</org_id_mfr>
+        <file_descr>Dis file not so sekur dat we hav problm</file_descr>
+        <file_nm>wannabe_sekur.shh</file_nm>
+        <file_sz>Tiny</file_sz>
+        <web_rpt_deployment_file_nbr>3</web_rpt_deployment_file_nbr>
+      </row>
+    </secure_deployment_files>

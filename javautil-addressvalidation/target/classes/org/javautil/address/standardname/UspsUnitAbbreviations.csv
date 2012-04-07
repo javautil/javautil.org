@@ -1,0 +1,23 @@
+"Apartment","APT",true,"APART"
+"Basement","BSMT",false
+"Building","BLDG",true
+"Department","DEPT",true
+"Floor","FL",true
+"Front","FRNT",false
+"Hangar","HNGR",true
+"Lobby","LBBY",false
+"Lot","LOT ",true
+"Lower","LOWR",false
+"Office","OFC",false
+"Penthouse","PH",false
+"Pier","PIER",true
+"Rear","REAR",false
+"Room","RM",true
+"Side","SIDE",false
+"Slip","SLIP",true
+"Space","SPC",true
+"Stop","STOP",true
+"Suite","STE",true
+"Trailer","TRLR",true
+"Unit","UNIT",true
+"Upper","UPPR",false

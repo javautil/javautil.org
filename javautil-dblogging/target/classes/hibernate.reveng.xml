@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<type-mapping>
+		<sql-type jdbc-type="BLOB" hibernate-type="byte[]"></sql-type>
+		<sql-type jdbc-type="CLOB" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="NUMERIC" scale="0" hibernate-type="java.lang.Integer" />
+	</type-mapping>
+	
+	<!-- ignore tables in recycle bin -->
+	<table-filter match-name="BIN.*" exclude="true" />
+
+</hibernate-reverse-engineering>

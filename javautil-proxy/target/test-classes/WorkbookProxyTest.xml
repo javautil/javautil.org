@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="proxy" class="org.javautil.proxy.controller.Proxy">
+		<property name="proxyController" ref="proxyController"/>
+		<property name="parameterChecker" ref="proxyParameterChecker" />
+	</bean>
+	
+	<bean name="proxyController" class="org.javautil.controller.ProxyController">
+		<property name="remoteUri" value="http://internalproxy.custdata.com:8081/view/workbook/download"/>
+		<property name="addTrailingSlash" value="false" />
+	</bean>
+	
+	<bean name="proxyParameterChecker" class="org.javautil.proxy.util.ProxyParameterChecker">		
+		<property name="requestRule" ref="proxyRequestRule" />
+	</bean>
+	
+	<bean name="proxyRequestRule" class="org.javautil.proxy.util.ProxyRequestRule">
+		<property name="disallowedParameters">
+		    <list>
+        		<value>destname</value>
+		    </list>
+  		</property>
+		<property name="stripPrefix" value="http://internalproxy.custdata.com:8080/view/workbookproxy/"/>
+	</bean>
+
+</beans>

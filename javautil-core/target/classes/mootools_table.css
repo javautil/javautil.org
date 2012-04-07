@@ -1,0 +1,58 @@
+table.dataset {
+	font-size: 1.0em;
+	text-align: left;
+}
+
+table.dataset thead tr th, table.dataset-scroller thead tr th {
+	padding: 2px 4px;
+	background: #d7d7d7;
+	border-bottom: 1px solid black;
+}
+
+table.dataset tbody tr td {
+	padding: 2px 4px;
+}
+
+table.dataset tbody tr.alt {
+	background: #e8f3e8;
+}
+
+table.dataset tbody tr.collapsed td {
+	padding: 0px;
+}
+
+table.dataset tbody tr.collapsed td div {
+	font-family: Serif;
+	font-size: 1.0em;
+	margin-left: 10px;
+}
+
+table.dataset thead tr th.forward_sort, table.dataset-scroller thead tr th.forward_sort {
+	background: #77bb77;
+}
+
+table.dataset thead tr th.reverse_sort, table.dataset-scroller thead tr th.reverse_sort {
+	background: #bb7777;
+}
+
+ul.pagination {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.pagination li {
+	margin: 0;
+	padding: 0 0 2px 0;
+	float: left;
+	list-style: none;
+}
+
+ul.pagination li a {
+	padding: 1px 3px 3px 3px;
+	display: block;
+}
+
+ul.pagination li a.currentPage {
+	background: #e4ebff;
+}

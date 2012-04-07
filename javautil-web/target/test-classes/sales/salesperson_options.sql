@@ -1,0 +1,1 @@
+select salesperson_id as value, display_name as label from salesperson

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:tns="http://www.javautil.org/Table/" 
+        targetNamespace="http://www.javautil.org/Table/">
+   <!--  
+   <id name="utUserNbr" type="java.lang.Integer">
+            <column name="UT_USER_NBR" precision="9" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">UT_USER_SEQ</param>
+            </generator>
+        </id>
+    -->
+    <complexType name="tableType">
+    	<sequence>
+            <element name="tableName" type="string" maxOccurs="1" minOccurs="1"></element>
+            <element name="tableType" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="schema" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="remarks" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="primaryKey">
+    	<sequence>
+    		<element name="constraintName" type="tns:dbName"></element>
+    		<element name="NewElement" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="columnList">
+    	<sequence>
+    		<element name="columnNameRef" type="tns:columnNameRefType"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="columnNameRefType"></complexType>
+
+    <simpleType name="dbName">
+    	<restriction base="string">
+    		<pattern value="[A-Z]+[A-Za-z0-9_$#]{1,31}"></pattern>
+    	</restriction>
+    </simpleType>
+
+    <complexType name="classType">
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="type" type="string"></attribute>
+    </complexType>
+</schema>

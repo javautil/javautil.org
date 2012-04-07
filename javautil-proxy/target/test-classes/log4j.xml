@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+	<!--
+		Additivity The output of a log statement of logger C will go to all
+		the appenders in C and its ancestors. This is the meaning of the term
+		"appender additivity". However, if an ancestor of logger C, say P, has
+		the additivity flag set to false, then C's output will be directed to
+		all the appenders in C and it's ancestors upto and including P but not
+		the appenders in any of the ancestors of P. Loggers have their
+		additivity flag set to true by default.
+	-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss} [%p %c] %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="debug" />
+			<param name="LevelMax" value="INFO" />
+		</filter>
+	</appender>
+
+	<appender name="stderr" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.err" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss} [%p %c] %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="WARN" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+
+	<!-- make 3rd party libraries quieter -->
+	<logger name="com.mchange" additivity="true">
+		<level value="WARN" />
+	</logger>
+	<logger name="freemarker" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="org.apache.velocity" additivity="true">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.hibernate" additivity="true">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.springframework" additivity="true">
+		<level value="INFO" />
+	</logger>
+
+	<!-- setup default logging levels for internal source packages -->
+	<logger name="org.javautil" additivity="true">
+		<level value="info" />
+	</logger>
+
+	<root>
+		<level value="info" />
+		<appender-ref ref="stdout" />
+		<appender-ref ref="stderr" />
+	</root>
+
+</log4j:configuration>

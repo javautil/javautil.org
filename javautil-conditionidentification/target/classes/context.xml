@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:datasources xmlns:ns2="http://datasources.javautil.org">
+	<!-- TODO Why is this in src/main/java?? -->
+	
+	 <datasource>
+		<name>gus2</name>
+		<classname>
+			org.javautil.jdbc.datasources.NonConnectionPooledDatasource
+		</classname>
+		<property key="user">
+			<value>gus2</value>
+		</property>
+		<property key="driver">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property key="password">
+			<value>test</value>
+		</property>
+		<property key="url">
+			<value>jdbc:oracle:thin:@db3:1521:TEST</value>
+		</property>
+	</datasource>
+	
+</ns2:datasources>

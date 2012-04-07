@@ -1,0 +1,5 @@
+"STATE","0","STRING",,,,,,,"N"
+"CITY","1","STRING",,,,,,,"N"
+"TICKETS","2","DOUBLE",,,,,,,"N",,,,,"1"
+"TICKETS","3","DOUBLE",,,,,,,"N",,,,,"2"
+"TICKETS","4","DOUBLE",,,,,,,"N",,,,,"3"

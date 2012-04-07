@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema>
+  <schema>
+    <entity id="COUNTRIES" table-type="TABLE" table-name="COUNTRIES">
+      <column id="HR.COUNTRIES.COUNTRY_ID" column-name="COUNTRY_ID" data-type="CHAR" sql-type="1" column-size="2"/>
+      <column id="HR.COUNTRIES.COUNTRY_NAME" column-name="COUNTRY_NAME" data-type="VARCHAR2" sql-type="12" column-size="40" nullable="not null"/>
+      <column id="HR.COUNTRIES.REGION_ID" column-name="REGION_ID" data-type="NUMBER" sql-type="3" column-size="22" nullable="not null"/>
+      <primary-key constraint-name="COUNTRY_C_ID_PK">
+        <column column-name="COUNTRY_ID"/>
+      </primary-key>
+      <relation type="references" pk-table-schema="HR" pk-table-name="REGIONS" fk-table-schema="HR" fk-table-name="COUNTRIES" fk-name="COUNTR_REG_FK">
+        <key-map fk-column-name="REGION_ID" pk-column-name="REGION_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="COUNTRIES" fk-table-schema="HR" fk-table-name="LOCATIONS" fk-name="LOC_C_ID_FK">
+        <key-map fk-column-name="COUNTRY_ID" pk-column-name="COUNTRY_ID"/>
+      </relation>
+    </entity>
+    <entity id="DEPARTMENTS" table-type="TABLE" table-name="DEPARTMENTS">
+      <column id="HR.DEPARTMENTS.DEPARTMENT_ID" column-name="DEPARTMENT_ID" data-type="NUMBER" sql-type="3" column-size="4"/>
+      <column id="HR.DEPARTMENTS.DEPARTMENT_NAME" column-name="DEPARTMENT_NAME" data-type="VARCHAR2" sql-type="12" column-size="30"/>
+      <column id="HR.DEPARTMENTS.MANAGER_ID" column-name="MANAGER_ID" data-type="NUMBER" sql-type="3" column-size="6" nullable="not null"/>
+      <column id="HR.DEPARTMENTS.LOCATION_ID" column-name="LOCATION_ID" data-type="NUMBER" sql-type="3" column-size="4" nullable="not null"/>
+      <primary-key constraint-name="DEPT_ID_PK">
+        <column column-name="DEPARTMENT_ID"/>
+      </primary-key>
+      <relation type="references" pk-table-schema="HR" pk-table-name="EMPLOYEES" fk-table-schema="HR" fk-table-name="DEPARTMENTS" fk-name="DEPT_MGR_FK">
+        <key-map fk-column-name="MANAGER_ID" pk-column-name="EMPLOYEE_ID"/>
+      </relation>
+      <relation type="references" pk-table-schema="HR" pk-table-name="LOCATIONS" fk-table-schema="HR" fk-table-name="DEPARTMENTS" fk-name="DEPT_LOC_FK">
+        <key-map fk-column-name="LOCATION_ID" pk-column-name="LOCATION_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="DEPARTMENTS" fk-table-schema="HR" fk-table-name="JOB_HISTORY" fk-name="JHIST_DEPT_FK">
+        <key-map fk-column-name="DEPARTMENT_ID" pk-column-name="DEPARTMENT_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="DEPARTMENTS" fk-table-schema="HR" fk-table-name="EMPLOYEES" fk-name="EMP_DEPT_FK">
+        <key-map fk-column-name="DEPARTMENT_ID" pk-column-name="DEPARTMENT_ID"/>
+      </relation>
+    </entity>
+    <entity id="EMPLOYEES" table-type="TABLE" table-name="EMPLOYEES">
+      <column id="HR.EMPLOYEES.EMPLOYEE_ID" column-name="EMPLOYEE_ID" data-type="NUMBER" sql-type="3" column-size="6"/>
+      <column id="HR.EMPLOYEES.FIRST_NAME" column-name="FIRST_NAME" data-type="VARCHAR2" sql-type="12" column-size="20" nullable="not null"/>
+      <column id="HR.EMPLOYEES.LAST_NAME" column-name="LAST_NAME" data-type="VARCHAR2" sql-type="12" column-size="25"/>
+      <column id="HR.EMPLOYEES.EMAIL" column-name="EMAIL" data-type="VARCHAR2" sql-type="12" column-size="25"/>
+      <column id="HR.EMPLOYEES.PHONE_NUMBER" column-name="PHONE_NUMBER" data-type="VARCHAR2" sql-type="12" column-size="20" nullable="not null"/>
+      <column id="HR.EMPLOYEES.HIRE_DATE" column-name="HIRE_DATE" data-type="DATE" sql-type="93" column-size="7"/>
+      <column id="HR.EMPLOYEES.JOB_ID" column-name="JOB_ID" data-type="VARCHAR2" sql-type="12" column-size="10"/>
+      <column id="HR.EMPLOYEES.SALARY" column-name="SALARY" data-type="NUMBER" sql-type="3" column-size="8" nullable="not null"/>
+      <column id="HR.EMPLOYEES.COMMISSION_PCT" column-name="COMMISSION_PCT" data-type="NUMBER" sql-type="3" column-size="2" nullable="not null"/>
+      <column id="HR.EMPLOYEES.MANAGER_ID" column-name="MANAGER_ID" data-type="NUMBER" sql-type="3" column-size="6" nullable="not null"/>
+      <column id="HR.EMPLOYEES.DEPARTMENT_ID" column-name="DEPARTMENT_ID" data-type="NUMBER" sql-type="3" column-size="4" nullable="not null"/>
+      <primary-key constraint-name="EMP_EMP_ID_PK">
+        <column column-name="EMPLOYEE_ID"/>
+      </primary-key>
+      <relation type="references" pk-table-schema="HR" pk-table-name="EMPLOYEES" fk-table-schema="HR" fk-table-name="EMPLOYEES" fk-name="EMP_MANAGER_FK">
+        <key-map fk-column-name="MANAGER_ID" pk-column-name="EMPLOYEE_ID"/>
+      </relation>
+      <relation type="references" pk-table-schema="HR" pk-table-name="DEPARTMENTS" fk-table-schema="HR" fk-table-name="EMPLOYEES" fk-name="EMP_DEPT_FK">
+        <key-map fk-column-name="DEPARTMENT_ID" pk-column-name="DEPARTMENT_ID"/>
+      </relation>
+      <relation type="references" pk-table-schema="HR" pk-table-name="JOBS" fk-table-schema="HR" fk-table-name="EMPLOYEES" fk-name="EMP_JOB_FK">
+        <key-map fk-column-name="JOB_ID" pk-column-name="JOB_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="EMPLOYEES" fk-table-schema="HR" fk-table-name="DEPARTMENTS" fk-name="DEPT_MGR_FK">
+        <key-map fk-column-name="MANAGER_ID" pk-column-name="EMPLOYEE_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="EMPLOYEES" fk-table-schema="HR" fk-table-name="EMPLOYEES" fk-name="EMP_MANAGER_FK">
+        <key-map fk-column-name="MANAGER_ID" pk-column-name="EMPLOYEE_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="EMPLOYEES" fk-table-schema="HR" fk-table-name="JOB_HISTORY" fk-name="JHIST_EMP_FK">
+        <key-map fk-column-name="EMPLOYEE_ID" pk-column-name="EMPLOYEE_ID"/>
+      </relation>
+    </entity>
+    <entity id="EMP_DETAILS_VIEW" table-type="VIEW" table-name="EMP_DETAILS_VIEW">
+      <column id="HR.EMP_DETAILS_VIEW.EMPLOYEE_ID" column-name="EMPLOYEE_ID" data-type="NUMBER" sql-type="3" column-size="6"/>
+      <column id="HR.EMP_DETAILS_VIEW.JOB_ID" column-name="JOB_ID" data-type="VARCHAR2" sql-type="12" column-size="10"/>
+      <column id="HR.EMP_DETAILS_VIEW.MANAGER_ID" column-name="MANAGER_ID" data-type="NUMBER" sql-type="3" column-size="6" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.DEPARTMENT_ID" column-name="DEPARTMENT_ID" data-type="NUMBER" sql-type="3" column-size="4" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.LOCATION_ID" column-name="LOCATION_ID" data-type="NUMBER" sql-type="3" column-size="4" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.COUNTRY_ID" column-name="COUNTRY_ID" data-type="CHAR" sql-type="1" column-size="2" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.FIRST_NAME" column-name="FIRST_NAME" data-type="VARCHAR2" sql-type="12" column-size="20" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.LAST_NAME" column-name="LAST_NAME" data-type="VARCHAR2" sql-type="12" column-size="25"/>
+      <column id="HR.EMP_DETAILS_VIEW.SALARY" column-name="SALARY" data-type="NUMBER" sql-type="3" column-size="8" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.COMMISSION_PCT" column-name="COMMISSION_PCT" data-type="NUMBER" sql-type="3" column-size="2" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.DEPARTMENT_NAME" column-name="DEPARTMENT_NAME" data-type="VARCHAR2" sql-type="12" column-size="30"/>
+      <column id="HR.EMP_DETAILS_VIEW.JOB_TITLE" column-name="JOB_TITLE" data-type="VARCHAR2" sql-type="12" column-size="35"/>
+      <column id="HR.EMP_DETAILS_VIEW.CITY" column-name="CITY" data-type="VARCHAR2" sql-type="12" column-size="30"/>
+      <column id="HR.EMP_DETAILS_VIEW.STATE_PROVINCE" column-name="STATE_PROVINCE" data-type="VARCHAR2" sql-type="12" column-size="25" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.COUNTRY_NAME" column-name="COUNTRY_NAME" data-type="VARCHAR2" sql-type="12" column-size="40" nullable="not null"/>
+      <column id="HR.EMP_DETAILS_VIEW.REGION_NAME" column-name="REGION_NAME" data-type="VARCHAR2" sql-type="12" column-size="25" nullable="not null"/>
+    </entity>
+    <entity id="JOBS" table-type="TABLE" table-name="JOBS">
+      <column id="HR.JOBS.JOB_ID" column-name="JOB_ID" data-type="VARCHAR2" sql-type="12" column-size="10"/>
+      <column id="HR.JOBS.JOB_TITLE" column-name="JOB_TITLE" data-type="VARCHAR2" sql-type="12" column-size="35"/>
+      <column id="HR.JOBS.MIN_SALARY" column-name="MIN_SALARY" data-type="NUMBER" sql-type="3" column-size="6" nullable="not null"/>
+      <column id="HR.JOBS.MAX_SALARY" column-name="MAX_SALARY" data-type="NUMBER" sql-type="3" column-size="6" nullable="not null"/>
+      <primary-key constraint-name="JOB_ID_PK">
+        <column column-name="JOB_ID"/>
+      </primary-key>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="JOBS" fk-table-schema="HR" fk-table-name="JOB_HISTORY" fk-name="JHIST_JOB_FK">
+        <key-map fk-column-name="JOB_ID" pk-column-name="JOB_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="JOBS" fk-table-schema="HR" fk-table-name="EMPLOYEES" fk-name="EMP_JOB_FK">
+        <key-map fk-column-name="JOB_ID" pk-column-name="JOB_ID"/>
+      </relation>
+    </entity>
+    <entity id="JOB_HISTORY" table-type="TABLE" table-name="JOB_HISTORY">
+      <column id="HR.JOB_HISTORY.EMPLOYEE_ID" column-name="EMPLOYEE_ID" data-type="NUMBER" sql-type="3" column-size="6"/>
+      <column id="HR.JOB_HISTORY.START_DATE" column-name="START_DATE" data-type="DATE" sql-type="93" column-size="7"/>
+      <column id="HR.JOB_HISTORY.END_DATE" column-name="END_DATE" data-type="DATE" sql-type="93" column-size="7"/>
+      <column id="HR.JOB_HISTORY.JOB_ID" column-name="JOB_ID" data-type="VARCHAR2" sql-type="12" column-size="10"/>
+      <column id="HR.JOB_HISTORY.DEPARTMENT_ID" column-name="DEPARTMENT_ID" data-type="NUMBER" sql-type="3" column-size="4" nullable="not null"/>
+      <primary-key constraint-name="JHIST_EMP_ID_ST_DATE_PK">
+        <column column-name="EMPLOYEE_ID"/>
+        <column column-name="START_DATE"/>
+      </primary-key>
+      <relation type="references" pk-table-schema="HR" pk-table-name="DEPARTMENTS" fk-table-schema="HR" fk-table-name="JOB_HISTORY" fk-name="JHIST_DEPT_FK">
+        <key-map fk-column-name="DEPARTMENT_ID" pk-column-name="DEPARTMENT_ID"/>
+      </relation>
+      <relation type="references" pk-table-schema="HR" pk-table-name="JOBS" fk-table-schema="HR" fk-table-name="JOB_HISTORY" fk-name="JHIST_JOB_FK">
+        <key-map fk-column-name="JOB_ID" pk-column-name="JOB_ID"/>
+      </relation>
+      <relation type="references" pk-table-schema="HR" pk-table-name="EMPLOYEES" fk-table-schema="HR" fk-table-name="JOB_HISTORY" fk-name="JHIST_EMP_FK">
+        <key-map fk-column-name="EMPLOYEE_ID" pk-column-name="EMPLOYEE_ID"/>
+      </relation>
+    </entity>
+    <entity id="LOCATIONS" table-type="TABLE" table-name="LOCATIONS">
+      <column id="HR.LOCATIONS.LOCATION_ID" column-name="LOCATION_ID" data-type="NUMBER" sql-type="3" column-size="4"/>
+      <column id="HR.LOCATIONS.STREET_ADDRESS" column-name="STREET_ADDRESS" data-type="VARCHAR2" sql-type="12" column-size="40" nullable="not null"/>
+      <column id="HR.LOCATIONS.POSTAL_CODE" column-name="POSTAL_CODE" data-type="VARCHAR2" sql-type="12" column-size="12" nullable="not null"/>
+      <column id="HR.LOCATIONS.CITY" column-name="CITY" data-type="VARCHAR2" sql-type="12" column-size="30"/>
+      <column id="HR.LOCATIONS.STATE_PROVINCE" column-name="STATE_PROVINCE" data-type="VARCHAR2" sql-type="12" column-size="25" nullable="not null"/>
+      <column id="HR.LOCATIONS.COUNTRY_ID" column-name="COUNTRY_ID" data-type="CHAR" sql-type="1" column-size="2" nullable="not null"/>
+      <primary-key constraint-name="LOC_ID_PK">
+        <column column-name="LOCATION_ID"/>
+      </primary-key>
+      <relation type="references" pk-table-schema="HR" pk-table-name="COUNTRIES" fk-table-schema="HR" fk-table-name="LOCATIONS" fk-name="LOC_C_ID_FK">
+        <key-map fk-column-name="COUNTRY_ID" pk-column-name="COUNTRY_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="LOCATIONS" fk-table-schema="HR" fk-table-name="DEPARTMENTS" fk-name="DEPT_LOC_FK">
+        <key-map fk-column-name="LOCATION_ID" pk-column-name="LOCATION_ID"/>
+      </relation>
+    </entity>
+    <entity id="REGIONS" table-type="TABLE" table-name="REGIONS">
+      <column id="HR.REGIONS.REGION_ID" column-name="REGION_ID" data-type="NUMBER" sql-type="3" column-size="22"/>
+      <column id="HR.REGIONS.REGION_NAME" column-name="REGION_NAME" data-type="VARCHAR2" sql-type="12" column-size="25" nullable="not null"/>
+      <primary-key constraint-name="REG_ID_PK">
+        <column column-name="REGION_ID"/>
+      </primary-key>
+      <relation type="referenced-by" pk-table-schema="HR" pk-table-name="REGIONS" fk-table-schema="HR" fk-table-name="COUNTRIES" fk-name="COUNTR_REG_FK">
+        <key-map fk-column-name="REGION_ID" pk-column-name="REGION_ID"/>
+      </relation>
+    </entity>
+  </schema>
+</schema>

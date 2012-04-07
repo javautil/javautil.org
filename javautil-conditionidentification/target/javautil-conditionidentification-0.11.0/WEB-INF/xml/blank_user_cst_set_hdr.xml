@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<resultset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<row>
+		<cst_set_hdr_nbr></cst_set_hdr_nbr>
+		<ut_user_mfr_nbr></ut_user_mfr_nbr>
+		<set_nm></set_nm>
+		<descr></descr>
+	</row>
+</resultset>

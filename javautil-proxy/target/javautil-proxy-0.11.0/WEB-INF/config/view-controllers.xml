@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	default-autowire="byName">
+	
+    <bean id="workbookProxy" class="org.javautil.proxy.controller.Proxy">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+            	<property name="paramName" value="method"/>
+            	<property name="defaultMethodName" value="download"/>
+    		</bean>
+		</property>
+		<property name="proxyController" ref="workbookProxyController"/>
+		<property name="parameterChecker" ref="workbookProxyParameterChecker" />
+	</bean>
+	
+	<bean name="workbookProxyController" class="org.javautil.controller.ProxyController">
+		<property name="remoteUri" value="http://localhost:8081/view/workbook/download"/>
+		<property name="addTrailingSlash" value="false" />
+	</bean>
+	
+	<bean id="reportProxy" class="org.javautil.proxy.controller.Proxy">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+            	<property name="paramName" value="method"/>
+            	<property name="defaultMethodName" value="download"/>
+    		</bean>
+		</property>
+		<property name="proxyController" ref="reportProxyController"/>
+		<property name="parameterChecker" ref="reportProxyParameterChecker" />
+	</bean>
+	
+	<bean name="reportProxyController" class="org.javautil.controller.ProxyController">
+		<property name="remoteUri" value="http://winserver1.custdata.com:90/dev60cgi/rwcgi60.exe" />
+		<property name="addTrailingSlash" value="false" />
+		<property name="stripParameterNames">
+	    	<list>
+	        	<value>datasourceName</value>
+	    	</list>
+  		</property>		
+	</bean>
+	
+	<bean id="controllerMappingProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="/workbookproxy/**/*">workbookProxy</prop>
+				<prop key="/reportproxy/**/*">reportProxy</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

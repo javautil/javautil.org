@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>javautil-proxy</display-name>
+  
+  	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/config/context-*.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>viewServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/view-*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup> 
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>viewServlet</servlet-name>
+		<url-pattern>/view/*</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+	    <welcome-file>index.html</welcome-file>
+	    <welcome-file>index.htm</welcome-file>
+	    <welcome-file>index.jsp</welcome-file>
+	    <welcome-file>default.html</welcome-file>
+	    <welcome-file>default.htm</welcome-file>
+	    <welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- BASIC AUTHENTICATION IS ENABLED -->
+ 	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>javautil-proxy</web-resource-name>
+			<url-pattern>/view/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>focusworkbooksserver</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>javautil-proxy</realm-name>
+	</login-config>
+
+	<security-role>
+		<role-name>focusworkbooksserver</role-name>
+	</security-role> 
+		
+</web-app>

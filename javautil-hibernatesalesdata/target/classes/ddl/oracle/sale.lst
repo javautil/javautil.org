@@ -1,0 +1,256 @@
+SQL> 
+SQL> create table product_etl
+  2  (
+  3  	     product_etl_id    number(9) not null,
+  4  	     upc10	    varchar2(10),
+  5  	     product_status varchar2(1),
+  6  	     descr	    varchar2(50),
+  7  	     narrative	    clob
+  8  );
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> create table product
+  2  (
+  3  	     product_id    number(9) not null,
+  4  	     upc10	    varchar2(10) not null,
+  5  	     product_status varchar2(1) not null,
+  6  	     descr	    varchar2(50),
+  7  	     narrative	    clob
+  8  );
+
+Table created.
+
+SQL> 
+SQL> comment on table product is
+  2  'Product Master
+  3  
+SQL> ';
+SP2-0042: unknown command "'" - rest of line ignored.
+SQL> 
+SQL> comment on column product.upc10 is '10 digit Universal Product Code, the American equivalent of the EAN';
+
+Comment created.
+
+SQL> 
+SQL> comment on column product.status is
+  2  'The status of the item.
+  3   A - Active
+  4   S - Setup
+  5   I - Inactive
+  6  
+SQL> ';
+SP2-0042: unknown command "'" - rest of line ignored.
+SQL> 
+SQL> alter table product add constraint product_pk
+  2  primary key (product_id);
+
+Table altered.
+
+SQL> 
+SQL> alter table product add constraint product_uq unique (upc10);
+
+Table altered.
+
+SQL> 
+SQL> create sequence product_seq cache 1000;
+
+Sequence created.
+
+SQL> --
+SQL> --
+SQL> --
+SQL> 
+SQL> create sequence customer_seq cache  100;
+
+Sequence created.
+
+SQL> 
+SQL> -- todo everything should be nullable until setup
+SQL> -- having inside_salesperson_id not null allows for a great deal of query optimization
+SQL> -- therefor this should not be dependent on customer status
+SQL> -- todo should have a table to hold until actually set up
+SQL> create table customer
+  2  (
+  3  	     customer_id number(9) not null,
+  4  	     customer_status varchar2(1),
+  5  	     name	  varchar2(30),
+  6  	     addr_1	  varchar2(30),
+  7  	     addr_2	  varchar2(30),
+  8  	     city	  varchar2(25),
+  9  	     state	  varchar2(2),
+ 10  	     zip_cd	  varchar2(10),
+ 11  	     outside_salesperson_id number(9),
+ 12  	     inside_salesperson_id  number(9)  not null
+ 13  );
+
+Table created.
+
+SQL> 
+SQL> -- todo comment every column and what the sequence is
+SQL> alter table customer add  constraint customer_pk primary key
+  2  (customer_id);
+
+Table altered.
+
+SQL> 
+SQL> 
+SQL> create bitmap index customer_ak1 on customer(outside_salesperson_id);
+
+Index created.
+
+SQL> 
+SQL> create bitmap index customer_ak2 on customer(inside_salesperson_id);
+
+Index created.
+
+SQL> 
+SQL> comment on column product.upc10 is
+  2  ' Why is this varchar2 if it is a number?';
+
+Comment created.
+
+SQL> 
+SQL> create table sale
+  2  (
+  3  	     sale_id	number(18) not null,
+  4  	     ship_dt	 date not null,
+  5  	     qty	 number(13,5) not null,
+  6  	     product_id number(9) not null,
+  7  	     customer_id number(9) not null
+  8  );
+
+Table created.
+
+SQL> 
+SQL> create sequence sale_seq cache 1000;
+
+Sequence created.
+
+SQL> 
+SQL> alter table sale add constraint sales_pk primary key (sale_id);
+
+Table altered.
+
+SQL> 
+SQL> alter table sale
+  2  add constraint s_c_fk
+  3  foreign key (customer_id)
+  4  references customer(customer_id);
+
+Table altered.
+
+SQL> 
+SQL> alter table sale
+  2  add constraint s_p_fk
+  3  foreign key (product_id)
+  4  references product(product_id);
+
+Table altered.
+
+SQL> 
+SQL> alter table sale add constraint sale_pk primary key (sale_id);
+alter table sale add constraint sale_pk primary key (sale_id)
+                                        *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> 
+SQL> --
+SQL> --
+SQL> --
+SQL> create table salesperson
+  2  (
+  3  	     salesperson_id number(9),
+  4  	     display_name   varchar2(40),
+  5  	     first_name     varchar2(16),
+  6  	     last_name	    varchar2(20)
+  7  );
+
+Table created.
+
+SQL> 
+SQL> alter table salesperson add constraint salesperson_pk
+  2  primary key (salesperson_id);
+
+Table altered.
+
+SQL> 
+SQL> create sequence salesperson_seq cache 100;
+
+Sequence created.
+
+SQL> /*
+SQL>  alter table customer
+SQL>  add constraint c_is_fk
+SQL>  foreign key (inside_salesperson_id)
+SQL>  references salesperson(salesperson_id);
+SQL> */
+SQL> 
+SQL> -- todo restore after figuring out how to get reveng to show reference also
+SQL> 
+SQL> -- alter table customer add constraint c_sp_fk1  foreign key
+SQL> -- (inside_salesperson_id) references salesperson (salesperson_id);
+SQL> 
+SQL> 
+SQL> -- alter table customer add constraint c_sp_fk2  foreign key
+SQL> -- (outside_salesperson_id) references salesperson (salesperson_id);
+SQL> 
+SQL> create view customer_sale_product
+  2  as
+  3  select
+  4  	     c.name,
+  5  	     c.addr_1,
+  6  	     c.addr_2,
+  7  	     c.city,
+  8  	     c.state,
+  9  	     c.zip_cd,
+ 10  	     p.upc10,
+ 11  	     p.product_status,
+ 12  	     p.descr	     product_descr,
+ 13  	     p.narrative,
+ 14  	     sp.salesperson_id inside_salesperson_id,
+ 15  	     sp.display_name inside_rep__display_name,
+ 16  	     sp.first_name   inside_rep_first_name,
+ 17  	     sp.last_name    inside_rep_last_name,
+ 18  	     s.sale_id,
+ 19  	     s.ship_dt,
+ 20  	     s.qty,
+ 21  	     s.product_id,
+ 22  	     s.customer_id
+ 23  from
+ 24  	     customer c,
+ 25  	     product p,
+ 26  	     salesperson sp,
+ 27  	     sale s
+ 28  where   c.inside_salesperson_id = sp.salesperson_id(+) and
+ 29  	     s.product_id = p.product_id and
+ 30  	     c.customer_id = s.customer_id;
+
+View created.
+
+SQL> 
+SQL> alter view  customer_sale_product
+  2  add constraint customer_sale_product_pk
+  3  primary key (sale_id) disable novalidate ;
+
+View altered.
+
+SQL> 
+SQL> create global temporary table gtt_number
+  2  (
+  3  	     nbr number
+  4  ) on commit delete rows;
+
+Table created.
+
+SQL> 
+SQL> alter table customer add constraint c_s_fk foreign key
+  2  (inside_salesperson_id) references salesperson(salesperson_id);
+
+Table altered.
+
+SQL> exit

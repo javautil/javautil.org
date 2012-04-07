@@ -1,0 +1,5 @@
+"STATE","CITY","MONTH","TICKETS","Fine","Legal Fee"
+"TX","DALLAS",1,42.0,311.0,380.0
+"TX","DALLAS",2,27.0,321.0
+"TX","HOUSTON",1,32.0,312.0,0.0
+"TX","Quoted""Text",3,17.0

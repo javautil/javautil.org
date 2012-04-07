@@ -1,0 +1,8 @@
+"columnName","columnIndex","dataType","precision","scale","columnDisplaySize","comments","workbookFormula","excelFormat","horizontalAlignment","excelFormula"
+"Customer ID",,"NUMERIC",,,,,,,"Right",
+"Customer Name",,"STRING",,,,,,,"Left",
+"Product ID",,"STRING",,,,,,,"Left",
+"Product Description",,"STRING",,,,,,,"Left",
+"Sales Date",,"DATE",,,,,,,,
+"Quantity",,"NUMERIC",,,,,,,,"##,##.99"
+"Dollars",,"NUMERIC",,,,,,,,"##,##.99"

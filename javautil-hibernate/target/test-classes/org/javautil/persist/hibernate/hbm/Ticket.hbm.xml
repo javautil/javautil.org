@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 11, 2009 2:15:24 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="org.javautil.persist.hibernate.hbm.Ticket" table="TICKET" schema="PUBLIC">
+		<id name="ticketNo" type="string">
+			<column name="TICKET_NO" length="32" />
+			<generator class="uuid" />
+		</id>
+		<property name="applicationName" type="string">
+			<column name="APPLICATION_NAME" length="48" />
+		</property>
+		<property name="userSessionIdHash" type="string">
+			<column name="USER_SESSION_ID_HASH" length="64" />
+		</property>
+		<property name="ipAddress" type="string">
+			<column name="IP_ADDRESS" length="24" />
+		</property>
+		<property name="authDttm" type="date">
+			<column name="AUTH_DTTM" length="7" not-null="true" />
+		</property>
+		<property name="expireDttm" type="date">
+			<column name="EXPIRE_DTTM" length="7" />
+		</property>
+		<property name="logoutDttm" type="date">
+			<column name="LOGOUT_DTTM" length="7" />
+		</property>
+	</class>
+</hibernate-mapping>
