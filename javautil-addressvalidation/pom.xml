@@ -41,6 +41,18 @@
    <artifactId>javautil-commandline</artifactId>
    <version>${org.javautil.commandline.version}</version>
   </dependency>
+   <dependency>
+                        <groupId>commons-dbcp</groupId>
+                        <artifactId>commons-dbcp</artifactId>
+                        <version>1.2.2</version>
+                        <scope>test</scope>
+                </dependency>
+  <dependency>
+                        <groupId>com.oracle</groupId>
+                        <artifactId>oracle-jdbc6</artifactId>
+                        <version>${com.oracle.version}</version>
+                        <scope>test</scope>
+                </dependency>
 
   <dependency>
    <groupId>org.javautil</groupId>

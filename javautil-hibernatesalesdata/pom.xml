@@ -49,16 +49,17 @@
 			<artifactId>javautil-oracle</artifactId>
 			<version>${org.javautil.oracle.version}</version>
 		</dependency>
+   <dependency>
+   <groupId>org.javautil</groupId>
+   <artifactId>javautil-hibernate</artifactId>
+   <version>${org.javautil.hibernate.version}</version>
+  </dependency>
 		<dependency>
 			<groupId>org.javautil</groupId>
 			<artifactId>javautil-jdbc</artifactId>
 			<version>${org.javautil.jdbc.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.javautil</groupId>
-			<artifactId>javautil-hibernate</artifactId>
-			<version>${org.javautil.hibernate.version}</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -91,11 +92,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${org.slf4j.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
+	
 		<!-- hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

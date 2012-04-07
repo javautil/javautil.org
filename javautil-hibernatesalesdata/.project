@@ -5,7 +5,6 @@
 	<projects>
 		<project>javautil-commandline</project>
 		<project>javautil-core</project>
-		<project>javautil-hibernate</project>
 		<project>javautil-jdbc</project>
 		<project>javautil-oracle</project>
 		<project>javautil-test</project>
