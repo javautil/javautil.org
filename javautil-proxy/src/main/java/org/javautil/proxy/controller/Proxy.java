@@ -33,11 +33,10 @@ public class Proxy extends MultiActionController {
 
 	/**
 	 * Takes an incoming request from the website and proxys the call to the
-	 * FocusWorkbookServer.
+	 * WorkbookServer.
 	 * 
-	 * The JAAS username is used as the datasource name on the
-	 * FocusWorkbookServer and is added as an argument in the call as
-	 * datasourceName.
+	 * The JAAS username is used as the datasource name on the WorkbookServer
+	 * and is added as an argument in the call as datasourceName.
 	 * 
 	 * @throws Exception
 	 * @throws Exception

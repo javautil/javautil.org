@@ -47,12 +47,6 @@
                         <version>1.2.2</version>
                         <scope>test</scope>
                 </dependency>
-  <dependency>
-                        <groupId>com.oracle</groupId>
-                        <artifactId>oracle-jdbc6</artifactId>
-                        <version>${com.oracle.version}</version>
-                        <scope>test</scope>
-                </dependency>
 
   <dependency>
    <groupId>org.javautil</groupId>
@@ -148,18 +142,18 @@
     <dependencies>
      <!-- specify the dependent JDBC driver here -->
      <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>oracle-jdbc6</artifactId>
-      <version>11.1</version>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${com.h2database.version}</version>
      </dependency>
     </dependencies>
 
     <!-- common configuration shared by all executions -->
     <configuration>
-     <driver>oracle.jdbc.driver.OracleDriver</driver>
-     <url>jdbc:oracle:thin:@localhost:1526:XE</url>
-     <username>javautil</username>
-     <password>tutorial</password>
+     <driver>org.h2.Driver</driver>
+     <url>jdbc:h2:target/database/h2</url>
+     <username>sample</username>
+     <password>data</password>
 
 
     </configuration>

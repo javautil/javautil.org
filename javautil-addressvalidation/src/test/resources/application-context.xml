@@ -7,22 +7,7 @@
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-     <import resource="file:../javautil-pom/src/test/resources/Spring-Oracle-XE-JAVAUTIL.xml"/>
-
-
-	<!-- TODO cut down --> 
-    <!--  
-	<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-      
-		<property name="driverClassName" value="org.javautil.jdbc.datasources.NonConnectionPooledDatasource" />
-		<property name="url" value="jdbc:h2:mem:" />
-		<property name="username" value="h2" />
-		<property name="password" value="h2 h2 " />
-        <property name="initialSize" value="1" /> 
-		<property name="maxActive" value="10" />
-	</bean>
-    -->
+     <import resource="file:../javautil-pom/src/test/resources/local-target-h2.xml"/>
 
 	
 </beans>
