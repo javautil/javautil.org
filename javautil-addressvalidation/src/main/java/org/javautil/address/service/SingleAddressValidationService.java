@@ -6,7 +6,7 @@ import org.javautil.address.USAddressStandardizer;
 import org.javautil.address.exception.AddressStandardizationException;
 import org.javautil.address.interfaces.AddressStandardizer;
 import org.javautil.address.interfaces.AuthoritativeAddress;
-import org.javautil.address.service.usps.UspsAddressVerificationRequest;
+import org.javautil.address.service.usps.UspsAddressValidationRequest;
 import org.javautil.address.usps.AddressValidationException;
 
 /**
@@ -39,7 +39,7 @@ public class SingleAddressValidationService {
 	 * 
 	 */
 
-	private UspsAddressVerificationRequest validator;
+	private UspsAddressValidationRequest validator;
 
 	/**
 	 * <p>Getter for the field <code>uspsURL</code>.</p>
@@ -62,18 +62,18 @@ public class SingleAddressValidationService {
 	/**
 	 * <p>Getter for the field <code>validator</code>.</p>
 	 *
-	 * @return a {@link org.javautil.address.service.usps.UspsAddressVerificationRequest} object.
+	 * @return a {@link org.javautil.address.service.usps.UspsAddressValidationRequest} object.
 	 */
-	public UspsAddressVerificationRequest getValidator() {
+	public UspsAddressValidationRequest getValidator() {
 		return validator;
 	}
 
 	/**
 	 * <p>Setter for the field <code>validator</code>.</p>
 	 *
-	 * @param validator a {@link org.javautil.address.service.usps.UspsAddressVerificationRequest} object.
+	 * @param validator a {@link org.javautil.address.service.usps.UspsAddressValidationRequest} object.
 	 */
-	public void setValidator(final UspsAddressVerificationRequest validator) {
+	public void setValidator(final UspsAddressValidationRequest validator) {
 		this.validator = validator;
 	}
 
@@ -111,7 +111,7 @@ public class SingleAddressValidationService {
 		if (uspsURL == null) {
 			throw new IllegalStateException("uspsURL is null");
 		}
-		validator = new UspsAddressVerificationRequest(uspsURL,
+		validator = new UspsAddressValidationRequest(uspsURL,
 				getUspsAcctCode());
 	}
 

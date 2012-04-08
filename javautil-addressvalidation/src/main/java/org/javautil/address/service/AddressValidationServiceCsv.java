@@ -21,7 +21,6 @@ import org.javautil.persistence.PersistenceException;
 public class AddressValidationServiceCsv extends
 		AbstractAddressValidationService {
 
-	/** Constant <code>revision="$Revision: 1.5 $"</code> */
 	public static final String revision = "$Revision: 1.5 $";
 
 	private AddressValidationServiceArguments arguments;
@@ -60,7 +59,7 @@ public class AddressValidationServiceCsv extends
 
 	@Override
 	protected void persistChanges() throws PersistenceException {
-		getPersister().update(getAddresses());
+		getPersister().insert(getAddresses());
 	}
 
 	/**
@@ -86,10 +85,12 @@ public class AddressValidationServiceCsv extends
 		this.arguments = arguments;
 	}
 
-	public void process() throws PersistenceException,
-			AddressValidationException, SQLException {
+	@Override
+	public void process(final AddressValidationServiceArguments arguments)
+			throws PersistenceException, AddressValidationException {
 		persister.setInputFile(new File(arguments.getInputFileName()));
 		persister.setOutputFile(new File(arguments.getOutputFileName()));
+		super.setPersister(persister);
 		super.process(arguments);
 		persister.dispose();
 	}

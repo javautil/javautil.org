@@ -51,6 +51,9 @@ public class UtAddrValidateCsvMarshaller implements AddressPersistence {
 	}
 
 	public Object[] read() {
+		if (inputMarshaller == null) {
+			throw new IllegalStateException("inputMarshaller is null");
+		}
 		List<String> objects;
 		try {
 			objects = inputMarshaller.readLine();

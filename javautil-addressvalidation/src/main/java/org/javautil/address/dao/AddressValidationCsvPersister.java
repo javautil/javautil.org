@@ -1,7 +1,6 @@
 package org.javautil.address.dao;
 
 import java.io.File;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -52,7 +51,7 @@ public class AddressValidationCsvPersister implements AddressPersistence {
 		if (outFile == null) {
 			throw new IllegalArgumentException("outFile is null");
 		}
-		inputMarshaller.setOutputFileName(outFile.getPath());
+		outputMarshaller.setOutputFileName(outFile.getPath());
 	}
 
 	/** {@inheritDoc} */
@@ -79,7 +78,7 @@ public class AddressValidationCsvPersister implements AddressPersistence {
 
 	/** {@inheritDoc} */
 	@Override
-	public void insert(Iterable<UtAddressValidate> rows) throws SQLException {
+	public void insert(Iterable<UtAddressValidate> rows) {
 		for (UtAddressValidate row : rows) {
 			outputMarshaller.write(row);
 		}

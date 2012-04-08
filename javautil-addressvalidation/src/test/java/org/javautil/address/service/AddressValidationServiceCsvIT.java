@@ -3,17 +3,19 @@
  */
 package org.javautil.address.service;
 
-import java.sql.SQLException;
+import static org.junit.Assert.assertEquals;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import org.javautil.address.dao.AddressPersistence;
 import org.javautil.address.service.usps.AddressValidationService;
 import org.javautil.address.usps.AddressValidationException;
 import org.javautil.address.usps.UspsValidationServicePropertyHelper;
 import org.javautil.commandline.CommandLineHandler;
-import org.javautil.jdbc.datasources.DataSourceInstantiationException;
+import org.javautil.file.FileComparator;
 import org.javautil.persistence.PersistenceException;
 import org.javautil.util.InvalidEnvironmentException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +40,6 @@ public class AddressValidationServiceCsvIT {
 	@Autowired
 	private AddressPersistence persister;
 
-	@Test
-	public void notATest() {
-
-	}
-
 	/**
 	 * <p>
 	 * addressValidationServiceArgumentsTest.
@@ -58,16 +55,20 @@ public class AddressValidationServiceCsvIT {
 	 *             if any.
 	 * @throws org.javautil.address.usps.AddressValidationException
 	 *             if any.
+	 * @throws FileNotFoundException
 	 */
-	@Ignore
 	@Test
-	public void addressValidationServiceArgumentsTest() throws SQLException,
-			DataSourceInstantiationException, InvalidEnvironmentException,
-			PersistenceException, AddressValidationException {
+	public void addressValidationServiceArgumentsTest()
+			throws InvalidEnvironmentException, PersistenceException,
+			AddressValidationException, FileNotFoundException {
 		final String uspsAcct = new UspsValidationServicePropertyHelper()
 				.getUserId();
+		File destDir = new File("target/actualData");
+		destDir.mkdirs();
 		final String[] parms = { "-runNbr", "1", "-uspsAcct", uspsAcct,
-				"-noDatasource" };
+				"-noDatasource", "-inputFile",
+				"src/test/resources/UspsTestDataInput.csv", "-outputFile",
+				destDir.getPath() + "/" + "UspsTestDataOutput.actual.csv" };
 
 		final AddressValidationServiceArguments args = new AddressValidationServiceArguments();
 
@@ -76,6 +77,12 @@ public class AddressValidationServiceCsvIT {
 		validationService.setPersister(persister);
 		clh.evaluateArguments(parms);
 		validationService.process(args);
+		FileComparator isc = new FileComparator();
+		int result = isc.compare(
+				"src/expectedData/UspsTestDataOutput.expected.csv",
+				destDir.getPath() + "/" + "UspsTestDataOutput.actual.csv");
+		assertEquals(0, result);
+
 	}
 
 	public AddressValidationService getAvs() {

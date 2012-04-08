@@ -54,12 +54,6 @@
    <version>${org.javautil.jdbc.version}</version>
   </dependency>
   <dependency>
-   <groupId>org.javautil</groupId>
-   <artifactId>javautil-oracle</artifactId>
-   <version>${org.javautil.oracle.version}</version>
-   <scope>test</scope>
-  </dependency>
-  <dependency>
    <groupId>com.h2database</groupId>
    <artifactId>h2</artifactId>
    <version>${com.h2database.version}</version>
@@ -166,10 +160,9 @@
       </goals>
       <configuration>
        <srcFiles>
-        <srcFile>src/main/ddl/oracle/drop_tables.sql</srcFile>
-        <srcFile>src/main/ddl/oracle/address-validation.sql</srcFile>
+        <srcFile>src/main/ddl/h2/drop_tables.sql</srcFile>
+        <srcFile>src/main/ddl/h2/address-validation.sql</srcFile>
        <srcFile>src/test/dml/populate_ut_addr_validate.sql</srcFile>
-      
        </srcFiles>
        <onError>continue</onError>
       </configuration>

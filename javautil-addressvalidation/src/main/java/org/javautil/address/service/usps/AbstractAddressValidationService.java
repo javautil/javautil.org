@@ -1,6 +1,5 @@
 package org.javautil.address.service.usps;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public abstract class AbstractAddressValidationService implements
 	private AddressPersistence persister;
 	private int processedCount;
 	// private int uncommittedCount = 0;
-	private UspsAddressVerificationRequest validator;
+	private UspsAddressValidationRequest validator;
 	private final UspsValidationServicePropertyHelper helper = new UspsValidationServicePropertyHelper();
 	protected boolean serviceMode = false;
 	private final USAddressStandardizer standardizer = new USAddressStandardizer();
@@ -96,7 +95,7 @@ public abstract class AbstractAddressValidationService implements
 			uspsURL = helper.getTestUrl();
 
 		}
-		validator = new UspsAddressVerificationRequest(uspsURL,
+		validator = new UspsAddressValidationRequest(uspsURL,
 				arguments.getUspsAcct());
 		if (arguments.isGeoCode()) {
 			geoUserId = EnvironmentProperty.getMandatoryProperty(GEO_USER_ID);
@@ -339,8 +338,7 @@ public abstract class AbstractAddressValidationService implements
 	 */
 	@Override
 	public void process(final AddressValidationServiceArguments arguments)
-			throws PersistenceException, AddressValidationException,
-			SQLException {
+			throws PersistenceException, AddressValidationException {
 		this.arguments = arguments;
 
 		init();
@@ -422,10 +420,10 @@ public abstract class AbstractAddressValidationService implements
 	 * </p>
 	 * 
 	 * @return a
-	 *         {@link org.javautil.address.service.usps.UspsAddressVerificationRequest}
+	 *         {@link org.javautil.address.service.usps.UspsAddressValidationRequest}
 	 *         object.
 	 */
-	public UspsAddressVerificationRequest getValidator() {
+	public UspsAddressValidationRequest getValidator() {
 		return validator;
 	}
 
@@ -436,10 +434,10 @@ public abstract class AbstractAddressValidationService implements
 	 * 
 	 * @param validator
 	 *            a
-	 *            {@link org.javautil.address.service.usps.UspsAddressVerificationRequest}
+	 *            {@link org.javautil.address.service.usps.UspsAddressValidationRequest}
 	 *            object.
 	 */
-	public void setValidator(UspsAddressVerificationRequest validator) {
+	public void setValidator(UspsAddressValidationRequest validator) {
 		this.validator = validator;
 	}
 

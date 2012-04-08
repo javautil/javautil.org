@@ -5,7 +5,7 @@ import org.javautil.address.interfaces.AddressStandardizer;
 import org.javautil.address.interfaces.AddressValidator;
 import org.javautil.address.interfaces.AuthoritativeAddress;
 import org.javautil.address.interfaces.StandardizedAddress;
-import org.javautil.address.service.usps.UspsAddressVerificationRequest;
+import org.javautil.address.service.usps.UspsAddressValidationRequest;
 import org.javautil.address.usps.AddressValidationException;
 
 /**
@@ -18,7 +18,7 @@ public class AddressProcessorImpl {
 
 	private final AddressStandardizer standardizer = new USAddressStandardizer();
 
-	private final AddressValidator validator = new UspsAddressVerificationRequest();
+	private final AddressValidator validator = new UspsAddressValidationRequest();
 
 	/**
 	 * <p>processAddress.</p>

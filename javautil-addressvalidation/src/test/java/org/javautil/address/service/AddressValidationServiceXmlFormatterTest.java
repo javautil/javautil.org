@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import org.apache.log4j.Logger;
 import org.javautil.address.AddressValidationRequest;
 import org.javautil.address.interfaces.Address;
-import org.javautil.address.service.usps.UspsAddressVerificationRequest;
+import org.javautil.address.service.usps.UspsAddressValidationRequest;
 import org.javautil.address.usps.UspsValidationServicePropertyHelper;
 import org.javautil.address.usps.UspsValidationTestData;
 import org.junit.After;
@@ -74,7 +74,7 @@ public class AddressValidationServiceXmlFormatterTest {
 		final Address address = UspsValidationTestData.getAddress1();
 		final AddressValidationRequest request = new AddressValidationRequest();
 		request.setRawAddress(address);
-		final UspsAddressVerificationRequest validator = new UspsAddressVerificationRequest(
+		final UspsAddressValidationRequest validator = new UspsAddressValidationRequest(
 				helper.getTestUrl(), helper.getUserId());
 		validator.addAddress(address);
 		final String rawUrl = validator.asRawURLText();

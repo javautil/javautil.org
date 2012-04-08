@@ -12,7 +12,7 @@ import org.javautil.lang.ArrayHelper;
  * @author jjs TODO replaceall \r \c \r\c \c\r with specified newline
  */
 public class CSVWriter {
-	private final Writer out;
+	private Writer out = null;
 	private static final String newline = System.getProperty("line.separator");
 	private boolean flushEveryLine = true;
 	private SimpleDateFormatter dateFormatter = new SimpleDateFormatter(
@@ -62,7 +62,6 @@ public class CSVWriter {
 	}
 
 	public CSVWriter() {
-		out = null;
 	}
 
 	public CSVWriter(final Writer w) {
@@ -162,7 +161,6 @@ public class CSVWriter {
 
 	public void close() throws IOException {
 		out.close();
-
 	}
 
 	/**
