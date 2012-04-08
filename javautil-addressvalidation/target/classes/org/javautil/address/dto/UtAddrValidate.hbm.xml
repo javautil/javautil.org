@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 10, 2009 9:40:21 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.address.dto.UtAddrValidate" table="UT_ADDR_VALIDATE" >
+        <comment>Data in this table is foreign keyed by user_mod_rqst tables. This table contains all records that have been or will be run through the address standardization and
+        validation process. It is intended that each raw ADDRESS in this table will reflect the currect status of each customer, Corp HQ, etc. address in the data source from
+        which it was populated. Raw address fields are input into the standardization process. Standardized address fields are output by the standardization process. Authoritative
+        address fields are output by the validation process, which verifies the address with an authority such as USPS. The Standardized Authoritative fields are output by
+        standardizing the address fields returned by the Authority. The Standardized Authoritative fields are currently not used.</comment>
+        <id name="utAddrValidateNbr" type="java.lang.Integer">
+            <column name="UT_ADDR_VALIDATE_NBR" precision="18" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">UT_ADDR_VALIDATE_SEQ</param>
+            </generator>
+        </id>
+        <property name="runNbr" type="java.lang.Integer">
+            <column name="RUN_NBR" precision="9" scale="0">
+                <comment>Used by the address standardization and validation java program to know which records in this table to process.</comment>
+            </column>
+        </property>
+        <property name="dataSrcNbr" type="java.lang.Integer">
+            <column name="DATA_SRC_NBR" precision="9" scale="0">
+                <comment>The identifier for the data source. This is the surrogate key from the DATA_SRC table.</comment>
+            </column>
+        </property>
+        <property name="dataSrcPk" type="java.lang.Integer">
+            <column name="DATA_SRC_PK" precision="18" scale="0">
+                <comment>Primary key of data in the table found in data_src.table_nm</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="40">
+                <comment>Name of the customer</comment>
+            </column>
+        </property>
+        <property name="rawAddr1" type="string">
+            <column name="RAW_ADDR_1" length="35">
+                <comment>The RAW address fields are populated from corresponding address fields in the data source.</comment>
+            </column>
+        </property>
+        <property name="rawAddr2" type="string">
+            <column name="RAW_ADDR_2" length="35" />
+        </property>
+        <property name="rawAddr3" type="string">
+            <column name="RAW_ADDR_3" length="35" />
+        </property>
+        <property name="rawCity" type="string">
+            <column name="RAW_CITY" length="25" />
+        </property>
+        <property name="rawStateCd" type="string">
+            <column name="RAW_STATE_CD" length="5" />
+        </property>
+        <property name="rawCntryCd" type="string">
+            <column name="RAW_CNTRY_CD" length="3" />
+        </property>
+        <property name="rawPostalCd" type="string">
+            <column name="RAW_POSTAL_CD" length="10" />
+        </property>
+        <property name="stdPoBox" type="string">
+            <column name="STD_PO_BOX" length="20">
+                <comment>The Standardized address fields are output by the standardization process. Formatted 'PO Box 625'</comment>
+            </column>
+        </property>
+        <property name="stdStreetName" type="string">
+            <column name="STD_STREET_NAME" length="35">
+                <comment>Name of street. Excludes street type. Ex: Van Dyke</comment>
+            </column>
+        </property>
+        <property name="stdStreetNbr" type="string">
+            <column name="STD_STREET_NBR" length="12">
+                <comment>The initial consecutive digits of a street address before the name. Ex: 5143</comment>
+            </column>
+        </property>
+        <property name="stdStreetType" type="string">
+            <column name="STD_STREET_TYPE" length="12">
+                <comment>Matched against standard list. Ex: Boulevard, Street, Lane</comment>
+            </column>
+        </property>
+        <property name="stdSubunitCd" type="string">
+            <column name="STD_SUBUNIT_CD" length="20">
+                <comment>The qualifier that is required for some sub unit types. Ex: 1, A, 5B</comment>
+            </column>
+        </property>
+        <property name="stdSubunitType" type="string">
+            <column name="STD_SUBUNIT_TYPE" length="10">
+                <comment>Matched against standard list. Ex: APT, DEPT</comment>
+            </column>
+        </property>
+        <property name="stdAddr1" type="string">
+            <column name="STD_ADDR_1" length="40">
+                <comment>Address line 1 after standardization</comment>
+            </column>
+        </property>
+        <property name="stdAddr2" type="string">
+            <column name="STD_ADDR_2" length="40">
+                <comment>Address line 2 after standardization</comment>
+            </column>
+        </property>
+        <property name="stdCity" type="string">
+            <column name="STD_CITY" length="40">
+                <comment>City name after standardization</comment>
+            </column>
+        </property>
+        <property name="stdStateCd" type="string">
+            <column name="STD_STATE_CD" length="4">
+                <comment>State code after being matched against standard list</comment>
+            </column>
+        </property>
+        <property name="stdPostalCd" type="string">
+            <column name="STD_POSTAL_CD" length="10">
+                <comment>Formatted 5 or 9 digit postal code. Ex: 32345, 32345-6873</comment>
+            </column>
+        </property>
+        <property name="authAddr1" type="string">
+            <column name="AUTH_ADDR_1" length="50">
+                <comment>The Authoritative fields are output by verifying with an authority such as USPS. Address line 1 after verifying with an authority.</comment>
+            </column>
+        </property>
+        <property name="authAddr2" type="string">
+            <column name="AUTH_ADDR_2" length="50">
+                <comment>Address line 2 after verifying with an authority.</comment>
+            </column>
+        </property>
+        <property name="authCity" type="string">
+            <column name="AUTH_CITY" length="40">
+                <comment>City name after verifying with an authority.</comment>
+            </column>
+        </property>
+        <property name="authStateCd" type="string">
+            <column name="AUTH_STATE_CD" length="4">
+                <comment>State code after verifying with an authority.</comment>
+            </column>
+        </property>
+        <property name="authPostalCd" type="string">
+            <column name="AUTH_POSTAL_CD" length="10">
+                <comment>Formatted 9 digit postal code after verifying with an authority.</comment>
+            </column>
+        </property>
+        <property name="authRqstCd" type="string">
+            <column name="AUTH_RQST_CD" length="1" />
+        </property>
+        <property name="stdAuthAddr1" type="string">
+            <column name="STD_AUTH_ADDR_1" length="40">
+                <comment>The Standardized Authoritative fields are output by standardizing the address fields returned by the Authority. Currently not used.</comment>
+            </column>
+        </property>
+        <property name="stdAuthAddr2" type="string">
+            <column name="STD_AUTH_ADDR_2" length="40" />
+        </property>
+        <property name="stdAuthCity" type="string">
+            <column name="STD_AUTH_CITY" length="40" />
+        </property>
+        <property name="stdAuthStateCd" type="string">
+            <column name="STD_AUTH_STATE_CD" length="4" />
+        </property>
+        <property name="stdAuthPostalCd" type="string">
+            <column name="STD_AUTH_POSTAL_CD" length="10" />
+        </property>
+        <property name="stdTs" type="date">
+            <column name="STD_TS" length="7">
+                <comment>Date and time when standardization process was run</comment>
+            </column>
+        </property>
+        <property name="stdErrMsg" type="string">
+            <column name="STD_ERR_MSG" length="256">
+                <comment>Error message returned by the standardization process</comment>
+            </column>
+        </property>
+        <property name="authErrMsg" type="string">
+            <column name="AUTH_ERR_MSG" length="256">
+                <comment>Error message returned by the validating authority</comment>
+            </column>
+        </property>
+        <property name="stdAuthErrMsg" type="string">
+            <column name="STD_AUTH_ERR_MSG" length="256">
+                <comment>Currently not used.</comment>
+            </column>
+        </property>
+        <property name="srcComment" type="string">
+            <column name="SRC_COMMENT" length="10" />
+        </property>
+        <property name="srcInvalidFlg" type="string">
+            <column name="SRC_INVALID_FLG" length="1" />
+        </property>
+        <property name="authLatitude" type="big_decimal">
+            <column name="AUTH_LATITUDE" precision="9" scale="6">
+                <comment>Latitutde of authoritative address. Currently not used.</comment>
+            </column>
+        </property>
+        <property name="authLongitude" type="big_decimal">
+            <column name="AUTH_LONGITUDE" precision="9" scale="6">
+                <comment>Longitude of authoritative address. Currently not used.</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

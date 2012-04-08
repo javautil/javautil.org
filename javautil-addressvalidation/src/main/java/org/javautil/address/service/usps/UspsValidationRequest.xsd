@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:tns="http://javautil.org/USPSValidationRequest/" 
+targetNamespace="http://javautil.org/USPSValidationRequest/">
+    <complexType name="AddressType">
+    	<sequence>
+    		<element name="Address1" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="Address2" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="City" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="State" type="string" minOccurs="0" maxOccurs="1"></element>
+            <element name="Zip5" type="string" minOccurs="0" maxOccurs="1"></element>
+            <element name="Zip4" type="string" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AddressValidateRequestType">
+    	<sequence>
+    		<element name="Address" type="tns:AddressType" minOccurs="1"></element>
+    	</sequence>
+    	<attribute name="USERID" type="string"></attribute>
+    </complexType>
+
+    <element name="AddressValidateRequest" type="tns:AddressValidateRequestType"></element>
+</schema>
