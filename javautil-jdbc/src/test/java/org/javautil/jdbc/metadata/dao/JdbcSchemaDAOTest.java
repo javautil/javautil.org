@@ -23,7 +23,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/test/resources/XeHrDatasource.xml" })
+@ContextConfiguration(locations = { "file:src/test/resources/H2-target.xml" })
 public class JdbcSchemaDAOTest {
 	@Autowired
 	private DataSource dataSource;
@@ -63,12 +63,12 @@ public class JdbcSchemaDAOTest {
 	public void test() throws SQLException, IOException {
 		String fileNamePart = "test";
 		Connection conn = dataSource.getConnection();
-		SchemaDaoJdbc dao = new SchemaDaoJdbc(conn, "HR", "%", "%");
+		SchemaDaoJdbc dao = new SchemaDaoJdbc(conn, "PUBLIC", "TEST", "%");
 		dao.populateTables();
 		Schema schema = dao.getSchema();
 		DatabaseTables tables = schema.getTables();
 		assertNotNull(tables);
-		assertEquals(8, tables.size());
+		assertEquals(7, tables.size());
 
 		dump(schema, fileNamePart, createExpected);
 		if (!createExpected) {
