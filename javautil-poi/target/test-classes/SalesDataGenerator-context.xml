@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="extractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" />
+			
+	<bean id="SalesDataGenerator" class="org.javautil.sales.testdata.SalesDataGenerator">
+		<property name="daoFactory" ref="daoFactory" />
+		<property name="args" ref="args" />
+	</bean>
+		<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:target/database/sales" />
+		<property name="username" value="SALES" />
+		<property name="password" value="" />
+	</bean>
+	<!-- runtime hibernate config properties set here -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<!-- <property name="mappingLocations" value="classpath*:**/*.hbm.xml" /> -->
+		<property name="mappingLocations">
+		<list>
+			<value>classpath:/org/javautil/sales/Sale.hbm.xml</value>
+		</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<value>
+				hibernate.transaction.factory_class=org.hibernate.transaction.JDBCTransactionFactory
+				hibernate.current_session_context_class=thread
+       				hibernate.default_schema=PUBLIC
+				<!-- DB dialect -->
+				hibernate.dialect=org.hibernate.dialect.H2Dialect
+				<!--  2nd level cache -->
+				<!--
+					hibernate.cache.provider_class=org.hibernate.cache.jbc2.JBossCacheRegionFactory
+					hibernate.cache.provider_class=org.hibernate.cache.TreeCacheProvider
+				-->
+				hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+				<!-- repeatable read isolation -->
+				hibernate.connection.isolation=4
+				<!-- 2nd level cache debugging -->
+				hibernate.generate_statistics=true
+				hibernate.cache.use_structured_entries=true
+				<!-- sql debugging -->
+				hibernate.show_sql=true
+				hibernate.format_sql=true
+				hibernate.use_sql_comments=true
+			</value>
+		</property>
+	</bean>
+
+	<bean id="daoFactory" class="org.javautil.persist.hibernate.Persistence">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="extractor">
+			<ref bean="extractor" />
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="args"
+		class="org.javautil.sales.populate.DataPopulatorArguments">
+		<property name="customerCount" value="100" />
+		<property name="manufacturerCount" value="7" />
+		<property name="productCount" value="30" />
+		<property name="salespersonsCount" value="5" />
+		<property name="salesCount" value="10000" />
+	</bean>
+
+</beans>

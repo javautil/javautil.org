@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<util:list id="styles">
+		<bean class="org.javautil.document.style.StyleDefinition">
+			<property name="name" value="default" />
+			<property name="border" value="1 #000" />
+		</bean>
+	</util:list>
+
+	<!--
+		see spring documentation for using datasources
+	-->
+	<!--
+		TODO remove this
+		<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close"> <property name="driverClassName"
+		value="oracle.jdbc.driver.OracleDriver" /> <property name="url"
+		value="jdbc:oracle:thin:@db2:1521:focus10" /> <property
+		name="username" value="web_princeton" /> <property name="password"
+		value="focus10" /> <property name="initialSize" value="1" /> <property
+		name="maxActive" value="10" /> <property
+		name="accessToUnderlyingConnectionAllowed" value="true" /> </bean>
+		<bean id="sqlRunner"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="datasource" /> </bean>
+	-->
+
+	<!--
+		see spring documentation for more details on how to dynamically
+		execute/bind queries from a sql select statement or stored procedure
+
+		http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/jdbc/core/namedparam/NamedParameterJdbcTemplate.html
+		http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/jdbc/core/SqlReturnResultSet.html
+	-->
+
+	<bean id="salesRepDatasetSource" class="org.javautil.test.SalesDataset" />
+	<bean id="salesRepDataset" factory-bean="salesRepDatasetSource"
+		factory-method="getCrosstabbedDataset" />
+	<bean id="salesRepTemplate" class="org.javautil.document.renderer.BshRenderTemplate">
+		<property name="bshScript">
+			<value><![CDATA[
+	import java.util.Date;
+	iterator = dataset.getDatasetIterator();
+	while (iterator.next()) {
+		Integer customerId = iterator.getInteger("CST_ID");
+		String productId = iterator.getString("PRODUCT_ID");
+		String productDescr = iterator.getString("PRODUCT_DESCR");		
+		renderer.addData(customerId, "default");
+		renderer.addData(productId, "default");
+		renderer.addData(productDescr, "default");
+		renderer.nextLine();
+	}
+			]]></value>
+		</property>
+	</bean>
+	<util:map id="salesRepParameters" map-class="java.util.LinkedHashMap">
+		<entry key="SALARY_MIN">
+			<value>20000</value>
+		</entry>
+		<entry key="SALARY_MAX">
+			<value>1000000</value>
+		</entry>
+	</util:map>
+
+	<bean class="org.javautil.document.DocumentBuilder">
+		<property name="outputFile" value="${outputFile}" />
+		<property name="deleteExistingOutputFile" value="${deleteExistingOutputFile}" />
+		<property name="format" value="html" />
+		<property name="regions">
+			<list>
+				<bean class="org.javautil.document.SimpleRegion">
+					<property name="name" value="SalesReps" />
+					<property name="dataset" ref="salesRepDataset" />
+					<property name="parameters" ref="salesRepParameters" />
+					<property name="documentStyles" ref="documentStyles" />
+					<property name="renderTemplate" ref="salesRepTemplate" />
+					<property name="layoutConstraints">
+						<bean class="org.javautil.document.layout.AbsoluteLayout">
+							<property name="row" value="1" />
+							<property name="column" value="1" />
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="documentStyles" class="org.javautil.document.style.StyleUtil"
+		factory-method="parseStyles">
+		<constructor-arg>
+			<bean class="org.javautil.document.style.DefaultStyleParser" />
+		</constructor-arg>
+		<constructor-arg ref="styles" />
+	</bean>
+
+</beans>

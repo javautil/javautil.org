@@ -1,0 +1,87 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- cell format masks -->
+	<bean name="dateFormat" class="java.lang.String">
+		<constructor-arg index="0" value="MM/dd/yyyy"></constructor-arg>
+	</bean>
+	<bean name="integerFormat" class="java.lang.String">
+		<constructor-arg index="0" value="###,###,###,###,##0"></constructor-arg>
+	</bean>
+	<bean name="threeDecimalFormat" class="java.lang.String">
+		<constructor-arg index="0" value="###,###,###,###,##0.000"></constructor-arg>
+	</bean>
+	<bean name="currencyFormat" class="java.lang.String">
+		<constructor-arg index="0" value="$###,###,###,###,##0.00"></constructor-arg>
+	</bean>
+
+	<!-- cell format definitions -->
+	<bean name="standard" class="org.javautil.document.style.StyleDefinition">
+		<property name="fontColor" value="#000000" />
+		<property name="fontFace" value="Arial" />
+		<property name="fontHeight" value="10" />
+		<property name="horizontalAlignment" value="left" />
+		<property name="verticalAlignment" value="top" />
+		<property name="backgroundColor" value="transparent" />
+	</bean>
+	
+	<bean name="wrap" parent="standard">
+		<property name="wordWrap" value="true" />
+	</bean>
+	
+	<bean name="bold" parent="standard">
+		<property name="fontWeight" value="bold" />
+	</bean>
+ 
+	<bean name="singleUnderline" parent="standard">
+		<property name="fontUnderlineStyle" value="single" />
+	</bean>
+	
+	<bean name="doubleUnderline" parent="standard">
+		<property name="fontUnderlineStyle" value="double" />
+	</bean>
+	
+	<bean name="italic" parent="standard">
+		<property name="fontStyle" value="italic" />
+	</bean>
+	
+	<bean name="hugeFont" parent="standard">
+		<property name="fontFace" value="Courier New" />
+		<property name="fontHeight" value="20" />
+		<property name="fontWeight" value="bold" />
+	</bean>
+	
+	<bean name="date" parent="standard">
+		<property name="formatMask" ref="dateFormat" />
+		<property name="horizontalAlignment" value="right" />
+	</bean>
+
+	<bean name="currency" parent="standard">
+		<property name="formatMask" ref="currencyFormat" />
+		<property name="horizontalAlignment" value="right" />
+	</bean>
+
+	<bean name="integer" parent="standard">
+		<property name="formatMask" ref="integerFormat" />
+		<property name="horizontalAlignment" value="right" />
+	</bean>
+
+	<bean name="integerBlueBg" parent="integer">
+		<property name="backgroundColor" value="#9999cc" />
+	</bean>
+
+	<bean name="redInteger" parent="integer">
+		<property name="fontColor" value="#ff0000" />
+	</bean>
+
+	<bean name="threeDecimal" parent="standard">
+		<property name="formatMask" ref="threeDecimalFormat" />
+		<property name="horizontalAlignment" value="right" />
+	</bean>
+
+	<bean name="redThreeDecimal" parent="threeDecimal">
+		<property name="fontColor" value="#ff0000" />
+	</bean>
+
+</beans>

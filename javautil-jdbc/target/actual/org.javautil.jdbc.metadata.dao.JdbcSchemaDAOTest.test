@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema>
+  <schema>
+    <entity id="CUSTOMER" table-type="TABLE" table-name="CUSTOMER">
+      <column id="PUBLIC.CUSTOMER.CUSTOMER_ID" column-name="CUSTOMER_ID" data-type="DECIMAL" sql-type="3" column-size="9"/>
+      <column id="PUBLIC.CUSTOMER.CUSTOMER_STATUS" column-name="CUSTOMER_STATUS" data-type="VARCHAR" sql-type="12" column-size="1" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.NAME" column-name="NAME" data-type="VARCHAR" sql-type="12" column-size="30" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.ADDR_1" column-name="ADDR_1" data-type="VARCHAR" sql-type="12" column-size="30" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.ADDR_2" column-name="ADDR_2" data-type="VARCHAR" sql-type="12" column-size="30" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.CITY" column-name="CITY" data-type="VARCHAR" sql-type="12" column-size="25" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.STATE" column-name="STATE" data-type="VARCHAR" sql-type="12" column-size="2" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.ZIP_CD" column-name="ZIP_CD" data-type="VARCHAR" sql-type="12" column-size="10" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.OUTSIDE_SALESPERSON_ID" column-name="OUTSIDE_SALESPERSON_ID" data-type="DECIMAL" sql-type="3" column-size="9" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER.INSIDE_SALESPERSON_ID" column-name="INSIDE_SALESPERSON_ID" data-type="DECIMAL" sql-type="3" column-size="9"/>
+      <primary-key constraint-name="CUSTOMER_PK">
+        <column column-name="CUSTOMER_ID"/>
+      </primary-key>
+      <relation type="references" pk-table-schema="PUBLIC" pk-table-catalog="TEST" pk-table-name="SALESPERSON" fk-table-schema="PUBLIC" fk-table-name="CUSTOMER" fk-table-catalog="TEST" fk-name="C_S_FK">
+        <key-map fk-column-name="INSIDE_SALESPERSON_ID" pk-column-name="SALESPERSON_ID"/>
+      </relation>
+      <relation type="referenced-by" pk-table-schema="PUBLIC" pk-table-catalog="TEST" pk-table-name="CUSTOMER" fk-table-schema="PUBLIC" fk-table-name="SALE" fk-table-catalog="TEST" fk-name="S_C_FK">
+        <key-map fk-column-name="CUSTOMER_ID" pk-column-name="CUSTOMER_ID"/>
+      </relation>
+    </entity>
+    <entity id="CUSTOMER_SALE_PRODUCT" table-type="VIEW" table-name="CUSTOMER_SALE_PRODUCT">
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.NAME" column-name="NAME" data-type="VARCHAR" sql-type="12" column-size="30" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.ADDR_1" column-name="ADDR_1" data-type="VARCHAR" sql-type="12" column-size="30" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.ADDR_2" column-name="ADDR_2" data-type="VARCHAR" sql-type="12" column-size="30" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.CITY" column-name="CITY" data-type="VARCHAR" sql-type="12" column-size="25" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.STATE" column-name="STATE" data-type="VARCHAR" sql-type="12" column-size="2" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.ZIP_CD" column-name="ZIP_CD" data-type="VARCHAR" sql-type="12" column-size="10" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.UPC10" column-name="UPC10" data-type="VARCHAR" sql-type="12" column-size="10" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.PRODUCT_STATUS" column-name="PRODUCT_STATUS" data-type="VARCHAR" sql-type="12" column-size="1" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.PRODUCT_DESCR" column-name="PRODUCT_DESCR" data-type="VARCHAR" sql-type="12" column-size="50" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.NARRATIVE" column-name="NARRATIVE" data-type="CLOB" sql-type="2005" column-size="2147483647" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.INSIDE_SALESPERSON_ID" column-name="INSIDE_SALESPERSON_ID" data-type="DECIMAL" sql-type="3" column-size="9" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.INSIDE_REP__DISPLAY_NAME" column-name="INSIDE_REP__DISPLAY_NAME" data-type="VARCHAR" sql-type="12" column-size="40" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.INSIDE_REP_FIRST_NAME" column-name="INSIDE_REP_FIRST_NAME" data-type="VARCHAR" sql-type="12" column-size="16" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.INSIDE_REP_LAST_NAME" column-name="INSIDE_REP_LAST_NAME" data-type="VARCHAR" sql-type="12" column-size="20" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.SALE_ID" column-name="SALE_ID" data-type="DECIMAL" sql-type="3" column-size="18" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.SHIP_DT" column-name="SHIP_DT" data-type="DATE" sql-type="91" column-size="8" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.QTY" column-name="QTY" data-type="DECIMAL" sql-type="3" column-size="13" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.PRODUCT_ID" column-name="PRODUCT_ID" data-type="DECIMAL" sql-type="3" column-size="9" nullable="not null"/>
+      <column id="PUBLIC.CUSTOMER_SALE_PRODUCT.CUSTOMER_ID" column-name="CUSTOMER_ID" data-type="DECIMAL" sql-type="3" column-size="9" nullable="not null"/>
+    </entity>
+    <entity id="GTT_NUMBER" table-type="TABLE" table-name="GTT_NUMBER">
+      <column id="PUBLIC.GTT_NUMBER.NBR" column-name="NBR" data-type="DECIMAL" sql-type="3" column-size="9" nullable="not null"/>
+    </entity>
+    <entity id="PRODUCT" table-type="TABLE" table-name="PRODUCT">
+      <column id="PUBLIC.PRODUCT.PRODUCT_ID" column-name="PRODUCT_ID" data-type="DECIMAL" sql-type="3" column-size="9"/>
+      <column id="PUBLIC.PRODUCT.UPC10" column-name="UPC10" data-type="VARCHAR" sql-type="12" column-size="10"/>
+      <column id="PUBLIC.PRODUCT.PRODUCT_STATUS" column-name="PRODUCT_STATUS" data-type="VARCHAR" sql-type="12" column-size="1"/>
+      <column id="PUBLIC.PRODUCT.DESCR" column-name="DESCR" data-type="VARCHAR" sql-type="12" column-size="50" nullable="not null"/>
+      <column id="PUBLIC.PRODUCT.NARRATIVE" column-name="NARRATIVE" data-type="CLOB" sql-type="2005" column-size="2147483647" nullable="not null"/>
+      <primary-key constraint-name="PRODUCT_PK">
+        <column column-name="PRODUCT_ID"/>
+      </primary-key>
+      <relation type="referenced-by" pk-table-schema="PUBLIC" pk-table-catalog="TEST" pk-table-name="PRODUCT" fk-table-schema="PUBLIC" fk-table-name="SALE" fk-table-catalog="TEST" fk-name="S_P_FK">
+        <key-map fk-column-name="PRODUCT_ID" pk-column-name="PRODUCT_ID"/>
+      </relation>
+    </entity>
+    <entity id="PRODUCT_ETL" table-type="TABLE" table-name="PRODUCT_ETL">
+      <column id="PUBLIC.PRODUCT_ETL.PRODUCT_ETL_ID" column-name="PRODUCT_ETL_ID" data-type="DECIMAL" sql-type="3" column-size="9"/>
+      <column id="PUBLIC.PRODUCT_ETL.UPC10" column-name="UPC10" data-type="VARCHAR" sql-type="12" column-size="10" nullable="not null"/>
+      <column id="PUBLIC.PRODUCT_ETL.PRODUCT_STATUS" column-name="PRODUCT_STATUS" data-type="VARCHAR" sql-type="12" column-size="1" nullable="not null"/>
+      <column id="PUBLIC.PRODUCT_ETL.DESCR" column-name="DESCR" data-type="VARCHAR" sql-type="12" column-size="50" nullable="not null"/>
+      <column id="PUBLIC.PRODUCT_ETL.NARRATIVE" column-name="NARRATIVE" data-type="CLOB" sql-type="2005" column-size="2147483647" nullable="not null"/>
+    </entity>
+    <entity id="SALE" table-type="TABLE" table-name="SALE">
+      <column id="PUBLIC.SALE.SALE_ID" column-name="SALE_ID" data-type="DECIMAL" sql-type="3" column-size="18"/>
+      <column id="PUBLIC.SALE.SHIP_DT" column-name="SHIP_DT" data-type="DATE" sql-type="91" column-size="8"/>
+      <column id="PUBLIC.SALE.QTY" column-name="QTY" data-type="DECIMAL" sql-type="3" column-size="13"/>
+      <column id="PUBLIC.SALE.PRODUCT_ID" column-name="PRODUCT_ID" data-type="DECIMAL" sql-type="3" column-size="9"/>
+      <column id="PUBLIC.SALE.CUSTOMER_ID" column-name="CUSTOMER_ID" data-type="DECIMAL" sql-type="3" column-size="9"/>
+      <primary-key constraint-name="SALE_PK">
+        <column column-name="SALE_ID"/>
+      </primary-key>
+      <relation type="references" pk-table-schema="PUBLIC" pk-table-catalog="TEST" pk-table-name="PRODUCT" fk-table-schema="PUBLIC" fk-table-name="SALE" fk-table-catalog="TEST" fk-name="S_P_FK">
+        <key-map fk-column-name="PRODUCT_ID" pk-column-name="PRODUCT_ID"/>
+      </relation>
+      <relation type="references" pk-table-schema="PUBLIC" pk-table-catalog="TEST" pk-table-name="CUSTOMER" fk-table-schema="PUBLIC" fk-table-name="SALE" fk-table-catalog="TEST" fk-name="S_C_FK">
+        <key-map fk-column-name="CUSTOMER_ID" pk-column-name="CUSTOMER_ID"/>
+      </relation>
+    </entity>
+    <entity id="SALESPERSON" table-type="TABLE" table-name="SALESPERSON">
+      <column id="PUBLIC.SALESPERSON.SALESPERSON_ID" column-name="SALESPERSON_ID" data-type="DECIMAL" sql-type="3" column-size="9"/>
+      <column id="PUBLIC.SALESPERSON.DISPLAY_NAME" column-name="DISPLAY_NAME" data-type="VARCHAR" sql-type="12" column-size="40" nullable="not null"/>
+      <column id="PUBLIC.SALESPERSON.FIRST_NAME" column-name="FIRST_NAME" data-type="VARCHAR" sql-type="12" column-size="16" nullable="not null"/>
+      <column id="PUBLIC.SALESPERSON.LAST_NAME" column-name="LAST_NAME" data-type="VARCHAR" sql-type="12" column-size="20" nullable="not null"/>
+      <primary-key constraint-name="SALESPERSON_PK">
+        <column column-name="SALESPERSON_ID"/>
+      </primary-key>
+      <relation type="referenced-by" pk-table-schema="PUBLIC" pk-table-catalog="TEST" pk-table-name="SALESPERSON" fk-table-schema="PUBLIC" fk-table-name="CUSTOMER" fk-table-catalog="TEST" fk-name="C_S_FK">
+        <key-map fk-column-name="INSIDE_SALESPERSON_ID" pk-column-name="SALESPERSON_ID"/>
+      </relation>
+    </entity>
+  </schema>
+</schema>

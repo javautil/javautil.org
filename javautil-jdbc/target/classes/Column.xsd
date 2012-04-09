@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://javautil.org/xsd/ColumnMetadata/" 
+	targetNamespace="http://javautil.org/xsd/ColumnMetadata/">
+    <complexType name="columnType">
+        <choice minOccurs="1" maxOccurs="1"></choice>
+
+        <attribute name="name" type="string" />
+    	<attribute name="index" type="integer" />
+    	<attribute name="heading" type="string" />
+    	<attribute name="label" type="string" />
+
+    	<attribute name="columnDisplaySize" type="integer" />
+    	<attribute name="comments" type="string" />
+    	<attribute name="externalFlag" type="boolean" />
+    	<attribute name="attributeName" type="string" />
+    	<attribute name="workbookFormula" type="string" />
+    	<attribute name="excelFormat" type="string" />
+    	<attribute name="javaFormat" type="string" />
+    	<attribute name="groupName" type="string" />
+    	<attribute name="horizontalAlignment" type="string" />
+    	<attribute name="aggregateFunction" type="string" />
+
+    </complexType>
+
+
+
+    
+    <element name="column" type="tns:columnType"></element>
+
+    <complexType name="numericType">
+    <attribute name="precision" type="integer" />
+    	<attribute name="scale" type="integer" />
+    	<attribute name="minValue" type="double"/>
+    	<attribute name="maxValue" type="double" />
+     </complexType>
+     
+     <complexType name="dateType">
+    <attribute name="minimumDate" type="date" />
+    	<attribute name="maximumDate" type="date" />
+     </complexType>
+     
+     <complexType name="stringType" />
+
+     
+     <complexType name="numberType" />
+     
+
+
+</schema>

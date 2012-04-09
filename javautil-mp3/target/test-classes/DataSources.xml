@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:datasources xmlns:ns2="http://datasources.javautil.org">
+
+
+	
+
+	<datasource>
+		<name>mp3</name>
+		<classname>
+			org.javautil.jdbc.datasources.C3P0Datasource
+		</classname>
+		<property key="driver">
+			<value>org.h2.Driver</value>
+		</property>
+		<property key="user">
+			<value>mp3</value>
+		</property>
+		<property key="password">
+			<value>tutorial</value>
+		</property>
+		<property key="url">
+			<value>jdbc:h2:test-database/mp3</value>
+		</property>
+
+		<!-- A couple of nice default values. -->
+		<systemProperty key="c3p0.minPoolSize" value="1" />
+		<systemProperty key="c3p0.maxPoolSize" value="3" />
+
+		<!-- 
+			If connection usage spikes, this will reduce the number
+			of connections to the minimum after the set amount of seconds.			
+		-->
+		<systemProperty key="c3p0.maxIdleTimeExcessConnections"
+			value="3600" />
+
+		<!--  If a connection hasn't been returned within 8 hours, close it. -->
+		<systemProperty key="c3p0.unreturnedConnectionTimeout"
+			value="28800" />
+		<!--  
+			If  a connection hasn't been returned within 8 hours, the above
+			setting will close it, and this setting instructs C3P0 to
+			emit a stack trace for when the connection was retrieved.
+		-->
+		<systemProperty key="c3p0.debugUnreturnedConnectionStackTraces"
+			value="true" />
+	</datasource>
+	<datasource>
+		<name>mp3-populated</name>
+		<classname>
+			org.javautil.jdbc.datasources.C3P0Datasource
+		</classname>
+		<property key="driver">
+			<value>org.h2.Driver</value>
+		</property>
+		<property key="user">
+			<value>mp3</value>
+		</property>
+		<property key="password">
+			<value>tutorial</value>
+		</property>
+		<property key="url">
+			<value>jdbc:h2:test-database/mp3</value>
+		</property>
+
+		<!-- A couple of nice default values. -->
+		<systemProperty key="c3p0.minPoolSize" value="1" />
+		<systemProperty key="c3p0.maxPoolSize" value="3" />
+
+		<!-- 
+			If connection usage spikes, this will reduce the number
+			of connections to the minimum after the set amount of seconds.			
+		-->
+		<systemProperty key="c3p0.maxIdleTimeExcessConnections"
+			value="3600" />
+
+		<!--  If a connection hasn't been returned within 8 hours, close it. -->
+		<systemProperty key="c3p0.unreturnedConnectionTimeout"
+			value="28800" />
+		<!--  
+			If  a connection hasn't been returned within 8 hours, the above
+			setting will close it, and this setting instructs C3P0 to
+			emit a stack trace for when the connection was retrieved.
+		-->
+		<systemProperty key="c3p0.debugUnreturnedConnectionStackTraces"
+			value="true" />
+	</datasource>
+</ns2:datasources>

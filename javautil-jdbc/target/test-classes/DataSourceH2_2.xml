@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ds:datasources xmlns:ds="http://datasources.javautil.org">
+	 <datasource>
+		<name>h2</name>
+		<classname>
+			org.javautil.jdbc.datasources.NonConnectionPooledDatasource
+		</classname>
+		<property key="user">
+			<value>sample</value>
+		</property>
+		<property key="driver">
+			<value>org.h2.Driver</value>
+		</property>
+		<property key="password">
+			<value>data</value>
+		</property>
+		<property key="url">
+			<value>jdbc:h2:target/database/test</value>
+		</property>
+	</datasource>
+	
+</ds:datasources>

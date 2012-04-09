@@ -1,0 +1,24 @@
+"Customer ID","Customer Name","Product","Product Description","Sales Date","Quantity","Dollars"
+1,"Nick's Vending",27182831415,"Cherry Pie",09/01/09,3,1.5
+1,"Nick's Vending",27182831415,"Cherry Pie",10/01/09,5,2.5
+1,"Nick's Vending",27182831415,"Cherry Pie",11/01/09,7,3.5
+1,"Nick's Vending",27182831415,"Cherry Pie",12/01/09,6,3
+1,"Nick's Vending",27182831415,"Cherry Pie",01/01/10,2,0.6
+1,"Nick's Vending",27182831415,"Cherry Pie",02/01/10,12,5
+1,"Nick's Vending",27182829979,"Chocolate Tart",09/01/09,5,1.5
+1,"Nick's Vending",27182829979,"Chocolate Tart",10/01/09,11,3.3
+1,"Nick's Vending",27182829979,"Chocolate Tart",11/01/09,7,2.1
+1,"Nick's Vending",27182829979,"Chocolate Tart",12/01/09,6,1.8
+1,"Nick's Vending",27182829979,"Chocolate Tart",01/01/10,2,0.6
+1,"Nick's Vending",27182829979,"Chocolate Tart",02/01/10,12,3.6
+1,"Humble",27182831415,"Cherry Pie",09/01/09,3,1.5
+2,"Humble",27182831415,"Cherry Pie",10/01/09,5,2.5
+2,"Humble",27182831415,"Cherry Pie",11/01/09,7,3.5
+2,"Humble",27182831415,"Cherry Pie",12/01/09,6,3
+2,"Humble",27182831415,"Cherry Pie",01/01/10,2,0.6
+2,"Humble",27182829979,"Chocolate Tart",09/01/09,5,1.5
+2,"Humble",27182829979,"Chocolate Tart",10/01/09,11,3.3
+2,"Humble",27182829979,"Chocolate Tart",11/01/09,7,2.1
+2,"Humble",27182829979,"Chocolate Tart",12/01/09,6,1.8
+2,"Humble",27182829979,"Chocolate Tart",01/01/10,2,0.6
+2,"Humble",27182829979,"Chocolate Tart",02/01/10,12,3.6

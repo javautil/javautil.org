@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 10, 2011 3:06:10 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.sales.dto.Product" table="PRODUCT" >
+        <comment>Product Master</comment>
+        <id name="productId" type="java.lang.Integer">
+            <column name="PRODUCT_ID" precision="9" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">PRODUCT_SEQ</param>
+            </generator>
+        </id>
+        <property name="upc10" type="string">
+            <column name="UPC10" length="10" not-null="true" unique="true">
+                <comment>Why is this varchar2 if it is a number?</comment>
+            </column>
+        </property>
+        <property name="productStatus" type="string">
+            <column name="PRODUCT_STATUS" length="1" not-null="true">
+                <comment>The status of the item. A - Active S - Setup I - Inactive</comment>
+            </column>
+        </property>
+        <property name="descr" type="string">
+            <column name="DESCR" length="50" />
+        </property>
+        <property name="narrative" type="string">
+            <column name="NARRATIVE" />
+        </property>
+        <set name="sales" inverse="true">
+            <key>
+                <column name="PRODUCT_ID" precision="9" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="org.javautil.sales.dto.Sale" />
+        </set>
+    </class>
+</hibernate-mapping>

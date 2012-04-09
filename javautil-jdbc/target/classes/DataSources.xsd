@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://datasources.javautil.org"
+	xmlns="http://datasources.javautil.org">
+
+	<xs:element name="datasources" type="datasources" />
+
+	<xs:complexType name="datasources">
+		<xs:sequence>
+			<xs:element name="datasource" type="datasourceType"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="datasourceType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="classname" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+			</xs:element>
+			<xs:element name="property" type="property" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="systemProperty" type="systemProperty" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="property">
+		<xs:choice>
+			<xs:element name="value" type="xs:string" />
+			<xs:element name="sys" type="xs:string" />
+			<xs:element name="env" type="xs:string" />
+			<xs:element name="encryptedValue" type="xs:string" />
+		</xs:choice>
+		<xs:attribute name="key" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="systemProperty">
+		<xs:attribute name="value" type="xs:string" use="required" />		
+		<xs:attribute name="key" type="xs:string" use="required" />
+	</xs:complexType>
+</xs:schema>

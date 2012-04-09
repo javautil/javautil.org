@@ -1,0 +1,4 @@
+"STATE","0","STRING",,,,,,,"N"
+"CITY","1","STRING",,,,,,,"N"
+"MONTH","2","INTEGER",,,,,,,"N"
+"TICKETS","3","DOUBLE",,,,,,,"N"

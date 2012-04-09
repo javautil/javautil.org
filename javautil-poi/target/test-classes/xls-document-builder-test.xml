@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<util:list id="styles">
+		<bean class="org.javautil.document.style.StyleDefinition">
+			<property name="name" value="default" />
+			<property name="border" value="1 #000" />
+		</bean>
+	</util:list>
+
+	<!--
+		see spring documentation for using datasources
+	-->
+	<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@db1:1521:prod" />
+		<property name="username" value="roprod" />
+		<property name="password" value="roprod" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="10" />
+		<property name="accessToUnderlyingConnectionAllowed" value="true" />
+	</bean>
+	<bean id="sqlRunner"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="datasource" />
+	</bean>
+
+	<!--
+		see spring documentation for more details on how to dynamically
+		execute/bind queries from a sql select statement or stored procedure
+
+		http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/jdbc/core/namedparam/NamedParameterJdbcTemplate.html
+		http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/jdbc/core/SqlReturnResultSet.html
+	-->
+	<bean id="salesRepQuery" factory-bean="sqlRunner" factory-method="queryForRowSet">
+		<constructor-arg><value><![CDATA[ 
+	select 
+		VP_DST_NBR,
+		VP_CST_NBR,
+		VP_ITEM_NBR,
+		SHIP_DT,
+		INV_NO,
+		POSTED_CASES,
+		EXT_NET_AMT
+	from 
+		kllg.vp_sales_dtl
+	where
+		POSTED_CASES <= :CASES_MAX and 
+		POSTED_CASES >= :CASES_MIN and
+		YR = :YEAR and MTH = :MONTH
+		]]></value></constructor-arg>
+		<constructor-arg ref="salesRepParameters" />
+	</bean>
+	<bean id="salesRepDataset" class="org.javautil.dataset.DisassociatedResultSetDataset"
+		factory-method="getDataset">
+		<constructor-arg ref="salesRepQuery" />
+	</bean>
+
+	<bean id="salesRepTemplate" class="org.javautil.document.renderer.BshRenderTemplate">
+		<property name="bshScript">
+			<value><![CDATA[
+	import java.util.Date;
+	iterator = dataset.getDatasetIterator();
+	while (iterator.next()) {
+		Integer distributorId = iterator.getInteger("VP_DST_NBR");
+		Integer customerId = iterator.getInteger("VP_CST_NBR");
+		Integer productId = iterator.getInteger("VP_ITEM_NBR");
+		Integer cases = iterator.getInteger("POSTED_CASES");
+		Double dollars = iterator.getDouble("EXT_NET_AMT");
+		Date shipDt = iterator.getDate("SHIP_DT");		
+		renderer.addData(distributorId, "default");
+		renderer.addData(customerId, "default");		
+		renderer.addData(productId, "default");
+		renderer.addData(dollars, "default");
+		renderer.addData(cases, "default");
+		renderer.nextLine();
+	}
+			]]></value>
+		</property>
+	</bean>
+	<util:map id="salesRepParameters" map-class="java.util.LinkedHashMap">
+		<entry key="MONTH">
+			<value>1</value>
+		</entry>
+		<entry key="YEAR">
+			<value>2009</value>
+		</entry>
+		<entry key="CASES_MIN">
+			<value>75</value>
+		</entry>
+		<entry key="CASES_MAX">
+			<value>99</value>
+		</entry>
+	</util:map>
+
+	<bean class="org.javautil.document.DocumentBuilder">
+		<property name="outputFile" value="${outputFile}" />
+		<property name="deleteExistingOutputFile" value="${deleteExistingOutputFile}" />
+		<property name="format" value="xls" />
+		<property name="regions">
+			<list>
+				<bean class="org.javautil.document.SimpleRegion">
+					<property name="name" value="SalesReps" />
+					<property name="dataset" ref="salesRepDataset" />
+					<property name="parameters" ref="salesRepParameters" />
+					<property name="documentStyles" ref="documentStyles" />
+					<property name="renderTemplate" ref="salesRepTemplate" />
+					<property name="layoutConstraints">
+						<bean class="org.javautil.document.layout.AbsoluteLayout">
+							<property name="row" value="5" />
+							<property name="column" value="5" />
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="documentStyles" class="org.javautil.document.style.StyleUtil"
+		factory-method="parseStyles">
+		<constructor-arg>
+			<bean class="org.javautil.document.style.DefaultStyleParser" />
+		</constructor-arg>
+		<constructor-arg ref="styles" />
+	</bean>
+
+</beans>

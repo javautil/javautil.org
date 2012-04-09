@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 10, 2011 3:06:10 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.sales.dto.CustomerSaleProduct" table="CUSTOMER_SALE_PRODUCT" >
+        <composite-id name="id" class="org.javautil.sales.dto.CustomerSaleProductId">
+            <key-property name="name" type="string">
+                <column name="NAME" length="30" />
+            </key-property>
+            <key-property name="addr1" type="string">
+                <column name="ADDR_1" length="30" />
+            </key-property>
+            <key-property name="addr2" type="string">
+                <column name="ADDR_2" length="30" />
+            </key-property>
+            <key-property name="city" type="string">
+                <column name="CITY" length="25" />
+            </key-property>
+            <key-property name="state" type="string">
+                <column name="STATE" length="2" />
+            </key-property>
+            <key-property name="zipCd" type="string">
+                <column name="ZIP_CD" length="10" />
+            </key-property>
+            <key-property name="upc10" type="string">
+                <column name="UPC10" length="10" />
+            </key-property>
+            <key-property name="productStatus" type="string">
+                <column name="PRODUCT_STATUS" length="1" />
+            </key-property>
+            <key-property name="productDescr" type="string">
+                <column name="PRODUCT_DESCR" length="50" />
+            </key-property>
+            <key-property name="narrative" type="string">
+                <column name="NARRATIVE" />
+            </key-property>
+            <key-property name="insideSalespersonId" type="java.lang.Integer">
+                <column name="INSIDE_SALESPERSON_ID" precision="9" scale="0" />
+            </key-property>
+            <key-property name="insideRepDisplayName" type="string">
+                <column name="INSIDE_REP__DISPLAY_NAME" length="40" />
+            </key-property>
+            <key-property name="insideRepFirstName" type="string">
+                <column name="INSIDE_REP_FIRST_NAME" length="16" />
+            </key-property>
+            <key-property name="insideRepLastName" type="string">
+                <column name="INSIDE_REP_LAST_NAME" length="20" />
+            </key-property>
+            <key-property name="saleId" type="java.lang.Long">
+                <column name="SALE_ID" precision="18" scale="0" />
+            </key-property>
+            <key-property name="shipDt" type="date">
+                <column name="SHIP_DT" length="8" />
+            </key-property>
+            <key-property name="qty" type="big_decimal">
+                <column name="QTY" precision="13" scale="5" />
+            </key-property>
+            <key-property name="productId" type="java.lang.Integer">
+                <column name="PRODUCT_ID" precision="9" scale="0" />
+            </key-property>
+            <key-property name="customerId" type="java.lang.Integer">
+                <column name="CUSTOMER_ID" precision="9" scale="0" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

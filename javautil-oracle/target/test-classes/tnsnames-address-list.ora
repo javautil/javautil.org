@@ -1,0 +1,9 @@
+DWSUN42 =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = dwsun42)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = dev920.us.oracle.com)
+    )
+  )
