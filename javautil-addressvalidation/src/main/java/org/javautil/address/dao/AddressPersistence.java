@@ -12,7 +12,7 @@ import org.javautil.persistence.PersistenceException;
  * </p>
  * 
  * @author jjs
- * @version $Id: AddressPersistence.java,v 1.3 2012/03/04 12:31:14 jjs Exp $
+ * @version $Id: AddressPersistence.java,v 1.4 2012/04/09 01:29:07 jjs Exp $
  */
 public interface AddressPersistence {
 

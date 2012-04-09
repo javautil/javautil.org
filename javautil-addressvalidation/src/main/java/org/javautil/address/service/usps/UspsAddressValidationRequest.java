@@ -36,7 +36,7 @@ import org.javautil.xml.ElementHelper;
  * </pre>
  *
  * @author jjs
- * @version $Id: UspsAddressVerificationRequest.java,v 1.1 2012/03/06 12:27:53 jjs Exp $
+ * @version $Id: UspsAddressValidationRequest.java,v 1.1 2012/04/09 01:29:05 jjs Exp $
  */
 public class UspsAddressValidationRequest implements AddressValidator {
 	private final Logger logger = Logger.getLogger(this.getClass());

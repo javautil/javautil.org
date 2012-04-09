@@ -76,13 +76,6 @@
 			<artifactId>javaee-api</artifactId>
 			<version>${org.apache.openejb.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>oracle-jdbc6</artifactId>
-			<version>${com.oracle.version}</version>
-			<scope>test</scope>
-		</dependency>
-
 	</dependencies>
 
 	

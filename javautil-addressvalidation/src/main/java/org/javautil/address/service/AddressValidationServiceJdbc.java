@@ -19,12 +19,12 @@ import org.javautil.persistence.PersistenceException;
  * </p>
  * 
  * @author jjs
- * @version $Id: AddressValidationJdbc.java,v 1.5 2012/03/06 14:18:18 jjs Exp $
+ * @version $Id: AddressValidationServiceJdbc.java,v 1.1 2012/04/09 01:29:06 jjs Exp $
  */
 public class AddressValidationServiceJdbc extends AbstractAddressValidationService {
 
-	/** Constant <code>revision="$Revision: 1.5 $"</code> */
-	public static final String revision = "$Revision: 1.5 $";
+	/** Constant <code>revision="$Revision: 1.1 $"</code> */
+	public static final String revision = "$Revision: 1.1 $";
 
 	static final String GEO_USER_ID = "GEO_USER_ID";
 

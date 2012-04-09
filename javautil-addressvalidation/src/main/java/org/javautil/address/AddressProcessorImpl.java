@@ -12,7 +12,7 @@ import org.javautil.address.usps.AddressValidationException;
  * <p>AddressProcessorImpl class.</p>
  *
  * @author jjs
- * @version $Id: AddressProcessorImpl.java,v 1.3 2012/03/06 12:26:19 jjs Exp $
+ * @version $Id: AddressProcessorImpl.java,v 1.4 2012/04/09 01:29:07 jjs Exp $
  */
 public class AddressProcessorImpl {
 

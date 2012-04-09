@@ -16,12 +16,12 @@ import org.javautil.persistence.PersistenceException;
  * </p>
  * 
  * @author jjs
- * @version $Id: AddressValidationJdbc.java,v 1.5 2012/03/06 14:18:18 jjs Exp $
+ * @version $Id: AddressValidationServiceCsv.java,v 1.1 2012/04/09 01:29:07 jjs Exp $
  */
 public class AddressValidationServiceCsv extends
 		AbstractAddressValidationService {
 
-	public static final String revision = "$Revision: 1.5 $";
+	public static final String revision = "$Revision: 1.1 $";
 
 	private AddressValidationServiceArguments arguments;
 

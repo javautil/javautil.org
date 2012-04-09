@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * <p>AddressValidationServiceXmlFormatterTest class.</p>
  *
  * @author jjs
- * @version $Id: AddressValidationServiceXmlFormatterTest.java,v 1.4 2012/03/06 14:31:23 jjs Exp $
+ * @version $Id: AddressValidationServiceXmlFormatterTest.java,v 1.5 2012/04/09 01:29:07 jjs Exp $
  * @since 0.11.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)

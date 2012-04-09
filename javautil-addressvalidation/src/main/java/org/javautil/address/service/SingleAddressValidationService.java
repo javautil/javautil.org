@@ -13,7 +13,7 @@ import org.javautil.address.usps.AddressValidationException;
  * <p>SingleAddressValidationService class.</p>
  *
  * @author jjs
- * @version $Id: SingleAddressValidationService.java,v 1.5 2012/03/06 12:27:32 jjs Exp $
+ * @version $Id: SingleAddressValidationService.java,v 1.6 2012/04/09 01:29:06 jjs Exp $
  */
 public class SingleAddressValidationService {
 
