@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:48:04.071">
+<file name="/common/home/jjs/workspace/javautil-hibernate/src/main/java/org/javautil/hibernate/HibernateQueryHelper.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.hibernate" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.sql.Timestamp'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.hibernate" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.hibernate.SQLQuery'
+</violation>
+<violation beginline="27" endline="27" begincolumn="21" endcolumn="34" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.hibernate" class="HibernateQueryHelper" variable="executionCount" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'executionCount'.
+</violation>
+<violation beginline="85" endline="85" begincolumn="23" endcolumn="27" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.hibernate" class="HibernateQueryHelper" method="getList" variable="timer" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'timer'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-hibernate/src/main/java/org/javautil/hibernate/persist/DaoImpl.java">
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.hibernate.persist" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.hibernate.SQLQuery'
+</violation>
+</file>
+</pmd>

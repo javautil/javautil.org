@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:44:56.843">
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/TreeHelper.java">
+<violation beginline="29" endline="33" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.collections" class="TreeHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/core/CommandLineTokenizer.java">
+<violation beginline="14" endline="14" begincolumn="55" endcolumn="81" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.core" class="CommandLineTokenizer" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/ColumnMetadata.java">
+<violation beginline="47" endline="47" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="ColumnMetadata" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/ColumnMetadataCsvMarshaller.java">
+<violation beginline="34" endline="34" begincolumn="37" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="ColumnMetadataCsvMarshaller" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DataType.java">
+<violation beginline="121" endline="121" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.dataset" method="getAsDataType" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCompoundCrosstabber.java">
+<violation beginline="26" endline="26" begincolumn="37" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+<violation beginline="88" endline="90" begincolumn="58" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" method="crossTabDataSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="88" endline="90" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" method="crossTabDataSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="189" endline="192" begincolumn="54" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" method="getMatrix" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="236" endline="242" begincolumn="46" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" method="getDataSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="257" endline="260" begincolumn="70" endcolumn="41" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" method="getDataSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="275" endline="278" begincolumn="46" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" method="getDataSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="282" endline="284" begincolumn="46" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.dataset" class="DatasetCompoundCrosstabber" method="getDataSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetMarshaller.java">
+<violation beginline="22" endline="22" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="DatasetMarshaller" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/MappedDatasetRow.java">
+<violation beginline="14" endline="14" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="MappedDatasetRow" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="16" endline="16" begincolumn="31" endcolumn="37" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="MappedDatasetRow" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/MatrixDataset.java">
+<violation beginline="25" endline="25" begincolumn="32" endcolumn="38" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="MatrixDataset" variable="INTEGER" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'INTEGER'.
+</violation>
+<violation beginline="275" endline="284" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.dataset" class="MatrixDataset" method="coerce" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/csv/DatasetCsvUnmarshaller.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.dataset.csv" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.FileReader'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.dataset.csv" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.ArrayList'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.dataset.csv" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.dataset.ColumnMetadata'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.dataset.csv" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.dataset.Dataset'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="48" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.dataset.csv" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.dataset.DatasetMetadataImpl'
+</violation>
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.dataset.csv" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.dataset.MutableDataset'
+</violation>
+<violation beginline="16" endline="16" begincolumn="1" endcolumn="37" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.dataset.csv" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.dataset.DataType'
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/document/DocumentBuilder.java">
+<violation beginline="121" endline="122" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.document" class="DocumentBuilder" method="afterPropertiesSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/document/renderer/AbstractRenderer.java">
+<violation beginline="29" endline="29" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.document.renderer" class="AbstractRenderer" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/document/renderer/CsvRenderer.java">
+<violation beginline="145" endline="146" begincolumn="40" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.document.renderer" class="CsvRenderer" method="getNextAsCsv" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/document/style/DefaultStyleParser.java">
+<violation beginline="117" endline="119" begincolumn="58" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.document.style" class="DefaultStyleParser" method="setFont" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="127" endline="129" begincolumn="57" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.document.style" class="DefaultStyleParser" method="setFont" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/document/style/FontAttributesImpl.java">
+<violation beginline="17" endline="19" begincolumn="16" endcolumn="9" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.javautil.document.style" class="FontAttributesImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+Overriding method merely calls super
+</violation>
+<violation beginline="22" endline="22" begincolumn="20" endcolumn="29" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.javautil.document.style" class="FontAttributesImpl" method="hashCode" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/document/style/SimpleBorder.java">
+<violation beginline="241" endline="241" begincolumn="20" endcolumn="29" rule="OverrideBothEqualsAndHashcode" ruleset="Basic Rules" package="org.javautil.document.style" class="SimpleBorder" method="hashCode" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/field/ObjectDefinitions.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="25" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.TreeMap'
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/field/object/AbstractObjectDefinition.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field.object" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.field.FieldTypeDefinition'
+</violation>
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="64" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field.object" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.recordvalidation.fieldtype.NumericFieldType'
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/field/object/BigDecimalObjectDefinition.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field.object" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.text.ParseException'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field.object" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.text.SimpleDateFormat'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field.object" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Date'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field.object" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.field.FieldTypeDefinition'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="67" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.field.object" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.recordvalidation.fieldtype.FieldParseException'
+</violation>
+<violation beginline="14" endline="14" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.field.object" class="BigDecimalObjectDefinition" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/field/object/CachingStringObjectDefinition.java">
+<violation beginline="9" endline="9" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.field.object" class="CachingStringObjectDefinition" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/field/object/IntegerObjectDefinition.java">
+<violation beginline="7" endline="7" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.field.object" class="IntegerObjectDefinition" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/file/DiskInfo.java">
+<violation beginline="13" endline="13" begincolumn="30" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.file" class="DiskInfo" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/file/FileHelper.java">
+<violation beginline="65" endline="65" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.file" class="FileHelper" method="getJavaSourceWriter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="165" endline="165" begincolumn="35" endcolumn="53" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.file" class="FileHelper" method="getWriteableFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="168" endline="168" begincolumn="35" endcolumn="53" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.file" class="FileHelper" method="getWriteableFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="171" endline="171" begincolumn="35" endcolumn="53" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.file" class="FileHelper" method="getWriteableFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="175" endline="175" begincolumn="35" endcolumn="53" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.file" class="FileHelper" method="getWriteableFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/file/FileInfo.java">
+<violation beginline="33" endline="35" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.file" class="FileInfo" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'f'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/file/FileInfoMarshallerDefault.java">
+<violation beginline="17" endline="17" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.file" class="FileInfoMarshallerDefault" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/file/FileNode.java">
+<violation beginline="50" endline="50" begincolumn="43" endcolumn="73" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.file" class="FileNode" method="addChild" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/io/ArchiveFileUtils.java">
+<violation beginline="28" endline="31" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.io" class="ArchiveFileUtils" method="isGzip" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/io/WriterWrapper.java">
+<violation beginline="20" endline="26" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.io" class="WriterWrapper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'description'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/java/JavaFile.java">
+<violation beginline="39" endline="39" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.java" class="JavaFile" method="getJavaFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/lang/BigDecimalCoercer.java">
+<violation beginline="9" endline="9" begincolumn="24" endcolumn="29" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.lang" class="BigDecimalCoercer" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/lang/ClassUtils.java">
+<violation beginline="134" endline="145" begincolumn="41" endcolumn="41" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.lang" class="ClassUtils" method="findResources" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/lang/reflect/IntrospectedFieldHelper.java">
+<violation beginline="237" endline="238" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.lang.reflect" class="IntrospectedFieldHelper" method="preparePropertyAccess" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="260" endline="267" begincolumn="41" endcolumn="41" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.lang.reflect" class="IntrospectedFieldHelper" method="preparePropertyAccess" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/lang/reflect/IntrospectionFields.java">
+<violation beginline="7" endline="7" begincolumn="64" endcolumn="69" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.lang.reflect" class="IntrospectionFields" variable="fields" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'fields'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/lang/reflect/IntrospectionHelper.java">
+<violation beginline="63" endline="73" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.lang.reflect" class="IntrospectionHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'introspectionClass'.
+</violation>
+<violation beginline="202" endline="203" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.lang.reflect" class="IntrospectionHelper" method="preparePropertyAccess" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="232" endline="239" begincolumn="41" endcolumn="41" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.lang.reflect" class="IntrospectionHelper" method="preparePropertyAccess" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/lang/reflect/ReflectUtils.java">
+<violation beginline="114" endline="117" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.lang.reflect" class="ReflectUtils" method="getField" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/recordvalidation/AbstractRecordDefinition.java">
+<violation beginline="81" endline="83" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.recordvalidation" class="AbstractRecordDefinition" method="getDate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/reflect/FieldHelper.java">
+<violation beginline="63" endline="68" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.reflect" class="FieldHelper" method="getFields" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="91" endline="94" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.reflect" class="FieldHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'fieldName'.
+</violation>
+<violation beginline="91" endline="94" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.reflect" class="FieldHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'object'.
+</violation>
+<violation beginline="91" endline="94" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.reflect" class="FieldHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'value'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/security/HashUtil.java">
+<violation beginline="28" endline="32" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.security" class="HashUtil" method="mergePasswordAndSalt" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/test/SalesDataset.java">
+<violation beginline="26" endline="26" begincolumn="37" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.test" class="SalesDataset" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/text/CSVTokenizer.java">
+<violation beginline="182" endline="186" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.text" class="CSVTokenizer" method="getDelimitedToken" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/text/ConfigurableToStringStyle.java">
+<violation beginline="28" endline="28" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.text" class="ConfigurableToStringStyle" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/text/StringCleanerImpl.java">
+<violation beginline="17" endline="19" begincolumn="74" endcolumn="41" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.text" class="StringCleanerImpl" method="clean" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/text/StringHelper.java">
+<violation beginline="29" endline="29" begincolumn="32" endcolumn="47" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.text" class="StringHelper" variable="firstWordPattern" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'firstWordPattern'.
+</violation>
+<violation beginline="96" endline="96" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="attributeNameInitCap" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="387" endline="387" begincolumn="43" endcolumn="76" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="getResourceReader" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="393" endline="393" begincolumn="35" endcolumn="53" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="getResourceReader" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="406" endline="406" begincolumn="17" endcolumn="34" rule="UselessOperationOnImmutable" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="getRevision" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOperationOnImmutable" priority="3">
+An operation on an Immutable object (String, BigDecimal or BigInteger) won't change the object itself
+</violation>
+<violation beginline="509" endline="509" begincolumn="43" endcolumn="76" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="isTrue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="551" endline="551" begincolumn="43" endcolumn="76" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="loadFromResource" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="563" endline="563" begincolumn="35" endcolumn="53" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="loadFromResource" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="864" endline="864" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="cook" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="868" endline="868" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="cook" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="872" endline="872" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="cook" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="875" endline="875" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="cook" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="885" endline="885" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.text" class="StringHelper" method="cooked" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/DateHelper.java">
+<violation beginline="129" endline="129" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateHelper" method="daysBetween" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="185" endline="185" begincolumn="44" endcolumn="57" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateHelper" method="getDateMidnight" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="320" endline="320" begincolumn="50" endcolumn="63" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateHelper" method="main" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="349" endline="349" begincolumn="34" endcolumn="46" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateHelper" method="toSqlDate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="357" endline="357" begincolumn="34" endcolumn="51" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateHelper" method="toSqlTimestamp" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/DateUtils.java">
+<violation beginline="20" endline="20" begincolumn="57" endcolumn="70" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateUtils" method="toXMLGregorianCalendar" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="46" endline="46" begincolumn="35" endcolumn="47" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateUtils" method="toSqlDate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="55" endline="55" begincolumn="35" endcolumn="48" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="DateUtils" method="toDate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/Day.java">
+<violation beginline="30" endline="30" begincolumn="27" endcolumn="40" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="Day" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="130" endline="130" begincolumn="28" endcolumn="41" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="Day" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="168" endline="168" begincolumn="28" endcolumn="45" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="Day" method="toTimestamp" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/ImmutableDate.java">
+<violation beginline="30" endline="30" begincolumn="27" endcolumn="40" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="ImmutableDate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="143" endline="143" begincolumn="28" endcolumn="41" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="ImmutableDate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="181" endline="181" begincolumn="28" endcolumn="45" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.util" class="ImmutableDate" method="toTimestamp" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/InvalidEnvironmentException.java">
+<violation beginline="14" endline="18" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.util" class="InvalidEnvironmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'environmentVariableName'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/xml/XmlValidator.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="54" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.xml" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.xml.parsers.ParserConfigurationException'
+</violation>
+<violation beginline="25" endline="25" begincolumn="26" endcolumn="29" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.xml" class="XmlValidator" variable="xdoc" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'xdoc'.
+</violation>
+</file>
+</pmd>

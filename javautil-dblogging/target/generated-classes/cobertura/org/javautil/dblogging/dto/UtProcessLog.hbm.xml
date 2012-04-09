@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 10, 2011 1:41:20 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.dblogging.dto.UtProcessLog" table="UT_PROCESS_LOG" schema="PUBLIC" catalog="DBLOGGING">
+        <composite-id name="id" class="org.javautil.dblogging.dto.UtProcessLogId">
+            <key-property name="utProcessStatusNbr" type="int">
+                <column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" />
+            </key-property>
+            <key-property name="logSeqNbr" type="long">
+                <column name="LOG_SEQ_NBR" precision="18" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="utProcessStatus" class="org.javautil.dblogging.dto.UtProcessStatus" update="false" insert="false" fetch="select">
+            <column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="utProcessLogNbr" type="java.lang.Integer">
+            <column name="UT_PROCESS_LOG_NBR" precision="9" scale="0" />
+        </property>
+        <property name="logMsgId" type="string">
+            <column name="LOG_MSG_ID" length="8" />
+        </property>
+        <property name="logMsg" type="string">
+            <column name="LOG_MSG" length="256" />
+        </property>
+        <property name="logMsgClob" type="string">
+            <column name="LOG_MSG_CLOB" />
+        </property>
+        <property name="logMsgTs" type="timestamp">
+            <column name="LOG_MSG_TS" length="23" />
+        </property>
+        <property name="elapsedSeconds" type="big_decimal">
+            <column name="ELAPSED_SECONDS" precision="11" scale="5" />
+        </property>
+        <property name="callerName" type="string">
+            <column name="CALLER_NAME" length="100" />
+        </property>
+        <property name="lineNbr" type="java.lang.Integer">
+            <column name="LINE_NBR" precision="5" scale="0" />
+        </property>
+        <property name="callStack" type="string">
+            <column name="CALL_STACK" />
+        </property>
+        <property name="logLevel" type="java.lang.Byte">
+            <column name="LOG_LEVEL" precision="2" scale="0" />
+        </property>
+        <set name="utProcessStats" inverse="true">
+            <key>
+                <column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" not-null="true" />
+                <column name="LOG_SEQ_NBR" precision="9" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="org.javautil.dblogging.dto.UtProcessStat" />
+        </set>
+    </class>
+</hibernate-mapping>

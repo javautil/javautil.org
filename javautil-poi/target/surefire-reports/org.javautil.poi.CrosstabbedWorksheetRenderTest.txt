@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.javautil.poi.CrosstabbedWorksheetRenderTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.009 sec

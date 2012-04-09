@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Mp3MetadataFormatter xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/org/javautil/mp3/formatter/Mp3MetadataFormatter.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.mp3.formatter;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> org.javautil.mp3.Mp3Metadata;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment">// TODO need interface?</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/javautil/mp3/formatter/Mp3MetadataFormatter.html">Mp3MetadataFormatter</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../org/javautil/mp3/formatter/Mp3BaseMetadataFormatter.html">Mp3BaseMetadataFormatter</a> {
+<a class="jxr_linenumber" name="7" href="#7">7</a>   	<strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String newline = System.getProperty(<span class="jxr_string">"line.separator"</span>);
+<a class="jxr_linenumber" name="8" href="#8">8</a>   
+<a class="jxr_linenumber" name="9" href="#9">9</a>   	<strong class="jxr_keyword">public</strong> String toLongString(<strong class="jxr_keyword">final</strong> <a href="../../../../org/javautil/mp3/Mp3Metadata.html">Mp3Metadata</a> meta) {
+<a class="jxr_linenumber" name="10" href="#10">10</a>  		<strong class="jxr_keyword">final</strong> StringBuilder b = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="11" href="#11">11</a>  		b.append(asTripletLine(<span class="jxr_string">"albumTitle"</span>, meta.getAlbumTitle1(),
+<a class="jxr_linenumber" name="12" href="#12">12</a>  				meta.getAlbumTitle2()));
+<a class="jxr_linenumber" name="13" href="#13">13</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="14" href="#14">14</a>  		b.append(asTripletLine(<span class="jxr_string">"songTitle"</span>, meta.getSongTitle1(),
+<a class="jxr_linenumber" name="15" href="#15">15</a>  				meta.getSongTitle2()));
+<a class="jxr_linenumber" name="16" href="#16">16</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="17" href="#17">17</a>  		b.append(asTripletLine(<span class="jxr_string">"authorComposer"</span>, meta.getAuthorComposer1(),
+<a class="jxr_linenumber" name="18" href="#18">18</a>  				meta.getAuthorComposer2()));
+<a class="jxr_linenumber" name="19" href="#19">19</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="20" href="#20">20</a>  		b.append(asTripletLine(<span class="jxr_string">"leadArtist"</span>, meta.getLeadArtist1(),
+<a class="jxr_linenumber" name="21" href="#21">21</a>  				meta.getLeadArtist2()));
+<a class="jxr_linenumber" name="22" href="#22">22</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="23" href="#23">23</a>  		b.append(asTripletLine(<span class="jxr_string">"genre"</span>, meta.getGenre1(), meta.getGenre2()));
+<a class="jxr_linenumber" name="24" href="#24">24</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="25" href="#25">25</a>  		b.append(asTripletLine(<span class="jxr_string">"songComment"</span>, meta.getSongComment1(),
+<a class="jxr_linenumber" name="26" href="#26">26</a>  				meta.getSongComment2()));
+<a class="jxr_linenumber" name="27" href="#27">27</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="28" href="#28">28</a>  		b.append(asTripletLine(<span class="jxr_string">"songLyric"</span>, meta.getSongLyric1(),
+<a class="jxr_linenumber" name="29" href="#29">29</a>  				meta.getSongLyric2()));
+<a class="jxr_linenumber" name="30" href="#30">30</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="31" href="#31">31</a>  		b.append(asTripletLine(<span class="jxr_string">"track"</span>, meta.getTrack1(), meta.getTrack2()));
+<a class="jxr_linenumber" name="32" href="#32">32</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="33" href="#33">33</a>  		b.append(asTripletLine(<span class="jxr_string">"yearReleased"</span>, meta.getYearReleased1(),
+<a class="jxr_linenumber" name="34" href="#34">34</a>  				meta.getYearReleased2()));
+<a class="jxr_linenumber" name="35" href="#35">35</a>  		b.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="36" href="#36">36</a>  		<strong class="jxr_keyword">return</strong> b.toString();
+<a class="jxr_linenumber" name="37" href="#37">37</a>  	}
+<a class="jxr_linenumber" name="38" href="#38">38</a>  
+<a class="jxr_linenumber" name="39" href="#39">39</a>  	<strong class="jxr_keyword">public</strong> String asString(<strong class="jxr_keyword">final</strong> <a href="../../../../org/javautil/mp3/Mp3Metadata.html">Mp3Metadata</a> meta) {
+<a class="jxr_linenumber" name="40" href="#40">40</a>  		<strong class="jxr_keyword">final</strong> <a href="../../../../org/javautil/mp3/formatter/Mp3MetadataAccess.html">Mp3MetadataAccess</a> accessor = <strong class="jxr_keyword">new</strong> <a href="../../../../org/javautil/mp3/formatter/Mp3MetadataAccess.html">Mp3MetadataAccess</a>();
+<a class="jxr_linenumber" name="41" href="#41">41</a>  		<strong class="jxr_keyword">final</strong> StringBuilder b = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="42" href="#42">42</a>  		append(b, asPair(<span class="jxr_string">"albumTitle"</span>, accessor.getAlbumTitle()));
+<a class="jxr_linenumber" name="43" href="#43">43</a>  		append(b, asPair(<span class="jxr_string">" songTitle"</span>, accessor.getSongTitle()));
+<a class="jxr_linenumber" name="44" href="#44">44</a>  		append(b, asPair(<span class="jxr_string">" authorComposer"</span>, accessor.getAuthorComposer()));
+<a class="jxr_linenumber" name="45" href="#45">45</a>  		append(b, asPair(<span class="jxr_string">" leadArtist"</span>, accessor.getLeadArtist()));
+<a class="jxr_linenumber" name="46" href="#46">46</a>  		append(b, asPair(<span class="jxr_string">" genre"</span>, accessor.getGenre()));
+<a class="jxr_linenumber" name="47" href="#47">47</a>  		append(b, asPair(<span class="jxr_string">" songComment"</span>, accessor.getComment()));
+<a class="jxr_linenumber" name="48" href="#48">48</a>  		append(b, asPair(<span class="jxr_string">" songLyric"</span>, accessor.getSongLyric()));
+<a class="jxr_linenumber" name="49" href="#49">49</a>  		append(b, asPair(<span class="jxr_string">" track"</span>, accessor.getTrack()));
+<a class="jxr_linenumber" name="50" href="#50">50</a>  		append(b, asPair(<span class="jxr_string">" yearReleased"</span>, accessor.getYearReleased()));
+<a class="jxr_linenumber" name="51" href="#51">51</a>  		<strong class="jxr_keyword">return</strong> b.toString();
+<a class="jxr_linenumber" name="52" href="#52">52</a>  	}
+<a class="jxr_linenumber" name="53" href="#53">53</a>  
+<a class="jxr_linenumber" name="54" href="#54">54</a>  	<strong class="jxr_keyword">void</strong> append(<strong class="jxr_keyword">final</strong> StringBuilder b, <strong class="jxr_keyword">final</strong> String text) {
+<a class="jxr_linenumber" name="55" href="#55">55</a>  		<strong class="jxr_keyword">if</strong> (text != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="56" href="#56">56</a>  			b.append(text);
+<a class="jxr_linenumber" name="57" href="#57">57</a>  		}
+<a class="jxr_linenumber" name="58" href="#58">58</a>  	}
+<a class="jxr_linenumber" name="59" href="#59">59</a>  
+<a class="jxr_linenumber" name="60" href="#60">60</a>  	<strong class="jxr_keyword">private</strong> String asTripletLine(<strong class="jxr_keyword">final</strong> String left, <strong class="jxr_keyword">final</strong> String middle,
+<a class="jxr_linenumber" name="61" href="#61">61</a>  			<strong class="jxr_keyword">final</strong> String right) {
+<a class="jxr_linenumber" name="62" href="#62">62</a>  		String returnValue = <span class="jxr_string">""</span>;
+<a class="jxr_linenumber" name="63" href="#63">63</a>  		<strong class="jxr_keyword">if</strong> ((middle != <strong class="jxr_keyword">null</strong>) || (right != <strong class="jxr_keyword">null</strong>)) {
+<a class="jxr_linenumber" name="64" href="#64">64</a>  			<strong class="jxr_keyword">final</strong> StringBuilder b = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="65" href="#65">65</a>  			b.append(left);
+<a class="jxr_linenumber" name="66" href="#66">66</a>  			b.append(<span class="jxr_string">":"</span>);
+<a class="jxr_linenumber" name="67" href="#67">67</a>  			b.append(middle == <strong class="jxr_keyword">null</strong> ? <span class="jxr_string">"null "</span> : <span class="jxr_string">"'"</span> + middle + <span class="jxr_string">"' "</span>);
+<a class="jxr_linenumber" name="68" href="#68">68</a>  			<em class="jxr_comment">// TODO Wtf b is never referenced</em>
+<a class="jxr_linenumber" name="69" href="#69">69</a>  			returnValue = left + <span class="jxr_string">": '"</span> + middle + <span class="jxr_string">"' '"</span> + right + <span class="jxr_string">"'"</span> + newline;
+<a class="jxr_linenumber" name="70" href="#70">70</a>  		}
+<a class="jxr_linenumber" name="71" href="#71">71</a>  		<strong class="jxr_keyword">return</strong> returnValue;
+<a class="jxr_linenumber" name="72" href="#72">72</a>  	}
+<a class="jxr_linenumber" name="73" href="#73">73</a>  
+<a class="jxr_linenumber" name="74" href="#74">74</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

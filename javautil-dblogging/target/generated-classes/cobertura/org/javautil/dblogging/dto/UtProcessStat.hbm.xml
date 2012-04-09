@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 10, 2011 1:41:20 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.dblogging.dto.UtProcessStat" table="UT_PROCESS_STAT" schema="PUBLIC" catalog="DBLOGGING">
+        <composite-id name="id" class="org.javautil.dblogging.dto.UtProcessStatId">
+            <key-property name="utProcessStatusNbr" type="int">
+                <column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" />
+            </key-property>
+            <key-property name="logSeqNbr" type="int">
+                <column name="LOG_SEQ_NBR" precision="9" scale="0" />
+            </key-property>
+            <key-property name="statisticNbr" type="int">
+                <column name="STATISTIC_NBR" precision="9" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="utProcessLog" class="org.javautil.dblogging.dto.UtProcessLog" update="false" insert="false" fetch="select">
+            <column name="UT_PROCESS_STATUS_NBR" precision="9" scale="0" not-null="true" />
+            <column name="LOG_SEQ_NBR" precision="9" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="sid" type="java.lang.Integer">
+            <column name="SID" precision="9" scale="0" />
+        </property>
+        <property name="value" type="big_decimal">
+            <column name="VALUE" precision="11" scale="5" />
+        </property>
+    </class>
+</hibernate-mapping>

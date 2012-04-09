@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:48:23.185">
+<file name="/common/home/jjs/workspace/javautil-conditionidentification/src/main/java/org/javautil/exceptionprocessing/ExceptionRuleProcessor.java">
+<violation beginline="172" endline="175" begincolumn="32" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.exceptionprocessing" class="ExceptionRuleProcessor" method="prepareIn" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-conditionidentification/src/main/java/org/javautil/exceptionprocessing/dao/ProcessLoggingImpl.java">
+<violation beginline="20" endline="20" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.exceptionprocessing.dao" class="ProcessLoggingImpl" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="48" endline="48" begincolumn="28" endcolumn="34" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.exceptionprocessing.dao" class="ProcessLoggingImpl" method="endJob" variable="endTime" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'endTime'.
+</violation>
+<violation beginline="58" endline="58" begincolumn="28" endcolumn="34" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.exceptionprocessing.dao" class="ProcessLoggingImpl" method="abortJob" variable="endTime" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'endTime'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-conditionidentification/src/main/java/org/javautil/persist/hibernate/RevEngStrategy.java">
+<violation beginline="17" endline="17" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.persist.hibernate" class="RevEngStrategy" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+</pmd>

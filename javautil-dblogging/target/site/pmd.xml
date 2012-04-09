@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:48:34.206">
+<file name="/common/home/jjs/workspace/javautil-dblogging/src/main/java/org/javautil/dblogging/dao/impl/ProcessLoggingImpl.java">
+<violation beginline="29" endline="29" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dblogging.dao.impl" class="ProcessLoggingImpl" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="34" endline="34" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dblogging.dao.impl" class="ProcessLoggingImpl" variable="cfg" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'cfg'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-dblogging/src/main/java/org/javautil/dblogging/reveng/RevEngStrategy.java">
+<violation beginline="19" endline="19" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dblogging.reveng" class="RevEngStrategy" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+</pmd>

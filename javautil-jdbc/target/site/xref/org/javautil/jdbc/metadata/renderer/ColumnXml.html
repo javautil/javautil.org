@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>ColumnXml xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/org/javautil/jdbc/metadata/renderer/ColumnXml.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.jdbc.metadata.renderer;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment">// todo nuke</em>
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_javadoccomment"> * getColumns</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_javadoccomment"> * &lt;pre&gt;</em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_javadoccomment"> *  public synchronized ResultSet getColumns(String catalog,</em>
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_javadoccomment"> *                       String schemaPattern,</em>
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_javadoccomment"> *                       String tableNamePattern,</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_javadoccomment"> *                       String columnNamePattern) throws SQLException</em>
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_javadoccomment"> * Get a description of table columns available in a catalog.</em>
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_javadoccomment"> * Only column descriptions matching the catalog, schema, table and column name criteria are returned. They are ordered by TABLE_SCHEM, TABLE_NAME and ORDINAL_POSITION.</em>
+<a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_javadoccomment"> * Each column description has the following columns:</em>
+<a class="jxr_linenumber" name="16" href="#16">16</a>  <em class="jxr_javadoccomment"> * TABLE_CAT String =&amp;gt; table catalog (may be null)</em>
+<a class="jxr_linenumber" name="17" href="#17">17</a>  <em class="jxr_javadoccomment"> * TABLE_SCHEM String =&amp;gt; table schema (may be null)</em>
+<a class="jxr_linenumber" name="18" href="#18">18</a>  <em class="jxr_javadoccomment"> * TABLE_NAME String =&amp;gt; table name</em>
+<a class="jxr_linenumber" name="19" href="#19">19</a>  <em class="jxr_javadoccomment"> * COLUMN_NAME String =&amp;gt; column name</em>
+<a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_javadoccomment"> * DATA_TYPE short =&amp;gt; SQL type from java.sql.Types</em>
+<a class="jxr_linenumber" name="21" href="#21">21</a>  <em class="jxr_javadoccomment"> * TYPE_NAME String =&amp;gt; Data source dependent type name</em>
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <em class="jxr_javadoccomment"> * COLUMN_SIZE int =&amp;gt; column size. For char or date types this is the maximum number of characters, for numeric or decimal types this is precision.</em>
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <em class="jxr_javadoccomment"> * BUFFER_LENGTH is not used.</em>
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <em class="jxr_javadoccomment"> * DECIMAL_DIGITS int =&amp;gt; the number of fractional digits</em>
+<a class="jxr_linenumber" name="25" href="#25">25</a>  <em class="jxr_javadoccomment"> * NUM_PREC_RADIX int =&amp;gt; Radix (typically either 10 or 2)</em>
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <em class="jxr_javadoccomment"> * NULLABLE int =&amp;gt; is NULL allowed?</em>
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * columnNoNulls - might not allow NULL values</em>
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * columnNullable - definitely allows NULL values</em>
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> * columnNullableUnknown - nullability unknown</em>
+<a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> * REMARKS String =&amp;gt; comment describing column (may be null)</em>
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * COLUMN_DEF String =&amp;gt; default value (may be null)</em>
+<a class="jxr_linenumber" name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> * SQL_DATA_TYPE int =&amp;gt; unused</em>
+<a class="jxr_linenumber" name="33" href="#33">33</a>  <em class="jxr_javadoccomment"> * SQL_DATETIME_SUB int =&amp;gt; unused</em>
+<a class="jxr_linenumber" name="34" href="#34">34</a>  <em class="jxr_javadoccomment"> * CHAR_OCTET_LENGTH int =&amp;gt; for char types the maximum number of bytes in the column</em>
+<a class="jxr_linenumber" name="35" href="#35">35</a>  <em class="jxr_javadoccomment"> * ORDINAL_POSITION int =&amp;gt; index of column in table (starting at 1)</em>
+<a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_javadoccomment"> * IS_NULLABLE String =&amp;gt; &amp;quot;NO&amp;quot; means column definitely does not allow NULL values; &amp;quot;YES&amp;quot; means the column might allow NULL values. An empty string means nobody knows.</em>
+<a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_javadoccomment"> * Parameters:</em>
+<a class="jxr_linenumber" name="38" href="#38">38</a>  <em class="jxr_javadoccomment"> * catalog - a catalog name; &amp;quot;&amp;quot; retrieves those without a catalog; null means drop catalog name from the selection criteria</em>
+<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment"> * schemaPattern - a schema name pattern; &amp;quot;&amp;quot; retrieves those without a schema</em>
+<a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * tableNamePattern - a table name pattern</em>
+<a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> * columnNamePattern - a column name pattern</em>
+<a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * &lt;/pre&gt;</em>
+<a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="44" href="#44">44</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/javautil/jdbc/metadata/renderer/ColumnXml.html">ColumnXml</a> {
+<a class="jxr_linenumber" name="45" href="#45">45</a>  
+<a class="jxr_linenumber" name="46" href="#46">46</a>  	<em class="jxr_comment">// public static Column getColumn (final Element e) {</em>
+<a class="jxr_linenumber" name="47" href="#47">47</a>  	<em class="jxr_comment">// Column col = new Column();</em>
+<a class="jxr_linenumber" name="48" href="#48">48</a>  	<em class="jxr_comment">// col.setAttributeName(e.attributeValue(XmlMeta.FIELD_NAME));</em>
+<a class="jxr_linenumber" name="49" href="#49">49</a>  	<em class="jxr_comment">// col.setColumnName(e.attributeValue(XmlMeta.COLUMN_NAME));</em>
+<a class="jxr_linenumber" name="50" href="#50">50</a>  	<em class="jxr_comment">// col.setTypeName(e.attributeValue(XmlMeta.DATA_TYPE));</em>
+<a class="jxr_linenumber" name="51" href="#51">51</a>  	<em class="jxr_comment">// final String columnSizeText = e.attributeValue(XmlMeta.COLUMN_SIZE);</em>
+<a class="jxr_linenumber" name="52" href="#52">52</a>  	<em class="jxr_comment">// if (columnSizeText != null) {</em>
+<a class="jxr_linenumber" name="53" href="#53">53</a>  	<em class="jxr_comment">// col.setColumnSize(Integer.parseInt(columnSizeText));</em>
+<a class="jxr_linenumber" name="54" href="#54">54</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="55" href="#55">55</a>  	<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="56" href="#56">56</a>  	<em class="jxr_comment">// col.setNullable(e.attributeValue(XmlMeta.NULLABLE));</em>
+<a class="jxr_linenumber" name="57" href="#57">57</a>  	<em class="jxr_comment">// final String colSize = e.attributeValue(XmlMeta.COLUMN_SIZE);</em>
+<a class="jxr_linenumber" name="58" href="#58">58</a>  	<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="59" href="#59">59</a>  	<em class="jxr_comment">// if (colSize != null) {</em>
+<a class="jxr_linenumber" name="60" href="#60">60</a>  	<em class="jxr_comment">// col.setColumnSize(new Integer(colSize));</em>
+<a class="jxr_linenumber" name="61" href="#61">61</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="62" href="#62">62</a>  	<em class="jxr_comment">// col.setDataType(e.attributeValue(XmlMeta.DATA_TYPE));</em>
+<a class="jxr_linenumber" name="63" href="#63">63</a>  	<em class="jxr_comment">// return col;</em>
+<a class="jxr_linenumber" name="64" href="#64">64</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="65" href="#65">65</a>  	<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="66" href="#66">66</a>  	<em class="jxr_comment">// public static Element getAsElement(Column col, final boolean</em>
+<a class="jxr_linenumber" name="67" href="#67">67</a>  	<em class="jxr_comment">// emitCamelCase) {</em>
+<a class="jxr_linenumber" name="68" href="#68">68</a>  	<em class="jxr_comment">// final Element e = DocumentHelper.createElement(XmlMeta.FIELD);</em>
+<a class="jxr_linenumber" name="69" href="#69">69</a>  	<em class="jxr_comment">// if (emitCamelCase) {</em>
+<a class="jxr_linenumber" name="70" href="#70">70</a>  	<em class="jxr_comment">// e.addAttribute(XmlMeta.FIELD_NAME,StringHelper.attributeName(col.getColumnName()));</em>
+<a class="jxr_linenumber" name="71" href="#71">71</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="72" href="#72">72</a>  	<em class="jxr_comment">// String xmlType;</em>
+<a class="jxr_linenumber" name="73" href="#73">73</a>  	<em class="jxr_comment">// // todo what is this</em>
+<a class="jxr_linenumber" name="74" href="#74">74</a>  	<em class="jxr_comment">// try {</em>
+<a class="jxr_linenumber" name="75" href="#75">75</a>  	<em class="jxr_comment">// xmlType = col.getXmlType();</em>
+<a class="jxr_linenumber" name="76" href="#76">76</a>  	<em class="jxr_comment">// } catch (final UnsupportedDataTypeException ude) {</em>
+<a class="jxr_linenumber" name="77" href="#77">77</a>  	<em class="jxr_comment">// xmlType = ude.getMessage();</em>
+<a class="jxr_linenumber" name="78" href="#78">78</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="79" href="#79">79</a>  	<em class="jxr_comment">// e.addAttribute(XmlMeta.COLUMN_NAME,col.getColumnName());</em>
+<a class="jxr_linenumber" name="80" href="#80">80</a>  	<em class="jxr_comment">// e.addAttribute(XmlMeta.DATA_TYPE,col.getTypeName());</em>
+<a class="jxr_linenumber" name="81" href="#81">81</a>  	<em class="jxr_comment">// e.addAttribute(XmlMeta.SQL_TYPE,col.getSqlType());</em>
+<a class="jxr_linenumber" name="82" href="#82">82</a>  	<em class="jxr_comment">// if (col.getColumnSize() != null) {</em>
+<a class="jxr_linenumber" name="83" href="#83">83</a>  	<em class="jxr_comment">// e.addAttribute(XmlMeta.COLUMN_SIZE,col.getColumnSize().toString());</em>
+<a class="jxr_linenumber" name="84" href="#84">84</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="85" href="#85">85</a>  	<em class="jxr_comment">// if (col.isNullable() != null) {</em>
+<a class="jxr_linenumber" name="86" href="#86">86</a>  	<em class="jxr_comment">// e.addAttribute(XmlMeta.NULLABLE,col.isNullable() ? "not null" : null);</em>
+<a class="jxr_linenumber" name="87" href="#87">87</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="88" href="#88">88</a>  	<em class="jxr_comment">// return e;</em>
+<a class="jxr_linenumber" name="89" href="#89">89</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="90" href="#90">90</a>  
+<a class="jxr_linenumber" name="91" href="#91">91</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="183" tokens="567">
+<file line="54" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/datasources/AbstractDataSource.java"/>
+<file line="64" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/datasources/ReflectionDataSource.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	protected Map<String, String> getProperties() {
+		return properties;
+	}
+
+	/**
+	 * Returns the name of the instantiated datasource
+	 * 
+	 * @return
+	 */
+	public final String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the property map based on the list of properties // Order of
+	 * precedence
+	 * 
+	 * <ol>
+	 * <li>Value</li>
+	 * <li>System property</li>
+	 * <li>Environment property</li>
+	 * <li>Encrypted value</li>
+	 * 
+	 * todo jjs encrypted value and value should be both 1 and mutually
+	 * exclusive, but this is the kind of stuff you have to deal with with maps
+	 * is there an indirection from the property name to the environment name or
+	 * is this an ill considered refactor artifact
+	 * 
+	 * @param _properties
+	 */
+	protected final void setProperties(final List<Property> _properties) {
+		properties.clear();
+		for (final Property prop : _properties) {
+
+			final String key = prop.getKey();
+			String value = prop.getValue();
+			if (value == null) {
+				final String propertyKey = prop.getSys();
+				if (propertyKey != null) {
+					value = System.getProperty(propertyKey.trim());
+				}
+			}
+			if (value == null) {
+				final String environmentKey = prop.getEnv();
+				if (environmentKey != null) {
+					value = System.getenv(environmentKey.trim());
+				}
+			}
+			if (value == null) {
+				final String encryptedValue = prop.getEncryptedValue();
+				if (encryptedValue != null) {
+					try {
+						// TODO this is devoid of merit
+						value = new String(Crypto.decryptFromHex(
+								encryptedValue.trim(), "PA$$WORD"));
+					} catch (final Exception e) {
+						value = null;
+						throw new RuntimeException(e);
+					}
+				}
+			}
+			properties.put(key, value);
+		}
+	}
+
+	/**
+	 * Returns the property value
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public final String getProperty(final String key) {
+		return properties.get(key);
+	}
+
+	/**
+	 * Asserts that the given key is defined in the property map and that it has
+	 * a non-zero length.
+	 * 
+	 * @param key
+	 */
+	protected final void assertPropertyDefined(final String key) {
+		final String value = getProperty(key);
+		if (!key.equals("password")
+				&& (value == null || value.trim().length() == 0)) {
+			throw new IllegalArgumentException(getClass().getName()
+					+ " requires this missing property: " + key);
+		}
+	}
+
+	public void testConnection() {
+		try {
+			final Connection conn = getConnection();
+			conn.close();
+		} catch (final SQLException e) {
+			e.printStackTrace();
+			final StringBuilder b = new StringBuilder();
+			b.append(e.getMessage());
+			b.append(System.getenv("line.separator"));
+			b.append(toString());
+		}
+	}
+
+	/**
+	 * General purpose method to do any necessary initialing before connections
+	 * are retrieved.
+	 * 
+	 */
+	protected void initialize() {
+
+	}
+
+	/*
+	 * All methods below are by default not implemented.
+	 * 
+	 * They minimize the implementing class method requirements.
+	 * 
+	 * Implementing classes are free to override these as necessary.
+	 */
+
+	@Override
+	public PrintWriter getLogWriter() throws SQLException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public int getLoginTimeout() throws SQLException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void setLogWriter(final PrintWriter out) throws SQLException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void setLoginTimeout(final int seconds) throws SQLException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean isWrapperFor(final Class<?> iface) throws SQLException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public <T> T unwrap(final Class<T> iface) throws SQLException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Connection getConnection(final String arg0, final String arg1)
+			throws SQLException {
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * Constructs a <code>String</code> with all attributes in name = value
+	 * format.
+	 * 
+	 * @return a <code>String</code> representation of this object.
+	 * 
+	 *         todo change the property map to not have the userName, password
+	 *         and URL so that we don't have to dump the URL and so that we
+	 *         don't have to expose everything converge back to pre-enhanced
+	 *         version
+	 * 
+	 *         todo replace with AsString version excluding password
+	 */
+	@Override
+	public String toString() {
+		final String TAB = "    ";
+
+		String retValue = "";
+
+		retValue = "AbstractDataSource ( " + super.toString() + TAB + "name = "
+				+ this.name + TAB + "properties = " + this.properties + TAB
+				+ " )";
+
+		return retValue;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="56" tokens="292">
+<file line="47" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/JDBCTable.java"/>
+<file line="55" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/dao/TableJdbc.java"/>
+<codefragment>
+<![CDATA[
+	public JDBCTable(final String schemaName, final String catalogName,
+			final String tableName, final String remarks, final String tableType) {
+		setSchemaName(schemaName);
+		setCatalogName(catalogName);
+		setTableName(tableName);
+		setRemarks(remarks);
+		setTableType(tableType);
+	}
+
+	public void init() throws SQLException {
+		init(databaseMetaData, connection);
+	}
+
+	public void init(final DatabaseMetaData meta, final Connection conn)
+			throws SQLException {
+
+		final String tablePattern = getTableName().toUpperCase();
+		final String columnNamePattern = Messages.getString("Table.tableMask");
+		boolean tableFound = false;
+		if (tablePattern.startsWith("BIN$")) {
+			logger.debug(Messages.getString("Table.recycleBinObjectMessage")
+					+ tablePattern);
+		} else {
+			logger.debug("tablePattern '" + tablePattern + "' "
+					+ " columnPattern '" + columnNamePattern + "'");
+			final ResultSet rs = meta.getColumns(getCatalogName(),
+					getSchemaName(), tablePattern, columnNamePattern);
+			while (rs.next()) {
+				tableFound = true;
+				final Column column = new Column(rs);
+				if (isDumpColumns() && logger.isDebugEnabled()) {
+					logger.debug(column.toString());
+				}
+				addColumn(column);
+			}
+			setMetaDataColumnsDone(System.nanoTime());
+			rs.close();
+			if (!tableFound) {
+
+				throw new NonexistantTableException(
+						"no such table as '"
+								+ getTableName()
+								+ "' in schema "
+								+ "'"
+								+ getSchemaName()
+								+ "' or it is not available to current user. \n"
+								+ "No case conversion is done. \n"
+								+ "If you did not provide in upper case, and this was not"
+								+ " created using quoted names, try using upper case.");
+			}
+
+			if (getTableType().equals("TABLE")) {
+				getExportedKeys(meta);
+				setExportedKeysDone(System.nanoTime());
+				getImportedKeys(meta);
+				setImportedKeysDone(System.nanoTime());
+]]>
+</codefragment>
+</duplication>
+<duplication lines="48" tokens="286">
+<file line="24" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/JDBCForeignKeys.java"/>
+<file line="29" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/dao/ForeignKeysDaoJdbc.java"/>
+<codefragment>
+<![CDATA[
+	public JDBCForeignKeys(final DatabaseMetaData meta, final String catalog,
+			final String schemaPattern, final String table,
+			final boolean exportedKeys) throws SQLException {
+
+		this.schemaPattern = schemaPattern;
+		this.table = table;
+		// boolean found = false;
+		ResultSet rs;
+		if (exportedKeys) {
+			rs = meta.getExportedKeys(catalog, schemaPattern, table);
+		} else {
+			rs = meta.getImportedKeys(catalog, schemaPattern, table);
+		}
+		while (rs.next()) {
+			// found = true;
+			// System.out.println("found a foreign key");
+			final ForeignKeyImpl fkey = new ForeignKeyImpl();
+			fkey.setFkName(rs.getString("fk_name"));
+
+			fkey.setPktableCat(rs.getString("pktable_cat"));
+			fkey.setPktableSchem(rs.getString("pktable_schem"));
+			fkey.setPktableName(rs.getString("pktable_name"));
+
+			fkey.setFktableCat(rs.getString("fktable_cat"));
+			fkey.setFktableSchem(rs.getString("fktable_schem"));
+			fkey.setFktableName(rs.getString("fktable_name"));
+
+			fkey.setUpdateRule(rs.getShort("update_rule"));
+			fkey.setDeleteRule(rs.getShort("delete_rule"));
+			fkey.setPkName(rs.getString("pk_name"));
+
+			ForeignKey oldKey = keys.get(fkey.getId());
+			if (oldKey == null) {
+				oldKey = fkey;
+				keys.put(fkey.getId(), fkey);
+			}
+
+			final ForeignKeyColumn col = new ForeignKeyColumn();
+			col.setKeySeq(rs.getShort("key_seq"));
+			col.setFkcolumnName(rs.getString("fkcolumn_name"));
+			col.setPkcolumnName(rs.getString("pkcolumn_name"));
+
+			oldKey.addColumn(col);
+
+		}
+		rs.close();
+
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="33" tokens="173">
+<file line="14" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/PrimaryKeys.java"/>
+<file line="15" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/dao/PrimaryKeysJdbc.java"/>
+<codefragment>
+<![CDATA[
+	static Logger logger = Logger.getLogger(PrimaryKeys.class.getName());
+
+	public static PrimaryKey getPrimaryKey(final DatabaseMetaData meta,
+			final String catalog, final String schemaPattern,
+			final String tableName) throws SQLException {
+		PrimaryKey pk = null;
+		final ResultSet rs = meta.getPrimaryKeys(catalog, schemaPattern,
+				tableName);
+		if (rs.next()) {
+
+			final String schema = rs.getString("table_schem");
+			// String tableName = rs.getString("table_name");
+			final String pkName = rs.getString("pk_name");
+			pk = new PrimaryKey(schema, tableName, pkName);
+			short keySeq = rs.getShort("key_seq");
+			String columnName = rs.getString("column_name");
+			pk.addColumn(columnName, keySeq);
+			while (rs.next()) {
+				keySeq = rs.getShort("key_seq");
+				columnName = rs.getString("column_name");
+				pk.addColumn(columnName, keySeq);
+			}
+		}
+
+		rs.close();
+
+		if (pk == null) {
+			logger.info(" Index infos not found");
+		}
+		return pk;
+	}
+
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="31" tokens="166">
+<file line="153" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/JDBCTable.java"/>
+<file line="166" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/dao/TableJdbc.java"/>
+<codefragment>
+<![CDATA[
+			setPrimaryKey(PrimaryKeys.getPrimaryKey(meta, getCatalogName(),
+					getSchemaName(), getTableName()));
+		}
+		return getPrimaryKey();
+	}
+
+	public boolean isPrimaryKeyColumn(final String columnName) {
+		return getPrimaryKey() == null ? false : getPrimaryKey()
+				.getColumnNames().contains(columnName);
+	}
+
+	public String[] getSelectStatementLines() {
+		return getSelectStatement().split(newline);
+	}
+
+	public List<ColumnAttributes> getPrimaryKeyColumns(
+			final DatabaseMetaData meta) throws SQLException {
+		final PrimaryKey pk = getPrimaryKey(meta);
+		final ArrayList<ColumnAttributes> pkColumns = new ArrayList<ColumnAttributes>();
+		final Collection<String> columnNames = (pk == null) ? new ArrayList<String>()
+				: pk.getColumnNames();
+		if (columnNames != null) {
+			for (final String columnName : columnNames) {
+				pkColumns.add(getColumn(columnName));
+
+			}
+		}
+		return pkColumns;
+	}
+
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="52" tokens="143">
+<file line="9" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/NameEscaper.java"/>
+<file line="73" path="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/renderer/SQLGenerator.java"/>
+<codefragment>
+<![CDATA[
+				case 'A':
+				case 'B':
+				case 'C':
+				case 'D':
+				case 'E':
+				case 'F':
+				case 'G':
+				case 'H':
+				case 'I':
+				case 'J':
+				case 'K':
+				case 'L':
+				case 'M':
+				case 'N':
+				case 'O':
+				case 'P':
+				case 'Q':
+				case 'R':
+				case 'S':
+				case 'T':
+				case 'U':
+				case 'V':
+				case 'W':
+				case 'X':
+				case 'Y':
+				case 'Z':
+				case '0':
+				case '1':
+				case '2':
+				case '3':
+				case '4':
+				case '5':
+				case '6':
+				case '7':
+				case '8':
+				case '9':
+				case '$':
+				case '_':
+					continue;
+				default:
+					retval = "\"" + string + "\"";
+					break;
+				}
+			}
+		}
+		if (retval == null) {
+			retval = string;
+		}
+		return retval;
+
+	}
+}
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

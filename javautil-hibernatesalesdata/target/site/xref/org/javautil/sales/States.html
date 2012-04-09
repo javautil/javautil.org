@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>States xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../apidocs/org/javautil/sales/States.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.sales;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <strong class="jxr_keyword">import</strong> java.util.Random;
+<a class="jxr_linenumber" name="5" href="#5">5</a>   
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../org/javautil/sales/States.html">States</a> {
+<a class="jxr_linenumber" name="7" href="#7">7</a>   
+<a class="jxr_linenumber" name="8" href="#8">8</a>   	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> seed = 817481717376092L;
+<a class="jxr_linenumber" name="9" href="#9">9</a>   
+<a class="jxr_linenumber" name="10" href="#10">10</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Random random = <strong class="jxr_keyword">new</strong> Random(seed);
+<a class="jxr_linenumber" name="11" href="#11">11</a>  
+<a class="jxr_linenumber" name="12" href="#12">12</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> ArrayList&lt;State&gt; states = <strong class="jxr_keyword">new</strong> ArrayList&lt;State&gt;() {
+<a class="jxr_linenumber" name="13" href="#13">13</a>  		<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_javadoccomment">		 * </em>
+<a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_javadoccomment">		 */</em>
+<a class="jxr_linenumber" name="16" href="#16">16</a>  		<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = 1L;
+<a class="jxr_linenumber" name="17" href="#17">17</a>  
+<a class="jxr_linenumber" name="18" href="#18">18</a>  		{
+<a class="jxr_linenumber" name="19" href="#19">19</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"ALABAMA"</span>, <span class="jxr_string">"AL"</span>));
+<a class="jxr_linenumber" name="20" href="#20">20</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"ALASKA"</span>, <span class="jxr_string">"AK"</span>));
+<a class="jxr_linenumber" name="21" href="#21">21</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"AMERICAN SAMOA"</span>, <span class="jxr_string">"AS"</span>));
+<a class="jxr_linenumber" name="22" href="#22">22</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"ARIZONA"</span>, <span class="jxr_string">"AZ"</span>));
+<a class="jxr_linenumber" name="23" href="#23">23</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"ARKANSAS"</span>, <span class="jxr_string">"AR"</span>));
+<a class="jxr_linenumber" name="24" href="#24">24</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"CALIFORNIA"</span>, <span class="jxr_string">"CA"</span>));
+<a class="jxr_linenumber" name="25" href="#25">25</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"COLORADO"</span>, <span class="jxr_string">"CO"</span>));
+<a class="jxr_linenumber" name="26" href="#26">26</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"CONNECTICUT"</span>, <span class="jxr_string">"CT"</span>));
+<a class="jxr_linenumber" name="27" href="#27">27</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"DELAWARE"</span>, <span class="jxr_string">"DE"</span>));
+<a class="jxr_linenumber" name="28" href="#28">28</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"DISTRICT OF COLUMBIA"</span>, <span class="jxr_string">"DC"</span>));
+<a class="jxr_linenumber" name="29" href="#29">29</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"FEDERATED STATES OF MICRONESIA"</span>, <span class="jxr_string">"FM"</span>));
+<a class="jxr_linenumber" name="30" href="#30">30</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"FLORIDA"</span>, <span class="jxr_string">"FL"</span>));
+<a class="jxr_linenumber" name="31" href="#31">31</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"GEORGIA"</span>, <span class="jxr_string">"GA"</span>));
+<a class="jxr_linenumber" name="32" href="#32">32</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"GUAM"</span>, <span class="jxr_string">"GU"</span>));
+<a class="jxr_linenumber" name="33" href="#33">33</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"HAWAII"</span>, <span class="jxr_string">"HI"</span>));
+<a class="jxr_linenumber" name="34" href="#34">34</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"IDAHO"</span>, <span class="jxr_string">"ID"</span>));
+<a class="jxr_linenumber" name="35" href="#35">35</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"ILLINOIS"</span>, <span class="jxr_string">"IL"</span>));
+<a class="jxr_linenumber" name="36" href="#36">36</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"INDIANA"</span>, <span class="jxr_string">"IN"</span>));
+<a class="jxr_linenumber" name="37" href="#37">37</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"IOWA"</span>, <span class="jxr_string">"IA"</span>));
+<a class="jxr_linenumber" name="38" href="#38">38</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"KANSAS"</span>, <span class="jxr_string">"KS"</span>));
+<a class="jxr_linenumber" name="39" href="#39">39</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"KENTUCKY"</span>, <span class="jxr_string">"KY"</span>));
+<a class="jxr_linenumber" name="40" href="#40">40</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"LOUISIANA"</span>, <span class="jxr_string">"LA"</span>));
+<a class="jxr_linenumber" name="41" href="#41">41</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MAINE"</span>, <span class="jxr_string">"ME"</span>));
+<a class="jxr_linenumber" name="42" href="#42">42</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MARSHALL ISLANDS"</span>, <span class="jxr_string">"MH"</span>));
+<a class="jxr_linenumber" name="43" href="#43">43</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MARYLAND"</span>, <span class="jxr_string">"MD"</span>));
+<a class="jxr_linenumber" name="44" href="#44">44</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MASSACHUSETTS"</span>, <span class="jxr_string">"MA"</span>));
+<a class="jxr_linenumber" name="45" href="#45">45</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MICHIGAN"</span>, <span class="jxr_string">"MI"</span>));
+<a class="jxr_linenumber" name="46" href="#46">46</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MINNESOTA"</span>, <span class="jxr_string">"MN"</span>));
+<a class="jxr_linenumber" name="47" href="#47">47</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MISSISSIPPI"</span>, <span class="jxr_string">"MS"</span>));
+<a class="jxr_linenumber" name="48" href="#48">48</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MISSOURI"</span>, <span class="jxr_string">"MO"</span>));
+<a class="jxr_linenumber" name="49" href="#49">49</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"MONTANA"</span>, <span class="jxr_string">"MT"</span>));
+<a class="jxr_linenumber" name="50" href="#50">50</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NEBRASKA"</span>, <span class="jxr_string">"NE"</span>));
+<a class="jxr_linenumber" name="51" href="#51">51</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NEVADA"</span>, <span class="jxr_string">"NV"</span>));
+<a class="jxr_linenumber" name="52" href="#52">52</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NEW HAMPSHIRE"</span>, <span class="jxr_string">"NH"</span>));
+<a class="jxr_linenumber" name="53" href="#53">53</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NEW JERSEY"</span>, <span class="jxr_string">"NJ"</span>));
+<a class="jxr_linenumber" name="54" href="#54">54</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NEW MEXICO"</span>, <span class="jxr_string">"NM"</span>));
+<a class="jxr_linenumber" name="55" href="#55">55</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NEW YORK"</span>, <span class="jxr_string">"NY"</span>));
+<a class="jxr_linenumber" name="56" href="#56">56</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NORTH CAROLINA"</span>, <span class="jxr_string">"NC"</span>));
+<a class="jxr_linenumber" name="57" href="#57">57</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NORTH DAKOTA"</span>, <span class="jxr_string">"ND"</span>));
+<a class="jxr_linenumber" name="58" href="#58">58</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"NORTHERN MARIANA ISLANDS"</span>, <span class="jxr_string">"MP"</span>));
+<a class="jxr_linenumber" name="59" href="#59">59</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"OHIO"</span>, <span class="jxr_string">"OH"</span>));
+<a class="jxr_linenumber" name="60" href="#60">60</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"OKLAHOMA"</span>, <span class="jxr_string">"OK"</span>));
+<a class="jxr_linenumber" name="61" href="#61">61</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"OREGON"</span>, <span class="jxr_string">"OR"</span>));
+<a class="jxr_linenumber" name="62" href="#62">62</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"PALAU"</span>, <span class="jxr_string">"PW"</span>));
+<a class="jxr_linenumber" name="63" href="#63">63</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"PENNSYLVANIA"</span>, <span class="jxr_string">"PA"</span>));
+<a class="jxr_linenumber" name="64" href="#64">64</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"PUERTO RICO"</span>, <span class="jxr_string">"PR"</span>));
+<a class="jxr_linenumber" name="65" href="#65">65</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"RHODE ISLAND"</span>, <span class="jxr_string">"RI"</span>));
+<a class="jxr_linenumber" name="66" href="#66">66</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"SOUTH CAROLINA"</span>, <span class="jxr_string">"SC"</span>));
+<a class="jxr_linenumber" name="67" href="#67">67</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"SOUTH DAKOTA"</span>, <span class="jxr_string">"SD"</span>));
+<a class="jxr_linenumber" name="68" href="#68">68</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"TENNESSEE"</span>, <span class="jxr_string">"TN"</span>));
+<a class="jxr_linenumber" name="69" href="#69">69</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"TEXAS"</span>, <span class="jxr_string">"TX"</span>));
+<a class="jxr_linenumber" name="70" href="#70">70</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"UTAH"</span>, <span class="jxr_string">"UT"</span>));
+<a class="jxr_linenumber" name="71" href="#71">71</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"VERMONT"</span>, <span class="jxr_string">"VT"</span>));
+<a class="jxr_linenumber" name="72" href="#72">72</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"VIRGIN ISLANDS"</span>, <span class="jxr_string">"VI"</span>));
+<a class="jxr_linenumber" name="73" href="#73">73</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"VIRGINIA"</span>, <span class="jxr_string">"VA"</span>));
+<a class="jxr_linenumber" name="74" href="#74">74</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"WASHINGTON"</span>, <span class="jxr_string">"WA"</span>));
+<a class="jxr_linenumber" name="75" href="#75">75</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"WEST VIRGINIA"</span>, <span class="jxr_string">"WV"</span>));
+<a class="jxr_linenumber" name="76" href="#76">76</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"WISCONSIN"</span>, <span class="jxr_string">"WI"</span>));
+<a class="jxr_linenumber" name="77" href="#77">77</a>  			add(<strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/sales/State.html">State</a>(<span class="jxr_string">"WYOMING"</span>, <span class="jxr_string">"WY"</span>));
+<a class="jxr_linenumber" name="78" href="#78">78</a>  		}
+<a class="jxr_linenumber" name="79" href="#79">79</a>  	};
+<a class="jxr_linenumber" name="80" href="#80">80</a>  
+<a class="jxr_linenumber" name="81" href="#81">81</a>  	<strong class="jxr_keyword">public</strong> String getRandomStateId() {
+<a class="jxr_linenumber" name="82" href="#82">82</a>  		<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> index = random.nextInt(states.size());
+<a class="jxr_linenumber" name="83" href="#83">83</a>  		<strong class="jxr_keyword">final</strong> <a href="../../../org/javautil/sales/State.html">State</a> state = states.get(index);
+<a class="jxr_linenumber" name="84" href="#84">84</a>  		<strong class="jxr_keyword">return</strong> state.getId();
+<a class="jxr_linenumber" name="85" href="#85">85</a>  	}
+<a class="jxr_linenumber" name="86" href="#86">86</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

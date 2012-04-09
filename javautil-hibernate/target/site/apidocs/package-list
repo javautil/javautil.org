@@ -1,0 +1,6 @@
+org.javautil.hibernate
+org.javautil.hibernate.cfg
+org.javautil.hibernate.connectionprovider
+org.javautil.hibernate.persist
+org.javautil.hibernate.reveng
+org.javautil.hibernate.service

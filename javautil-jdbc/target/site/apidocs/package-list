@@ -1,0 +1,16 @@
+org.javautil.dataset
+org.javautil.datasources
+org.javautil.ejb3
+org.javautil.jdbc
+org.javautil.jdbc.datasources
+org.javautil.jdbc.ddl
+org.javautil.jdbc.dml
+org.javautil.jdbc.h2
+org.javautil.jdbc.metadata
+org.javautil.jdbc.metadata.containers
+org.javautil.jdbc.metadata.dao
+org.javautil.jdbc.metadata.renderer
+org.javautil.persistence
+org.javautil.sql
+org.javautil.table
+org.javautil.xsd.columnmetadata

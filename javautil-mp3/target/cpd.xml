@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="25" tokens="157">
+<file line="81" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/persistence/Mp3Persister.java"/>
+<file line="154" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/persistence/Mp3Persister.java"/>
+<codefragment>
+<![CDATA[
+		accessor.setMetadata(mp3data);
+		if ((fileName != null) && (fileName.length() > maxFileNameLength)) {
+			throw new IllegalArgumentException("filen name is longer than "
+					+ maxFileNameLength);
+		}
+		final String albumTitle = trim("albumTitle", accessor.getAlbumTitle(),
+				maxTagLength);
+
+		final String songTitle = trim("songTitle", accessor.getSongTitle(),
+				maxTagLength);
+
+		final String author = trim("author", accessor.getAuthorComposer(),
+				maxTagLength);
+
+		final String artist = trim("artist", accessor.getLeadArtist(),
+				maxTagLength);
+
+		final String genre = trim("genre", accessor.getGenre(), maxTagLength);
+
+		final String songComment = trim("comment", accessor.getComment(),
+				maxTagLength);
+
+		final String track = trim("track", accessor.getTrack(), 8);
+
+		final String yearReleased = trim("year", accessor.getYearReleased(), 4);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="34" tokens="138">
+<file line="10" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/formatter/Mp3BaseMetadataFormatter.java"/>
+<file line="10" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/formatter/Mp3MetadataAccess.java"/>
+<codefragment>
+<![CDATA[
+	public Mp3BaseMetadataFormatter() {
+		super();
+	}
+
+	protected String asPair(final String name, final String value) {
+		String returnValue = "";
+		if ((value != null) && (value.trim().length() > 0)) {
+			returnValue = name + ": '" + value + "'" + newline;
+		}
+
+		return returnValue;
+	}
+
+	// TODO document
+	private String preferred(final String v1, final String v2) {
+		String returnValue = null;
+		if (v1 == null) {
+			if (v2 != null) {
+				returnValue = v2;
+			}
+		} else {
+			if (v2 == null) {
+				returnValue = v1;
+			} else {
+				if (v2.startsWith(v1)) {
+					returnValue = v2;
+				} else {
+					// now what??
+					returnValue = v2;
+				}
+			}
+		}
+		return returnValue;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="13" tokens="128">
+<file line="18" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/formatter/Mp3MapperImpl.java"/>
+<file line="86" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/persistence/Mp3Persister.java"/>
+<file line="159" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/persistence/Mp3Persister.java"/>
+<codefragment>
+<![CDATA[
+		final String albumTitle = trim("albumTitle", accessor.getAlbumTitle(),
+				maxTagLength);
+		final String songTitle = trim("songTitle", accessor.getSongTitle(),
+				maxTagLength);
+		final String author = trim("author", accessor.getAuthorComposer(),
+				maxTagLength);
+		final String artist = trim("artist", accessor.getLeadArtist(),
+				maxTagLength);
+		final String genre = trim("genre", accessor.getGenre(), maxTagLength);
+		final String songComment = trim("comment", accessor.getComment(),
+				maxTagLength);
+		final String track = trim("track", accessor.getTrack(), 8);
+		final String yearReleased = trim("year", accessor.getYearReleased(), 4);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="52" tokens="120">
+<file line="7" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/formatter/CommandOutput.java"/>
+<file line="7" path="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/formatter/LinuxFile.java"/>
+<codefragment>
+<![CDATA[
+public class CommandOutput {
+
+	// TODO make
+	public String getFileInfo(final String fileName) {
+
+		return getCommandOutput("file " + fileName);
+
+	}
+
+	// public String getCommandOutput(String command) {
+	// Process p;
+	// StringBuilder sb = new StringBuilder();
+	// String line;
+	// try {
+	// p = Runtime.getRuntime().exec(command);
+	//
+	// BufferedReader input = new BufferedReader(new InputStreamReader(
+	// p.getInputStream()));
+	// int in;
+	// while ((in = input.read()) != -1) {
+	// sb.append(in);
+	// }
+	// input.close();
+	//
+	// } catch (IOException e) {
+	// throw new RuntimeException(e);
+	// }
+	//
+	// return sb.toString();
+	// }
+
+	public String getCommandOutput(final String command) {
+		Process p;
+		final StringBuilder sb = new StringBuilder();
+		String line;
+		try {
+			p = Runtime.getRuntime().exec(command);
+
+			final BufferedReader input = new BufferedReader(
+					new InputStreamReader(p.getInputStream()));
+			while ((line = input.readLine()) != null) {
+				sb.append(line);
+			}
+			input.close();
+
+		} catch (final IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		return sb.toString();
+	}
+}
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

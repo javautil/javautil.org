@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.064" errors="0" skipped="0" tests="3" name="org.javautil.commandline.annotations.IntegerArgumentsTest">
+<testsuite failures="0" time="0.044" errors="0" skipped="0" tests="3" name="org.javautil.commandline.annotations.IntegerArgumentsTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/common/tools/linux/32/javas/jdk1.6.0_26/jre/lib/i386"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="/common/home/jjs/workspace/javautil-commandline"/>
     <property name="java.endorsed.dirs" value="/common/tools/linux/32/javas/jdk1.6.0_26/jre/lib/endorsed"/>
     <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/tmp/surefirebooter5946170143087960028.jar"/>
+    <property name="surefire.real.class.path" value="/tmp/surefirebooter4041311263826283657.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/common/tools/linux/32/javas/jdk1.6.0_26/jre"/>
-    <property name="sun.java.command" value="/tmp/surefirebooter5946170143087960028.jar /tmp/surefire5649419521303398945tmp /tmp/surefire1958532630010060763tmp"/>
+    <property name="sun.java.command" value="/tmp/surefirebooter4041311263826283657.jar /tmp/surefire6614226305984104019tmp /tmp/surefire2274068211790756156tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="en"/>
     <property name="java.vm.info" value="mixed mode"/>
@@ -59,6 +59,6 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase time="0.004" classname="org.javautil.commandline.annotations.IntegerArgumentsTest" name="testNoArg"/>
-  <testcase time="0.013" classname="org.javautil.commandline.annotations.IntegerArgumentsTest" name="test3"/>
+  <testcase time="0.012" classname="org.javautil.commandline.annotations.IntegerArgumentsTest" name="test3"/>
   <testcase time="0.005" classname="org.javautil.commandline.annotations.IntegerArgumentsTest" name="testIllegalIntegerArgumentValue"/>
 </testsuite>

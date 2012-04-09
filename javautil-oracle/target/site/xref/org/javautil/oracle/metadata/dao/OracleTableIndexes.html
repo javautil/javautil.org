@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/metadata/dao/OracleTableIndexes.java xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.oracle.metadata.dao;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment">//package com.dbexperts.oracle.DatabaseMetaData;</em>
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment">//import java.sql.Connection;</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment">//import java.sql.SQLException;</em>
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment">//import java.util.List;</em>
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment">//import java.util.Map;</em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment">//import java.util.TreeMap;</em>
+<a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_comment">//public class OracleTableIndexes {</em>
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_comment">//    private Map &lt;String,OracleIndex&gt; indexByName = new TreeMap&lt;String,OracleIndex&gt;();</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_comment">//    </em>
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_comment">//    public OracleTableIndexes(Connection conn, OracleTable table) throws SQLException {</em>
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_comment">//	if (conn == null) {</em>
+<a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_comment">//	    throw new IllegalArgumentException("conn is null");</em>
+<a class="jxr_linenumber" name="16" href="#16">16</a>  <em class="jxr_comment">//	}</em>
+<a class="jxr_linenumber" name="17" href="#17">17</a>  <em class="jxr_comment">//	if (table == null) {</em>
+<a class="jxr_linenumber" name="18" href="#18">18</a>  <em class="jxr_comment">//	    throw new IllegalArgumentException("table is null");</em>
+<a class="jxr_linenumber" name="19" href="#19">19</a>  <em class="jxr_comment">//	}</em>
+<a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_comment">//	</em>
+<a class="jxr_linenumber" name="21" href="#21">21</a>  <em class="jxr_comment">//	List&lt;OracleIndex&gt; indexes = OracleIndexDAO.getIndexesForTable(conn,table);</em>
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <em class="jxr_comment">//	for (OracleIndex index : indexes) {</em>
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <em class="jxr_comment">//	    indexByName.put(index.getIndexName(),index);</em>
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <em class="jxr_comment">//	}</em>
+<a class="jxr_linenumber" name="25" href="#25">25</a>  <em class="jxr_comment">//	</em>
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <em class="jxr_comment">//	List&lt;OracleIndexColumn&gt; columns = IndexColumnsDAO.getForTable(conn, table.getSchemaName(), table.getTableName());</em>
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <em class="jxr_comment">//	for (OracleIndexColumn column : columns) {</em>
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <em class="jxr_comment">//	    OracleIndex index = indexByName.get(column.getIndexName());</em>
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <em class="jxr_comment">//	    if (index == null) {</em>
+<a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_comment">//		throw new IllegalStateException("Cannot locate index for indexColumn " + column);</em>
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <em class="jxr_comment">//	    }</em>
+<a class="jxr_linenumber" name="32" href="#32">32</a>  <em class="jxr_comment">//	    index.addIndexColumn(column);</em>
+<a class="jxr_linenumber" name="33" href="#33">33</a>  <em class="jxr_comment">//	}</em>
+<a class="jxr_linenumber" name="34" href="#34">34</a>  <em class="jxr_comment">//    }</em>
+<a class="jxr_linenumber" name="35" href="#35">35</a>  <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_comment">////    @Override</em>
+<a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_comment">////    public ArrayList&lt;Exception&gt; getExceptions() {</em>
+<a class="jxr_linenumber" name="38" href="#38">38</a>  <em class="jxr_comment">////	// TODO Auto-generated method stub</em>
+<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_comment">////	return null;</em>
+<a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_comment">////    }</em>
+<a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_comment">////</em>
+<a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_comment">////    @Override</em>
+<a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_comment">////    public List&lt;IndexColumn&gt; getIndexColumns() {</em>
+<a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_comment">////	// TODO Auto-generated method stub</em>
+<a class="jxr_linenumber" name="45" href="#45">45</a>  <em class="jxr_comment">////	return null;</em>
+<a class="jxr_linenumber" name="46" href="#46">46</a>  <em class="jxr_comment">////}</em>
+<a class="jxr_linenumber" name="47" href="#47">47</a>  <em class="jxr_comment">//}</em>
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

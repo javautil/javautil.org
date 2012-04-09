@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:47:41.840">
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/address/service/AbstractAddressValidation.java">
+<violation beginline="13" endline="13" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.address.service" class="AbstractAddressValidation" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="14" endline="14" begincolumn="40" endcolumn="49" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.address.service" class="AbstractAddressValidation" variable="dateParser" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'dateParser'.
+</violation>
+<violation beginline="16" endline="16" begincolumn="54" endcolumn="67" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.address.service" class="AbstractAddressValidation" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/jdbc/metadata/DDL.java">
+<violation beginline="15" endline="15" begincolumn="32" endcolumn="37" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata" class="DDL" variable="object" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'object'.
+</violation>
+<violation beginline="16" endline="16" begincolumn="23" endcolumn="27" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata" class="DDL" variable="table" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'table'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/jdbc/metadata/OracleAwareSchemaFactory.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.jdbc.metadata" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.sql.Connection'
+</violation>
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="29" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.jdbc.metadata" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.sql.SQLException'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.jdbc.metadata" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'oracle.jdbc.OracleConnection'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.jdbc.metadata" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.oracle.metadata.OracleSchema'
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/jdbc/oracle/TnsNames.java">
+<violation beginline="74" endline="76" begincolumn="40" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.jdbc.oracle" class="TnsNames" method="getNonCommentLines" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/jdbc/oracle/TnsNamesParser.java">
+<violation beginline="102" endline="104" begincolumn="40" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.jdbc.oracle" class="TnsNamesParser" method="getNonCommentLines" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/OracleConnectionHelper.java">
+<violation beginline="98" endline="98" begincolumn="24" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle" class="OracleConnectionHelper" variable="instanceName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'instanceName'.
+</violation>
+<violation beginline="280" endline="280" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionHelper" method="metaDataToHtml" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="682" endline="682" begincolumn="39" endcolumn="47" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionHelper" method="getSessionInfo" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="725" endline="725" begincolumn="31" endcolumn="39" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionHelper" method="getSid" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="808" endline="808" begincolumn="31" endcolumn="39" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionHelper" method="getUdumpDest" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="1137" endline="1137" begincolumn="43" endcolumn="73" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionHelper" method="setModule" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="1223" endline="1223" begincolumn="35" endcolumn="88" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.javautil.oracle" class="OracleConnectionHelper" method="getDataFileNamesForTablespace" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'getDataFileNamesForTablespace(String)'.
+</violation>
+<violation beginline="1258" endline="1258" begincolumn="29" endcolumn="33" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.oracle" class="OracleConnectionHelper" method="getInstanceValues" variable="index" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'index'.
+</violation>
+<violation beginline="1325" endline="1325" begincolumn="27" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="1701" endline="1703" begincolumn="17" endcolumn="9" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+Overriding method merely calls super
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/OracleConnectionUtil.java">
+<violation beginline="248" endline="248" begincolumn="43" endcolumn="73" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle" class="OracleConnectionUtil" method="setModule" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/ObjectSourceDAO.java">
+<violation beginline="78" endline="78" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="ObjectSourceDAO" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OpenCursorS.java">
+<violation beginline="49" endline="49" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OpenCursorS" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="91" endline="91" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OpenCursorS" method="getForSession" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleForeignKeyDAO.java">
+<violation beginline="214" endline="214" begincolumn="17" endcolumn="25" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleForeignKeyDAO" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleForeignKeyDaoImpl.java">
+<violation beginline="69" endline="69" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleForeignKeyDaoImpl" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleObjectDAO.java">
+<violation beginline="97" endline="97" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleObjectDAO" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleSessionBaseS.java">
+<violation beginline="109" endline="109" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleSessionBaseS" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleSessionS.java">
+<violation beginline="39" endline="39" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleSessionS" method="getAll" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleSessionStats.java">
+<violation beginline="30" endline="30" begincolumn="57" endcolumn="62" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.dao" class="OracleSessionStats" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="95" endline="95" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleSessionStats" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleSessionWaits.java">
+<violation beginline="108" endline="108" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleSessionWaits" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleTableColumnDAO.java">
+<violation beginline="138" endline="138" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleTableColumnDAO" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/OracleViewDAO.java">
+<violation beginline="69" endline="69" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="OracleViewDAO" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/dao/UserEnvS.java">
+<violation beginline="145" endline="145" begincolumn="27" endcolumn="47" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.dao" class="UserEnvS" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/datasources/OracleDataSourceWrapper.java">
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="59" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="org.javautil.oracle.datasources" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+<violation beginline="94" endline="94" begincolumn="50" endcolumn="58" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.datasources" class="OracleDataSourceWrapper" variable="arguments" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'arguments'.
+</violation>
+<violation beginline="471" endline="471" begincolumn="49" endcolumn="56" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.oracle.datasources" class="OracleDataSourceWrapper" method="getConnection" variable="messages" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'messages'.
+</violation>
+<violation beginline="491" endline="491" begincolumn="36" endcolumn="38" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.oracle.datasources" class="OracleDataSourceWrapper" method="getConnection" variable="now" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'now'.
+</violation>
+<violation beginline="912" endline="912" begincolumn="22" endcolumn="54" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.javautil.oracle.datasources" class="OracleDataSourceWrapper" method="validateLockKey" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'validateLockKey(Object)'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/datasources/OracleDataSourceWrapperArguments.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="29" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.oracle.datasources" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.sql.SQLException'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="59" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="org.javautil.oracle.datasources" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/metadata/OracleSchema.java">
+<violation beginline="140" endline="143" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata" class="OracleSchema" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'o'.
+</violation>
+<violation beginline="204" endline="207" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata" class="OracleSchema" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'o'.
+</violation>
+<violation beginline="209" endline="212" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata" class="OracleSchema" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'o'.
+</violation>
+<violation beginline="214" endline="217" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata" class="OracleSchema" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'o'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/metadata/OracleTable.java">
+<violation beginline="26" endline="26" begincolumn="37" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata" class="OracleTable" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/metadata/dao/ColumnComments.java">
+<violation beginline="67" endline="67" begincolumn="27" endcolumn="47" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.metadata.dao" class="ColumnComments" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/metadata/dao/OracleConstraintsDAO.java">
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.oracle.metadata.dao" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.oracle.dto.OracleTableColumn'
+</violation>
+<violation beginline="65" endline="65" begincolumn="12" endcolumn="18" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata.dao" class="OracleConstraintsDAO" method="getForTable" variable="myOwner" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'myOwner'.
+</violation>
+<violation beginline="66" endline="66" begincolumn="12" endcolumn="22" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata.dao" class="OracleConstraintsDAO" method="getForTable" variable="myTableName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'myTableName'.
+</violation>
+<violation beginline="113" endline="113" begincolumn="19" endcolumn="39" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.metadata.dao" class="OracleConstraintsDAO" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="124" endline="128" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.oracle.metadata.dao" class="OracleConstraintsDAO" method="getImportedKeyConstraints" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="125" endline="127" begincolumn="21" endcolumn="21" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.oracle.metadata.dao" class="OracleConstraintsDAO" method="getImportedKeyConstraints" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/metadata/dao/OraclePrimaryKeys.java">
+<violation beginline="52" endline="52" begincolumn="19" endcolumn="28" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata.dao" class="OraclePrimaryKeys" method="getPrimaryKey" variable="columnName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'columnName'.
+</violation>
+<violation beginline="53" endline="53" begincolumn="18" endcolumn="20" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.oracle.metadata.dao" class="OraclePrimaryKeys" method="getPrimaryKey" variable="pos" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'pos'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/performance/OracleSessionStatistics.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.oracle.performance" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.ArrayList'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.oracle.performance" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.log4j.Level'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="50" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.oracle.performance" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.oracle.OracleConnectionHelper'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.oracle.performance" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.oracle.dto.OracleSessionWait'
+</violation>
+<violation beginline="22" endline="22" begincolumn="38" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.performance" class="OracleSessionStatistics" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="23" endline="23" begincolumn="45" endcolumn="51" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.performance" class="OracleSessionStatistics" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/servicerequest/ReportRequest.java">
+<violation beginline="99" endline="99" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="issue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="109" endline="110" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="142" endline="142" begincolumn="43" endcolumn="73" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="writeReport" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="197" endline="198" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="leaseURL" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="287" endline="287" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="checkState" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="291" endline="291" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="checkState" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="295" endline="295" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="checkState" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="299" endline="299" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="checkState" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="303" endline="303" begincolumn="35" endcolumn="65" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ReportRequest" method="checkState" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/servicerequest/RequestArgumentParser.java">
+<violation beginline="33" endline="33" begincolumn="43" endcolumn="76" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="RequestArgumentParser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="40" endline="54" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.oracle.servicerequest" class="RequestArgumentParser" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'verbose'.
+</violation>
+<violation beginline="49" endline="49" begincolumn="43" endcolumn="76" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="RequestArgumentParser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="171" endline="172" begincolumn="88" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="RequestArgumentParser" method="processArgument" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/servicerequest/RequestParameter.java">
+<violation beginline="24" endline="24" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="RequestParameter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/servicerequest/ServiceRequestDispatcher.java">
+<violation beginline="50" endline="50" begincolumn="30" endcolumn="38" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.servicerequest" class="ServiceRequestDispatcher" variable="shortName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'shortName'.
+</violation>
+<violation beginline="184" endline="184" begincolumn="51" endcolumn="81" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ServiceRequestDispatcher" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/servicerequest/ServiceRequestIssuer.java">
+<violation beginline="62" endline="62" begincolumn="65" endcolumn="77" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ServiceRequestIssuer" method="issue" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="92" endline="92" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ServiceRequestIssuer" method="setServiceName" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/servicerequest/ServiceRqstBaseS.java">
+<violation beginline="55" endline="55" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.oracle.servicerequest" class="ServiceRqstBaseS" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/stats/SessionStatDeltaFormatter.java">
+<violation beginline="11" endline="11" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.stats" class="SessionStatDeltaFormatter" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/stats/SessionStats.java">
+<violation beginline="11" endline="11" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.stats" class="SessionStats" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="18" endline="18" begincolumn="28" endcolumn="40" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.stats" class="SessionStats" variable="snaptimeNanos" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'snaptimeNanos'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/stats/SessionStatsDAO.java">
+<violation beginline="11" endline="11" begincolumn="37" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.oracle.stats" class="SessionStatsDAO" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<suppressedviolation filename="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/OracleConnectionHelper.java" suppressiontype="annotation" msg="Avoid unused private fields such as 'startTraceLimited'." usermsg=""/>
+<suppressedviolation filename="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/OracleConnectionUtil.java" suppressiontype="annotation" msg="Avoid unused private fields such as 'stopTrace'." usermsg=""/>
+<suppressedviolation filename="/common/home/jjs/workspace/javautil-oracle/src/main/java/org/javautil/oracle/OracleConnectionUtil.java" suppressiontype="annotation" msg="Avoid unused private fields such as 'startTraceLimited'." usermsg=""/>
+</pmd>

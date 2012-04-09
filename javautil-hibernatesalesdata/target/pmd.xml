@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:50:37.868">
+<file name="/common/home/jjs/workspace/javautil-hibernatesalesdata/src/main/java/org/javautil/sales/dataservice/AbstractJdbcSalesDao.java">
+<violation beginline="73" endline="73" begincolumn="31" endcolumn="39" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.sales.dataservice" class="AbstractJdbcSalesDao" method="getSqlStatementInt" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-hibernatesalesdata/src/main/java/org/javautil/sales/dataservice/SalesServicesJDBC.java">
+<violation beginline="26" endline="26" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.sales.dataservice" class="SalesServicesJDBC" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-hibernatesalesdata/src/main/java/org/javautil/sales/populate/DataPopulator.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="50" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.sales.populate" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.hibernate.persist.Persistence'
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-hibernatesalesdata/src/main/java/org/javautil/sales/test/HibernateSmallSalesPopulator.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="50" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.sales.test" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.javautil.hibernate.persist.Persistence'
+</violation>
+</file>
+</pmd>

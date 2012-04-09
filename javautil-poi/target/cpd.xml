@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="359" tokens="1522">
+<file line="116" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="115" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<codefragment>
+<![CDATA[
+		final DataRange range = new DataRange();
+		if (logger.isDebugEnabled()) {
+			logger.debug("Crosstab, Dataset Metadata has "
+					+ dataset.getMetadata().getColumnCount() + " Columns");
+		}
+		range.setFirstRow(startingRow);
+		range.setFirstColumn(startingColumn);
+		range.setDataBeginsRow(startingRow + 1);
+
+		range.setLastColumn(startingColumn + rowIdentifyingColumns.size()
+				+ (groupNames.length * nonRowIdentifyingColumns.size()) - 1);
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("Before Emitting Crosstab, Dataset Metadata has "
+					+ dataset.getMetadata().getColumnCount() + " Columns");
+		}
+		range.setLastRow(startingRow
+				+ dataset.getDatasetIterator().getRowCount() + 2);
+		range.setFooterBeginsRow(startingRow
+				+ dataset.getDatasetIterator().getRowCount() + 2);
+		//
+		// emit headers
+		//
+
+		emitHeadersForRowIdentifiers(dataset, getStyleFactory()
+				.getBaseHeaderStyle(), startingRow, startingColumn);
+
+		if (singleCellCrosstabColumnHeading) {
+			// emit a spanning column with the group name above the group
+			emitCrosstabHeadersForCrosstabData(dataset, groupNames,
+					nonRowIdentifyingColumns, metaByColumnName,
+					getStyleFactory().getBaseHeaderStyle(), startingRow,
+					(sourceRowidColumnIndexes.length));
+		} else {
+			emitCrosstabHeadersForCrosstabDataWithSpannedHeaders(dataset,
+					groupNames, nonRowIdentifyingColumns, metaByColumnName,
+					getStyleFactory().getBaseHeaderStyle(), startingRow,
+					(sourceRowidColumnIndexes.length));
+
+		}
+
+		//
+		// emit data
+		//
+
+		final int adjustedStartingRow = isSingleCellCrosstabColumnHeading() ? startingRow + 1
+				: startingRow + 2;
+		final int lastDataRowIndex = emitCrosstabbedData(dataset, dataset
+				.getMetadata().getColumnMetadata(), getStyleFactory()
+				.getBaseDataStyle(), adjustedStartingRow, startingColumn,
+				rowIdentifyingColumns, nonRowIdentifyingColumns, columnMeta,
+				metaByColumnName, groupNames);
+
+		// emit summary
+
+		emitCrosstabbedSummary(dataset, dataset.getMetadata()
+				.getColumnMetadata(), lastDataRowIndex + 1, startingColumn,
+				startingRow + 1, lastDataRowIndex, getStyleFactory()
+						.getBaseFooterStyle(), rowIdentifyingColumns,
+				nonRowIdentifyingColumns, columnMeta, metaByColumnName,
+				groupNames);
+
+		return range;
+	}
+
+	protected void emitCrosstabbedDataValidateArgs(final Dataset dataset,
+			final List<ColumnMetadata> _columns, final Style baseStyle,
+			final int startingRow, final int startingColumn,
+			final List<String> rowIdentifyingColumns) {
+		if (dataset == null) {
+			throw new IllegalArgumentException("dataset is null");
+		}
+		if (_columns == null) {
+			throw new IllegalArgumentException("columns is null");
+		}
+		if (baseStyle == null) {
+			throw new IllegalArgumentException("baseStyle is null");
+		}
+	}
+
+	/**
+	 * Renders the dataset to the specified region.
+	 * 
+	 * Creates a freeze frame in the first row after the header after the
+	 * rowidColumnCount
+	 * 
+	 * @param dataset
+	 *            The crosstabbed dataset
+	 * @param columns
+	 *            The Metadata for the crosstabbed columns
+	 * @param baseStyle
+	 * @param startingRow
+	 *            The starting row in the worksheet for emitting the data
+	 * @param startingColumn
+	 *            The starting column in the worksheet for emitting the data
+	 * @param rowIdentifyingColumns
+	 *            The number of columns that make up the row identifier.
+	 * @param nonIdentifyingRowColumns
+	 *            is a list of the order in which the columns should be emitted
+	 *            in each crosstabbed group
+	 * @param nonRowIdentifyingColumnMetadata
+	 *            The metadata for the crosstabbed columns
+	 * @param metaMapByColumn
+	 *            A HashMap of the Column Metadata for the crosstab columns
+	 *            keyed by the Column Name.
+	 * @param groupNames
+	 *            A List of all the crosstab groups
+	 * @return
+	 */
+	// todo review
+	protected int emitCrosstabbedData(final Dataset dataset,
+			final List<ColumnMetadata> columns, final Style baseStyle,
+			final int startingRow, final int startingColumn,
+			final List<String> rowIdentifyingColumns,
+			final List<String> nonRowIdentifyingColumns,
+			final Collection<ColumnMetadata> nonRowIdentifyingColumnMetadata,
+			final Map<String, ColumnMetadata> metaMapByColumn,
+			final String[] groupNames) {
+
+		if (logger.isDebugEnabled()) {
+			for (final ColumnMetadata col : metaMapByColumn.values()) {
+				logger.debug(col);
+			}
+		}
+		// validate arguments
+		emitCrosstabbedDataValidateArgs(dataset, columns, baseStyle,
+				startingRow, startingColumn, rowIdentifyingColumns);
+
+		final DatasetIterator datasetIterator = dataset.getDatasetIterator();
+		if (logger.isTraceEnabled()) {
+			logger.trace(newline + ColumnMetadata.toString(columns));
+		}
+		getSheet().createFreezePane(
+				startingColumn + rowIdentifyingColumns.size(), startingRow);
+		int rowIndex = startingRow;
+		while (datasetIterator.next()) {
+			int datasetColumnIndex = startingColumn;
+			int sheetColumnIndex = startingColumn;
+			// add the data from the dataset in the order of the row identifying
+			// columns
+			for (final String rowIdentifyingColumn : rowIdentifyingColumns) {
+				final ColumnMetadata column = columns.get(datasetColumnIndex);
+				final Style cellStyle = getStyle(baseStyle,
+						column.getExcelFormat(),
+						column.getHorizontalAlignment());
+				if (column.getWorkbookFormula() == null) {
+					final Object data = datasetIterator
+							.getObject(datasetColumnIndex);
+					addCell(rowIndex, sheetColumnIndex, data, cellStyle);
+				}
+				datasetColumnIndex++;
+				sheetColumnIndex++;
+			}
+			int groupIndex = 0;
+			for (final String groupName : groupNames) {
+				ColumnMetadata column;
+				//
+				// Map, keyed by column name with value of the index of the
+				// column the crosstabbed
+				// data for a given column name and group
+				//
+				// Map<String, Integer> columnIndexByName =
+				// ColumnMetadataGrouper.getColumnNameIndexMap(dataset,
+				// sheetColumnIndex,
+				// nonRowIdentifyingColumnMetadata, groupName);
+
+				final Map<String, Integer> columnIndexByName = getColumnNameIndexMap(
+						dataset, sheetColumnIndex,
+						nonRowIdentifyingColumnMetadata, groupName,
+						nonRowIdentifyingColumns);
+				// nonRowIdentifying columns is a list of the order in which the
+				// columns should be emitted in each crosstabbed group
+				for (final String nonRowIdentifyingColumn : nonRowIdentifyingColumns) {
+					final List<Integer> columnIndexes = (List<Integer>) datasetIterator
+							.getDatasetMetadata().getColumnIndexes(
+									nonRowIdentifyingColumn);
+					HSSFCell cell = null;
+					if (columnIndexes != null) { // found the specified column
+						// in the crosstabbed group
+						column = dataset.getMetadata().getColumnMetaData(
+								columnIndexes.get(groupIndex));
+						final Object data = datasetIterator.getObject(column
+								.getColumnIndex());
+						cell = addCell(rowIndex, sheetColumnIndex, data, null);
+					} else { // this is a formula column, not in the input
+						// crosstabbed data
+						column = metaMapByColumn.get(nonRowIdentifyingColumn);
+						column.setGroupName(groupName);
+						cell = addFormulaCell(column.getWorkbookFormula(),
+								columnIndexByName, column.getColumnName(),
+								rowIndex, sheetColumnIndex);
+					}
+
+					final Style cellStyle = getStyle(baseStyle,
+							column.getExcelFormat(),
+							column.getHorizontalAlignment());
+					if ((groupIndex + 1) % 2 == 0) {
+						// TODO what the hell is this?? s/b coming from
+						// StyleFactory
+						final Color color = new Color(192, 192, 192);
+						cellStyle.setBackgroundColor(color);
+					}
+					cell.setCellStyle(getStyleFactory().getHSSFCellStyle(
+							cellStyle));
+
+					sheetColumnIndex++;
+				}
+				groupIndex++;
+			}
+			rowIndex++;
+		}
+		return rowIndex - 1;
+	}
+
+	private Map<String, Integer> getColumnNameIndexMap(final Dataset dataset,
+			final int sheetColumnIndex,
+			final Collection<ColumnMetadata> nonRowIdentifyingColumnMetadata,
+			final String groupName, final List<String> nonRowIdentifyingColumns) {
+
+		final LinkedHashMap<String, Integer> columnIndexByName = ColumnMetadataGrouper
+				.getColumnNameIndexMap(dataset, sheetColumnIndex,
+						nonRowIdentifyingColumnMetadata, groupName);
+
+		final LinkedHashMap<String, Integer> columnIndexByNameWithInferred = new LinkedHashMap<String, Integer>();
+
+		// compute the minimum index
+		Integer minimumIndex = null;
+		for (final Integer index : columnIndexByName.values()) {
+			if (minimumIndex == null || minimumIndex.compareTo(index) > 1) {
+				minimumIndex = index;
+			}
+		}
+
+		//
+		int columnIndex = minimumIndex;
+		for (final String columnName : nonRowIdentifyingColumns) {
+			columnIndexByNameWithInferred.put(columnName, columnIndex);
+			columnIndex++;
+		}
+
+		return columnIndexByNameWithInferred;
+	}
+
+	/**
+	 * Renders the Summary Row for the Worksheet
+	 * 
+	 * @param columns
+	 *            The Metadata for the crosstabbed columns
+	 * @param baseStyle
+	 * @param startingRow
+	 *            The starting row in the worksheet for emitting the data
+	 * @param startingColumn
+	 *            The starting column in the worksheet for emitting the data
+	 * @param rowIdentifyingColumns
+	 *            The number of columns that make up the row identifier.
+	 * @param nonIdentifyingRowColumns
+	 *            is a list of the order in which the columns should be emitted
+	 *            in each crosstabbed group
+	 * @param nonRowIdentifyingColumnMetadata
+	 *            The metadata for the crosstabbed columns
+	 * @param metaMapByColumn
+	 *            A HashMap of the Column Metadata for the crosstab columns
+	 *            keyed by the Column Name.
+	 * @param groupNames
+	 *            A List of all the crosstab groups
+	 * @return
+	 */
+	// todo review
+
+	private void emitCrosstabbedSummary(final Dataset dataset,
+			final List<ColumnMetadata> columns, final int rowIndex,
+			final int columnIndex, final int firstDataRowIndex,
+			final int lastDataRowIndex, final Style baseStyle,
+			final List<String> rowIdentifyingColumns,
+			final List<String> nonRowIdentifyingColumns,
+			final Collection<ColumnMetadata> nonRowIdentifyingColumnMetadata,
+			final Map<String, ColumnMetadata> metaMapByColumn,
+			final String[] groupNames) {
+		int currentColumn = columnIndex;
+		checkColumns(columns);
+		ColumnMetadata column;
+		for (final int rowidColumnIndex : sourceRowidColumnIndexes) {
+			column = dataset.getMetadata().getColumnMetaData(rowidColumnIndex);
+			final Style cellStyle = getStyle(baseStyle,
+					column.getExcelFormat(), column.getHorizontalAlignment());
+			if (column.getAggregateFunction() != null) {
+				if (logger.isDebugEnabled()) {
+					logger.debug("emitting aggregate function "
+							+ column.getAggregateFunction() + " at column "
+							+ columnIndex);
+				}
+				addColumnFormulaCell(rowIndex, currentColumn,
+						firstDataRowIndex, lastDataRowIndex, cellStyle,
+						column.getAggregateFunction());
+			}
+			currentColumn++;
+		}
+		int groupIndex = 0;
+		for (final String groupName : groupNames) {
+			final Map<String, Integer> columnIndexByName = ColumnMetadataGrouper
+					.getColumnNameIndexMap(dataset, currentColumn,
+							nonRowIdentifyingColumnMetadata, groupName);
+			for (final String nonRowidColName : nonRowIdentifyingColumns) {
+				Style cellStyle = null;
+				final List<Integer> columnIndexes = (List<Integer>) dataset
+						.getMetadata().getColumnIndexes(nonRowidColName);
+				if (columnIndexes != null) {
+					column = dataset.getMetadata().getColumnMetaData(
+							columnIndexes.get(groupIndex));
+				} else {
+					column = metaMapByColumn.get(nonRowidColName);
+					if (column == null) {
+						throw new java.lang.IllegalStateException(
+								"No Metadata found " + " for column "
+										+ nonRowidColName);
+					}
+				}
+				cellStyle = getStyle(baseStyle, column.getExcelFormat(),
+						column.getHorizontalAlignment());
+				column.setGroupName(groupName);
+				if (column.getAggregateFunction() != null) {
+					if (logger.isDebugEnabled()) {
+						logger.debug("emitting aggregate function "
+								+ column.getAggregateFunction() + " at column "
+								+ columnIndex);
+					}
+					addColumnFormulaCell(rowIndex, currentColumn,
+							firstDataRowIndex, lastDataRowIndex, cellStyle,
+							column.getAggregateFunction());
+
+				} else if (column.getWorkbookFormula() != null) {
+					final HSSFCell cell = addFormulaCell(
+							column.getWorkbookFormula(), columnIndexByName,
+							column.getColumnName(), rowIndex, currentColumn);
+					cell.setCellStyle(getStyleFactory().getHSSFCellStyle(
+							cellStyle));
+				}
+				currentColumn++;
+			}
+			groupIndex++;
+		}
+
+	}
+
+	/**
+	 * TODO this should be deprecated
+	 * 
+	 * @param dataset
+	 * @param startingRow
+	 * @param startingColumn
+	 * @param rowidColumnCount
+	 * @return
+	 */
+	public DataRange emitCrosstabRegion(final Dataset dataset,
+			final int startingRow, final int startingColumn,
+			final int rowidColumnCount) {
+		return emitCrosstabRegion(dataset, startingRow, startingColumn, null,
+				null, null);
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="135" tokens="528">
+<file line="737" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="692" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<codefragment>
+<![CDATA[
+			addCell(column, baseStyle, rowIndex, columnIndex);
+			columnIndex++;
+		}
+	}
+
+	/**
+	 * todo this started off the same as emitHeaders see what the difference is
+	 * 
+	 * @param columns
+	 * @param baseStyle
+	 * @param startingRow
+	 * @param startingColumn
+	 * @param nonRowIdentifyingColumns
+	 * @param metadataByColumnName
+	 */
+	public void emitCrosstabHeadersForCrosstabData(final Dataset dataset,
+			final String[] groupNames,
+			final List<String> nonRowIdentifyingColumns,
+			final Map<String, ColumnMetadata> metaByColumnName,
+			final Style baseStyle, final int startingRow,
+			final int startingColumn) {
+
+		if (baseStyle == null) {
+			throw new IllegalArgumentException("baseStyle is null");
+		}
+		baseStyle.setVerticalAlignment(VerticalAlignment.TOP);
+
+		final int rowIndex = startingRow;
+		int columnIndex = startingColumn;
+		int groupIndex = 0;
+		logger.trace("Starting Column is " + startingColumn);
+		ColumnMetadata column;
+
+		for (final String groupName : groupNames) {
+			logger.debug("Working with Group " + groupName);
+			for (final String nonRowidColName : nonRowIdentifyingColumns) {
+				column = new ColumnMetadata();
+				if (logger.isDebugEnabled()) {
+					logger.debug("Working with Non Row Id Column "
+							+ nonRowidColName + " expected at Index "
+							+ groupIndex);
+				}
+				final List<Integer> columnIndexes = (List<Integer>) dataset
+						.getMetadata().getColumnIndexes(nonRowidColName);
+				if (columnIndexes != null) {
+					column = dataset.getMetadata().getColumnMetaData(
+							columnIndexes.get(groupIndex));
+				} else {
+					column = metaByColumnName.get(nonRowidColName);
+					if (column == null) {
+						throw new java.lang.IllegalStateException(
+								"No Metadata found " + " for column "
+										+ nonRowidColName);
+					}
+				}
+				column.setGroupName(groupName);
+				addCell(column, baseStyle, rowIndex, columnIndex);
+				columnIndex++;
+			}
+			groupIndex++;
+		}
+	}
+
+	public int getEmittedColumnsInGroupCount() {
+
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * TODO this started off the same as emitHeaders see what the difference is
+	 * 
+	 * TODO do a cut and paste analysis
+	 * 
+	 * @param columns
+	 * @param baseStyle
+	 * @param startingRow
+	 * @param startingColumn
+	 * @param nonRowIdentifyingColumns
+	 * @param nonRowIdentifyingColumns2
+	 * @param metadataByColumnName
+	 */
+	public void emitCrosstabHeadersForCrosstabDataWithSpannedHeaders(
+			final Dataset dataset,
+			final String[] groupNames,
+			final List<String> nonRowIdentifyingColumns,
+			// List<ColumnMetadata> columns,
+			final Map<String, ColumnMetadata> metaByColumnName,
+			final Style baseStyle, final int startingRow,
+			final int startingColumn) {
+
+		if (baseStyle == null) {
+			throw new IllegalArgumentException("baseStyle is null");
+		}
+		baseStyle.setVerticalAlignment(VerticalAlignment.TOP);
+
+		final int rowIndex = startingRow;
+		int columnIndex = startingColumn;
+		int groupIndex = 0;
+		logger.info("Starting Column is " + startingColumn);
+		ColumnMetadata column;
+
+		for (final String groupName : groupNames) {
+			logger.debug("Working with Group " + groupName);
+			int groupEntryIndex = 0;
+			for (final String nonRowidColName : nonRowIdentifyingColumns) {
+				column = new ColumnMetadata();
+				if (logger.isDebugEnabled()) {
+					logger.debug("Working with Non Row Id Column "
+							+ nonRowidColName + " expected at Index "
+							+ groupIndex);
+				}
+
+				final List<Integer> columnIndexes = (List<Integer>) dataset
+						.getMetadata().getColumnIndexes(nonRowidColName);
+				if (columnIndexes != null) {
+					column = dataset.getMetadata().getColumnMetaData(
+							columnIndexes.get(groupIndex));
+				} else {
+					column = metaByColumnName.get(nonRowidColName);
+					if (column == null) {
+						throw new java.lang.IllegalStateException(
+								"No Metadata found " + " for column "
+										+ nonRowidColName);
+					}
+				}
+
+				column.setGroupName(groupName);
+				addGroupHeaderSpanCell(column, baseStyle, rowIndex,
+						columnIndex, nonRowIdentifyingColumns.size(),
+						groupEntryIndex++);
+				columnIndex++;
+			}
+			groupIndex++;
+		}
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="59" tokens="317">
+<file line="153" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/SheetStyleHelper.java"/>
+<file line="205" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/WorksheetHelper.java"/>
+<codefragment>
+<![CDATA[
+		final String firstAddress = CellAddress.getCellAddress(
+				firstDataRowIndex, columnIndex);
+		final String secondAddress = CellAddress.getCellAddress(
+				lastDataRowIndex, columnIndex);
+		final String formula = function + "(" + firstAddress + ":"
+				+ secondAddress + ")";
+		final HSSFRow row = getRow(rowIndex);
+		final HSSFCell cell = row.createCell(columnIndex);
+		cell.setCellFormula(formula);
+		final HSSFCellStyle hstyle = styleFactory.getHSSFCellStyle(style);
+		cell.setCellStyle(hstyle);
+		return cell;
+	}
+
+	HSSFRow getRow(final int index) {
+		HSSFRow row = sheet.getRow(index);
+		if (row == null) {
+			row = sheet.createRow(index);
+
+		}
+		return row;
+	}
+
+	// todo this needs to be moved to a more common place
+	public void fixColumnWidths(final int startColumnIndex,
+			final int endColumnIndex) {
+		for (int i = startColumnIndex; i <= endColumnIndex; i++) {
+			fixColumnWidth(i);
+		}
+	}
+
+	public void setColumnWidth(final int columnIndex, final int characterWidth) {
+		final int unitsPerChar = 300;
+		final int funkyWidth = characterWidth * unitsPerChar;
+		final short shortFunkyWidth = funkyWidth < Short.MAX_VALUE ? (short) funkyWidth
+				: Short.MAX_VALUE;
+		sheet.setColumnWidth(columnIndex, shortFunkyWidth);
+	}
+
+	public void fixColumnWidth(final int columnIndex) {
+		final int rowCount = sheet.getPhysicalNumberOfRows();
+		int maxWidth = 0;
+		for (int i = 0; i < rowCount; i++) {
+			final HSSFRow r = sheet.getRow(i);
+			final HSSFCell c = r.getCell(columnIndex);
+
+			if (c != null) {
+				final String v = c.getStringCellValue();
+				if (v != null && v.length() > maxWidth) {
+					maxWidth = v.length();
+				}
+			}
+		}
+		if (maxWidth > 8) {
+			sheet.setColumnWidth(columnIndex, maxWidth);
+		}
+	}
+
+	public void emitRegion(final Dataset dataset,
+]]>
+</codefragment>
+</duplication>
+<duplication lines="55" tokens="293">
+<file line="618" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="567" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<codefragment>
+<![CDATA[
+	public void addGroupHeaderSpanCell(final ColumnMetadata column,
+			final Style baseStyle, final int rowIndex, final int columnIndex,
+			final int numberOfColumnsInGroup, final int groupEntryIndex) {
+		Style cellStyle = null;
+		String heading = "";
+		if (logger.isTraceEnabled()) {
+			if (column.getHorizontalAlignment() == null) {
+				logger.trace("horizontal alignment is null for " + column);
+			}
+		}
+		cellStyle = getStyle(baseStyle, null, column.getHorizontalAlignment());
+		// now I need to get group heading
+		// and column heading
+		// with the row index one greater for the column
+
+		if (groupEntryIndex == 0) {
+			// emit merged group header
+			final String groupName = column.getGroupName();
+			// this cell Style should be centered ?? TODO unless there is only
+			// one column in group?
+			cellStyle = getStyle(baseStyle, null, HorizontalAlignment.CENTER);
+			super.addCell(rowIndex, columnIndex, groupName, cellStyle);
+			getSheet().addMergedRegion(new CellRangeAddress(rowIndex, // first
+					// row
+					// (0-based)
+					rowIndex, // last row (0-based)
+					columnIndex, // first column (0-based)
+					columnIndex + numberOfColumnsInGroup - 1));
+			if (logger.isDebugEnabled()) {
+				final String message = "creating group heading cell "
+						+ rowIndex + " " + columnIndex + " " + columnIndex
+						+ numberOfColumnsInGroup + " '" + groupName + "'";
+				logger.debug(message);
+			}
+		}
+
+		//
+
+		heading = getNonmergedColumnHeading(column);
+		if (heading.indexOf("\\n") > -1) {
+			heading = heading.replace("\\n", "\n");
+		}
+		final int detailRowIndex = rowIndex + 1;
+		if (logger.isDebugEnabled()) {
+			final String message = "creating group detail cell "
+					+ detailRowIndex + " " + columnIndex + " " + " '" + heading
+					+ "'";
+			logger.debug(message);
+		}
+		super.addCell(detailRowIndex, columnIndex, heading, cellStyle);
+		if (column.getColumnDisplaySize() != null) {
+			setColumnWidth(columnIndex, column.getColumnDisplaySize()
+					.intValue());
+		}
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="70" tokens="260">
+<file line="76" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/SheetStyleHelper.java"/>
+<file line="80" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/WorksheetHelper.java"/>
+<codefragment>
+<![CDATA[
+					val = val.replace("\\n", "\n");
+				}
+				cell.setCellValue(new HSSFRichTextString(val));
+			} else if (value instanceof Boolean) {
+				final Boolean bool = (Boolean) value;
+				cell.setCellValue(bool.booleanValue());
+			}
+		} else {
+			cell.setCellValue("");
+		}
+		if (style != null) {
+			cell.setCellStyle(styleFactory.getHSSFCellStyle(style));
+		}
+		return cell;
+	}
+
+	public void addColumnSumCell(final int row, final int columnIndex,
+			final int firstDataRowIndex, final int lastDataRowIndex,
+			final Style style) {
+		addColumnFormulaCell(row, columnIndex, firstDataRowIndex,
+				lastDataRowIndex, style, "sum");
+	}
+
+	public HSSFCell getCell(final int rownum, final int colnum) {
+		final HSSFRow row = getRow(rownum);
+		HSSFCell cell = row.getCell(colnum);
+		if (cell == null) {
+			cell = row.createCell(colnum);
+		}
+		return cell;
+	}
+
+	public HSSFCell addFormulaCell(final int rownum, final int columnIndex,
+			final String formula, final Style style) {
+		if (formula == null) {
+			throw new IllegalArgumentException("formula is null");
+		}
+
+		final HSSFCell cell = getCell(rownum, columnIndex);
+		cell.setCellFormula(formula);
+		final HSSFCellStyle hstyle = styleFactory.getHSSFCellStyle(style);
+		cell.setCellStyle(hstyle);
+		return cell;
+	}
+
+	/**
+	 * Creates a formula cell.
+	 * 
+	 * Example: to create a sum cell on
+	 * 
+	 * 
+	 * @param rowIndex
+	 *            The index (rownumber - 1) of the row into which the formula
+	 *            should be placed
+	 * @param columnIndex
+	 *            The index of the column into which the formula should be
+	 *            placed
+	 * @param firstDataRowIndex
+	 *            The index of the row that starts the range
+	 * @param lastDataRowIndex
+	 *            The index of the row that ends the rang
+	 * @param style
+	 *            The style of the cell containing the formula
+	 * @param function
+	 *            The function to be applied.
+	 * @return
+	 */
+	public HSSFCell addColumnFormulaCell(final int rowIndex,
+			final int columnIndex, final int firstDataRowIndex,
+			final int lastDataRowIndex, final Style style, final String function) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="34" tokens="227">
+<file line="308" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory.java"/>
+<file line="43" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/PoiColor.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	private HSSFColor getCachedHSSFColor(final Color color) {
+		return colorCache.get(color);
+	}
+
+	private HSSFColor createHSSFColor(final Color color) {
+		final HSSFPalette palette = getPalette();
+		HSSFColor hssfColor = null;
+		final byte r = (byte) color.getRed();
+		final byte g = (byte) color.getGreen();
+		final byte b = (byte) color.getBlue();
+		hssfColor = palette.findColor(r, g, b);
+		if (hssfColor == null) {
+			try {
+				final int index = getNextHSSFPaletteColorIndex();
+				palette.setColorAtIndex((short) index, (byte) color.getRed(),
+						(byte) color.getGreen(), (byte) color.getBlue());
+				hssfColor = palette.getColor(index);
+				if (hssfColor == null) {
+					throw new IllegalStateException(
+							"invalid color created at index " + index);
+				}
+			} catch (final Exception e) {
+				hssfColor = palette.findSimilarColor(r, g, b);
+				logger.warn("error after adding " + colorCache.size()
+						+ " colors", e);
+			}
+		} else {
+			reservedColorIndexes.add((int) hssfColor.getIndex());
+		}
+		colorCache.put(color, hssfColor);
+		return hssfColor;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="36" tokens="193">
+<file line="267" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory.java"/>
+<file line="81" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/PoiFont.java"/>
+<codefragment>
+<![CDATA[
+	private void applyWrapStyle(final FontAttributes attr,
+			final HSSFCellStyle cellStyle) {
+		final String _wrapText = attr.get(FontAttributes.KEY_WORD_WRAP);
+		if (_wrapText != null) {
+			final boolean wrapText = Boolean.valueOf(_wrapText);
+			cellStyle.setWrapText(wrapText);
+		}
+	}
+
+	private void applyUnderlineStyle(final FontAttributes attr,
+			final HSSFFont hssfFont) {
+		final String _underlineStyle = attr
+				.get(FontAttributes.KEY_UNDERLINE_STYLE);
+		if (_underlineStyle != null) {
+			byte hssfUnderline = org.apache.poi.ss.usermodel.Font.U_NONE;
+			final FontUnderlineStyle underlineStyle = FontUnderlineStyle
+					.valueOf(_underlineStyle);
+			switch (underlineStyle) {
+			case DOUBLE:
+				hssfUnderline = org.apache.poi.ss.usermodel.Font.U_DOUBLE;
+				break;
+			case SINGLE:
+				hssfUnderline = org.apache.poi.ss.usermodel.Font.U_SINGLE;
+				break;
+			case NONE:
+				hssfUnderline = org.apache.poi.ss.usermodel.Font.U_NONE;
+				break;
+			default:
+				throw new IllegalStateException("unimplemented underline case "
+						+ underlineStyle.toString());
+			}
+			hssfFont.setUnderline(hssfUnderline);
+		}
+	}
+
+	public HSSFColor getHSSFColor(final Color color) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="36" tokens="175">
+<file line="160" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory.java"/>
+<file line="113" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory2.java"/>
+<codefragment>
+<![CDATA[
+				style.getFontAttributes(), style.getFontColor());
+		s.setFont(hssfFont);
+		if (style.getHorizontalAlignment() != null) {
+			switch (style.getHorizontalAlignment()) {
+			case LEFT:
+				s.setAlignment(CellStyle.ALIGN_LEFT);
+				break;
+			case CENTER:
+				s.setAlignment(CellStyle.ALIGN_CENTER);
+				break;
+			case RIGHT:
+				s.setAlignment(CellStyle.ALIGN_RIGHT);
+				break;
+			default:
+				throw new IllegalStateException("unimplemented halign case");
+			}
+		}
+		if (style.getVerticalAlignment() != null) {
+			switch (style.getVerticalAlignment()) {
+			case TOP:
+				s.setVerticalAlignment(CellStyle.VERTICAL_TOP);
+				break;
+			case MIDDLE:
+				s.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+				break;
+			case BOTTOM:
+				s.setVerticalAlignment(CellStyle.VERTICAL_BOTTOM);
+				break;
+			default:
+				throw new IllegalStateException("unimplemented valign case");
+			}
+		}
+		if (style.getFormatMask() != null) {
+			s.setDataFormat(getFormat(style.getFormatMask()));
+		}
+		if (style.getFontAttributes() != null) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="33" tokens="167">
+<file line="509" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="72" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/ListWorksheetHelper.java"/>
+<codefragment>
+<![CDATA[
+					logger.trace("horizontal alignment is null for " + column);
+				}
+
+				cellStyle = getStyle(baseStyle, null,
+						column.getHorizontalAlignment());
+				if (column.getGroupName() != null) {
+					heading = column.getGroupName() + "\n"
+							+ column.getHeading();
+				} else {
+					heading = column.getHeading();
+				}
+			}
+			if (heading == null) {
+				logger.warn("heading is null for " + column);
+			} else {
+				if (heading.indexOf("\\n") > -1) {
+					heading = heading.replace("\\n", "\n");
+				}
+			}
+			if (heading.indexOf('\n') > -1) {
+				cellStyle = addWordWrap(cellStyle);
+			}
+
+			addCell(rowIndex, columnIndex, heading, cellStyle);
+			if (column != null && column.getColumnDisplaySize() != null) {
+				setColumnWidth(columnIndex, column.getColumnDisplaySize()
+						.intValue());
+			}
+			columnIndex++;
+			entry++;
+		}
+
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="24" tokens="159">
+<file line="674" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="623" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<codefragment>
+<![CDATA[
+	public void addCell(final ColumnMetadata column, final Style baseStyle,
+			final int rowIndex, final int columnIndex) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("writing cell " + rowIndex + " " + columnIndex);
+		}
+		Style cellStyle = null;
+		String heading = "";
+		if (logger.isTraceEnabled()) {
+			if (column.getHorizontalAlignment() == null) {
+				logger.trace("horizontal alignment is null for " + column);
+			}
+		}
+		cellStyle = getStyle(baseStyle, null, column.getHorizontalAlignment());
+		heading = getMergedColumnHeading(column);
+
+		if (heading.indexOf('\n') > -1) {
+			cellStyle = addWordWrap(cellStyle);
+		}
+		super.addCell(rowIndex, columnIndex, heading, cellStyle);
+		if (column.getColumnDisplaySize() != null) {
+			setColumnWidth(columnIndex, column.getColumnDisplaySize()
+					.intValue());
+		}
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="26" tokens="138">
+<file line="549" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="498" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<codefragment>
+<![CDATA[
+	private String getMergedColumnHeading(final ColumnMetadata column) {
+		String heading = getNonmergedColumnHeading(column);
+
+		String columnHeading = column.getHeading();
+		if (columnHeading == null) {
+			columnHeading = column.getColumnName();
+		}
+		if (columnHeading == null) {
+			throw new IllegalStateException("no heading or columnName for "
+					+ column);
+		}
+		if (column.getGroupName() != null) {
+			heading = column.getGroupName() + "\n" + columnHeading;
+		}
+		if (heading == null) {
+			heading = columnHeading;
+		} else {
+			if (heading.indexOf("\\n") > -1) {
+				heading = heading.replace("\\n", "\n");
+			}
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("returned heading '" + heading + "'");
+		}
+		return heading;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="21" tokens="135">
+<file line="39" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/workbook/CellFormula.java"/>
+<file line="71" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/workbook/CellFormula.java"/>
+<codefragment>
+<![CDATA[
+			final int baseColumnIndex) {
+		if (logger.isDebugEnabled()) {
+			final StringBuilder sb = new StringBuilder();
+			sb.append("template: '" + template + SystemProperties.newline);
+			for (final String name : columnMap.keySet()) {
+				sb.append("name: '" + name + "' " + columnMap.get(name)
+						+ SystemProperties.newline);
+			}
+			sb.append("rowIndex: " + rowIndex);
+			logger.debug(sb);
+
+		}
+		final Set<String> variableNames = getVariableNames(template);
+		String formula = template;
+		for (final String var : variableNames) {
+			final String cellAddress = getVariableNameAsCellAddress(var,
+					columnMap, rowIndex);
+			formula = formula.replaceAll("\\{" + var + "\\}", cellAddress);
+		}
+		return formula;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="21" tokens="124">
+<file line="772" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="841" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="727" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<file line="796" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<codefragment>
+<![CDATA[
+			for (final String nonRowidColName : nonRowIdentifyingColumns) {
+				column = new ColumnMetadata();
+				if (logger.isDebugEnabled()) {
+					logger.debug("Working with Non Row Id Column "
+							+ nonRowidColName + " expected at Index "
+							+ groupIndex);
+				}
+				final List<Integer> columnIndexes = (List<Integer>) dataset
+						.getMetadata().getColumnIndexes(nonRowidColName);
+				if (columnIndexes != null) {
+					column = dataset.getMetadata().getColumnMetaData(
+							columnIndexes.get(groupIndex));
+				} else {
+					column = metaByColumnName.get(nonRowidColName);
+					if (column == null) {
+						throw new java.lang.IllegalStateException(
+								"No Metadata found " + " for column "
+										+ nonRowidColName);
+					}
+				}
+				column.setGroupName(groupName);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="18" tokens="116">
+<file line="240" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory.java"/>
+<file line="41" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/PoiFont.java"/>
+<codefragment>
+<![CDATA[
+			final Color color) {
+		final HSSFFont hssfFont = getWorkbook().createFont();
+
+		if (color != null) {
+			final HSSFColor hssfColor = getHSSFColor(color);
+			if (hssfColor != null) {
+				hssfFont.setColor(hssfColor.getIndex());
+			}
+		}
+		if (font != null) {
+			// todo jjs where did these constants come from
+			hssfFont.setBoldweight((short) (font.isBold() ? 0x2bc : 0x190));
+			hssfFont.setItalic(font.isItalic());
+			final int fontOneTwentiethPoints = font.getSize() * 20;
+			hssfFont.setFontHeight((short) fontOneTwentiethPoints);
+			hssfFont.setFontName(font.getName());
+		}
+		if (attr != null) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="24" tokens="112">
+<file line="583" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="532" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<codefragment>
+<![CDATA[
+	private String getNonmergedColumnHeading(final ColumnMetadata column) {
+		String heading = null;
+
+		String columnHeading = column.getHeading();
+		if (columnHeading == null) {
+			columnHeading = column.getColumnName();
+		}
+		if (columnHeading == null) {
+			throw new IllegalStateException("no heading or columnName for "
+					+ column);
+		}
+
+		if (heading == null) {
+			heading = columnHeading;
+		} else {
+			if (heading.indexOf("\\n") > -1) {
+				heading = heading.replace("\\n", "\n");
+			}
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("returned heading '" + heading + "'");
+		}
+		return heading;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="20" tokens="110">
+<file line="435" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="434" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java"/>
+<file line="183" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/ListWorksheetHelper.java"/>
+<codefragment>
+<![CDATA[
+				column.setGroupName(groupName);
+				if (column.getAggregateFunction() != null) {
+					if (logger.isDebugEnabled()) {
+						logger.debug("emitting aggregate function "
+								+ column.getAggregateFunction() + " at column "
+								+ columnIndex);
+					}
+					addColumnFormulaCell(rowIndex, currentColumn,
+							firstDataRowIndex, lastDataRowIndex, cellStyle,
+							column.getAggregateFunction());
+
+				} else if (column.getWorkbookFormula() != null) {
+					final HSSFCell cell = addFormulaCell(
+							column.getWorkbookFormula(), columnIndexByName,
+							column.getColumnName(), rowIndex, currentColumn);
+					cell.setCellStyle(getStyleFactory().getHSSFCellStyle(
+							cellStyle));
+				}
+				currentColumn++;
+			}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="27" tokens="108">
+<file line="104" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/ListWorksheetHelper.java"/>
+<file line="296" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/SheetStyleHelper.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	/**
+	 * 
+	 * @param dataset
+	 * @param columns
+	 * @param baseStyle
+	 * @return the row index of the last row generated
+	 */
+	protected int emitData(final Dataset dataset,
+			final List<ColumnMetadata> columns, final Style baseStyle,
+			final int startingRow, final int startingColumn) {
+		if (dataset == null) {
+			throw new IllegalArgumentException("dataset is null");
+		}
+		if (columns == null) {
+			throw new IllegalArgumentException("columns is null");
+		}
+		if (baseStyle == null) {
+			throw new IllegalArgumentException("baseStyle is null");
+		}
+		final Map<String, Integer> columnIndexByName = ColumnMetaMap
+				.getColumnNameIndexMap(columns);
+
+		final DatasetIterator datasetIterator = dataset.getDatasetIterator();
+		int rowIndex = startingRow;
+		while (datasetIterator.next()) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="17" tokens="108">
+<file line="153" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/WorksheetHelper.java"/>
+<file line="201" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/WorksheetHelper.java"/>
+<codefragment>
+<![CDATA[
+	public HSSFCell addColumnFormulaCell(final int rowIndex,
+			final int columnIndex, final int firstDataRowIndex,
+			final int lastDataRowIndex, final Style style, final String function) {
+
+		final String firstAddress = CellAddress.getCellAddress(
+				firstDataRowIndex, columnIndex);
+		final String secondAddress = CellAddress.getCellAddress(
+				lastDataRowIndex, columnIndex);
+		final String formula = function + "(" + firstAddress + ":"
+				+ secondAddress + ")";
+		final HSSFRow row = getRow(rowIndex);
+		final HSSFCell cell = row.createCell(columnIndex);
+		cell.setCellFormula(formula);
+		final HSSFCellStyle hstyle = styleFactory.getHSSFCellStyle(style);
+		cell.setCellStyle(hstyle);
+		return cell;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="20" tokens="107">
+<file line="205" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory.java"/>
+<file line="158" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory2.java"/>
+<codefragment>
+<![CDATA[
+		final HSSFCellStyleFactory factory = new HSSFCellStyleFactory(workbook);
+		final Map<String, HSSFCellStyle> hssfCellStyles = new LinkedHashMap<String, HSSFCellStyle>();
+		for (final Style style : styles) {
+			if (style == null) {
+				throw new IllegalStateException("style is null");
+			}
+			final HSSFCellStyle hssfCellStyle = factory.getHSSFCellStyle(style);
+			final String styleName = style.getName();
+			hssfCellStyles.put(styleName, hssfCellStyle);
+		}
+		return hssfCellStyles;
+	}
+
+	private short getFormat(final String formatMask) {
+		final HSSFDataFormat format = workbook.createDataFormat();
+		final short formatIndex = format.getFormat(formatMask);
+		return formatIndex;
+	}
+
+	public HSSFFont getHSSFFont(final Font font, final FontAttributes attr,
+]]>
+</codefragment>
+</duplication>
+<duplication lines="23" tokens="106">
+<file line="486" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java"/>
+<file line="50" path="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/ListWorksheetHelper.java"/>
+<codefragment>
+<![CDATA[
+	public void emitCrosstabHeaders(final List<ColumnMetadata> columns,
+			final Style baseStyle, final int startingRow,
+			final int startingColumn,
+			final List<String> nonRowIdentifyingColumns,
+			final Map<String, ColumnMetadata> metadataByColumnName) {
+
+		if (baseStyle == null) {
+			throw new IllegalArgumentException("baseStyle is null");
+		}
+
+		final int rowIndex = startingRow;
+		int columnIndex = startingColumn;
+		int entry = 0;
+		for (final ColumnMetadata column : columns) {
+
+			Style cellStyle = null;
+			String heading = "";
+			if (column == null) {
+				logger.warn("null column at entry " + entry);
+				cellStyle = baseStyle;
+			} else {
+
+				if (logger.isTraceEnabled()) {
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

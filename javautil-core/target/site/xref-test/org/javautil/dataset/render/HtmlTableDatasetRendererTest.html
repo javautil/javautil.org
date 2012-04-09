@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>HtmlTableDatasetRendererTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../testapidocs/org/javautil/dataset/render/HtmlTableDatasetRendererTest.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.dataset.render;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> java.io.PrintWriter;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <strong class="jxr_keyword">import</strong> java.util.LinkedHashMap;
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="6" href="#6">6</a>   
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <strong class="jxr_keyword">import</strong> junit.framework.Assert;
+<a class="jxr_linenumber" name="8" href="#8">8</a>   
+<a class="jxr_linenumber" name="9" href="#9">9</a>   <strong class="jxr_keyword">import</strong> org.apache.log4j.BasicConfigurator;
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <strong class="jxr_keyword">import</strong> org.apache.log4j.SimpleLayout;
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <strong class="jxr_keyword">import</strong> org.apache.log4j.WriterAppender;
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <strong class="jxr_keyword">import</strong> org.junit.BeforeClass;
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="14" href="#14">14</a>  
+<a class="jxr_linenumber" name="15" href="#15">15</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/javautil/dataset/render/HtmlTableDatasetRendererTest.html">HtmlTableDatasetRendererTest</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../org/javautil/dataset/render/AbstractTableRendererTest.html">AbstractTableRendererTest</a> {
+<a class="jxr_linenumber" name="16" href="#16">16</a>  
+<a class="jxr_linenumber" name="17" href="#17">17</a>  	@BeforeClass
+<a class="jxr_linenumber" name="18" href="#18">18</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> beforeClass() {
+<a class="jxr_linenumber" name="19" href="#19">19</a>  		<strong class="jxr_keyword">final</strong> WriterAppender appender = <strong class="jxr_keyword">new</strong> WriterAppender();
+<a class="jxr_linenumber" name="20" href="#20">20</a>  		appender.setWriter(<strong class="jxr_keyword">new</strong> PrintWriter(System.out));
+<a class="jxr_linenumber" name="21" href="#21">21</a>  		appender.setLayout(<strong class="jxr_keyword">new</strong> SimpleLayout());
+<a class="jxr_linenumber" name="22" href="#22">22</a>  		appender.setName(HtmlTableDatasetRenderer.<strong class="jxr_keyword">class</strong>.getName());
+<a class="jxr_linenumber" name="23" href="#23">23</a>  		BasicConfigurator.configure(appender);
+<a class="jxr_linenumber" name="24" href="#24">24</a>  	}
+<a class="jxr_linenumber" name="25" href="#25">25</a>  
+<a class="jxr_linenumber" name="26" href="#26">26</a>  	@SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
+<a class="jxr_linenumber" name="27" href="#27">27</a>  	<strong class="jxr_keyword">static</strong> HtmlTableDatasetRenderer getRenderer() {
+<a class="jxr_linenumber" name="28" href="#28">28</a>  		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> HtmlTableDatasetRenderer();
+<a class="jxr_linenumber" name="29" href="#29">29</a>  	}
+<a class="jxr_linenumber" name="30" href="#30">30</a>  
+<a class="jxr_linenumber" name="31" href="#31">31</a>  	<strong class="jxr_keyword">static</strong> HtmlTableRendererRequest getRequest() {
+<a class="jxr_linenumber" name="32" href="#32">32</a>  		<strong class="jxr_keyword">final</strong> HtmlTableRendererRequest rendererRequest = <strong class="jxr_keyword">new</strong> HtmlTableRendererRequest(
+<a class="jxr_linenumber" name="33" href="#33">33</a>  				getSampleDataset());
+<a class="jxr_linenumber" name="34" href="#34">34</a>  		rendererRequest.setStreamResult(getStreamResult());
+<a class="jxr_linenumber" name="35" href="#35">35</a>  		<strong class="jxr_keyword">return</strong> rendererRequest;
+<a class="jxr_linenumber" name="36" href="#36">36</a>  	}
+<a class="jxr_linenumber" name="37" href="#37">37</a>  
+<a class="jxr_linenumber" name="38" href="#38">38</a>  	@Test
+<a class="jxr_linenumber" name="39" href="#39">39</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSimple() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="40" href="#40">40</a>  		useBufferStreamResult();
+<a class="jxr_linenumber" name="41" href="#41">41</a>  		getRenderer().render(getRequest());
+<a class="jxr_linenumber" name="42" href="#42">42</a>  		System.out.println(getBuffer().toString());
+<a class="jxr_linenumber" name="43" href="#43">43</a>  	}
+<a class="jxr_linenumber" name="44" href="#44">44</a>  
+<a class="jxr_linenumber" name="45" href="#45">45</a>  	@SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
+<a class="jxr_linenumber" name="46" href="#46">46</a>  	@Test
+<a class="jxr_linenumber" name="47" href="#47">47</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testWithTagAttributes() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="48" href="#48">48</a>  		useBufferStreamResult();
+<a class="jxr_linenumber" name="49" href="#49">49</a>  		<strong class="jxr_keyword">final</strong> HtmlTableDatasetRenderer renderer = getRenderer();
+<a class="jxr_linenumber" name="50" href="#50">50</a>  		<strong class="jxr_keyword">final</strong> Map&lt;String, String&gt; tableAttributes = <strong class="jxr_keyword">new</strong> LinkedHashMap&lt;String, String&gt;();
+<a class="jxr_linenumber" name="51" href="#51">51</a>  		tableAttributes.put(<span class="jxr_string">"cellpadding"</span>, <span class="jxr_string">"0"</span>);
+<a class="jxr_linenumber" name="52" href="#52">52</a>  		tableAttributes.put(<span class="jxr_string">"cellspacing"</span>, <span class="jxr_string">"0"</span>);
+<a class="jxr_linenumber" name="53" href="#53">53</a>  		tableAttributes.put(<span class="jxr_string">"style"</span>,
+<a class="jxr_linenumber" name="54" href="#54">54</a>  				<span class="jxr_string">"display: none; background-image: url('background.gif');"</span>);
+<a class="jxr_linenumber" name="55" href="#55">55</a>  		renderer.getTable().setTableTagAttributes(tableAttributes);
+<a class="jxr_linenumber" name="56" href="#56">56</a>  		renderer.render(getRequest());
+<a class="jxr_linenumber" name="57" href="#57">57</a>  		Assert.assertTrue(getBuffer().toString().indexOf(
+<a class="jxr_linenumber" name="58" href="#58">58</a>  				<span class="jxr_string">"&lt;table cellpadding=\&quot;0\&quot; cellspacing=\&quot;0\&quot; style=\&quot;display: none; "</span>
+<a class="jxr_linenumber" name="59" href="#59">59</a>  						+ <span class="jxr_string">"background-image: url('background.gif');\&quot;&gt;"</span>) &gt; -1);
+<a class="jxr_linenumber" name="60" href="#60">60</a>  	}
+<a class="jxr_linenumber" name="61" href="#61">61</a>  
+<a class="jxr_linenumber" name="62" href="#62">62</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(<strong class="jxr_keyword">final</strong> String[] args) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="63" href="#63">63</a>  		useTempFileStreamResult();
+<a class="jxr_linenumber" name="64" href="#64">64</a>  		getRenderer().render(getRequest());
+<a class="jxr_linenumber" name="65" href="#65">65</a>  		<strong class="jxr_keyword">final</strong> String browser = <span class="jxr_string">"/usr/bin/firefox"</span>;
+<a class="jxr_linenumber" name="66" href="#66">66</a>  		<strong class="jxr_keyword">final</strong> String filePath = <span class="jxr_string">"file://"</span> + getTempFile().getAbsolutePath();
+<a class="jxr_linenumber" name="67" href="#67">67</a>  		<strong class="jxr_keyword">final</strong> String command = browser + <span class="jxr_string">" "</span> + filePath;
+<a class="jxr_linenumber" name="68" href="#68">68</a>  		Runtime.getRuntime().exec(command);
+<a class="jxr_linenumber" name="69" href="#69">69</a>  		Thread.sleep(5000);
+<a class="jxr_linenumber" name="70" href="#70">70</a>  	}
+<a class="jxr_linenumber" name="71" href="#71">71</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>SpringFieldHelperTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../testapidocs/org/javautil/reflect/SpringFieldHelperTest.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.reflect;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertEquals;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertNull;
+<a class="jxr_linenumber" name="5" href="#5">5</a>   
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="8" href="#8">8</a>   
+<a class="jxr_linenumber" name="9" href="#9">9</a>   <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="10" href="#10">10</a>  
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../org/javautil/reflect/SpringFieldHelperTest.html">SpringFieldHelperTest</a> {
+<a class="jxr_linenumber" name="12" href="#12">12</a>  
+<a class="jxr_linenumber" name="13" href="#13">13</a>  	@SuppressWarnings(<span class="jxr_string">"serial"</span>)
+<a class="jxr_linenumber" name="14" href="#14">14</a>  	Map&lt;String, String&gt; values = <strong class="jxr_keyword">new</strong> HashMap&lt;String, String&gt;();
+<a class="jxr_linenumber" name="15" href="#15">15</a>  
+<a class="jxr_linenumber" name="16" href="#16">16</a>  	@Test
+<a class="jxr_linenumber" name="17" href="#17">17</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClass1() {
+<a class="jxr_linenumber" name="18" href="#18">18</a>  		values.clear();
+<a class="jxr_linenumber" name="19" href="#19">19</a>  		values.put(<span class="jxr_string">"stringFieldWithSetter"</span>, <span class="jxr_string">"A"</span>);
+<a class="jxr_linenumber" name="20" href="#20">20</a>  		values.put(<span class="jxr_string">"longNumberField"</span>, <span class="jxr_string">"32"</span>);
+<a class="jxr_linenumber" name="21" href="#21">21</a>  
+<a class="jxr_linenumber" name="22" href="#22">22</a>  		Class1 cl = <strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/reflect/Class1.html">Class1</a>();
+<a class="jxr_linenumber" name="23" href="#23">23</a>  		SpringFieldHelper fh = <strong class="jxr_keyword">new</strong> SpringFieldHelper();
+<a class="jxr_linenumber" name="24" href="#24">24</a>  		fh.set(cl, values);
+<a class="jxr_linenumber" name="25" href="#25">25</a>  		assertEquals(<span class="jxr_string">"A"</span>, cl.getStringFieldWithSetter());
+<a class="jxr_linenumber" name="26" href="#26">26</a>  		<em class="jxr_comment">// nosetter</em>
+<a class="jxr_linenumber" name="27" href="#27">27</a>  		assertNull(cl.getStringFieldWithoutSetter());
+<a class="jxr_linenumber" name="28" href="#28">28</a>  		<em class="jxr_comment">// no setter</em>
+<a class="jxr_linenumber" name="29" href="#29">29</a>  		assertNull(cl.longNumberField);
+<a class="jxr_linenumber" name="30" href="#30">30</a>  	}
+<a class="jxr_linenumber" name="31" href="#31">31</a>  
+<a class="jxr_linenumber" name="32" href="#32">32</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> test2() {
+<a class="jxr_linenumber" name="33" href="#33">33</a>  		values.clear();
+<a class="jxr_linenumber" name="34" href="#34">34</a>  
+<a class="jxr_linenumber" name="35" href="#35">35</a>  		values.put(<span class="jxr_string">"privateIntegerField"</span>, <span class="jxr_string">"64"</span>);
+<a class="jxr_linenumber" name="36" href="#36">36</a>  		values.put(<span class="jxr_string">"stringFieldWithSetter"</span>, <span class="jxr_string">"B"</span>);
+<a class="jxr_linenumber" name="37" href="#37">37</a>  		Class1 cl = <strong class="jxr_keyword">new</strong> <a href="../../../org/javautil/reflect/Class1.html">Class1</a>();
+<a class="jxr_linenumber" name="38" href="#38">38</a>  		SpringFieldHelper fh = <strong class="jxr_keyword">new</strong> SpringFieldHelper();
+<a class="jxr_linenumber" name="39" href="#39">39</a>  		fh.set(cl, values);
+<a class="jxr_linenumber" name="40" href="#40">40</a>  		assertEquals(<span class="jxr_string">"B"</span>, cl.getStringFieldWithSetter());
+<a class="jxr_linenumber" name="41" href="#41">41</a>  		assertEquals(<strong class="jxr_keyword">new</strong> Integer(64), cl.getPrivateIntegerField());
+<a class="jxr_linenumber" name="42" href="#42">42</a>  		assertNull(cl.getStringFieldWithoutSetter());
+<a class="jxr_linenumber" name="43" href="#43">43</a>  
+<a class="jxr_linenumber" name="44" href="#44">44</a>  	}
+<a class="jxr_linenumber" name="45" href="#45">45</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T20:00:58.886">
+<file name="/common/home/jjs/workspace/javautil-addressvalidation/src/main/java/org/javautil/address/dao/UtAddrValidateJDBCPersister.java">
+<violation beginline="100" endline="100" begincolumn="25" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.address.dao" class="UtAddrValidateJDBCPersister" variable="moreRecords" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'moreRecords'.
+</violation>
+<violation beginline="303" endline="303" begincolumn="35" endcolumn="55" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.address.dao" class="UtAddrValidateJDBCPersister" method="getRow" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-addressvalidation/src/main/java/org/javautil/address/exception/AddressStandardizationException.java">
+<violation beginline="26" endline="29" begincolumn="19" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.address.exception" class="AddressStandardizationException" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'address'.
+</violation>
+<violation beginline="36" endline="37" begincolumn="19" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.address.exception" class="AddressStandardizationException" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'address'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-addressvalidation/src/main/java/org/javautil/address/geo/GeoCoder.java">
+<violation beginline="70" endline="72" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.address.geo" class="GeoCoder" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'pageSource'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-addressvalidation/src/main/java/org/javautil/address/service/usps/AbstractAddressValidationService.java">
+<violation beginline="329" endline="330" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.address.service.usps" class="AbstractAddressValidationService" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'e'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-addressvalidation/src/main/java/org/javautil/address/standardname/StreetTypeSuffixes.java">
+<violation beginline="44" endline="47" begincolumn="41" endcolumn="41" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.address.standardname" class="StreetTypeSuffixes" method="populateVariants" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-addressvalidation/src/main/java/org/javautil/address/usps/ZipCodeFormatter.java">
+<violation beginline="104" endline="106" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.address.usps" class="ZipCodeFormatter" method="formatZip10" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+</pmd>

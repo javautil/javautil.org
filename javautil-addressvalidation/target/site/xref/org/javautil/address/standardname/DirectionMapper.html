@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>DirectionMapper xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/org/javautil/address/standardname/DirectionMapper.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.address.standardname;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <strong class="jxr_keyword">import</strong> java.util.TreeMap;
+<a class="jxr_linenumber" name="6" href="#6">6</a>   
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment">// todo use this in stree standardization </em>
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="9" href="#9">9</a>   <em class="jxr_javadoccomment"> * &lt;p&gt;DirectionMapper class.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_javadoccomment"> * @author jjs</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_javadoccomment"> * @version $Id: DirectionMapper.java,v 1.3 2012/03/04 12:31:11 jjs Exp $</em>
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/javautil/address/standardname/DirectionMapper.html">DirectionMapper</a> {
+<a class="jxr_linenumber" name="15" href="#15">15</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> Map&lt;String, String&gt; directionMap = <strong class="jxr_keyword">new</strong> TreeMap&lt;String, String&gt;();
+<a class="jxr_linenumber" name="16" href="#16">16</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String NW = <span class="jxr_string">"NW"</span>;
+<a class="jxr_linenumber" name="17" href="#17">17</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String W = <span class="jxr_string">"W"</span>;
+<a class="jxr_linenumber" name="18" href="#18">18</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String S = <span class="jxr_string">"S"</span>;
+<a class="jxr_linenumber" name="19" href="#19">19</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String N = <span class="jxr_string">"N"</span>;
+<a class="jxr_linenumber" name="20" href="#20">20</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String E = <span class="jxr_string">"E"</span>;
+<a class="jxr_linenumber" name="21" href="#21">21</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String NE = <span class="jxr_string">"NE"</span>;
+<a class="jxr_linenumber" name="22" href="#22">22</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String SW = <span class="jxr_string">"SW"</span>;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String SE = <span class="jxr_string">"SE"</span>;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  
+<a class="jxr_linenumber" name="25" href="#25">25</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> logMisses = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <em class="jxr_javadoccomment">	 * Number of times the specified string was not found</em>
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="29" href="#29">29</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> HashMap&lt;String, Integer&gt; missCount = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Integer&gt;();
+<a class="jxr_linenumber" name="30" href="#30">30</a>  	<strong class="jxr_keyword">static</strong> {
+<a class="jxr_linenumber" name="31" href="#31">31</a>  		directionMap.put(<span class="jxr_string">"N"</span>, N);
+<a class="jxr_linenumber" name="32" href="#32">32</a>  		directionMap.put(<span class="jxr_string">"S"</span>, S);
+<a class="jxr_linenumber" name="33" href="#33">33</a>  		directionMap.put(<span class="jxr_string">"E"</span>, E);
+<a class="jxr_linenumber" name="34" href="#34">34</a>  		directionMap.put(<span class="jxr_string">"W"</span>, W);
+<a class="jxr_linenumber" name="35" href="#35">35</a>  		directionMap.put(<span class="jxr_string">"NORTH"</span>, N);
+<a class="jxr_linenumber" name="36" href="#36">36</a>  		directionMap.put(<span class="jxr_string">"SOUTH"</span>, S);
+<a class="jxr_linenumber" name="37" href="#37">37</a>  		directionMap.put(<span class="jxr_string">"EAST"</span>, E);
+<a class="jxr_linenumber" name="38" href="#38">38</a>  		directionMap.put(<span class="jxr_string">"WEST"</span>, W);
+<a class="jxr_linenumber" name="39" href="#39">39</a>  		directionMap.put(<span class="jxr_string">"NE"</span>, NE);
+<a class="jxr_linenumber" name="40" href="#40">40</a>  		directionMap.put(<span class="jxr_string">"NW"</span>, NW);
+<a class="jxr_linenumber" name="41" href="#41">41</a>  		directionMap.put(<span class="jxr_string">"SE"</span>, SE);
+<a class="jxr_linenumber" name="42" href="#42">42</a>  		directionMap.put(<span class="jxr_string">"SW"</span>, SW);
+<a class="jxr_linenumber" name="43" href="#43">43</a>  
+<a class="jxr_linenumber" name="44" href="#44">44</a>  	}
+<a class="jxr_linenumber" name="45" href="#45">45</a>  
+<a class="jxr_linenumber" name="46" href="#46">46</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="47" href="#47">47</a>  <em class="jxr_javadoccomment">	 * &lt;p&gt;dumpMissCount.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="48" href="#48">48</a>  <em class="jxr_javadoccomment">	 *</em>
+<a class="jxr_linenumber" name="49" href="#49">49</a>  <em class="jxr_javadoccomment">	 * @param min a int.</em>
+<a class="jxr_linenumber" name="50" href="#50">50</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="51" href="#51">51</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> dumpMissCount(<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> min) {
+<a class="jxr_linenumber" name="52" href="#52">52</a>  		<strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">final</strong> String s : missCount.keySet()) {
+<a class="jxr_linenumber" name="53" href="#53">53</a>  
+<a class="jxr_linenumber" name="54" href="#54">54</a>  			<strong class="jxr_keyword">final</strong> Integer c = missCount.get(s);
+<a class="jxr_linenumber" name="55" href="#55">55</a>  			<strong class="jxr_keyword">if</strong> (c &gt;= min) {
+<a class="jxr_linenumber" name="56" href="#56">56</a>  				System.out.println(s + <span class="jxr_string">" "</span> + c);
+<a class="jxr_linenumber" name="57" href="#57">57</a>  			}
+<a class="jxr_linenumber" name="58" href="#58">58</a>  		}
+<a class="jxr_linenumber" name="59" href="#59">59</a>  	}
+<a class="jxr_linenumber" name="60" href="#60">60</a>  
+<a class="jxr_linenumber" name="61" href="#61">61</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="62" href="#62">62</a>  <em class="jxr_javadoccomment">	 * &lt;p&gt;map.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="63" href="#63">63</a>  <em class="jxr_javadoccomment">	 *</em>
+<a class="jxr_linenumber" name="64" href="#64">64</a>  <em class="jxr_javadoccomment">	 * @param in a {@link java.lang.String} object.</em>
+<a class="jxr_linenumber" name="65" href="#65">65</a>  <em class="jxr_javadoccomment">	 * @return a {@link java.lang.String} object.</em>
+<a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="67" href="#67">67</a>  	<strong class="jxr_keyword">public</strong> String map(<strong class="jxr_keyword">final</strong> String in) {
+<a class="jxr_linenumber" name="68" href="#68">68</a>  		<strong class="jxr_keyword">if</strong> (in == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="69" href="#69">69</a>  			<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException(<span class="jxr_string">"in is null"</span>);
+<a class="jxr_linenumber" name="70" href="#70">70</a>  		}
+<a class="jxr_linenumber" name="71" href="#71">71</a>  
+<a class="jxr_linenumber" name="72" href="#72">72</a>  		String find = in.toUpperCase().trim();
+<a class="jxr_linenumber" name="73" href="#73">73</a>  		find = find.replace(<span class="jxr_string">"."</span>, <span class="jxr_string">""</span>);
+<a class="jxr_linenumber" name="74" href="#74">74</a>  		<em class="jxr_comment">// logger.info("looking for '" + find + "'");</em>
+<a class="jxr_linenumber" name="75" href="#75">75</a>  		<strong class="jxr_keyword">final</strong> String found = directionMap.get(find);
+<a class="jxr_linenumber" name="76" href="#76">76</a>  		<strong class="jxr_keyword">if</strong> (logMisses) {
+<a class="jxr_linenumber" name="77" href="#77">77</a>  			logMiss(find);
+<a class="jxr_linenumber" name="78" href="#78">78</a>  		}
+<a class="jxr_linenumber" name="79" href="#79">79</a>  		<strong class="jxr_keyword">return</strong> found;
+<a class="jxr_linenumber" name="80" href="#80">80</a>  	}
+<a class="jxr_linenumber" name="81" href="#81">81</a>  
+<a class="jxr_linenumber" name="82" href="#82">82</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> logMiss(<strong class="jxr_keyword">final</strong> String text) {
+<a class="jxr_linenumber" name="83" href="#83">83</a>  		<strong class="jxr_keyword">final</strong> Integer misses = missCount.get(text);
+<a class="jxr_linenumber" name="84" href="#84">84</a>  		<strong class="jxr_keyword">if</strong> (misses == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="85" href="#85">85</a>  			missCount.put(text, 1);
+<a class="jxr_linenumber" name="86" href="#86">86</a>  		} <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="87" href="#87">87</a>  			missCount.put(text, misses + 1);
+<a class="jxr_linenumber" name="88" href="#88">88</a>  		}
+<a class="jxr_linenumber" name="89" href="#89">89</a>  	}
+<a class="jxr_linenumber" name="90" href="#90">90</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

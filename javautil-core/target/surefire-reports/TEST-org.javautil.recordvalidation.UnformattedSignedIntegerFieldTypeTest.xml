@@ -19,7 +19,7 @@
     <property name="basedir" value="/common/home/jjs/workspace/javautil-core"/>
     <property name="java.endorsed.dirs" value="/common/tools/linux/32/javas/jdk1.6.0_26/jre/lib/endorsed"/>
     <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/common/home/jjs/workspace/javautil-core/target/surefire/surefirebooter8433621088038852816.jar"/>
+    <property name="surefire.real.class.path" value="/common/home/jjs/workspace/javautil-core/target/surefire/surefirebooter1617014497033093044.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/common/tools/linux/32/javas/jdk1.6.0_26/jre"/>
-    <property name="sun.java.command" value="/common/home/jjs/workspace/javautil-core/target/surefire/surefirebooter8433621088038852816.jar /common/home/jjs/workspace/javautil-core/target/surefire/surefire811296983554537427tmp /common/home/jjs/workspace/javautil-core/target/surefire/surefire8720548316608601474tmp"/>
+    <property name="sun.java.command" value="/common/home/jjs/workspace/javautil-core/target/surefire/surefirebooter1617014497033093044.jar /common/home/jjs/workspace/javautil-core/target/surefire/surefire489547723924020445tmp /common/home/jjs/workspace/javautil-core/target/surefire/surefire3367350411076820794tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="en"/>
     <property name="java.vm.info" value="mixed mode"/>
@@ -61,5 +61,5 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.001" classname="org.javautil.recordvalidation.UnformattedSignedIntegerFieldTypeTest" name="testUnformattedSignedInteger"/>
+  <testcase time="0" classname="org.javautil.recordvalidation.UnformattedSignedIntegerFieldTypeTest" name="testUnformattedSignedInteger"/>
 </testsuite>

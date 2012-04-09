@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>WorkbookUtilsTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../testapidocs/org/javautil/workbook/WorkbookUtilsTest.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.workbook;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> junit.framework.Assert;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <strong class="jxr_keyword">import</strong> org.apache.commons.logging.Log;
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <strong class="jxr_keyword">import</strong> org.apache.commons.logging.LogFactory;
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <strong class="jxr_keyword">import</strong> org.junit.Ignore;
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="9" href="#9">9</a>   
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../org/javautil/workbook/WorkbookUtilsTest.html">WorkbookUtilsTest</a> {
+<a class="jxr_linenumber" name="11" href="#11">11</a>  
+<a class="jxr_linenumber" name="12" href="#12">12</a>  	<strong class="jxr_keyword">protected</strong> Log logger = LogFactory.getLog(<strong class="jxr_keyword">this</strong>.getClass());
+<a class="jxr_linenumber" name="13" href="#13">13</a>  
+<a class="jxr_linenumber" name="14" href="#14">14</a>  	@Ignore
+<a class="jxr_linenumber" name="15" href="#15">15</a>  	<em class="jxr_comment">// this is complicated, slow and doesn't work</em>
+<a class="jxr_linenumber" name="16" href="#16">16</a>  	@Test
+<a class="jxr_linenumber" name="17" href="#17">17</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testColumnIdToColumnIndex() {
+<a class="jxr_linenumber" name="18" href="#18">18</a>  		Assert.assertEquals(<span class="jxr_string">"A"</span>, WorkbookUtils.getColumnId(0));
+<a class="jxr_linenumber" name="19" href="#19">19</a>  		Assert.assertEquals(<span class="jxr_string">"B"</span>, WorkbookUtils.getColumnId(1));
+<a class="jxr_linenumber" name="20" href="#20">20</a>  		Assert.assertEquals(<span class="jxr_string">"C"</span>, WorkbookUtils.getColumnId(2));
+<a class="jxr_linenumber" name="21" href="#21">21</a>  		Assert.assertEquals(<span class="jxr_string">"D"</span>, WorkbookUtils.getColumnId(3));
+<a class="jxr_linenumber" name="22" href="#22">22</a>  		Assert.assertEquals(<span class="jxr_string">"E"</span>, WorkbookUtils.getColumnId(4));
+<a class="jxr_linenumber" name="23" href="#23">23</a>  		Assert.assertEquals(<span class="jxr_string">"F"</span>, WorkbookUtils.getColumnId(5));
+<a class="jxr_linenumber" name="24" href="#24">24</a>  		Assert.assertEquals(<span class="jxr_string">"G"</span>, WorkbookUtils.getColumnId(6));
+<a class="jxr_linenumber" name="25" href="#25">25</a>  		Assert.assertEquals(<span class="jxr_string">"H"</span>, WorkbookUtils.getColumnId(7));
+<a class="jxr_linenumber" name="26" href="#26">26</a>  		Assert.assertEquals(<span class="jxr_string">"Z"</span>, WorkbookUtils.getColumnId(25));
+<a class="jxr_linenumber" name="27" href="#27">27</a>  		Assert.assertEquals(<span class="jxr_string">"AA"</span>, WorkbookUtils.getColumnId(26));
+<a class="jxr_linenumber" name="28" href="#28">28</a>  		Assert.assertEquals(<span class="jxr_string">"AB"</span>, WorkbookUtils.getColumnId(27));
+<a class="jxr_linenumber" name="29" href="#29">29</a>  		Assert.assertEquals(<span class="jxr_string">"AC"</span>, WorkbookUtils.getColumnId(28));
+<a class="jxr_linenumber" name="30" href="#30">30</a>  		Assert.assertEquals(<span class="jxr_string">"AD"</span>, WorkbookUtils.getColumnId(29));
+<a class="jxr_linenumber" name="31" href="#31">31</a>  		Assert.assertEquals(<span class="jxr_string">"AE"</span>, WorkbookUtils.getColumnId(30));
+<a class="jxr_linenumber" name="32" href="#32">32</a>  		Assert.assertEquals(<span class="jxr_string">"AF"</span>, WorkbookUtils.getColumnId(31));
+<a class="jxr_linenumber" name="33" href="#33">33</a>  		Assert.assertEquals(<span class="jxr_string">"AZ"</span>, WorkbookUtils.getColumnId(51));
+<a class="jxr_linenumber" name="34" href="#34">34</a>  		Assert.assertEquals(<span class="jxr_string">"BA"</span>, WorkbookUtils.getColumnId(52));
+<a class="jxr_linenumber" name="35" href="#35">35</a>  	}
+<a class="jxr_linenumber" name="36" href="#36">36</a>  
+<a class="jxr_linenumber" name="37" href="#37">37</a>  	@Ignore
+<a class="jxr_linenumber" name="38" href="#38">38</a>  	<em class="jxr_comment">// TODO this code is broken</em>
+<a class="jxr_linenumber" name="39" href="#39">39</a>  	@Test
+<a class="jxr_linenumber" name="40" href="#40">40</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testColumnIndexToColumnId() {
+<a class="jxr_linenumber" name="41" href="#41">41</a>  		Assert.assertEquals(0, WorkbookUtils.getColumnIndex(<span class="jxr_string">"A"</span>));
+<a class="jxr_linenumber" name="42" href="#42">42</a>  		Assert.assertEquals(1, WorkbookUtils.getColumnIndex(<span class="jxr_string">"B"</span>));
+<a class="jxr_linenumber" name="43" href="#43">43</a>  		Assert.assertEquals(2, WorkbookUtils.getColumnIndex(<span class="jxr_string">"C"</span>));
+<a class="jxr_linenumber" name="44" href="#44">44</a>  		Assert.assertEquals(3, WorkbookUtils.getColumnIndex(<span class="jxr_string">"D"</span>));
+<a class="jxr_linenumber" name="45" href="#45">45</a>  		Assert.assertEquals(4, WorkbookUtils.getColumnIndex(<span class="jxr_string">"E"</span>));
+<a class="jxr_linenumber" name="46" href="#46">46</a>  		Assert.assertEquals(5, WorkbookUtils.getColumnIndex(<span class="jxr_string">"F"</span>));
+<a class="jxr_linenumber" name="47" href="#47">47</a>  		Assert.assertEquals(6, WorkbookUtils.getColumnIndex(<span class="jxr_string">"G"</span>));
+<a class="jxr_linenumber" name="48" href="#48">48</a>  		Assert.assertEquals(7, WorkbookUtils.getColumnIndex(<span class="jxr_string">"H"</span>));
+<a class="jxr_linenumber" name="49" href="#49">49</a>  		Assert.assertEquals(25, WorkbookUtils.getColumnIndex(<span class="jxr_string">"Z"</span>));
+<a class="jxr_linenumber" name="50" href="#50">50</a>  		Assert.assertEquals(26, WorkbookUtils.getColumnIndex(<span class="jxr_string">"AA"</span>));
+<a class="jxr_linenumber" name="51" href="#51">51</a>  		Assert.assertEquals(27, WorkbookUtils.getColumnIndex(<span class="jxr_string">"AB"</span>));
+<a class="jxr_linenumber" name="52" href="#52">52</a>  		Assert.assertEquals(28, WorkbookUtils.getColumnIndex(<span class="jxr_string">"AC"</span>));
+<a class="jxr_linenumber" name="53" href="#53">53</a>  		Assert.assertEquals(29, WorkbookUtils.getColumnIndex(<span class="jxr_string">"AD"</span>));
+<a class="jxr_linenumber" name="54" href="#54">54</a>  		Assert.assertEquals(30, WorkbookUtils.getColumnIndex(<span class="jxr_string">"AE"</span>));
+<a class="jxr_linenumber" name="55" href="#55">55</a>  		Assert.assertEquals(31, WorkbookUtils.getColumnIndex(<span class="jxr_string">"AF"</span>));
+<a class="jxr_linenumber" name="56" href="#56">56</a>  		Assert.assertEquals(51, WorkbookUtils.getColumnIndex(<span class="jxr_string">"AZ"</span>));
+<a class="jxr_linenumber" name="57" href="#57">57</a>  		Assert.assertEquals(52, WorkbookUtils.getColumnIndex(<span class="jxr_string">"BA"</span>));
+<a class="jxr_linenumber" name="58" href="#58">58</a>  	}
+<a class="jxr_linenumber" name="59" href="#59">59</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

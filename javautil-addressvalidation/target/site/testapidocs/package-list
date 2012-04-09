@@ -1,0 +1,8 @@
+org.javautil.address
+org.javautil.address.beans
+org.javautil.address.formatters
+org.javautil.address.marshaller
+org.javautil.address.parser
+org.javautil.address.service
+org.javautil.address.standardname
+org.javautil.address.usps

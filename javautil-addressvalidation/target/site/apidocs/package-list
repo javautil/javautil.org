@@ -1,0 +1,14 @@
+org.javautil.address
+org.javautil.address.beans
+org.javautil.address.dao
+org.javautil.address.dataservice.populate.ddl
+org.javautil.address.exception
+org.javautil.address.formatters
+org.javautil.address.geo
+org.javautil.address.interfaces
+org.javautil.address.marshaller
+org.javautil.address.parser
+org.javautil.address.service
+org.javautil.address.service.usps
+org.javautil.address.standardname
+org.javautil.address.usps

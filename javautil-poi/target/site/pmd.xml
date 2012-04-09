@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:51:33.928">
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/AbstractSheetRenderer.java">
+<violation beginline="215" endline="218" begincolumn="35" endcolumn="17" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.javautil.poi" class="AbstractSheetRenderer" method="setCellData" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CellEvaluatorImpl.java">
+<violation beginline="27" endline="27" begincolumn="25" endcolumn="25" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.javautil.poi" class="CellEvaluatorImpl" method="getAsDouble" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetHelper.java">
+<violation beginline="385" endline="458" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.poi" class="CrosstabbedWorksheetHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'rowIdentifyingColumns'.
+</violation>
+<violation beginline="428" endline="428" begincolumn="59" endcolumn="89" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetHelper" method="emitCrosstabbedSummary" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="624" endline="626" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetHelper" method="addGroupHeaderSpanCell" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="682" endline="684" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetHelper" method="addCell" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="787" endline="787" begincolumn="59" endcolumn="89" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetHelper" method="emitCrosstabHeadersForCrosstabData" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="857" endline="857" begincolumn="59" endcolumn="89" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetHelper" method="emitCrosstabHeadersForCrosstabDataWithSpannedHeaders" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/CrosstabbedWorksheetRenderer.java">
+<violation beginline="384" endline="457" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.poi" class="CrosstabbedWorksheetRenderer" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'rowIdentifyingColumns'.
+</violation>
+<violation beginline="427" endline="427" begincolumn="59" endcolumn="89" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetRenderer" method="emitCrosstabbedSummary" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="573" endline="575" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetRenderer" method="addGroupHeaderSpanCell" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="631" endline="633" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetRenderer" method="addCell" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="742" endline="742" begincolumn="59" endcolumn="89" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetRenderer" method="emitCrosstabHeadersForCrosstabData" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="812" endline="812" begincolumn="59" endcolumn="89" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.poi" class="CrosstabbedWorksheetRenderer" method="emitCrosstabHeadersForCrosstabDataWithSpannedHeaders" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/SheetStyleHelper.java">
+<violation beginline="407" endline="407" begincolumn="21" endcolumn="33" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.poi" class="SheetStyleHelper" method="emitSummary" variable="currentColumn" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'currentColumn'.
+</violation>
+<violation beginline="456" endline="458" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.poi" class="SheetStyleHelper" method="getStyle" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory.java">
+<violation beginline="44" endline="44" begincolumn="30" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.poi.style" class="HSSFCellStyleFactory" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/HSSFCellStyleFactory2.java">
+<violation beginline="35" endline="35" begincolumn="30" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.poi.style" class="HSSFCellStyleFactory2" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+<violation beginline="45" endline="45" begincolumn="27" endcolumn="32" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.poi.style" class="HSSFCellStyleFactory2" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-poi/src/main/java/org/javautil/poi/style/PoiFont.java">
+<violation beginline="77" endline="79" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.poi.style" class="PoiFont" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'color'.
+</violation>
+</file>
+</pmd>

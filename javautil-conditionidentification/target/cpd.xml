@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="105" tokens="339">
+<file line="135" path="/common/home/jjs/workspace/javautil-conditionidentification/src/main/java/org/javautil/exceptionprocessing/dto/UtTableRule.java"/>
+<file line="112" path="/common/home/jjs/workspace/javautil-conditionidentification/src/main/java/org/javautil/exceptionprocessing/dto/UtTableRuleHist.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	public UtQuery getUtQuery() {
+		return this.utQuery;
+	}
+
+	public void setUtQuery(final UtQuery utQuery) {
+		this.utQuery = utQuery;
+	}
+
+	public String getMsgId() {
+		return this.msgId;
+	}
+
+	public void setMsgId(final String msgId) {
+		this.msgId = msgId;
+	}
+
+	public String getSqlText() {
+		return this.sqlText;
+	}
+
+	public void setSqlText(final String sqlText) {
+		this.sqlText = sqlText;
+	}
+
+	public String getMsgDescr() {
+		return this.msgDescr;
+	}
+
+	public void setMsgDescr(final String msgDescr) {
+		this.msgDescr = msgDescr;
+	}
+
+	public String getRuleType() {
+		return this.ruleType;
+	}
+
+	public void setRuleType(final String ruleType) {
+		this.ruleType = ruleType;
+	}
+
+	public String getDataSrcNmSrc() {
+		return this.dataSrcNmSrc;
+	}
+
+	public void setDataSrcNmSrc(final String dataSrcNmSrc) {
+		this.dataSrcNmSrc = dataSrcNmSrc;
+	}
+
+	public String getDataSrcNmDest() {
+		return this.dataSrcNmDest;
+	}
+
+	public void setDataSrcNmDest(final String dataSrcNmDest) {
+		this.dataSrcNmDest = dataSrcNmDest;
+	}
+
+	public Integer getMaxQuerySec() {
+		return this.maxQuerySec;
+	}
+
+	public void setMaxQuerySec(final Integer maxQuerySec) {
+		this.maxQuerySec = maxQuerySec;
+	}
+
+	public String getSevereRuleFlg() {
+		return this.severeRuleFlg;
+	}
+
+	public void setSevereRuleFlg(final String severeRuleFlg) {
+		this.severeRuleFlg = severeRuleFlg;
+	}
+
+	public String getShortDescr() {
+		return this.shortDescr;
+	}
+
+	public void setShortDescr(final String shortDescr) {
+		this.shortDescr = shortDescr;
+	}
+
+	public String getExceptionTypeCd() {
+		return this.exceptionTypeCd;
+	}
+
+	public void setExceptionTypeCd(final String exceptionTypeCd) {
+		this.exceptionTypeCd = exceptionTypeCd;
+	}
+
+	public String getDispCdEnum() {
+		return this.dispCdEnum;
+	}
+
+	public void setDispCdEnum(final String dispCdEnum) {
+		this.dispCdEnum = dispCdEnum;
+	}
+
+	public Integer getLogLvl() {
+		return this.logLvl;
+	}
+
+	public void setLogLvl(final Integer logLvl) {
+		this.logLvl = logLvl;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="33" tokens="105">
+<file line="85" path="/common/home/jjs/workspace/javautil-conditionidentification/src/main/java/org/javautil/exceptionprocessing/dto/UtMeasure.java"/>
+<file line="180" path="/common/home/jjs/workspace/javautil-conditionidentification/src/main/java/org/javautil/exceptionprocessing/dto/UtMetricThreshold.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	public Integer getEntryUser() {
+		return this.entryUser;
+	}
+
+	public void setEntryUser(final Integer entryUser) {
+		this.entryUser = entryUser;
+	}
+
+	public Serializable getEntryTm() {
+		return this.entryTm;
+	}
+
+	public void setEntryTm(final Serializable entryTm) {
+		this.entryTm = entryTm;
+	}
+
+	public Integer getModUser() {
+		return this.modUser;
+	}
+
+	public void setModUser(final Integer modUser) {
+		this.modUser = modUser;
+	}
+
+	public Serializable getModTm() {
+		return this.modTm;
+	}
+
+	public void setModTm(final Serializable modTm) {
+		this.modTm = modTm;
+	}
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

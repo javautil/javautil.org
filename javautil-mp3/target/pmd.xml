@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:51:04.925">
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/FindLeak.java">
+<violation beginline="5" endline="5" begincolumn="31" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code Rules" class="FindLeak" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/ArtistCsvListExtractor.java">
+<violation beginline="22" endline="22" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3" class="ArtistCsvListExtractor" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/ArtistGroup.java">
+<violation beginline="7" endline="7" begincolumn="54" endcolumn="61" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3" class="ArtistGroup" variable="suspects" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'suspects'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/ArtistGrouper.java">
+<violation beginline="17" endline="17" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3" class="ArtistGrouper" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="42" endline="42" begincolumn="45" endcolumn="66" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3" class="ArtistGrouper" variable="concatenatedStringsMap" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'concatenatedStringsMap'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/FileIterator.java">
+<violation beginline="30" endline="30" begincolumn="22" endcolumn="30" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3" class="FileIterator" variable="fileCount" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'fileCount'.
+</violation>
+<violation beginline="57" endline="57" begincolumn="46" endcolumn="66" rule="ClassCastExceptionWithToArray" ruleset="Basic Rules" package="org.javautil.mp3" class="FileIterator" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#ClassCastExceptionWithToArray" priority="3">
+This usage of the Collection.toArray() method will throw a ClassCastException.
+</violation>
+<violation beginline="122" endline="126" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.mp3" class="FileIterator" method="next" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/Mp3MetadataExtractorCsvCli.java">
+<violation beginline="37" endline="37" begincolumn="47" endcolumn="55" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3" class="Mp3MetadataExtractorCsvCli" variable="arguments" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'arguments'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/Mp3MetadataPopulatorImpl.java">
+<violation beginline="27" endline="27" begincolumn="37" endcolumn="49" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3" class="Mp3MetadataPopulatorImpl" variable="stringCleaner" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'stringCleaner'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/ddl/CreateDatabaseObjectsScriptRunner.java">
+<violation beginline="9" endline="9" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3.ddl" class="CreateDatabaseObjectsScriptRunner" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/persistence/HibernateUpdater.java">
+<violation beginline="54" endline="56" begincolumn="40" endcolumn="17" rule="EmptyWhileStmt" ruleset="Basic Rules" package="org.javautil.mp3.persistence" class="HibernateUpdater" method="updateData" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyWhileStmt" priority="3">
+Avoid empty while statements
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-mp3/src/main/java/org/javautil/mp3/persistence/Mp3PersistenceHibernate.java">
+<violation beginline="21" endline="21" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.mp3.persistence" class="Mp3PersistenceHibernate" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+</pmd>

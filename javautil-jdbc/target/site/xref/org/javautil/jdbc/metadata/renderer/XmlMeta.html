@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>XmlMeta xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/org/javautil/jdbc/metadata/renderer/XmlMeta.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.jdbc.metadata.renderer;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/javautil/jdbc/metadata/renderer/XmlMeta.html">XmlMeta</a> {
+<a class="jxr_linenumber" name="4" href="#4">4</a>   	<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String ID = <span class="jxr_string">"id"</span>;
+<a class="jxr_linenumber" name="6" href="#6">6</a>   	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String COLUMN_SIZE = <span class="jxr_string">"column-size"</span>;
+<a class="jxr_linenumber" name="7" href="#7">7</a>   	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String ENTITY = <span class="jxr_string">"entity"</span>;
+<a class="jxr_linenumber" name="8" href="#8">8</a>   	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FIELD = <span class="jxr_string">"field"</span>;
+<a class="jxr_linenumber" name="9" href="#9">9</a>   	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String ENTITY_NAME = <span class="jxr_string">"entityName"</span>;
+<a class="jxr_linenumber" name="10" href="#10">10</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String RELATION = <span class="jxr_string">"relation"</span>;
+<a class="jxr_linenumber" name="11" href="#11">11</a>  	<em class="jxr_comment">// public static final String IMPORTED_RELATION = "one";</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PRIMARY_KEY = <span class="jxr_string">"primary-key"</span>;
+<a class="jxr_linenumber" name="13" href="#13">13</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String CONSTRAINT_NAME = <span class="jxr_string">"constraint-name"</span>;
+<a class="jxr_linenumber" name="14" href="#14">14</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String TABLE_NAME = <span class="jxr_string">"table-name"</span>;
+<a class="jxr_linenumber" name="15" href="#15">15</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String COLUMN_NAME = <span class="jxr_string">"column-name"</span>;
+<a class="jxr_linenumber" name="16" href="#16">16</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String COLUMN = <span class="jxr_string">"column"</span>;
+<a class="jxr_linenumber" name="17" href="#17">17</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String SQL_TYPE = <span class="jxr_string">"sql-type"</span>;
+<a class="jxr_linenumber" name="18" href="#18">18</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String NULLABLE = <span class="jxr_string">"nullable"</span>;
+<a class="jxr_linenumber" name="19" href="#19">19</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String KEYMAP = <span class="jxr_string">"key-map"</span>;
+<a class="jxr_linenumber" name="20" href="#20">20</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FOREIGN_TABLE_NAME = <span class="jxr_string">"rel-table-name"</span>;
+<a class="jxr_linenumber" name="21" href="#21">21</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String NULL_ALLOWED = <span class="jxr_string">"null"</span>;
+<a class="jxr_linenumber" name="22" href="#22">22</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String NOT_NULL = <span class="jxr_string">"not null"</span>;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  
+<a class="jxr_linenumber" name="24" href="#24">24</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String TYPE = <span class="jxr_string">"type"</span>;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String RELATIONSHIP_TYPE = <span class="jxr_string">"type"</span>;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String REL_ENTITY_NAME = <span class="jxr_string">"rel-entity-name"</span>;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String REL_TABLE_NAME = <span class="jxr_string">"rel-table-name"</span>;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FIELD_NAME = <span class="jxr_string">"field-name"</span>;
+<a class="jxr_linenumber" name="29" href="#29">29</a>  	<em class="jxr_comment">// public static final String MANY = "many";</em>
+<a class="jxr_linenumber" name="30" href="#30">30</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String REFERENCES = <span class="jxr_string">"references"</span>;
+<a class="jxr_linenumber" name="31" href="#31">31</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String IMPORTED_RELATION = REFERENCES;
+<a class="jxr_linenumber" name="32" href="#32">32</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String REFERENCED_BY = <span class="jxr_string">"referenced-by"</span>;
+<a class="jxr_linenumber" name="33" href="#33">33</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String EXPORTED_RELATION = REFERENCED_BY;
+<a class="jxr_linenumber" name="34" href="#34">34</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String KEY_MAP = <span class="jxr_string">"key-map"</span>;
+<a class="jxr_linenumber" name="35" href="#35">35</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String TABLE_TYPE = <span class="jxr_string">"table-type"</span>; <em class="jxr_comment">// 'TABLE' or 'VIEW'</em>
+<a class="jxr_linenumber" name="36" href="#36">36</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PK_COLUMN_ATTRIBUTE = <span class="jxr_string">"pk-column"</span>;
+<a class="jxr_linenumber" name="37" href="#37">37</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FK_COLUMN_ATTRIBUTE = <span class="jxr_string">"fk-column"</span>;
+<a class="jxr_linenumber" name="38" href="#38">38</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String DATA_TYPE = <span class="jxr_string">"data-type"</span>;
+<a class="jxr_linenumber" name="39" href="#39">39</a>  	<em class="jxr_comment">// public static final String ONE = "one";</em>
+<a class="jxr_linenumber" name="40" href="#40">40</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PRECISION = <span class="jxr_string">"precision"</span>;
+<a class="jxr_linenumber" name="41" href="#41">41</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String SCALE = <span class="jxr_string">"scale"</span>;
+<a class="jxr_linenumber" name="42" href="#42">42</a>  	<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="43" href="#43">43</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PK_TABLE_CAT = <span class="jxr_string">"pk-table-catalog"</span>;
+<a class="jxr_linenumber" name="44" href="#44">44</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PK_TABLE_SCHEMA = <span class="jxr_string">"pk-table-schema"</span>;
+<a class="jxr_linenumber" name="45" href="#45">45</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PK_TABLE_NAME = <span class="jxr_string">"pk-table-name"</span>;
+<a class="jxr_linenumber" name="46" href="#46">46</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PK_COLUMN_NAME = <span class="jxr_string">"pk-column-name"</span>;
+<a class="jxr_linenumber" name="47" href="#47">47</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FK_TABLE_CAT = <span class="jxr_string">"fk-table-catalog"</span>;
+<a class="jxr_linenumber" name="48" href="#48">48</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FK_TABLE_SCHEMA = <span class="jxr_string">"fk-table-schema"</span>;
+<a class="jxr_linenumber" name="49" href="#49">49</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FK_TABLE_NAME = <span class="jxr_string">"fk-table-name"</span>;
+<a class="jxr_linenumber" name="50" href="#50">50</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FK_COLUMN_NAME = <span class="jxr_string">"fk-column-name"</span>;
+<a class="jxr_linenumber" name="51" href="#51">51</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String REMARKS = <span class="jxr_string">"remarks"</span>;
+<a class="jxr_linenumber" name="52" href="#52">52</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String SCHEMA = <span class="jxr_string">"schema"</span>;
+<a class="jxr_linenumber" name="53" href="#53">53</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String ATTRIBUTE_NAME = <span class="jxr_string">"attribute-name"</span>;
+<a class="jxr_linenumber" name="54" href="#54">54</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String FK_NAME = <span class="jxr_string">"fk-name"</span>;
+<a class="jxr_linenumber" name="55" href="#55">55</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PK_NAME = <span class="jxr_string">"pk-name"</span>;
+<a class="jxr_linenumber" name="56" href="#56">56</a>  
+<a class="jxr_linenumber" name="57" href="#57">57</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

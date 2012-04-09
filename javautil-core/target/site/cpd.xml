@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="47" tokens="248">
+<file line="20" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/text/CommaFormatter.java"/>
+<file line="312" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/text/StringHelper.java"/>
+<codefragment>
+<![CDATA[
+	public static String formatWithCommas(final Collection<String> words,
+			final int leadInLength, final int maxLineLength) {
+		int maxLength = 0;
+		for (final String word : words) {
+			if (word.length() > maxLength) {
+				maxLength = word.length();
+			}
+		}
+		final StringBuilder mb = new StringBuilder();
+		for (int i = 0; i < leadInLength; i++) {
+			mb.append(" ");
+		}
+		final String margin = mb.toString();
+		final int workLength = maxLineLength - maxLength;
+		final int wordsPerLine = workLength / (maxLength + 2);
+
+		final StringBuilder b = new StringBuilder();
+		int wordsThisLine = 0;
+
+		b.append(margin);
+
+		System.out.println(b.toString());
+		int wordNbr = 0;
+		for (final String word : words) {
+			wordNbr++;
+
+			b.append(word);
+			if (wordNbr < words.size()) {
+				b.append(",");
+			}
+			for (int i = word.length(); i <= maxLength; i++) {
+				b.append(" ");
+			}
+
+			wordsThisLine++;
+
+			if (wordsThisLine >= wordsPerLine) {
+				b.append("\n");
+				b.append(margin);
+				wordsThisLine = 0;
+			}
+
+		}
+		final String retval = b.toString();
+		System.out.println(b);
+		return retval;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="45" tokens="225">
+<file line="192" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCompoundCrosstabber.java"/>
+<file line="176" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCrosstabber.java"/>
+<codefragment>
+<![CDATA[
+			}
+			matrix[rowIndex] = row;
+			// System.out.println("row " + ArrayHelper.asString(row));
+			// System.out.println("srcRow " + srcRow);
+			rowIndex++;
+		}
+		return matrix;
+
+	}
+
+	private CrosstabRow getCrosstabRow(final DatasetIterator dsi) {
+		final Object[] rowIdentifier = new Object[crosstabColumns
+				.getRowIdentifiers().size()];
+		int i = 0;
+		for (final String colName : crosstabColumns.getRowIdentifiers()) {
+			final Object colVal = dsi.getObject(colName);
+			rowIdentifier[i++] = colVal;
+		}
+		CrosstabRow row = rows.get(rowIdentifier);
+		if (row == null) {
+			row = new CrosstabRow(rowIdentifier);
+			rows.put(rowIdentifier, row);
+		}
+		return row;
+	}
+
+	// todo merge this with DatasetCrosstab
+	public AbstractDataset getDataSet() {
+		crosstab();
+		final DatasetIterator dsi = dataSet.getDatasetIterator();
+		dsi.getDatasetMetadata();
+		final MutableDatasetMetadata meta = dsi.getDatasetMetadata()
+				.getMutable();
+
+		final DatasetMetadataImpl newMeta = new DatasetMetadataImpl();
+		int index = 0;
+		for (final String colName : crosstabColumns.getRowIdentifiers()) {
+			final Integer sourceIndex = meta.getColumnIndex(colName);
+			final ColumnMetadata src = meta.getColumnMetaData(sourceIndex);
+			final ColumnMetadata cmd = src.getCopy();
+			cmd.setColumnIndex(index);
+			newMeta.addColumn(cmd);
+			index++;
+		}
+		if (logger.isDebugEnabled()) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="44" tokens="215">
+<file line="129" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/Day.java"/>
+<file line="142" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/ImmutableDate.java"/>
+<codefragment>
+<![CDATA[
+	public Day(final String date, final String format) throws ParseException {
+		super((new java.util.Date()).getTime());
+		final SimpleDateFormat formatter = new SimpleDateFormat(format);
+		final java.util.Date d = formatter.parse(date);
+		super.setTime(d.getTime());
+	}
+
+	public final void setDate(
+			@SuppressWarnings("unused") final java.util.Date date) {
+		throw new UnsupportedOperationException("immutable");
+	}
+
+	public void setDay(@SuppressWarnings("unused") final int day) {
+		throw new UnsupportedOperationException("immutable");
+	}
+
+	@Override
+	public void setMonth(final int month) {
+		throw new UnsupportedOperationException("immutable");
+	}
+
+	@Override
+	public void setTime(final long time) {
+		throw new UnsupportedOperationException("immutable");
+	}
+
+	@Override
+	public void setYear(final int year) {
+		throw new UnsupportedOperationException("immutable");
+	}
+
+	@Override
+	public String toString() {
+		synchronized (formatter) {
+			return formatter.format(this);
+		}
+	}
+
+	public java.sql.Timestamp toTimestamp() {
+		return new java.sql.Timestamp(this.getTime());
+	}
+
+	@Override
+	public void setHours(final int i) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="19" tokens="142">
+<file line="159" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/AbstractDatasetIterator.java"/>
+<file line="196" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/ResultSetIterator.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	@Override
+	public Map<String, Object> getRowAsMap() throws DatasetException {
+		final DatasetMetadata metaData = getDatasetMetadata();
+		final Map<String, Object> row = new LinkedHashMap<String, Object>();
+		for (int i = 0; i < metaData.getColumnCount(); i++) {
+			final String columnName = metaData.getColumnName(i);
+			final Object columnValue = getObject(i);
+			row.put(columnName, columnValue);
+		}
+		return row;
+	}
+
+	@Override
+	public List<Object> getRowAsList() {
+		final DatasetMetadata meta = getDatasetMetadata();
+		final List<Object> row = new ArrayList<Object>(meta.getColumnCount());
+		for (int i = 0; i < meta.getColumnCount(); i++) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="43" tokens="139">
+<file line="45" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCompoundCrosstabber.java"/>
+<file line="43" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCrosstabber.java"/>
+<codefragment>
+<![CDATA[
+	public void setDataSet(final Dataset ds) {
+		dataSet = ds;
+	}
+
+	private void crosstab() {
+		if (!crosstabComplete) {
+			crossTabDataSet();
+			crosstabComplete = true;
+		}
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder b = new StringBuilder();
+		for (final CrosstabRow row : rows.values()) {
+			b.append(row.toString());
+		}
+		return b.toString();
+	}
+
+	/**
+	 * Crosstabs the data.
+	 * 
+	 * Iterates through the source data, Finds the corresponding row identified
+	 * by the row id, Extracts the column identifier Adds the data using the
+	 * column identifier as the key.
+	 * 
+	 * When does the densification occur?
+	 * 
+	 * @throws DatasetException
+	 */
+	protected final void crossTabDataSet() throws DatasetException {
+		logger.debug("cross tabbing begins");
+
+		rowCount = 0;
+
+		if (dataSet == null) {
+			throw new IllegalStateException("dataSet is null");
+		}
+		final DatasetIterator dsi = dataSet.getDatasetIterator();
+
+		while (dsi.next()) {
+			if (logger.isDebugEnabled()) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="18" tokens="118">
+<file line="72" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/Day.java"/>
+<file line="85" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/ImmutableDate.java"/>
+<codefragment>
+<![CDATA[
+	public Day(final int year, final int month, final int day,
+			final Calendar cal) {
+		super(0L); // unfortunate
+		// super(date.getTime());
+		synchronized (cal) {
+			cal.set(Calendar.YEAR, year - 1900);
+			cal.set(Calendar.MONTH, month - 1);
+			cal.set(Calendar.DATE, day);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			cal.set(Calendar.MINUTE, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+
+			super.setTime(cal.getTime().getTime());
+		}
+	}
+
+	public Day(final java.util.Date date) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="17" tokens="115">
+<file line="75" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/ArrayComparator.java"/>
+<file line="129" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/StaticArrayComparator.java"/>
+<codefragment>
+<![CDATA[
+		if (!(b instanceof Object[])) {
+			throw new IllegalArgumentException("b " + b.getClass().getName()
+					+ " is not an array");
+		}
+		final Object[] ac = (Object[]) a;
+		final Object[] bc = (Object[]) b;
+		int maxIndex;
+		if (ac.length < bc.length) {
+			maxIndex = ac.length - 1;
+		} else {
+			maxIndex = bc.length - 1;
+		}
+
+		for (int index = 0; index <= maxIndex; index++) {
+			if (logger.isDebugEnabled()) {
+				logger.debug("index :" + index);
+			}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="30" tokens="113">
+<file line="144" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCompoundCrosstabber.java"/>
+<file line="134" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCrosstabber.java"/>
+<codefragment>
+<![CDATA[
+		}
+		return columnId;
+	}
+
+	/**
+	 * Convert the crosstab to a matrix
+	 * 
+	 * The width (number of columns) is defined by number of columns in the row
+	 * identifier
+	 * 
+	 * @return
+	 */
+	public Object[][] getMatrix() {
+
+		crosstab();
+
+		final int columnCount = getColumnCount();
+		final Object[][] matrix = new Object[rows.size()][];
+
+		int rowIndex = 0;
+
+		for (final CrosstabRow srcRow : rows.values()) {
+			final Object[] row = matrix[rowIndex] = new Object[columnCount];
+
+			int colIndex = 0;
+			while (colIndex < srcRow.getRowId().length) {
+				row[colIndex] = srcRow.getRowId()[colIndex];
+				colIndex++;
+			}
+			for (final Object[] colId : columnLabels.values()) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="13" tokens="112">
+<file line="35" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/ForestBuilder.java"/>
+<file line="33" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/TreeBuilder.java"/>
+<codefragment>
+<![CDATA[
+	public List<T> buildForest(final List<T> treeNodes) {
+		final Map<Integer, List<T>> nodesByParentNodeNbr = new HashMap<Integer, List<T>>();
+		for (final T treeNode : treeNodes) {
+			List<T> list = nodesByParentNodeNbr
+					.get(treeNode.getParentNodeNbr());
+			if (list == null) {
+				list = new ArrayList<T>();
+				nodesByParentNodeNbr.put(treeNode.getParentNodeNbr(), list);
+			}
+			list.add(treeNode);
+		}
+		final List<T> roots = nodesByParentNodeNbr.remove(null);
+		if (roots == null || roots.size() == 0) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="25" tokens="109">
+<file line="159" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/ArrayComparator.java"/>
+<file line="70" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/StaticArrayComparator.java"/>
+<codefragment>
+<![CDATA[
+					throw new ComparisonException("unable to compare "
+							+ a.getClass() + " to " + b.getClass());
+				}
+			}
+		}
+		if (retval == Integer.MAX_VALUE) {
+			throw new IllegalStateException("comparison logic failure");
+		}
+		return retval;
+	}
+
+	private int compareEntryAt(final int index, final int maxIndex,
+			final Object[] ac, final Object[] bc) {
+		if (index > maxIndex) {
+			throw new IllegalStateException("attempt to compare at index "
+					+ index);
+		}
+		final Object aObj = ac[index];
+		final Object bObj = bc[index];
+		int objResult;
+
+		objResult = compareObjects(aObj, bObj);
+
+		return objResult;
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="23" tokens="108">
+<file line="38" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/ListComparator.java"/>
+<file line="33" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/collections/StaticArrayComparator.java"/>
+<codefragment>
+<![CDATA[
+	static {
+		logger.setLevel(Level.INFO);
+	}
+
+	@SuppressWarnings("unchecked")
+	int compareObjects(final Object a, final Object b)
+			throws IllegalArgumentException {
+		Comparable ac = null;
+		Comparable bc = null;
+		try {
+			ac = (Comparable) a;
+
+		} catch (final ClassCastException cce) {
+			throw new IllegalArgumentException("class "
+					+ a.getClass().getName() + " does not implement comparable");
+		}
+		try {
+			bc = (Comparable) b;
+
+		} catch (final ClassCastException cce) {
+			throw new IllegalArgumentException("class "
+					+ b.getClass().getName() + " does not implement comparable");
+		}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="17" tokens="106">
+<file line="89" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/Day.java"/>
+<file line="102" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/util/ImmutableDate.java"/>
+<codefragment>
+<![CDATA[
+	public Day(final java.util.Date date) {
+		super(date != null ? date.getTime() : null);
+		if (date == null) {
+			throw new IllegalArgumentException("date is null");
+		}
+		synchronized (cal) {
+			cal.setTime(date);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			cal.set(Calendar.MINUTE, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+
+			super.setTime(cal.getTime().getTime());
+		}
+	}
+
+	public Day(final java.util.Date date, final Calendar cal) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="36" tokens="101">
+<file line="287" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCompoundCrosstabber.java"/>
+<file line="270" path="/common/home/jjs/workspace/javautil-core/src/main/java/org/javautil/dataset/DatasetCrosstabber.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	public void setDateFormat(final String dateFormat) {
+		dateFormatter = new SimpleDateFormatter(dateFormat);
+	}
+
+	public DatasetMetadata getMetaData() {
+		final DatasetMetadata meta = new DatasetMetadataImpl();
+
+		return meta;
+	}
+
+	// // todo move to CollectionsHelper
+	//
+	// List<Object> toList(Object... o) {
+	// ArrayList<Object> al = new ArrayList<Object>(o.length);
+	// for (int i = 0; i < o.length; i++) {
+	// al.add(o[i]);
+	// }
+	// return al;
+	// }
+
+	@SuppressWarnings("unchecked")
+	public ArrayList<List<Object>> getMatrixLists() {
+		final Object[][] matrix = getMatrix();
+		final ArrayList rows = new ArrayList(matrix.length);
+
+		for (final Object[] element : matrix) {
+
+			rows.add(ListHelper.toList(element));
+		}
+		return rows;
+
+	}
+
+	public CompoundCrosstabColumns getCrosstabColumns() {
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

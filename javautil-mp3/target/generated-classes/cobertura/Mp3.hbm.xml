@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 14, 2011 1:36:14 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.javautil.mp3.Mp3" table="MP3" >
+        <id name="mp3Id" type="java.lang.Integer">
+            <column name="MP3_ID" precision="9" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">MP3_ID_SEQ</param>
+            </generator>
+        </id>
+        <property name="fileName" type="string">
+            <column name="FILE_NAME" not-null="true" unique="true" />
+        </property>
+        <property name="bitRate" type="java.lang.Integer">
+            <column name="BIT_RATE" />
+        </property>
+        <property name="albumTitle" type="string">
+            <column name="ALBUM_TITLE" length="60" />
+        </property>
+        <property name="songTitle" type="string">
+            <column name="SONG_TITLE" length="60" />
+        </property>
+        <property name="author" type="string">
+            <column name="AUTHOR" length="60" />
+        </property>
+        <property name="artistName" type="string">
+            <column name="ARTIST_NAME" length="60" />
+        </property>
+        <property name="genre" type="string">
+            <column name="GENRE" length="60" />
+        </property>
+        <property name="songComment" type="string">
+            <column name="SONG_COMMENT" length="60" />
+        </property>
+        <property name="track" type="string">
+            <column name="TRACK" length="8" />
+        </property>
+        <property name="yearReleased" type="string">
+            <column name="YEAR_RELEASED" length="8" />
+        </property>
+        <property name="artistId" type="java.lang.Integer">
+            <column name="ARTIST_ID" precision="9" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

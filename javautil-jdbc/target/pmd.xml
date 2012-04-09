@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:45:58.611">
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/dataset/SQLDataset.java">
+<violation beginline="22" endline="22" begincolumn="37" endcolumn="42" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.dataset" class="SQLDataset" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="73" endline="73" begincolumn="31" endcolumn="39" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.dataset" class="SQLDataset" method="getDataFromResource" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="108" endline="108" begincolumn="31" endcolumn="39" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.dataset" class="SQLDataset" method="getData" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/BindVariable.java">
+<violation beginline="62" endline="62" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" class="BindVariable" method="setSqlType" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="69" endline="69" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" class="BindVariable" method="setTypeText" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/InstrumentedOracleConnection.java">
+<violation beginline="255" endline="255" begincolumn="43" endcolumn="73" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" class="InstrumentedOracleConnection" method="setModule" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/JdbcJavaNameImpl.java">
+<violation beginline="59" endline="59" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" class="JdbcJavaNameImpl" method="attributeNameInitCap" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/JdbcType.java">
+<violation beginline="94" endline="94" begincolumn="43" endcolumn="76" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" method="getJavaObjectType" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="100" endline="100" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" method="getJavaObjectType" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="157" endline="157" begincolumn="43" endcolumn="76" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" method="getNativeType" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="163" endline="163" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" method="getNativeType" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="229" endline="229" begincolumn="35" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="org.javautil.jdbc" method="getSqlDataType" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/WrappedConnection.java">
+<violation beginline="34" endline="34" begincolumn="37" endcolumn="42" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc" class="WrappedConnection" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="39" endline="39" begincolumn="21" endcolumn="30" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc" class="WrappedConnection" variable="leaseCount" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'leaseCount'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/datasources/ConnectionCacheEntry.java">
+<violation beginline="16" endline="16" begincolumn="31" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.datasources" class="ConnectionCacheEntry" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/datasources/NonConnectionPooledDatasource.java">
+<violation beginline="35" endline="35" begincolumn="30" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.datasources" class="NonConnectionPooledDatasource" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/datasources/ReflectionDataSource.java">
+<violation beginline="61" endline="64" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.jdbc.datasources" class="ReflectionDataSource" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'fieldName'.
+</violation>
+<violation beginline="61" endline="64" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.jdbc.datasources" class="ReflectionDataSource" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'value'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/SchemaImpl.java">
+<violation beginline="12" endline="12" begincolumn="24" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata" class="SchemaImpl" variable="schemaName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'schemaName'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/containers/IndexColumnsImpl.java">
+<violation beginline="59" endline="59" begincolumn="24" endcolumn="30" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.containers" class="IndexColumnsImpl" variable="catalog" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'catalog'.
+</violation>
+<violation beginline="67" endline="67" begincolumn="25" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.containers" class="IndexColumnsImpl" variable="approximate" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'approximate'.
+</violation>
+<violation beginline="69" endline="69" begincolumn="30" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.containers" class="IndexColumnsImpl" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="73" endline="73" begincolumn="39" endcolumn="48" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.containers" class="IndexColumnsImpl" variable="exceptions" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'exceptions'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/dao/IndexColumnsDaoJdbc.java">
+<violation beginline="67" endline="67" begincolumn="22" endcolumn="30" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.dao" class="IndexColumnsDaoJdbc" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'process()'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/dao/TableJdbc.java">
+<violation beginline="119" endline="122" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.dao" class="TableJdbc" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'conn'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/renderer/SQLGenerator.java">
+<violation beginline="7" endline="7" begincolumn="37" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.renderer" class="SQLGenerator" variable="newline" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'newline'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/renderer/SchemaToXml.java">
+<violation beginline="57" endline="57" begincolumn="36" endcolumn="36" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.renderer" class="SchemaToXml" method="getAsString" variable="w" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'w'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/metadata/renderer/TableXML.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="org.javautil.jdbc.metadata.renderer" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.IOException'
+</violation>
+<violation beginline="44" endline="46" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.renderer" class="TableXML" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'emitSchema'.
+</violation>
+<violation beginline="265" endline="330" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.jdbc.metadata.renderer" class="TableXML" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'emitSchemaName'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/sql/BaseQueryResourceImpl.java">
+<violation beginline="49" endline="49" begincolumn="17" endcolumn="25" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.sql" class="BaseQueryResourceImpl" method="executeQuery" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/sql/QueryHelper.java">
+<violation beginline="62" endline="79" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.javautil.sql" class="QueryHelper" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'name'.
+</violation>
+<violation beginline="102" endline="102" begincolumn="23" endcolumn="31" rule="CheckResultSet" ruleset="Basic Rules" package="org.javautil.sql" class="QueryHelper" method="validateBindAndExecute" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CheckResultSet" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/sql/SQLBindsProcessor.java">
+<violation beginline="89" endline="96" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.sql" class="SQLBindsProcessor" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/sql/SqlStatementHelper.java">
+<violation beginline="111" endline="111" begincolumn="25" endcolumn="49" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.javautil.sql" class="SqlStatementHelper" method="isInitialBindChar" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'isInitialBindChar(char)'.
+</violation>
+</file>
+<suppressedviolation filename="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/InstrumentedOracleConnection.java" suppressiontype="annotation" msg="Avoid unused private fields such as 'stopTrace'." usermsg=""/>
+<suppressedviolation filename="/common/home/jjs/workspace/javautil-jdbc/src/main/java/org/javautil/jdbc/InstrumentedOracleConnection.java" suppressiontype="annotation" msg="Avoid unused private fields such as 'startTraceLimited'." usermsg=""/>
+</pmd>

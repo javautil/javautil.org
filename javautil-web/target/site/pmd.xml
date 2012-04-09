@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:52:02.558">
+<file name="/common/home/jjs/workspace/javautil-web/src/main/java/org/javautil/mail/MailHelper.java">
+<violation beginline="200" endline="200" begincolumn="35" endcolumn="73" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.javautil.mail" class="MailHelper" method="createAddressArray" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'createAddressArray(String...)'.
+</violation>
+</file>
+</pmd>

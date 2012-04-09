@@ -1,0 +1,6 @@
+
+org.javautil.mp3
+org.javautil.mp3.ddl
+org.javautil.mp3.formatter
+org.javautil.mp3.hibernate
+org.javautil.mp3.persistence

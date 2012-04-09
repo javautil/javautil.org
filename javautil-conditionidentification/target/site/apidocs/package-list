@@ -1,0 +1,4 @@
+org.javautil.exceptionprocessing
+org.javautil.exceptionprocessing.dao
+org.javautil.exceptionprocessing.dto
+org.javautil.persist.hibernate

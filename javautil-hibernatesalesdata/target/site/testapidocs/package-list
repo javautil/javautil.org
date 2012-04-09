@@ -1,0 +1,6 @@
+org.javautil.persist.hibernate
+org.javautil.sales
+org.javautil.sales.dataservice
+org.javautil.sales.examples
+org.javautil.sales.populate.testdata
+org.javautil.sales.test

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FileMD5 xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../apidocs/org/javautil/file/FileMD5.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.file;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <strong class="jxr_keyword">import</strong> java.io.FileInputStream;
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <strong class="jxr_keyword">import</strong> java.math.BigInteger;
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <strong class="jxr_keyword">import</strong> java.security.MessageDigest;
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <strong class="jxr_keyword">import</strong> java.security.NoSuchAlgorithmException;
+<a class="jxr_linenumber" name="9" href="#9">9</a>   
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="11" href="#11">11</a>  <em class="jxr_javadoccomment"> * Should be based on InputStream</em>
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <em class="jxr_javadoccomment"> * @author jjs</em>
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="15" href="#15">15</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="16" href="#16">16</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../org/javautil/file/FileMD5.html">FileMD5</a> {
+<a class="jxr_linenumber" name="17" href="#17">17</a>  
+<a class="jxr_linenumber" name="18" href="#18">18</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> BigInteger getMD5Digest(<strong class="jxr_keyword">final</strong> File f) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="19" href="#19">19</a>  		System.currentTimeMillis();
+<a class="jxr_linenumber" name="20" href="#20">20</a>  		MessageDigest m = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="21" href="#21">21</a>  		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="22" href="#22">22</a>  			m = MessageDigest.getInstance(<span class="jxr_string">"MD5"</span>);
+<a class="jxr_linenumber" name="23" href="#23">23</a>  		} <strong class="jxr_keyword">catch</strong> (<strong class="jxr_keyword">final</strong> NoSuchAlgorithmException e) {
+<a class="jxr_linenumber" name="24" href="#24">24</a>  			<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(e);
+<a class="jxr_linenumber" name="25" href="#25">25</a>  		}
+<a class="jxr_linenumber" name="26" href="#26">26</a>  		<strong class="jxr_keyword">final</strong> FileInputStream fr = <strong class="jxr_keyword">new</strong> FileInputStream(f);
+<a class="jxr_linenumber" name="27" href="#27">27</a>  		<strong class="jxr_keyword">final</strong> byte[] buff = <strong class="jxr_keyword">new</strong> byte[8192];
+<a class="jxr_linenumber" name="28" href="#28">28</a>  		<strong class="jxr_keyword">int</strong> bytes;
+<a class="jxr_linenumber" name="29" href="#29">29</a>  		<strong class="jxr_keyword">while</strong> ((bytes = fr.read(buff, 0, buff.length)) &gt; -1) {
+<a class="jxr_linenumber" name="30" href="#30">30</a>  			m.update(buff, 0, bytes);
+<a class="jxr_linenumber" name="31" href="#31">31</a>  		}
+<a class="jxr_linenumber" name="32" href="#32">32</a>  		fr.close();
+<a class="jxr_linenumber" name="33" href="#33">33</a>  
+<a class="jxr_linenumber" name="34" href="#34">34</a>  		<strong class="jxr_keyword">final</strong> BigInteger digest = <strong class="jxr_keyword">new</strong> BigInteger(1, m.digest());
+<a class="jxr_linenumber" name="35" href="#35">35</a>  		System.currentTimeMillis();
+<a class="jxr_linenumber" name="36" href="#36">36</a>  		<em class="jxr_comment">// System.out.println("elapsed " + (end - start) / 1000);</em>
+<a class="jxr_linenumber" name="37" href="#37">37</a>  		<strong class="jxr_keyword">return</strong> digest;
+<a class="jxr_linenumber" name="38" href="#38">38</a>  	}
+<a class="jxr_linenumber" name="39" href="#39">39</a>  
+<a class="jxr_linenumber" name="40" href="#40">40</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String getMD5String(<strong class="jxr_keyword">final</strong> File f) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="41" href="#41">41</a>  		<strong class="jxr_keyword">final</strong> BigInteger digest = getMD5Digest(f);
+<a class="jxr_linenumber" name="42" href="#42">42</a>  		<strong class="jxr_keyword">return</strong> digest.toString(16);
+<a class="jxr_linenumber" name="43" href="#43">43</a>  	}
+<a class="jxr_linenumber" name="44" href="#44">44</a>  
+<a class="jxr_linenumber" name="45" href="#45">45</a>  	<em class="jxr_comment">// public static void main(String[] args) throws IOException {</em>
+<a class="jxr_linenumber" name="46" href="#46">46</a>  	<em class="jxr_comment">// File f = new File(args[0]);</em>
+<a class="jxr_linenumber" name="47" href="#47">47</a>  	<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="48" href="#48">48</a>  	<em class="jxr_comment">// BigInteger digest = getMD5Digest(f);</em>
+<a class="jxr_linenumber" name="49" href="#49">49</a>  	<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="50" href="#50">50</a>  	<em class="jxr_comment">// System.out.println(digest.toString(16));</em>
+<a class="jxr_linenumber" name="51" href="#51">51</a>  	<em class="jxr_comment">// }</em>
+<a class="jxr_linenumber" name="52" href="#52">52</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T19:47:15.351">
+<file name="/common/home/jjs/workspace/javautil-apex/src/main/java/org/javautil/oracle/apex/ApexApplicationsForApplicationIdDAO.java">
+<violation beginline="57" endline="59" begincolumn="19" endcolumn="17" rule="EmptyFinallyBlock" ruleset="Basic Rules" package="org.javautil.oracle.apex" class="ApexApplicationsForApplicationIdDAO" method="getApplications" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyFinallyBlock" priority="3">
+Avoid empty finally blocks
+</violation>
+</file>
+</pmd>

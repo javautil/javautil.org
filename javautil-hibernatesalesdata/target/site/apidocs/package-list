@@ -1,0 +1,8 @@
+org.javautil.sales
+org.javautil.sales.database.schema
+org.javautil.sales.dataservice
+org.javautil.sales.dto
+org.javautil.sales.hibernate
+org.javautil.sales.populate
+org.javautil.sales.test
+org.javautil.service

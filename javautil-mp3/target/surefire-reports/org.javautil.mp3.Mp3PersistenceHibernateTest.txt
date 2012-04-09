@@ -1,0 +1,140 @@
+-------------------------------------------------------------------------------
+Test set: org.javautil.mp3.Mp3PersistenceHibernateTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.277 sec <<< FAILURE!
+test(org.javautil.mp3.Mp3PersistenceHibernateTest)  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:201)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:255)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:111)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.invokeTestMethod(SpringJUnit4ClassRunner.java:148)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:97)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:59)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:115)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:102)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:350)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1021)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'extractor' defined in class path resource [ExtractorTestH2HibernateApplicationContext.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [org.javautil.mp3.MetadataExtractor]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import org.javautil.mp3.persistence.Mp3Persistence cannot be resolved
+	FileIterator cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	Mp3FileFilter cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	Mp3Metadata cannot be resolved to a type
+	Mp3Metadata cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:883)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:839)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:440)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory$1.run(AbstractAutowireCapableBeanFactory.java:409)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:380)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:264)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:261)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:185)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:164)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:429)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:728)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:380)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:84)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:42)
+	at org.springframework.test.context.TestContext.loadApplicationContext(TestContext.java:173)
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:197)
+	... 21 more
+Caused by: org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [org.javautil.mp3.MetadataExtractor]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import org.javautil.mp3.persistence.Mp3Persistence cannot be resolved
+	FileIterator cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	Mp3FileFilter cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	Mp3Metadata cannot be resolved to a type
+	Mp3Metadata cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:115)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:61)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:877)
+	... 38 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import org.javautil.mp3.persistence.Mp3Persistence cannot be resolved
+	FileIterator cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	Mp3FileFilter cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	FileIterator cannot be resolved to a type
+	Mp3Metadata cannot be resolved to a type
+	Mp3Metadata cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3MetadataProcessor cannot be resolved to a type
+	Mp3Persistence cannot be resolved to a type
+
+	at org.javautil.mp3.MetadataExtractor.<init>(MetadataExtractor.java:8)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:100)
+	... 40 more
+

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.javautil.dataset.MatrixDatasetTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.593 sec
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.523 sec

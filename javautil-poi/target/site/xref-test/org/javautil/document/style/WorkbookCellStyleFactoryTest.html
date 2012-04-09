@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>WorkbookCellStyleFactoryTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../testapidocs/org/javautil/document/style/WorkbookCellStyleFactoryTest.html">View Javadoc</a></div><pre>
+
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.javautil.document.style;
+<a class="jxr_linenumber" name="2" href="#2">2</a>   
+<a class="jxr_linenumber" name="3" href="#3">3</a>   <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="4" href="#4">4</a>   <strong class="jxr_keyword">import</strong> java.io.FileInputStream;
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <strong class="jxr_keyword">import</strong> java.io.FileOutputStream;
+<a class="jxr_linenumber" name="6" href="#6">6</a>   <strong class="jxr_keyword">import</strong> java.io.InputStream;
+<a class="jxr_linenumber" name="7" href="#7">7</a>   <strong class="jxr_keyword">import</strong> java.io.OutputStream;
+<a class="jxr_linenumber" name="8" href="#8">8</a>   <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="9" href="#9">9</a>   
+<a class="jxr_linenumber" name="10" href="#10">10</a>  <strong class="jxr_keyword">import</strong> junit.framework.Assert;
+<a class="jxr_linenumber" name="11" href="#11">11</a>  
+<a class="jxr_linenumber" name="12" href="#12">12</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.Log;
+<a class="jxr_linenumber" name="13" href="#13">13</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.LogFactory;
+<a class="jxr_linenumber" name="14" href="#14">14</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.hssf.usermodel.HSSFCell;
+<a class="jxr_linenumber" name="15" href="#15">15</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.hssf.usermodel.HSSFCellStyle;
+<a class="jxr_linenumber" name="16" href="#16">16</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.hssf.usermodel.HSSFFont;
+<a class="jxr_linenumber" name="17" href="#17">17</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.hssf.usermodel.HSSFRow;
+<a class="jxr_linenumber" name="18" href="#18">18</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.hssf.usermodel.HSSFSheet;
+<a class="jxr_linenumber" name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.hssf.usermodel.HSSFWorkbook;
+<a class="jxr_linenumber" name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.hssf.util.HSSFColor;
+<a class="jxr_linenumber" name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.ss.usermodel.CellStyle;
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.poi.ss.usermodel.Font;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.javautil.poi.style.HSSFCellStyleFactory;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.junit.Before;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/javautil/document/style/WorkbookCellStyleFactoryTest.html">WorkbookCellStyleFactoryTest</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../org/javautil/document/style/PoiStyleDefinitionsTest.html">PoiStyleDefinitionsTest</a> {
+<a class="jxr_linenumber" name="28" href="#28">28</a>  
+<a class="jxr_linenumber" name="29" href="#29">29</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Log logger = LogFactory.getLog(getClass());
+<a class="jxr_linenumber" name="30" href="#30">30</a>  
+<a class="jxr_linenumber" name="31" href="#31">31</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> Map&lt;String, Style&gt; styles;
+<a class="jxr_linenumber" name="32" href="#32">32</a>  
+<a class="jxr_linenumber" name="33" href="#33">33</a>  	@Before
+<a class="jxr_linenumber" name="34" href="#34">34</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> parse() {
+<a class="jxr_linenumber" name="35" href="#35">35</a>  		<strong class="jxr_keyword">final</strong> StyleParser parser = <strong class="jxr_keyword">new</strong> DefaultStyleParser();
+<a class="jxr_linenumber" name="36" href="#36">36</a>  		styles = StyleUtil.getStylesFromContext(appContext, parser);
+<a class="jxr_linenumber" name="37" href="#37">37</a>  		logger.info(<span class="jxr_string">"style names = "</span> + styles.keySet());
+<a class="jxr_linenumber" name="38" href="#38">38</a>  		Assert.assertTrue(styles.size() &gt; 0);
+<a class="jxr_linenumber" name="39" href="#39">39</a>  	}
+<a class="jxr_linenumber" name="40" href="#40">40</a>  
+<a class="jxr_linenumber" name="41" href="#41">41</a>  	@Test
+<a class="jxr_linenumber" name="42" href="#42">42</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRedIntegerStyleWorkbook() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="43" href="#43">43</a>  
+<a class="jxr_linenumber" name="44" href="#44">44</a>  		<strong class="jxr_keyword">final</strong> File workbookFile = createWorkbook(<span class="jxr_string">"redInteger"</span>, -12345678);
+<a class="jxr_linenumber" name="45" href="#45">45</a>  		<strong class="jxr_keyword">final</strong> InputStream inputstream = <strong class="jxr_keyword">new</strong> FileInputStream(workbookFile);
+<a class="jxr_linenumber" name="46" href="#46">46</a>  		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="47" href="#47">47</a>  			<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook = <strong class="jxr_keyword">new</strong> HSSFWorkbook(inputstream);
+<a class="jxr_linenumber" name="48" href="#48">48</a>  			<strong class="jxr_keyword">final</strong> HSSFSheet sheet = workbook.getSheetAt(0);
+<a class="jxr_linenumber" name="49" href="#49">49</a>  			<strong class="jxr_keyword">final</strong> HSSFCell cell = getCell(sheet, 1, 1);
+<a class="jxr_linenumber" name="50" href="#50">50</a>  			<strong class="jxr_keyword">final</strong> HSSFCellStyle style = cell.getCellStyle();
+<a class="jxr_linenumber" name="51" href="#51">51</a>  			<strong class="jxr_keyword">final</strong> HSSFColor color = getFontColor(workbook, style);
+<a class="jxr_linenumber" name="52" href="#52">52</a>  			assertColorRgb(color, 255, 0, 0);
+<a class="jxr_linenumber" name="53" href="#53">53</a>  			Assert.assertEquals(CellStyle.ALIGN_RIGHT, style.getAlignment());
+<a class="jxr_linenumber" name="54" href="#54">54</a>  			Assert.assertEquals(CellStyle.VERTICAL_TOP,
+<a class="jxr_linenumber" name="55" href="#55">55</a>  					style.getVerticalAlignment());
+<a class="jxr_linenumber" name="56" href="#56">56</a>  			Assert.assertEquals((<strong class="jxr_keyword">float</strong>) -12345678,
+<a class="jxr_linenumber" name="57" href="#57">57</a>  					(<strong class="jxr_keyword">float</strong>) cell.getNumericCellValue());
+<a class="jxr_linenumber" name="58" href="#58">58</a>  			Assert.assertEquals(<span class="jxr_string">"###,###,###,###,##0"</span>,
+<a class="jxr_linenumber" name="59" href="#59">59</a>  					style.getDataFormatString());
+<a class="jxr_linenumber" name="60" href="#60">60</a>  		} <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="61" href="#61">61</a>  			inputstream.close();
+<a class="jxr_linenumber" name="62" href="#62">62</a>  		}
+<a class="jxr_linenumber" name="63" href="#63">63</a>  
+<a class="jxr_linenumber" name="64" href="#64">64</a>  	}
+<a class="jxr_linenumber" name="65" href="#65">65</a>  
+<a class="jxr_linenumber" name="66" href="#66">66</a>  	@Test
+<a class="jxr_linenumber" name="67" href="#67">67</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSingleUnderlineStyleWorkbook() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="68" href="#68">68</a>  		<strong class="jxr_keyword">final</strong> File workbookFile = createWorkbook(<span class="jxr_string">"singleUnderline"</span>, 0.11);
+<a class="jxr_linenumber" name="69" href="#69">69</a>  		<strong class="jxr_keyword">final</strong> InputStream inputstream = <strong class="jxr_keyword">new</strong> FileInputStream(workbookFile);
+<a class="jxr_linenumber" name="70" href="#70">70</a>  		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="71" href="#71">71</a>  			<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook = <strong class="jxr_keyword">new</strong> HSSFWorkbook(inputstream);
+<a class="jxr_linenumber" name="72" href="#72">72</a>  			<strong class="jxr_keyword">final</strong> HSSFSheet sheet = workbook.getSheetAt(0);
+<a class="jxr_linenumber" name="73" href="#73">73</a>  			<strong class="jxr_keyword">final</strong> HSSFCell cell = getCell(sheet, 1, 1);
+<a class="jxr_linenumber" name="74" href="#74">74</a>  			<strong class="jxr_keyword">final</strong> HSSFCellStyle style = cell.getCellStyle();
+<a class="jxr_linenumber" name="75" href="#75">75</a>  			<strong class="jxr_keyword">final</strong> HSSFFont font = getFont(workbook, style);
+<a class="jxr_linenumber" name="76" href="#76">76</a>  			<strong class="jxr_keyword">final</strong> byte underlineStyle = font.getUnderline();
+<a class="jxr_linenumber" name="77" href="#77">77</a>  			Assert.assertEquals(Font.U_SINGLE, underlineStyle);
+<a class="jxr_linenumber" name="78" href="#78">78</a>  		} <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="79" href="#79">79</a>  			inputstream.close();
+<a class="jxr_linenumber" name="80" href="#80">80</a>  		}
+<a class="jxr_linenumber" name="81" href="#81">81</a>  	}
+<a class="jxr_linenumber" name="82" href="#82">82</a>  
+<a class="jxr_linenumber" name="83" href="#83">83</a>  	@Test
+<a class="jxr_linenumber" name="84" href="#84">84</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDoubleUnderlineStyleWorkbook() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="85" href="#85">85</a>  		<strong class="jxr_keyword">final</strong> File workbookFile = createWorkbook(<span class="jxr_string">"doubleUnderline"</span>, 0.12);
+<a class="jxr_linenumber" name="86" href="#86">86</a>  		<strong class="jxr_keyword">final</strong> InputStream inputstream = <strong class="jxr_keyword">new</strong> FileInputStream(workbookFile);
+<a class="jxr_linenumber" name="87" href="#87">87</a>  		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="88" href="#88">88</a>  			<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook = <strong class="jxr_keyword">new</strong> HSSFWorkbook(inputstream);
+<a class="jxr_linenumber" name="89" href="#89">89</a>  			<strong class="jxr_keyword">final</strong> HSSFSheet sheet = workbook.getSheetAt(0);
+<a class="jxr_linenumber" name="90" href="#90">90</a>  			<strong class="jxr_keyword">final</strong> HSSFCell cell = getCell(sheet, 1, 1);
+<a class="jxr_linenumber" name="91" href="#91">91</a>  			<strong class="jxr_keyword">final</strong> HSSFCellStyle style = cell.getCellStyle();
+<a class="jxr_linenumber" name="92" href="#92">92</a>  			<strong class="jxr_keyword">final</strong> HSSFFont font = getFont(workbook, style);
+<a class="jxr_linenumber" name="93" href="#93">93</a>  			<strong class="jxr_keyword">final</strong> byte underlineStyle = font.getUnderline();
+<a class="jxr_linenumber" name="94" href="#94">94</a>  			Assert.assertEquals(Font.U_DOUBLE, underlineStyle);
+<a class="jxr_linenumber" name="95" href="#95">95</a>  		} <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="96" href="#96">96</a>  			inputstream.close();
+<a class="jxr_linenumber" name="97" href="#97">97</a>  		}
+<a class="jxr_linenumber" name="98" href="#98">98</a>  	}
+<a class="jxr_linenumber" name="99" href="#99">99</a>  
+<a class="jxr_linenumber" name="100" href="#100">100</a> 	@Test
+<a class="jxr_linenumber" name="101" href="#101">101</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testWrapWorkbook() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="102" href="#102">102</a> 		<strong class="jxr_keyword">final</strong> File workbookFile = createWorkbook(<span class="jxr_string">"wrap"</span>,
+<a class="jxr_linenumber" name="103" href="#103">103</a> 				<span class="jxr_string">"wiki\nwiki\nwiki\nwiki"</span>);
+<a class="jxr_linenumber" name="104" href="#104">104</a> 		<strong class="jxr_keyword">final</strong> InputStream inputstream = <strong class="jxr_keyword">new</strong> FileInputStream(workbookFile);
+<a class="jxr_linenumber" name="105" href="#105">105</a> 		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="106" href="#106">106</a> 			<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook = <strong class="jxr_keyword">new</strong> HSSFWorkbook(inputstream);
+<a class="jxr_linenumber" name="107" href="#107">107</a> 			<strong class="jxr_keyword">final</strong> HSSFSheet sheet = workbook.getSheetAt(0);
+<a class="jxr_linenumber" name="108" href="#108">108</a> 			<strong class="jxr_keyword">final</strong> HSSFCell cell = getCell(sheet, 1, 1);
+<a class="jxr_linenumber" name="109" href="#109">109</a> 			<strong class="jxr_keyword">final</strong> HSSFCellStyle style = cell.getCellStyle();
+<a class="jxr_linenumber" name="110" href="#110">110</a> 			<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> wrapText = style.getWrapText();
+<a class="jxr_linenumber" name="111" href="#111">111</a> 			Assert.assertTrue(wrapText);
+<a class="jxr_linenumber" name="112" href="#112">112</a> 		} <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="113" href="#113">113</a> 			inputstream.close();
+<a class="jxr_linenumber" name="114" href="#114">114</a> 		}
+<a class="jxr_linenumber" name="115" href="#115">115</a> 	}
+<a class="jxr_linenumber" name="116" href="#116">116</a> 
+<a class="jxr_linenumber" name="117" href="#117">117</a> 	@Test
+<a class="jxr_linenumber" name="118" href="#118">118</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIntegerBlueBgStyleWorkbook() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="119" href="#119">119</a> 
+<a class="jxr_linenumber" name="120" href="#120">120</a> 		<strong class="jxr_keyword">final</strong> File workbookFile = createWorkbook(<span class="jxr_string">"integerBlueBg"</span>, -1.21);
+<a class="jxr_linenumber" name="121" href="#121">121</a> 		<strong class="jxr_keyword">final</strong> InputStream inputstream = <strong class="jxr_keyword">new</strong> FileInputStream(workbookFile);
+<a class="jxr_linenumber" name="122" href="#122">122</a> 		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="123" href="#123">123</a> 			<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook = <strong class="jxr_keyword">new</strong> HSSFWorkbook(inputstream);
+<a class="jxr_linenumber" name="124" href="#124">124</a> 			<strong class="jxr_keyword">final</strong> HSSFSheet sheet = workbook.getSheetAt(0);
+<a class="jxr_linenumber" name="125" href="#125">125</a> 			<strong class="jxr_keyword">final</strong> HSSFCell cell = getCell(sheet, 1, 1);
+<a class="jxr_linenumber" name="126" href="#126">126</a> 			<strong class="jxr_keyword">final</strong> HSSFCellStyle style = cell.getCellStyle();
+<a class="jxr_linenumber" name="127" href="#127">127</a> 			Assert.assertEquals(CellStyle.SOLID_FOREGROUND,
+<a class="jxr_linenumber" name="128" href="#128">128</a> 					style.getFillPattern());
+<a class="jxr_linenumber" name="129" href="#129">129</a> 			HSSFColor color = getBackgroundColor(workbook, style);
+<a class="jxr_linenumber" name="130" href="#130">130</a> 			assertColorRgb(color, 153, 153, 204);
+<a class="jxr_linenumber" name="131" href="#131">131</a> 			color = getFontColor(workbook, style);
+<a class="jxr_linenumber" name="132" href="#132">132</a> 			assertColorRgb(color, 0, 0, 0);
+<a class="jxr_linenumber" name="133" href="#133">133</a> 			Assert.assertEquals(CellStyle.ALIGN_RIGHT, style.getAlignment());
+<a class="jxr_linenumber" name="134" href="#134">134</a> 			Assert.assertEquals(CellStyle.VERTICAL_TOP,
+<a class="jxr_linenumber" name="135" href="#135">135</a> 					style.getVerticalAlignment());
+<a class="jxr_linenumber" name="136" href="#136">136</a> 			Assert.assertEquals((<strong class="jxr_keyword">float</strong>) -1.21,
+<a class="jxr_linenumber" name="137" href="#137">137</a> 					(<strong class="jxr_keyword">float</strong>) cell.getNumericCellValue());
+<a class="jxr_linenumber" name="138" href="#138">138</a> 			Assert.assertEquals(<span class="jxr_string">"###,###,###,###,##0"</span>,
+<a class="jxr_linenumber" name="139" href="#139">139</a> 					style.getDataFormatString());
+<a class="jxr_linenumber" name="140" href="#140">140</a> 		} <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="141" href="#141">141</a> 			inputstream.close();
+<a class="jxr_linenumber" name="142" href="#142">142</a> 		}
+<a class="jxr_linenumber" name="143" href="#143">143</a> 
+<a class="jxr_linenumber" name="144" href="#144">144</a> 	}
+<a class="jxr_linenumber" name="145" href="#145">145</a> 
+<a class="jxr_linenumber" name="146" href="#146">146</a> 	<strong class="jxr_keyword">private</strong> File createWorkbook(<strong class="jxr_keyword">final</strong> String styleName, <strong class="jxr_keyword">final</strong> Object cellValue)
+<a class="jxr_linenumber" name="147" href="#147">147</a> 			<strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="148" href="#148">148</a> 		<strong class="jxr_keyword">final</strong> String prefix = getClass().getName() + <span class="jxr_string">"_"</span>;
+<a class="jxr_linenumber" name="149" href="#149">149</a> 		<strong class="jxr_keyword">final</strong> File workbookFile = File.createTempFile(prefix, <span class="jxr_string">".xls"</span>);
+<a class="jxr_linenumber" name="150" href="#150">150</a> 		<strong class="jxr_keyword">final</strong> OutputStream outputstream = <strong class="jxr_keyword">new</strong> FileOutputStream(workbookFile);
+<a class="jxr_linenumber" name="151" href="#151">151</a> 		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="152" href="#152">152</a> 			<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook = <strong class="jxr_keyword">new</strong> HSSFWorkbook();
+<a class="jxr_linenumber" name="153" href="#153">153</a> 			<strong class="jxr_keyword">final</strong> Map&lt;String, HSSFCellStyle&gt; hssfCellStyles = HSSFCellStyleFactory
+<a class="jxr_linenumber" name="154" href="#154">154</a> 					.getHSSFCellStyles(workbook, styles.values());
+<a class="jxr_linenumber" name="155" href="#155">155</a> 			<strong class="jxr_keyword">final</strong> HSSFSheet sheet = workbook.createSheet();
+<a class="jxr_linenumber" name="156" href="#156">156</a> 			<strong class="jxr_keyword">final</strong> HSSFRow row = sheet.createRow(1);
+<a class="jxr_linenumber" name="157" href="#157">157</a> 			<strong class="jxr_keyword">final</strong> HSSFCell cell = row.createCell(1);
+<a class="jxr_linenumber" name="158" href="#158">158</a> 			<strong class="jxr_keyword">final</strong> HSSFCellStyle targetStyle = hssfCellStyles.get(styleName);
+<a class="jxr_linenumber" name="159" href="#159">159</a> 			logger.debug(<span class="jxr_string">"using style "</span> + styleName);
+<a class="jxr_linenumber" name="160" href="#160">160</a> 			<strong class="jxr_keyword">final</strong> Style style = styles.get(styleName);
+<a class="jxr_linenumber" name="161" href="#161">161</a> 			<strong class="jxr_keyword">if</strong> (style == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="162" href="#162">162</a> 				<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException(<span class="jxr_string">"no such style named \&quot;"</span>
+<a class="jxr_linenumber" name="163" href="#163">163</a> 						+ styleName + <span class="jxr_string">"\&quot;"</span>);
+<a class="jxr_linenumber" name="164" href="#164">164</a> 			}
+<a class="jxr_linenumber" name="165" href="#165">165</a> 			logger.debug(<span class="jxr_string">"style = "</span> + style);
+<a class="jxr_linenumber" name="166" href="#166">166</a> 			<strong class="jxr_keyword">if</strong> (targetStyle == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="167" href="#167">167</a> 				<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException(<span class="jxr_string">"factory returned null for "</span>
+<a class="jxr_linenumber" name="168" href="#168">168</a> 						+ <span class="jxr_string">"style named \&quot;"</span> + styleName + <span class="jxr_string">"\&quot;"</span>);
+<a class="jxr_linenumber" name="169" href="#169">169</a> 			}
+<a class="jxr_linenumber" name="170" href="#170">170</a> 			cell.setCellStyle(targetStyle);
+<a class="jxr_linenumber" name="171" href="#171">171</a> 			<strong class="jxr_keyword">if</strong> (cellValue instanceof Double) {
+<a class="jxr_linenumber" name="172" href="#172">172</a> 				cell.setCellValue((Double) cellValue);
+<a class="jxr_linenumber" name="173" href="#173">173</a> 			} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (cellValue instanceof Integer) {
+<a class="jxr_linenumber" name="174" href="#174">174</a> 				cell.setCellValue((Integer) cellValue);
+<a class="jxr_linenumber" name="175" href="#175">175</a> 			} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (cellValue instanceof String) {
+<a class="jxr_linenumber" name="176" href="#176">176</a> 				cell.setCellValue((String) cellValue);
+<a class="jxr_linenumber" name="177" href="#177">177</a> 			} <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="178" href="#178">178</a> 				<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException(<span class="jxr_string">"unknown cell data of type "</span>
+<a class="jxr_linenumber" name="179" href="#179">179</a> 						+ cellValue.getClass());
+<a class="jxr_linenumber" name="180" href="#180">180</a> 			}
+<a class="jxr_linenumber" name="181" href="#181">181</a> 			workbook.write(outputstream);
+<a class="jxr_linenumber" name="182" href="#182">182</a> 		} <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="183" href="#183">183</a> 			outputstream.close();
+<a class="jxr_linenumber" name="184" href="#184">184</a> 		}
+<a class="jxr_linenumber" name="185" href="#185">185</a> 
+<a class="jxr_linenumber" name="186" href="#186">186</a> 		<em class="jxr_comment">// Runtime.getRuntime().exec("ooffice " +</em>
+<a class="jxr_linenumber" name="187" href="#187">187</a> 		<em class="jxr_comment">// workbookFile.getAbsolutePath());</em>
+<a class="jxr_linenumber" name="188" href="#188">188</a> 		<em class="jxr_comment">// Thread.sleep(10000);</em>
+<a class="jxr_linenumber" name="189" href="#189">189</a> 
+<a class="jxr_linenumber" name="190" href="#190">190</a> 		<em class="jxr_comment">// workbookFile.deleteOnExit();</em>
+<a class="jxr_linenumber" name="191" href="#191">191</a> 		<strong class="jxr_keyword">return</strong> workbookFile;
+<a class="jxr_linenumber" name="192" href="#192">192</a> 	}
+<a class="jxr_linenumber" name="193" href="#193">193</a> 
+<a class="jxr_linenumber" name="194" href="#194">194</a> 	<strong class="jxr_keyword">private</strong> HSSFCell getCell(<strong class="jxr_keyword">final</strong> HSSFSheet sheet, <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> rowNum,
+<a class="jxr_linenumber" name="195" href="#195">195</a> 			<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> colNum) {
+<a class="jxr_linenumber" name="196" href="#196">196</a> 		<strong class="jxr_keyword">final</strong> HSSFRow row = sheet.getRow(rowNum);
+<a class="jxr_linenumber" name="197" href="#197">197</a> 		<strong class="jxr_keyword">final</strong> HSSFCell cell = row.getCell(colNum);
+<a class="jxr_linenumber" name="198" href="#198">198</a> 		<strong class="jxr_keyword">return</strong> cell;
+<a class="jxr_linenumber" name="199" href="#199">199</a> 	}
+<a class="jxr_linenumber" name="200" href="#200">200</a> 
+<a class="jxr_linenumber" name="201" href="#201">201</a> 	<strong class="jxr_keyword">private</strong> HSSFColor getFontColor(<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook,
+<a class="jxr_linenumber" name="202" href="#202">202</a> 			<strong class="jxr_keyword">final</strong> HSSFCellStyle style) {
+<a class="jxr_linenumber" name="203" href="#203">203</a> 		<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">short</strong> colorIndex = style.getFont(workbook).getColor();
+<a class="jxr_linenumber" name="204" href="#204">204</a> 		<strong class="jxr_keyword">final</strong> HSSFColor color = workbook.getCustomPalette()
+<a class="jxr_linenumber" name="205" href="#205">205</a> 				.getColor(colorIndex);
+<a class="jxr_linenumber" name="206" href="#206">206</a> 		<strong class="jxr_keyword">return</strong> color;
+<a class="jxr_linenumber" name="207" href="#207">207</a> 	}
+<a class="jxr_linenumber" name="208" href="#208">208</a> 
+<a class="jxr_linenumber" name="209" href="#209">209</a> 	<strong class="jxr_keyword">private</strong> HSSFFont getFont(<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook,
+<a class="jxr_linenumber" name="210" href="#210">210</a> 			<strong class="jxr_keyword">final</strong> HSSFCellStyle style) {
+<a class="jxr_linenumber" name="211" href="#211">211</a> 		<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">short</strong> fontIndex = style.getFontIndex();
+<a class="jxr_linenumber" name="212" href="#212">212</a> 		<strong class="jxr_keyword">final</strong> HSSFFont font = workbook.getFontAt(fontIndex);
+<a class="jxr_linenumber" name="213" href="#213">213</a> 		<strong class="jxr_keyword">return</strong> font;
+<a class="jxr_linenumber" name="214" href="#214">214</a> 	}
+<a class="jxr_linenumber" name="215" href="#215">215</a> 
+<a class="jxr_linenumber" name="216" href="#216">216</a> 	<strong class="jxr_keyword">private</strong> HSSFColor getBackgroundColor(<strong class="jxr_keyword">final</strong> HSSFWorkbook workbook,
+<a class="jxr_linenumber" name="217" href="#217">217</a> 			<strong class="jxr_keyword">final</strong> HSSFCellStyle style) {
+<a class="jxr_linenumber" name="218" href="#218">218</a> 		<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">short</strong> colorIndex = style.getFillForegroundColor();
+<a class="jxr_linenumber" name="219" href="#219">219</a> 		<strong class="jxr_keyword">final</strong> HSSFColor color = workbook.getCustomPalette()
+<a class="jxr_linenumber" name="220" href="#220">220</a> 				.getColor(colorIndex);
+<a class="jxr_linenumber" name="221" href="#221">221</a> 		<strong class="jxr_keyword">return</strong> color;
+<a class="jxr_linenumber" name="222" href="#222">222</a> 	}
+<a class="jxr_linenumber" name="223" href="#223">223</a> 
+<a class="jxr_linenumber" name="224" href="#224">224</a> 	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> assertColorRgb(<strong class="jxr_keyword">final</strong> HSSFColor color, <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> r,
+<a class="jxr_linenumber" name="225" href="#225">225</a> 			<strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> g, <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> b) {
+<a class="jxr_linenumber" name="226" href="#226">226</a> 		Assert.assertEquals(r, color.getTriplet()[0]);
+<a class="jxr_linenumber" name="227" href="#227">227</a> 		Assert.assertEquals(g, color.getTriplet()[1]);
+<a class="jxr_linenumber" name="228" href="#228">228</a> 		Assert.assertEquals(b, color.getTriplet()[2]);
+<a class="jxr_linenumber" name="229" href="#229">229</a> 	}
+<a class="jxr_linenumber" name="230" href="#230">230</a> 
+<a class="jxr_linenumber" name="231" href="#231">231</a> }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+
