@@ -24,7 +24,7 @@ public abstract class AbstractTableRendererTest {
 	private static StreamResult streamResult = null;
 
 	@SuppressWarnings("unchecked")
-	static Dataset<? extends Object> getSampleDataset() {
+	static Dataset getSampleDataset() {
 		final MutableDatasetMetadata metadata = new DatasetMetadataImpl();
 		int index = 0;
 

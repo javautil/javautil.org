@@ -136,7 +136,7 @@ public class MatrixModificationNoSortTest extends BaseTest {
 	@Test
 	public void testFilter() throws IOException {
 		logger.debug("testFilter");
-		final MutableDataset<?> set = DatasetSource.getDataset();
+		final MutableDataset set = DatasetSource.getDataset();
 
 		final MutableDatasetFilter cityFilter = new DefaultDatasetFilter();
 		cityFilter.setColumnName("CITY");
@@ -154,7 +154,7 @@ public class MatrixModificationNoSortTest extends BaseTest {
 	@Test
 	public void testInverseFilter() throws IOException {
 		logger.debug("testFilter");
-		final MutableDataset<?> set = DatasetSource.getDataset();
+		final MutableDataset set = DatasetSource.getDataset();
 
 		final MutableDatasetFilter cityFilter = new DefaultDatasetFilter();
 		cityFilter.setColumnName("CITY");
@@ -173,7 +173,7 @@ public class MatrixModificationNoSortTest extends BaseTest {
 	 * @return
 	 * @throws IOException
 	 */
-	private String getRenderedCsv(final Dataset<?> set) throws IOException {
+	private String getRenderedCsv(final Dataset set) throws IOException {
 		final CsvRendererRequest crr = new CsvRendererRequestImpl();
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		crr.setStreamResult(new StreamResult(baos));
@@ -184,7 +184,7 @@ public class MatrixModificationNoSortTest extends BaseTest {
 		cr.process();
 		final String text = new String(baos.toByteArray());
 		if (logger.isDebugEnabled()) {
-		logger.debug("\n" + text);
+			logger.debug("\n" + text);
 		}
 		return text;
 	}

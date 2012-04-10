@@ -29,7 +29,7 @@ public class DatasetMetadataMarshallerCsv {
 		return meta;
 	}
 
-	public static void write(final Dataset<?> ds, final OutputStream os,
+	public static void write(final Dataset ds, final OutputStream os,
 			final OutputStream metaOutputStream) throws IOException {
 		// List<ColumnMetadata> columns = ds.getMetadata().getColumnMetadata();
 		// ColumnMetadataCsvMarshaller marshaller = new
@@ -52,14 +52,14 @@ public class DatasetMetadataMarshallerCsv {
 	}
 
 	public static void write(final OutputStream metaOutputStream,
-			final Dataset<?> ds) throws IOException {
+			final Dataset ds) throws IOException {
 
 		ColumnMetadataCsvMarshaller.write(metaOutputStream, ds.getMetadata()
 				.getColumnMetadata());
 
 	}
 
-	public static void writeToFileName(final Dataset<?> ds,
+	public static void writeToFileName(final Dataset ds,
 			final String CSVFileName, final String metaFileName)
 			throws IOException {
 		final FileOutputStream csvFos = new FileOutputStream(CSVFileName);

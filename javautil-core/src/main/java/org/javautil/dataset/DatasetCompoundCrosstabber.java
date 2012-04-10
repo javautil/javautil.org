@@ -20,7 +20,7 @@ import org.javautil.text.SimpleDateFormatter;
  *         like DatasetCrosstabber but allows multiple columns to be considered
  *         as a single column header todo where is the test?
  */
-public class DatasetCompoundCrosstabber {
+public class DatasetCompoundCrosstabber<T> {
 
 	private final Logger logger = Logger.getLogger(getClass().getName());
 	private static final String newline = System.getProperty("line.separator");
@@ -81,7 +81,7 @@ public class DatasetCompoundCrosstabber {
 		if (dataSet == null) {
 			throw new IllegalStateException("dataSet is null");
 		}
-		final DatasetIterator dsi = dataSet.getDatasetIterator();
+		final DatasetIterator<?> dsi = dataSet.getDatasetIterator();
 
 		while (dsi.next()) {
 			if (logger.isDebugEnabled()) {
@@ -104,7 +104,7 @@ public class DatasetCompoundCrosstabber {
 		}
 	}
 
-	Object[] getCellValues(final DatasetIterator dsi) {
+	Object[] getCellValues(final DatasetIterator<?> dsi) {
 		// logger.debug(crosstabColumns);
 
 		final Object[] cellValues = new Object[crosstabColumns
@@ -134,7 +134,7 @@ public class DatasetCompoundCrosstabber {
 
 	}
 
-	private Object[] getColumnId(final DatasetIterator dsi) {
+	private Object[] getColumnId(final DatasetIterator<?> dsi) {
 		final int idLength = crosstabColumns.getColumnIdentifiers().size();
 
 		final Object[] columnId = new Object[idLength];
@@ -199,7 +199,7 @@ public class DatasetCompoundCrosstabber {
 
 	}
 
-	private CrosstabRow getCrosstabRow(final DatasetIterator dsi) {
+	private CrosstabRow getCrosstabRow(final DatasetIterator<?> dsi) {
 		final Object[] rowIdentifier = new Object[crosstabColumns
 				.getRowIdentifiers().size()];
 		int i = 0;
@@ -218,7 +218,7 @@ public class DatasetCompoundCrosstabber {
 	// todo merge this with DatasetCrosstab
 	public AbstractDataset getDataSet() {
 		crosstab();
-		final DatasetIterator dsi = dataSet.getDatasetIterator();
+		final DatasetIterator<?> dsi = dataSet.getDatasetIterator();
 		dsi.getDatasetMetadata();
 		final MutableDatasetMetadata meta = dsi.getDatasetMetadata()
 				.getMutable();
@@ -309,7 +309,8 @@ public class DatasetCompoundCrosstabber {
 	@SuppressWarnings("unchecked")
 	public ArrayList<List<Object>> getMatrixLists() {
 		final Object[][] matrix = getMatrix();
-		final ArrayList rows = new ArrayList(matrix.length);
+		final ArrayList<List<Object>> rows = new ArrayList<List<Object>>(
+				matrix.length);
 
 		for (final Object[] element : matrix) {
 

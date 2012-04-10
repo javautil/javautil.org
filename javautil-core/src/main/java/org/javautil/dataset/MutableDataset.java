@@ -11,7 +11,7 @@ import org.javautil.dataset.math.CollectionMathOperation;
  * @author jjs@dbexperts.com
  * 
  */
-public interface MutableDataset<T> extends Dataset<T> {
+public interface MutableDataset extends Dataset {
 
 	public void addColumn(ColumnMetadata columnMeta);
 
@@ -20,20 +20,22 @@ public interface MutableDataset<T> extends Dataset<T> {
 	public void addFooter(int columnIndex,
 			CollectionMathOperation footerMathOper);
 
-	public void appendRow(List<Object> arrayList);
-
-	public void appendToRow(Integer rownum, List<T> values);
-
-	public void appendToRow(Integer rownum, T[] values);
+	public void appendToRow(Integer rownum, Object[] values);
 
 	public void applyFilters(MutableDatasetFilter... filters);
 
 	public void applySorts(SortColumn... sorts);
 
 	public void appendFooter();
+
 	// TOdo this is very difficult
 	// and should be left to a renderer to figure out whether
 	// the result is a formula or a value
 	// public void insertColumn(String columnName, int firstIndex,
 	// int secondIndex, int insertIndex, MathOperation mathOper);
+
+	void appendToRow(Integer rownum, final List<Object> values);
+
+	public void appendRow(List<Object> list);
+
 }

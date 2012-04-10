@@ -68,7 +68,7 @@ public class DatasetCrosstabber {
 		if (dataSet == null) {
 			throw new IllegalStateException("dataSet is null");
 		}
-		final DatasetIterator dsi = dataSet.getDatasetIterator();
+		final DatasetIterator<?> dsi = dataSet.getDatasetIterator();
 
 		while (dsi.next()) {
 			if (logger.isDebugEnabled()) {
@@ -93,7 +93,7 @@ public class DatasetCrosstabber {
 
 	}
 
-	Object[] getCellValues(final DatasetIterator dsi) {
+	Object[] getCellValues(final DatasetIterator<?> dsi) {
 		final Object[] cellValues = new Object[crosstabColumns
 				.getCellIdentifiers().size()];
 
@@ -122,7 +122,7 @@ public class DatasetCrosstabber {
 
 	}
 
-	private Object getColumnId(final DatasetIterator dsi) {
+	private Object getColumnId(final DatasetIterator<?> dsi) {
 		final String columnIdentifier = crosstabColumns.getColumnIdentifier();
 		final Object obj = dsi.getObject(columnIdentifier);
 		logger.debug("getting columnId for " + obj);
@@ -181,7 +181,7 @@ public class DatasetCrosstabber {
 
 	}
 
-	private CrosstabRow getCrosstabRow(final DatasetIterator dsi) {
+	private CrosstabRow getCrosstabRow(final DatasetIterator<?> dsi) {
 		final Object[] rowIdentifier = new Object[crosstabColumns
 				.getRowIdentifiers().size()];
 		int i = 0;
@@ -199,7 +199,7 @@ public class DatasetCrosstabber {
 
 	public AbstractDataset getDataSet() {
 		crosstab();
-		final DatasetIterator dsi = dataSet.getDatasetIterator();
+		final DatasetIterator<?> dsi = dataSet.getDatasetIterator();
 		dsi.getDatasetMetadata();
 		final MutableDatasetMetadata meta = dsi.getDatasetMetadata()
 				.getMutable();
@@ -292,7 +292,8 @@ public class DatasetCrosstabber {
 	@SuppressWarnings("unchecked")
 	public ArrayList<List<Object>> getMatrixLists() {
 		final Object[][] matrix = getMatrix();
-		final ArrayList rows = new ArrayList(matrix.length);
+		final ArrayList<List<Object>> rows = new ArrayList<List<Object>>(
+				matrix.length);
 
 		for (final Object[] element : matrix) {
 			rows.add(ListHelper.toList(element));

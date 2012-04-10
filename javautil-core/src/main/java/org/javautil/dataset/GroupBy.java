@@ -24,7 +24,7 @@ import org.javautil.collections.TupleSorter;
  *         a two dimensional array to support this without copying the data all
  *         over again
  */
-public class GroupBy<T> {
+public class GroupBy {
 
 	private final Logger logger = Logger.getLogger(getClass());
 
@@ -32,7 +32,7 @@ public class GroupBy<T> {
 
 	private final String[] groupByColumnNames;
 
-	private final Dataset<T> dataset;
+	private final Dataset dataset;
 
 	private MutableDatasetMetadata groupedByMeta;
 
@@ -42,8 +42,7 @@ public class GroupBy<T> {
 
 	private LinkedHashSet<GroupedBy> groupedBy;
 
-	public GroupBy(final Dataset<T> _dataset,
-			final String... _groupByColumnNames) {
+	public GroupBy(final Dataset _dataset, final String... _groupByColumnNames) {
 		this.groupByColumnNames = _groupByColumnNames;
 		this.dataset = _dataset;
 	}
@@ -91,7 +90,7 @@ public class GroupBy<T> {
 
 		final HashMap<Tuple<?>, GroupedBy> grouped = new HashMap<Tuple<?>, GroupedBy>();
 
-		final DatasetIterator<T> di = dataset.getDatasetIterator();
+		final DatasetIterator di = dataset.getDatasetIterator();
 
 		final int[] groupByColumnIndexes = dataset.getMetadata()
 				.getColumnIndexes(groupByColumnNames);

@@ -66,7 +66,7 @@ public class DataSet2Test extends BaseTest {
 	@Test
 	public void test2() throws IOException {
 		final TicketsDataset td = new TicketsDataset();
-		final Dataset<?> dst = td.getDataset();
+		final Dataset dst = td.getDataset();
 		final DatasetCrosstabber CROSSTABBER = new DatasetCrosstabber();
 		final List<String> rowId = ListHelper.toStringList("STATE", "CITY");
 		final List<String> cellId = ListHelper.toStringList("TICKETS");

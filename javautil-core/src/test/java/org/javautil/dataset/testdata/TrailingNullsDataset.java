@@ -45,7 +45,7 @@ public class TrailingNullsDataset {
 		}
 	};
 
-	public static MutableDataset<Object> getDataset() {
+	public static MutableDataset getDataset() {
 		return trailingNulls;
 	}
 

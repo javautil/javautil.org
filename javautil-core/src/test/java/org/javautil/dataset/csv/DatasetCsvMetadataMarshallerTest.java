@@ -77,7 +77,7 @@ public class DatasetCsvMetadataMarshallerTest {
 	@Test
 	public void testMetadataMarshalling() throws IOException {
 		final TicketsDataset td = new TicketsDataset();
-		final Dataset<?> ds = td.getDataset();
+		final Dataset ds = td.getDataset();
 
 		final File metaFile = File.createTempFile("Tickets", ".meta.csv");
 		final FileOutputStream meta = new FileOutputStream(metaFile);

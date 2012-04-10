@@ -38,7 +38,7 @@ public class MatrixModificationSortTest {
 	@Test(expected = IllegalStateException.class)
 	public void testAppendRowFailureAfterFooterAddition() throws IOException {
 		logger.debug("testAppendRowFailureAfterFooterAddition");
-		final MutableDataset<?> set = DatasetSource.getDataset();
+		final MutableDataset set = DatasetSource.getDataset();
 
 		set.addFooter(3, new Summation());
 
@@ -60,7 +60,7 @@ public class MatrixModificationSortTest {
 	@Test
 	public void testSortAscending() throws IOException {
 		logger.debug("testSortAscending");
-		final MutableDataset<?> set = DatasetSource.getDataset();
+		final MutableDataset set = DatasetSource.getDataset();
 
 		final SortColumn sortTickets = new SortColumn();
 		sortTickets.setAscending(true);
@@ -88,7 +88,7 @@ public class MatrixModificationSortTest {
 	@Test
 	public void testSortDescending() throws IOException {
 		logger.debug("testSortDescending");
-		final MutableDataset<?> set = DatasetSource.getDataset();
+		final MutableDataset set = DatasetSource.getDataset();
 
 		final SortColumn sortTickets = new SortColumn();
 		sortTickets.setAscending(false);
@@ -116,7 +116,7 @@ public class MatrixModificationSortTest {
 	@Test
 	public void testDuplicateAscending() throws IOException {
 		logger.debug("testDuplicateAscending");
-		final MutableDataset<?> set = DatasetSource.getDupeFinesDataset();
+		final MutableDataset set = DatasetSource.getDupeFinesDataset();
 
 		final SortColumn sortTickets = new SortColumn();
 		sortTickets.setAscending(true);
@@ -146,7 +146,7 @@ public class MatrixModificationSortTest {
 	@Test
 	public void testDuplicateDescending() throws IOException {
 		logger.debug("testDuplicateAscending");
-		final MutableDataset<?> set = DatasetSource.getDupeFinesDataset();
+		final MutableDataset set = DatasetSource.getDupeFinesDataset();
 
 		final SortColumn sortTickets = new SortColumn();
 		sortTickets.setAscending(false);
@@ -173,7 +173,7 @@ public class MatrixModificationSortTest {
 	@Test
 	public void testTwoColumnSort() throws IOException {
 		logger.debug("testTwoColumnSort");
-		final MutableDataset<?> set = DatasetSource.getDupeFinesDataset();
+		final MutableDataset set = DatasetSource.getDupeFinesDataset();
 
 		final SortColumn fines = new SortColumn();
 		fines.setAscending(false);
@@ -200,7 +200,7 @@ public class MatrixModificationSortTest {
 	 * @return
 	 * @throws IOException
 	 */
-	private String getRenderedCsv(final Dataset<?> set) throws IOException {
+	private String getRenderedCsv(final Dataset set) throws IOException {
 		final CsvRendererRequest crr = new CsvRendererRequestImpl();
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		crr.setStreamResult(new StreamResult(baos));

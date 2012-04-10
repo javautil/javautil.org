@@ -28,7 +28,7 @@ import org.junit.Test;
  * @author jjs
  * 
  *         todo test output
-*/
+ */
 public class MatrixDatasetTest extends BaseTest {
 	public Logger logger = Logger.getLogger(getClass());
 
@@ -54,7 +54,7 @@ public class MatrixDatasetTest extends BaseTest {
 		}
 	};
 
-	private final MatrixDataset<Object> trailingNulls = new MatrixDataset(meta) {
+	private final MatrixDataset trailingNulls = new MatrixDataset(meta) {
 
 		{
 			final Number n = null;
@@ -65,7 +65,7 @@ public class MatrixDatasetTest extends BaseTest {
 		}
 	};
 
-	private final MatrixDataset<Object> tickets = new MatrixDataset(meta) {
+	private final MatrixDataset tickets = new MatrixDataset(meta) {
 		{
 			addRow(toList("TX", "DALLAS", new Integer(1), new Double(42)));
 			addRow(toList("TX", "DALLAS", new Integer(2), new Double(27)));
@@ -90,7 +90,7 @@ public class MatrixDatasetTest extends BaseTest {
 		}
 	};
 
-	private final MatrixDataset<Object> fees = new MatrixDataset(
+	private final MatrixDataset fees = new MatrixDataset(
 			deferredAdjudicationMeta) {
 		{
 			addRow(toList("TX", "DALLAS", new Integer(1), new Double(311),

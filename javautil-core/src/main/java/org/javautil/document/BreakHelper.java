@@ -27,7 +27,7 @@ public class BreakHelper implements InitializingBean {
 
 	private List<String> breaks;
 
-	private Dataset<? extends Object> dataset;
+	private Dataset dataset;
 
 	private Map<String, Integer> columnNameIndex = new HashMap<String, Integer>();
 
@@ -36,7 +36,7 @@ public class BreakHelper implements InitializingBean {
 	public BreakHelper() {
 	}
 
-	public BreakHelper(final Dataset<? extends Object> dataset) {
+	public BreakHelper(final Dataset dataset) {
 		if (dataset == null) {
 			throw new IllegalArgumentException("dataset is null");
 		}
@@ -164,11 +164,11 @@ public class BreakHelper implements InitializingBean {
 		return breaks;
 	}
 
-	public Dataset<? extends Object> getDataset() {
+	public Dataset getDataset() {
 		return dataset;
 	}
 
-	public void setDataset(final Dataset<? extends Object> dataset) {
+	public void setDataset(final Dataset dataset) {
 		this.dataset = dataset;
 	}
 

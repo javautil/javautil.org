@@ -3,9 +3,14 @@ package org.javautil.dataset.render;
 import org.javautil.dataset.ColumnMetadata;
 import org.javautil.dataset.Dataset;
 
+/**
+ * TODO What is this? Where is it used? Where was I sleeping?
+ * 
+ * @param <T>
+ */
 public class DatasetEvent<T> {
 
-	private Dataset<T> dataset;
+	private Dataset dataset;
 
 	private ColumnMetadata column;
 
@@ -18,23 +23,23 @@ public class DatasetEvent<T> {
 	public DatasetEvent() {
 	}
 
-	public DatasetEvent(final Dataset<T> dataset) {
+	public DatasetEvent(final Dataset dataset) {
 		setDataset(dataset);
 	}
 
-	public DatasetEvent(final Dataset<T> dataset, final Long rowIndex) {
+	public DatasetEvent(final Dataset dataset, final Long rowIndex) {
 		setDataset(dataset);
 		setRowIndex(rowIndex);
 	}
 
-	public DatasetEvent(final Dataset<T> dataset, final ColumnMetadata column,
+	public DatasetEvent(final Dataset dataset, final ColumnMetadata column,
 			final Long columnIndex) {
 		setDataset(dataset);
 		setColumn(column);
 		setColumnIndex(columnIndex);
 	}
 
-	public DatasetEvent(final Dataset<T> dataset, final ColumnMetadata column,
+	public DatasetEvent(final Dataset dataset, final ColumnMetadata column,
 			final Long rowIndex, final Long columnIndex, final Object data) {
 		setDataset(dataset);
 		setColumn(column);
@@ -43,11 +48,11 @@ public class DatasetEvent<T> {
 		setData(data);
 	}
 
-	public Dataset<T> getDataset() {
+	public Dataset getDataset() {
 		return dataset;
 	}
 
-	public void setDataset(final Dataset<T> dataset) {
+	public void setDataset(final Dataset dataset) {
 		this.dataset = dataset;
 	}
 

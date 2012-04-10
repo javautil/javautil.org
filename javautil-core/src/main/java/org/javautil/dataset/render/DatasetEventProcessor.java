@@ -102,7 +102,7 @@ public class DatasetEventProcessor<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Dataset<T> getDataset() {
+	public Dataset getDataset() {
 		return getRendererRequest().getDataset();
 	}
 

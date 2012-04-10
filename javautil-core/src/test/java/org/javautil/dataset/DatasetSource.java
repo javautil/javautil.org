@@ -14,7 +14,7 @@ public class DatasetSource {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static MutableDataset<?> getDataset() {
+	public static MutableDataset getDataset() {
 
 		final DatasetMetadataImpl meta = new DatasetMetadataImpl() {
 			{
@@ -55,7 +55,7 @@ public class DatasetSource {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static MutableDataset<?> getDupeFinesDataset() {
+	public static MutableDataset getDupeFinesDataset() {
 
 		final DatasetMetadataImpl meta = new DatasetMetadataImpl() {
 			{

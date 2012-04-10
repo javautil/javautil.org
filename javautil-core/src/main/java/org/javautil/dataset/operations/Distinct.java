@@ -31,7 +31,7 @@ public class Distinct<T> {
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
-	public Set<Tuple<T>> getDistinctTuples(final Dataset<T> dataset,
+	public Set<Tuple<T>> getDistinctTuples(final Dataset dataset,
 			final String... columnNames) {
 		checkArguments(dataset, columnNames);
 
@@ -66,7 +66,7 @@ public class Distinct<T> {
 		return set.keySet();
 	}
 
-	private void checkArguments(final Dataset<T> dataset,
+	private void checkArguments(final Dataset dataset,
 			final String[] columnNames) {
 		if (dataset == null) {
 			throw new IllegalArgumentException("dataset is null");

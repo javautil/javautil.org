@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2012-04-08T20:40:27.295">
+<file name="/common/home/jjs/workspace/javautil-jfm/src/main/java/org/javautil/jfm/EJB3AnnotatedBeanMetadata.java">
+<violation beginline="16" endline="16" begincolumn="27" endcolumn="32" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jfm" class="EJB3AnnotatedBeanMetadata" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jfm/src/main/java/org/javautil/jfm/IntrospectivePropertyMetadataFactory.java">
+<violation beginline="73" endline="75" begincolumn="41" endcolumn="41" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.javautil.jfm" class="IntrospectivePropertyMetadataFactory" method="afterPropertiesSet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/common/home/jjs/workspace/javautil-jfm/src/main/java/org/javautil/jfm/mains/mvc/SpringTableMetaDataFTLFormGenerator.java">
+<violation beginline="37" endline="37" begincolumn="27" endcolumn="32" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.javautil.jfm.mains.mvc" class="SpringTableMetaDataFTLFormGenerator" variable="logger" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+</file>
+</pmd>

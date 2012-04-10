@@ -36,7 +36,7 @@ public class ColumnMetadataGrouper {
 	}
 
 	public static LinkedHashMap<String, Integer> getColumnNameIndexMap(
-			final Dataset<?> dataset, final int startingIndex,
+			final Dataset dataset, final int startingIndex,
 			final Collection<ColumnMetadata> columns, final String groupName) {
 		LinkedHashMap<String, Integer> columnNameIndexMap = new LinkedHashMap<String, Integer>();
 

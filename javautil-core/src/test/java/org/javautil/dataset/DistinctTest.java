@@ -14,7 +14,7 @@ public class DistinctTest {
 	// todo need lots of more tests
 	@Test
 	public void test1() {
-		final Dataset<Object> ds = TrailingNullsDataset.getDataset();
+		final Dataset ds = TrailingNullsDataset.getDataset();
 		final Set<Tuple<?>> distinctState = new Distinct().getDistinctTuples(
 				ds, "STATE");
 		final Set<Tuple<Comparable<?>>> expected = new HashSet<Tuple<Comparable<?>>>();

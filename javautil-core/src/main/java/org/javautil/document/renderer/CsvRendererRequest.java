@@ -12,7 +12,8 @@ public interface CsvRendererRequest extends DatasetRendererRequest {
 
 	public void setColumnSeparator(String val);
 
-	public void setDataset(Dataset<?> ds);
+	@Override
+	public void setDataset(Dataset ds);
 
 	public boolean isEmitHeader();
 

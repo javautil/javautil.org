@@ -25,7 +25,7 @@ public class GroupedByOperations {
 	 * @param _columnAlias
 	 */
 	@SuppressWarnings("unchecked")
-	public static void sum(final GroupBy<?> groups, final String columnName,
+	public static void sum(final GroupBy groups, final String columnName,
 			final String _columnAlias) {
 
 		if (groups == null) {

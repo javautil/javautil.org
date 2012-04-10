@@ -16,7 +16,7 @@ public class DefaultDatasetRendererRequest extends AbstractRendererRequestImpl
 		super();
 	}
 
-	public DefaultDatasetRendererRequest(final Dataset<? extends Object> dataset) {
+	public DefaultDatasetRendererRequest(final Dataset dataset) {
 		super();
 		setDataset(dataset);
 	}

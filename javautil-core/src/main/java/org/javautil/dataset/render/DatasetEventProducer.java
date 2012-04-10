@@ -27,7 +27,7 @@ public class DatasetEventProducer<T> implements DatasetRenderer {
 		return metas;
 	}
 
-	protected Dataset<T> sortData(final Dataset<T> dataset) {
+	protected Dataset sortData(final Dataset dataset) {
 		return dataset;
 	}
 
@@ -59,11 +59,11 @@ public class DatasetEventProducer<T> implements DatasetRenderer {
 	@SuppressWarnings("unchecked")
 	public void render(final DatasetRendererRequest rendererRequest)
 			throws DatasetRenderException {
-		Dataset<T> dataset = rendererRequest.getDataset();
+		Dataset dataset = rendererRequest.getDataset();
 		if (dataset == null) {
 			throw new IllegalArgumentException("dataset is null");
 		}
-		final DatasetIterator<T> iterator = dataset.getDatasetIterator();
+		final DatasetIterator iterator = dataset.getDatasetIterator();
 		final List<ColumnMetadata> columnMetadatas = orderColumns(rendererRequest);
 		dataset = sortData(dataset);
 		final DatasetEventProcessor processor = new DatasetEventProcessor(

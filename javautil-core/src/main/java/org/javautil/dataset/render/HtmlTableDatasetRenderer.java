@@ -72,7 +72,7 @@ public class HtmlTableDatasetRenderer<T> extends DatasetEventProducer<T>
 		table.getTableTagAttributes().put("class", "dataset");
 	}
 
-	protected void renderTableStart(final Dataset<T> dataset) throws Exception {
+	protected void renderTableStart(final Dataset dataset) throws Exception {
 		for (final ColumnMetadata meta : dataset.getMetadata()
 				.getColumnMetadata()) {
 			final String formatMask = meta.getJavaFormat();
@@ -148,7 +148,7 @@ public class HtmlTableDatasetRenderer<T> extends DatasetEventProducer<T>
 		}
 	}
 
-	protected void renderTableEnd(final Dataset<T> dataset,
+	protected void renderTableEnd(final Dataset dataset,
 			final List<ColumnMetadata> columns, final PrintWriter writer)
 			throws Exception {
 		final XMLWriter xmlWriter = table.getXMLWriter(writer, isPrettyPrint());
@@ -212,7 +212,7 @@ public class HtmlTableDatasetRenderer<T> extends DatasetEventProducer<T>
 					renderBodyRowData(ci, data, ha);
 					break;
 				case END:
-					final Dataset<T> dataset = event.getDataset();
+					final Dataset dataset = event.getDataset();
 					final List<ColumnMetadata> metas = getColumnMetadata(rendererRequest);
 					renderTableEnd(dataset, metas, new PrintWriter(writer));
 					break;

@@ -42,7 +42,7 @@ public class DatasetMarshallerWithMetadataTest {
 	@Test
 	public void testMarshalling() throws IOException {
 		final TicketsDataset td = new TicketsDataset();
-		final Dataset<?> ds = td.getDataset();
+		final Dataset ds = td.getDataset();
 		final File metaFile = File.createTempFile("Tickets", ".meta.csv");
 		final File dataFile = File.createTempFile("Tickets", ".data.csv");
 		final FileOutputStream data = new FileOutputStream(dataFile);
@@ -65,7 +65,7 @@ public class DatasetMarshallerWithMetadataTest {
 	@Test
 	public void testMetadataMarshalling() throws IOException {
 		final TicketsDataset td = new TicketsDataset();
-		final Dataset<?> ds = td.getDataset();
+		final Dataset ds = td.getDataset();
 
 		final File metaFile = File.createTempFile("Tickets", ".meta.csv");
 		final File expectedFile = new File(expectedMeta);

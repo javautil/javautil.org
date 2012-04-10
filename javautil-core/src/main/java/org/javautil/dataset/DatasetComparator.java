@@ -44,7 +44,7 @@ import org.javautil.collections.NullCompare;
 
 public class DatasetComparator<T> implements Comparator<List<T>> {
 
-	private Dataset<T> drs;
+	private Dataset drs;
 
 	/**
 	 * The columns to sort on.
@@ -71,11 +71,11 @@ public class DatasetComparator<T> implements Comparator<List<T>> {
 	 */
 	private boolean[] isAscending;
 
-	public DatasetComparator(final Dataset<T> _drs, final List<SortColumn> sorts) {
+	public DatasetComparator(final Dataset _drs, final List<SortColumn> sorts) {
 		prepare(_drs, sorts);
 	}
 
-	public DatasetComparator(final Dataset<T> _drs, final SortColumn... sorts) {
+	public DatasetComparator(final Dataset _drs, final SortColumn... sorts) {
 		final List<SortColumn> dataSorts = new ArrayList<SortColumn>();
 		for (final SortColumn sorter : sorts) {
 			dataSorts.add(sorter);
@@ -101,7 +101,7 @@ public class DatasetComparator<T> implements Comparator<List<T>> {
 		return retVal;
 	}
 
-	private void prepare(final Dataset<T> _drs, final List<SortColumn> sorts) {
+	private void prepare(final Dataset _drs, final List<SortColumn> sorts) {
 		this.drs = _drs;
 		this.columns = sorts;
 		indexes = new int[columns.size()];

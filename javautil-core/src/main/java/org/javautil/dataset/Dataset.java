@@ -23,7 +23,7 @@ package org.javautil.dataset;
  *         TODO needs getById()
  * 
  */
-public interface Dataset<T> {
+public interface Dataset {
 
 	/**
 	 * No further rows will be retrieved from the underlying data source. Any
@@ -39,7 +39,7 @@ public interface Dataset<T> {
 	 * 
 	 * @return DatasetIterator
 	 */
-	public DatasetIterator<T> getDatasetIterator();
+	public DatasetIterator<?> getDatasetIterator();
 
 	/**
 	 * 

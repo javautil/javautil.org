@@ -23,14 +23,14 @@ public class MappedDataset {
 	private final TreeMap<Integer, Object[]> idByRownum = new TreeMap<Integer, Object[]>();
 	private final List<String> keyCols;
 
-	private final Dataset<?> unmappedDataSet;
+	private final Dataset unmappedDataSet;
 	private Integer[] colIdIndex;
 	private DatasetIterator<?> iter;
 	private DatasetMetadata unmappedMeta;
 	private final Map<Integer, ColumnMetadata> idColMeta = new TreeMap<Integer, ColumnMetadata>();
 	private final Map<Integer, ColumnMetadata> valColMeta = new TreeMap<Integer, ColumnMetadata>();
 
-	public MappedDataset(final Dataset<?> ds, final List<String> keyCol) {
+	public MappedDataset(final Dataset ds, final List<String> keyCol) {
 		if (ds == null) {
 			throw new IllegalArgumentException("ds is null");
 		}

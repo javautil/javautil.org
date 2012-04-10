@@ -57,7 +57,7 @@ public class CrosstabDataset {
 
 	@SuppressWarnings("unchecked")
 	ArrayList<Object> toList(final Object... o) {
-		final ArrayList al = new ArrayList(o.length);
+		final ArrayList<Object> al = new ArrayList<Object>(o.length);
 		for (final Object element : o) {
 			al.add(element);
 		}
@@ -66,7 +66,7 @@ public class CrosstabDataset {
 
 	@SuppressWarnings("unchecked")
 	List<String> toList(final String... o) {
-		final ArrayList al = new ArrayList(o.length);
+		final ArrayList<String> al = new ArrayList<String>(o.length);
 		for (final String element : o) {
 			al.add(element);
 		}

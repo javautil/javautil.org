@@ -99,7 +99,7 @@ public class MootoolsTableRenderer<T> extends HtmlTableDatasetRenderer<T> {
 	}
 
 	@Override
-	protected void renderTableStart(final Dataset<T> dataset) throws Exception {
+	protected void renderTableStart(final Dataset dataset) throws Exception {
 		String tableElementId = getTable().getTableTagAttributes().get("id");
 		final boolean requiresId = isSortable() || isPaginating()
 				|| isToggleColumns();
@@ -131,7 +131,7 @@ public class MootoolsTableRenderer<T> extends HtmlTableDatasetRenderer<T> {
 	}
 
 	@Override
-	protected void renderTableEnd(final Dataset<T> dataset,
+	protected void renderTableEnd(final Dataset dataset,
 			final List<ColumnMetadata> columns, final PrintWriter writer)
 			throws Exception {
 		if (isEmbedCssStyles()) {

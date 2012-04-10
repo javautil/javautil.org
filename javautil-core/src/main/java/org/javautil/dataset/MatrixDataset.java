@@ -20,23 +20,24 @@ import org.javautil.dataset.math.CollectionMathOperation;
  * 
  * todo make this truly generic
  */
-public class MatrixDataset<T> extends AbstractDataset implements MutableDataset {
+public class MatrixDataset extends AbstractDataset implements MutableDataset {
 
 	private static Integer INTEGER = new Integer(1);
 
 	private final MutableDatasetMetadata metadata;
 
-	private ArrayList<List<T>> cells = new ArrayList<List<T>>();
+	private ArrayList<List<Object>> cells = new ArrayList<List<Object>>();
 	private Object[] footerValues = null;
 
 	private final String newline = System.getProperty("line.separator");
 	private final Logger logger = Logger.getLogger(getClass());
 
-	public MatrixDataset(final MutableDatasetMetadata meta, final List<T[]> data) {
+	public MatrixDataset(final MutableDatasetMetadata meta,
+			final List<Object[]> data) {
 		this(meta);
-		for (final T[] cursor : data) {
-			final ArrayList<T> row = new ArrayList<T>(cursor.length);
-			for (final T element : cursor) {
+		for (final Object[] cursor : data) {
+			final ArrayList<Object> row = new ArrayList<Object>(cursor.length);
+			for (final Object element : cursor) {
 				row.add(element);
 			}
 			cells.add(row);
@@ -51,8 +52,8 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 	}
 
 	public void setValue(final int rowIndex, final int columnIndex,
-			final T value) {
-		final List<T> row = cells.get(rowIndex);
+			final Object value) {
+		final List<Object> row = cells.get(rowIndex);
 		row.set(columnIndex, value);
 	}
 
@@ -96,23 +97,23 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 		return cells.size();
 	}
 
-	public void setData(final ArrayList<List<T>> data) {
-		this.cells = data;
+	public void setData(final ArrayList<List<Object>> arrayList) {
+		this.cells = arrayList;
 	}
 
-	public void addRow(final T[] cols) {
+	public void addRow(final Object[] cols) {
 		if (cols == null) {
 			throw new IllegalArgumentException("cols is null");
 		}
-		final ArrayList<T> row = new ArrayList<T>(cols.length);
-		for (final T cell : cols) {
+		final ArrayList<Object> row = new ArrayList<Object>(cols.length);
+		for (final Object cell : cols) {
 			row.add(cell);
 		}
 
 		cells.add(row);
 	}
 
-	public void addRow(final List<T> cols) {
+	public void addRow(final List<Object> cols) {
 		if (cols == null) {
 			throw new IllegalArgumentException("cols is null");
 		}
@@ -120,18 +121,18 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 		cells.add(cols);
 	}
 
-	public List<T> getRow(final int rowIndex) {
+	public List<?> getRow(final int rowIndex) {
 		if (cells.size() < rowIndex + 1) {
 			throw new ArrayIndexOutOfBoundsException("requested rowIndex "
 					+ rowIndex + " but there are " + cells.size() + " rows ");
 		}
-		final List<T> c = cells.get(rowIndex);
+		final List<Object> c = cells.get(rowIndex);
 		return c;
 	}
 
-	public T getValue(final int rowIndex, final int i) {
-		T o = null;
-		final List<T> c = getRow(rowIndex);
+	public Object getValue(final int rowIndex, final int i) {
+		Object o = null;
+		final List<?> c = getRow(rowIndex);
 
 		if (c.size() > i) {
 			o = c.get(i);
@@ -153,7 +154,7 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 		return o;
 	}
 
-	public T getValue(final int rowIndex, final String column) {
+	public Object getValue(final int rowIndex, final String column) {
 		return getValue(rowIndex, metadata.getColumnIndex(column));
 	}
 
@@ -163,14 +164,14 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 		b.append(metadata.toString());
 		b.append("rowCount: " + cells.size() + newline);
 
-		for (final List<T> row : cells) {
+		for (final List<Object> row : cells) {
 			b.append(asString(row));
 			b.append(newline);
 		}
 		return b.toString();
 	}
 
-	public String asString(final List<T> row) {
+	public String asString(final List<Object> row) {
 		final StringBuilder b = new StringBuilder();
 		String retval = "null";
 		if (row == null) {
@@ -202,7 +203,7 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 		}
 
 		metadata.addColumn(index, columnMeta);
-		for (final List<T> row : cells) {
+		for (final List<Object> row : cells) {
 			row.add(index, null);
 		}
 	}
@@ -217,18 +218,18 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 	}
 
 	@Override
-	public void appendRow(final List values) {
+	public void appendRow(final List<Object> values) {
 		if (footerValues != null) {
 			throw new IllegalStateException(
 					"Please add all columns before computing footers.");
 		}
-		List<T> newValues;
+		List<Object> newValues;
 
 		if (values == null) {
 			throw new IllegalArgumentException("values is null");
 		}
 		if (values.size() < metadata.getColumnCount()) {
-			newValues = new ArrayList<T>(metadata.getColumnCount());
+			newValues = new ArrayList(metadata.getColumnCount());
 			logger.warn("values size " + values.size()
 					+ " but meta column count " + metadata.getColumnCount());
 			while (values.size() < metadata.getColumnCount()) {
@@ -246,7 +247,7 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 		cells.add(newValues);
 	}
 
-	private void validateRow(final List<T> colData) {
+	private void validateRow(final List<Object> colData) {
 
 		if (colData.size() != metadata.getColumnCount()) {
 			throw new IllegalStateException("row size " + colData.size()
@@ -288,12 +289,12 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 	}
 
 	@Override
-	public void appendToRow(final Integer rownum, final List values) {
+	public void appendToRow(final Integer rownum, final List<Object> values) {
 		if (footerValues != null) {
 			throw new IllegalStateException(
 					"Please add all columns before computing footers.");
 		}
-		final List<T> newValues = cells.get(rownum);
+		final List<Object> newValues = cells.get(rownum);
 		if (newValues == null) {
 			throw new IllegalArgumentException("row not found " + rownum);
 		}
@@ -315,7 +316,7 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 		if (values == null) {
 			throw new IllegalArgumentException("values is null");
 		}
-		final ArrayList colValues = new ArrayList<T>(values.length);
+		final ArrayList<Object> colValues = new ArrayList<Object>(values.length);
 		for (final Object value : values) {
 			colValues.add(value);
 		}
@@ -386,7 +387,7 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 			final CollectionMathOperation footerMathOper) {
 		final Number[] columnValues = new Number[cells.size()];
 		for (int index = 0; index < cells.size(); index++) {
-			final List<T> cellRow = cells.get(index);
+			final List<Object> cellRow = cells.get(index);
 			final Object object = cellRow.get(columnIndex);
 			if (object != null && !(object instanceof Number)) {
 				throw new IllegalArgumentException(
@@ -409,7 +410,7 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 
 	@Override
 	public void appendFooter() {
-		addRow((T[]) footerValues);
+		addRow(footerValues);
 	}
 
 	@Override
@@ -428,9 +429,9 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 	@Override
 	public void applyFilters(final MutableDatasetFilter... filters) {
 		for (final MutableDatasetFilter filter : filters) {
-			final Iterator<List<T>> iter = cells.iterator();
+			final Iterator<List<Object>> iter = cells.iterator();
 			while (iter.hasNext()) {
-				final List<T> row = iter.next();
+				final List<Object> row = iter.next();
 				final String columnName = filter.getColumnName();
 				final int columnIndex = metadata.getColumnIndex(columnName);
 				final Object value = row.get(columnIndex);
@@ -443,7 +444,8 @@ public class MatrixDataset<T> extends AbstractDataset implements MutableDataset 
 
 	@Override
 	public void applySorts(final SortColumn... sorts) {
-		final DatasetComparator sorter = new DatasetComparator(this, sorts);
+		final DatasetComparator<Object> sorter = new DatasetComparator<Object>(
+				this, sorts);
 		Collections.sort(cells, sorter);
 	}
 }

@@ -36,4 +36,5 @@ public abstract class AbstractDataset implements Dataset {
 	public Object[] getFooterValues() {
 		throw new UnsupportedOperationException();
 	}
+
 }

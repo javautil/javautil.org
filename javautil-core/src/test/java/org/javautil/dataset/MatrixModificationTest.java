@@ -26,7 +26,7 @@ public class MatrixModificationTest {
 	 * 
 	 * @return
 	 */
-	public static MutableDataset<?> getDataset() {
+	public static MutableDataset getDataset() {
 
 		final DatasetMetadataImpl meta = new DatasetMetadataImpl() {
 			{
@@ -69,7 +69,7 @@ public class MatrixModificationTest {
 	@Test
 	public void testAppendRow() throws IOException {
 		logger.debug("testAppendRow");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		set.appendRow(ListHelper.toList("TX", "DALLAS", new Integer(4),
 				new Double(28)));
@@ -104,7 +104,7 @@ public class MatrixModificationTest {
 	@Test
 	public void testFooterAddition() throws IOException {
 		logger.debug("testFooterAddition");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		set.addFooter(3, new Summation());
 		set.addFooter(2, new Summation());
@@ -147,7 +147,7 @@ public class MatrixModificationTest {
 	@Test(expected = IllegalStateException.class)
 	public void testAppendRowFailureAfterFooterAddition() throws IOException {
 		logger.debug("testAppendRowFailureAfterFooterAddition");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		set.addFooter(3, new Summation());
 
@@ -164,7 +164,7 @@ public class MatrixModificationTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testBadTypeInAdditionalRow() {
 		logger.debug("testBadTypeInAdditionalRow");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		set.appendRow(ListHelper.toList("TX", "DALLAS", new Double(4),
 				new Double(28)));
@@ -179,7 +179,7 @@ public class MatrixModificationTest {
 	@Test
 	public void testSortAscending() throws IOException {
 		logger.trace("testSortAscending");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		final SortColumn sortTickets = new SortColumn();
 		sortTickets.setAscending(true);
@@ -201,7 +201,7 @@ public class MatrixModificationTest {
 	@Test
 	public void testSortDescending() throws IOException {
 		logger.debug("testSortDescending");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		final SortColumn sortTickets = new SortColumn();
 		sortTickets.setAscending(false);
@@ -217,7 +217,7 @@ public class MatrixModificationTest {
 	@Test
 	public void testFilter() throws IOException {
 		logger.debug("testFilter");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		final MutableDatasetFilter cityFilter = new DefaultDatasetFilter();
 		cityFilter.setColumnName("CITY");
@@ -235,7 +235,7 @@ public class MatrixModificationTest {
 	@Test
 	public void testInverseFilter() throws IOException {
 		logger.debug("testFilter");
-		final MutableDataset<?> set = getDataset();
+		final MutableDataset set = getDataset();
 
 		final MutableDatasetFilter cityFilter = new DefaultDatasetFilter();
 		cityFilter.setColumnName("CITY");
@@ -256,7 +256,7 @@ public class MatrixModificationTest {
 	 * @return
 	 * @throws IOException
 	 */
-	private String getRenderedCsv(final Dataset<?> set) throws IOException {
+	private String getRenderedCsv(final Dataset set) throws IOException {
 		final CsvRendererRequest crr = new CsvRendererRequestImpl();
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		crr.setStreamResult(new StreamResult(baos));
