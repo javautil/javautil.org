@@ -6,9 +6,9 @@
     <session-factory>
         <!--  needed for oracle or reverse engineering will try for all users -->
 		<property name="hibernate.connection.driver_class">org.h2.Driver</property>
-		<property name="hibernate.connection.url">jdbc:h2:database/sales</property>
+		<property name="hibernate.connection.url">jdbc:h2:target/database/test</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
-		<property name="hibernate.connection.username">SALES</property>
-		<property name="hibernate.connection.password">tutorial</property>
+		<property name="hibernate.connection.username">sample</property>
+		<property name="hibernate.connection.password">data</property>
     </session-factory>
 </hibernate-configuration>

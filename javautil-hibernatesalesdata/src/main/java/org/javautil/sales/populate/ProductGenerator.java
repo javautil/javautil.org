@@ -85,9 +85,6 @@ public class ProductGenerator implements Serializable {
 		}
 		final int index = (int) Math.random() * productList.size();
 		product = productList.get(index);
-		if (logger.isDebugEnabled()) {
-			logger.debug("returning " + product);
-		}
 		return product;
 
 	}

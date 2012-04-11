@@ -1,17 +1,10 @@
 package org.javautil.sales;
 
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.sales.populate.Manufacturer;
 import org.javautil.sales.populate.ManufacturerGenerator;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ManufacturerGeneratorTest {
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	// todo review the absurdly large numbers used here?
 	@Test
