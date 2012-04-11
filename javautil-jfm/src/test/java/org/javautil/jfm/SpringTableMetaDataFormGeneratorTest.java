@@ -1,5 +1,7 @@
 package org.javautil.jfm;
 
+import static junit.framework.Assert.assertEquals;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -34,10 +36,11 @@ public class SpringTableMetaDataFormGeneratorTest {
 	}
 
 	public void after() {
-		/*
-		 * assertEquals( 0, fileComparator.compare(expectedDir + fileName,
-		 * destinationDir + fileName));
-		 */
+
+		assertEquals(
+				0,
+				fileComparator.compare(expectedDir + fileName, destinationDir
+						+ fileName));
 	}
 
 	// TODO fix this test
