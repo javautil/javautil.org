@@ -7,16 +7,17 @@ import java.sql.Timestamp;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
- * <p>StandardAddressBeanTest class.</p>
- *
+ * <p>
+ * StandardAddressBeanTest class.
+ * </p>
+ * 
  * @author siyer
- * @version $Id: StandardAddressBeanTest.java,v 1.2 2012/03/04 12:31:18 jjs Exp $
+ * @version $Id: StandardAddressBeanTest.java,v 1.2 2012/03/04 12:31:18 jjs Exp
+ *          $
  * @since 0.11.0
  */
 public class StandardAddressBeanTest {
@@ -24,17 +25,9 @@ public class StandardAddressBeanTest {
 	private final Logger logger = Logger.getLogger(getClass());
 
 	/**
-	 * <p>setUp.</p>
-	 *
-	 * @throws java.lang.Exception if any.
-	 */
-	@Before
-	public void setUp() throws Exception {
-		BasicConfigurator.configure();
-	}
-
-	/**
-	 * <p>constructorTest1.</p>
+	 * <p>
+	 * constructorTest1.
+	 * </p>
 	 */
 	@Test
 	public void constructorTest1() {
@@ -44,7 +37,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>constructorTest2.</p>
+	 * <p>
+	 * constructorTest2.
+	 * </p>
 	 */
 	@Test
 	public void constructorTest2() {
@@ -62,7 +57,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>constructorTest3.</p>
+	 * <p>
+	 * constructorTest3.
+	 * </p>
 	 */
 	@Test
 	public void constructorTest3() {
@@ -87,7 +84,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>constructorTest4.</p>
+	 * <p>
+	 * constructorTest4.
+	 * </p>
 	 */
 	@Test
 	public void constructorTest4() {
@@ -127,7 +126,9 @@ public class StandardAddressBeanTest {
 	 * Both addresses are null. So Equal.
 	 */
 	/**
-	 * <p>equalsTest1.</p>
+	 * <p>
+	 * equalsTest1.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest1() {
@@ -140,7 +141,9 @@ public class StandardAddressBeanTest {
 	 * Both addresses are not same. So Not Equal.
 	 */
 	/**
-	 * <p>equalsTest2.</p>
+	 * <p>
+	 * equalsTest2.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest2() {
@@ -151,7 +154,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest3.</p>
+	 * <p>
+	 * equalTest3.
+	 * </p>
 	 */
 	@Test
 	public void equalTest3() {
@@ -161,7 +166,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest4.</p>
+	 * <p>
+	 * equalTest4.
+	 * </p>
 	 */
 	@Test
 	public void equalTest4() {
@@ -169,7 +176,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest5.</p>
+	 * <p>
+	 * equalTest5.
+	 * </p>
 	 */
 	@Test
 	public void equalTest5() {
@@ -180,7 +189,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest6.</p>
+	 * <p>
+	 * equalTest6.
+	 * </p>
 	 */
 	@Test
 	public void equalTest6() {
@@ -192,7 +203,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest7.</p>
+	 * <p>
+	 * equalTest7.
+	 * </p>
 	 */
 	@Test
 	public void equalTest7() {
@@ -204,7 +217,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest8.</p>
+	 * <p>
+	 * equalTest8.
+	 * </p>
 	 */
 	@Test
 	public void equalTest8() {
@@ -217,7 +232,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest9.</p>
+	 * <p>
+	 * equalTest9.
+	 * </p>
 	 */
 	@Test
 	public void equalTest9() {
@@ -231,7 +248,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest10.</p>
+	 * <p>
+	 * equalTest10.
+	 * </p>
 	 */
 	@Test
 	public void equalTest10() {
@@ -245,7 +264,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest11.</p>
+	 * <p>
+	 * equalTest11.
+	 * </p>
 	 */
 	@Test
 	public void equalTest11() {
@@ -260,7 +281,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest12.</p>
+	 * <p>
+	 * equalTest12.
+	 * </p>
 	 */
 	@Test
 	public void equalTest12() {
@@ -276,7 +299,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest13.</p>
+	 * <p>
+	 * equalTest13.
+	 * </p>
 	 */
 	@Test
 	public void equalTest13() {
@@ -292,7 +317,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest14.</p>
+	 * <p>
+	 * equalTest14.
+	 * </p>
 	 */
 	@Test
 	public void equalTest14() {
@@ -309,7 +336,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest15.</p>
+	 * <p>
+	 * equalTest15.
+	 * </p>
 	 */
 	@Test
 	public void equalTest15() {
@@ -327,7 +356,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest16.</p>
+	 * <p>
+	 * equalTest16.
+	 * </p>
 	 */
 	@Test
 	public void equalTest16() {
@@ -345,7 +376,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest17.</p>
+	 * <p>
+	 * equalTest17.
+	 * </p>
 	 */
 	@Test
 	public void equalTest17() {
@@ -365,7 +398,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest18.</p>
+	 * <p>
+	 * equalTest18.
+	 * </p>
 	 */
 	@Test
 	public void equalTest18() {
@@ -386,9 +421,12 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest19.</p>
-	 *
-	 * @throws java.lang.InterruptedException if any.
+	 * <p>
+	 * equalTest19.
+	 * </p>
+	 * 
+	 * @throws java.lang.InterruptedException
+	 *             if any.
 	 */
 	@Test
 	public void equalTest19() throws InterruptedException {
@@ -411,7 +449,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest20.</p>
+	 * <p>
+	 * equalTest20.
+	 * </p>
 	 */
 	@Test
 	public void equalTest20() {
@@ -432,7 +472,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest21.</p>
+	 * <p>
+	 * equalTest21.
+	 * </p>
 	 */
 	@Test
 	public void equalTest21() {
@@ -454,7 +496,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest22.</p>
+	 * <p>
+	 * equalTest22.
+	 * </p>
 	 */
 	@Test
 	public void equalTest22() {
@@ -477,7 +521,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest23.</p>
+	 * <p>
+	 * equalTest23.
+	 * </p>
 	 */
 	@Test
 	public void equalTest23() {
@@ -500,7 +546,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest24.</p>
+	 * <p>
+	 * equalTest24.
+	 * </p>
 	 */
 	@Test
 	public void equalTest24() {
@@ -524,7 +572,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest25.</p>
+	 * <p>
+	 * equalTest25.
+	 * </p>
 	 */
 	@Test
 	public void equalTest25() {
@@ -549,7 +599,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest26.</p>
+	 * <p>
+	 * equalTest26.
+	 * </p>
 	 */
 	@Test
 	public void equalTest26() {
@@ -574,7 +626,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest27.</p>
+	 * <p>
+	 * equalTest27.
+	 * </p>
 	 */
 	@Test
 	public void equalTest27() {
@@ -600,7 +654,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest29.</p>
+	 * <p>
+	 * equalTest29.
+	 * </p>
 	 */
 	@Test
 	public void equalTest29() {
@@ -627,7 +683,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest30.</p>
+	 * <p>
+	 * equalTest30.
+	 * </p>
 	 */
 	@Test
 	public void equalTest30() {
@@ -654,7 +712,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest31.</p>
+	 * <p>
+	 * equalTest31.
+	 * </p>
 	 */
 	@Test
 	public void equalTest31() {
@@ -682,7 +742,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest32.</p>
+	 * <p>
+	 * equalTest32.
+	 * </p>
 	 */
 	@Test
 	public void equalTest32() {
@@ -711,7 +773,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest33.</p>
+	 * <p>
+	 * equalTest33.
+	 * </p>
 	 */
 	@Test
 	public void equalTest33() {
@@ -740,7 +804,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest34.</p>
+	 * <p>
+	 * equalTest34.
+	 * </p>
 	 */
 	@Test
 	public void equalTest34() {
@@ -770,7 +836,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest35.</p>
+	 * <p>
+	 * equalTest35.
+	 * </p>
 	 */
 	@Test
 	public void equalTest35() {
@@ -801,7 +869,9 @@ public class StandardAddressBeanTest {
 	}
 
 	/**
-	 * <p>equalTest36.</p>
+	 * <p>
+	 * equalTest36.
+	 * </p>
 	 */
 	@Test
 	public void equalTest36() {

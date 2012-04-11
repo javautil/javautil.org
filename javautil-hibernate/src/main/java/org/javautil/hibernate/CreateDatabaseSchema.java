@@ -3,7 +3,6 @@ package org.javautil.hibernate;
 import java.io.File;
 import java.io.FilenameFilter;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
@@ -96,7 +95,6 @@ public class CreateDatabaseSchema {
 	}
 
 	public static void main(final String[] args) {
-		BasicConfigurator.configure();
 		final CreateDatabaseSchemaArgs argProcessor = new CreateDatabaseSchemaArgs();
 		final CommandLineHandler clh = new CommandLineHandler(argProcessor);
 		clh.evaluateArguments(args);

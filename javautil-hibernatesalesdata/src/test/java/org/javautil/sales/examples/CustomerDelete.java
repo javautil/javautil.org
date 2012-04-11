@@ -6,13 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.javautil.hibernate.persist.Persistence;
 import org.javautil.sales.dto.Customer;
 import org.javautil.sales.dto.Salesperson;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,11 +38,6 @@ public class CustomerDelete {
 	private Persistence persistence;
 
 	private final Logger logger = Logger.getLogger(getClass());
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@SuppressWarnings("unchecked")
 	public List<Salesperson> getSalesPeople(final String lowerLastName,

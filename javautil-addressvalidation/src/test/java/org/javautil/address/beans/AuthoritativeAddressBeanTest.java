@@ -5,16 +5,17 @@ package org.javautil.address.beans;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
- * <p>AuthoritativeAddressBeanTest class.</p>
- *
+ * <p>
+ * AuthoritativeAddressBeanTest class.
+ * </p>
+ * 
  * @author siyer
- * @version $Id: AuthoritativeAddressBeanTest.java,v 1.2 2012/03/04 12:31:18 jjs Exp $
+ * @version $Id: AuthoritativeAddressBeanTest.java,v 1.2 2012/03/04 12:31:18 jjs
+ *          Exp $
  * @since 0.11.0
  */
 public class AuthoritativeAddressBeanTest {
@@ -22,17 +23,9 @@ public class AuthoritativeAddressBeanTest {
 	private final Logger logger = Logger.getLogger(getClass());
 
 	/**
-	 * <p>setUp.</p>
-	 *
-	 * @throws java.lang.Exception if any.
-	 */
-	@Before
-	public void setUp() throws Exception {
-		BasicConfigurator.configure();
-	}
-
-	/**
-	 * <p>test1.</p>
+	 * <p>
+	 * test1.
+	 * </p>
 	 */
 	@Test
 	public void test1() {
@@ -43,7 +36,9 @@ public class AuthoritativeAddressBeanTest {
 	}
 
 	/**
-	 * <p>test2.</p>
+	 * <p>
+	 * test2.
+	 * </p>
 	 */
 	@Test
 	public void test2() {
@@ -54,7 +49,9 @@ public class AuthoritativeAddressBeanTest {
 	}
 
 	/**
-	 * <p>test10.</p>
+	 * <p>
+	 * test10.
+	 * </p>
 	 */
 	@Test
 	public void test10() {

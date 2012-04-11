@@ -3,14 +3,9 @@ package org.javautil.properties;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.log4j.BasicConfigurator;
 import org.junit.Test;
 
 public class BooleanPropertyHelperTest {
-
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Test
 	public void defaultBehaviorTest() {

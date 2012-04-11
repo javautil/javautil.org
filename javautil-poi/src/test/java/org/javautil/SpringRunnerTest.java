@@ -2,9 +2,7 @@ package org.javautil;
 
 import java.util.Properties;
 
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.io.ResourceUtils;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -13,11 +11,6 @@ public class SpringRunnerTest {
 	public static final String CONTEXT = "file:src/test/resources/xls-document-builder-test.xml";
 
 	public static final String PROPERTIES = "file:src/test/resources/xls-document-builder-test.properties";
-
-	@BeforeClass
-	public static void setup() {
-		BasicConfigurator.configure();
-	}
 
 	// TODO figure out what this is trying to do and fix or delete
 	@Ignore

@@ -4,22 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.java.JavaFile;
 import org.javautil.lang.SystemProperties;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class JavaFileTest {
 	private final Logger logger = Logger.getLogger(getClass());
 	private static final String directorySeparator = SystemProperties
 			.getFileSeparator();
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Test
 	public void test1() {

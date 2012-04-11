@@ -7,10 +7,8 @@ import junit.framework.Assert;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.lang.ThreadHelper;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -27,11 +25,6 @@ public class ClassPathResourceResolverTest {
 	private final Log logger = LogFactory.getLog(getClass());
 
 	private ClassPathResourceResolver resolver = null;
-
-	@BeforeClass
-	public static void setupClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Before
 	public void setup() throws Exception {

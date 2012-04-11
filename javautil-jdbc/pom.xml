@@ -25,6 +25,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.javautil</groupId>
+			<artifactId>javautil-databases</artifactId>
+			<version>${org.javautil.databases.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javautil</groupId>
 			<artifactId>javautil-commandline</artifactId>
 			<version>${org.javautil.commandline.version}</version>
 		</dependency>
@@ -77,6 +82,11 @@
 			<version>${org.apache.openejb.version}</version>
 		</dependency>
 	</dependencies>
+	<!--  
+           Annoying as hell to copy and paste this 
+    -->
+
+
 
 	
 <build>
@@ -99,10 +109,10 @@
     <!-- common configuration shared by all executions -->
     <configuration>
      <driver>org.h2.Driver</driver>
-     <url>jdbc:h2:target/database/test</url>
+     <!-- make it work both from javautil-pom and javautil-jdbc -->
+     <url>jdbc:h2:../javautil-databases/target/database/test</url>
      <username>sample</username>
      <password>data</password>
-
 
     </configuration>
     <executions>
@@ -154,6 +164,4 @@
    </plugins>
   </pluginManagement>
   </build>
-
-
 </project>

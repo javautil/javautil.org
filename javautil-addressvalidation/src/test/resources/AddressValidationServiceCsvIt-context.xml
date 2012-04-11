@@ -9,7 +9,7 @@
 
 
  <import
-  resource="file:../javautil-pom/src/test/resources/local-target-h2.xml" />
+  resource="file:src/test/resources/local-target-h2.xml" />
 
  <bean id="validationService"
   class="org.javautil.address.service.AddressValidationServiceCsv">

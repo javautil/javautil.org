@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.dataset.ColumnMetadata;
 import org.javautil.dataset.ColumnMetadataCsvMarshaller;
@@ -19,18 +18,12 @@ import org.javautil.dataset.Dataset;
 import org.javautil.dataset.DatasetMetadata;
 import org.javautil.dataset.testdata.TicketsDataset;
 import org.javautil.file.FileHelper;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
 public class DatasetMarshallerWithMetadataTest {
 	private static final String expectedMeta = "src/test/resources/org/javautil/dataset/tickets.meta.csv";
 	private final Logger logger = Logger.getLogger(getClass());
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	/**
 	 * 

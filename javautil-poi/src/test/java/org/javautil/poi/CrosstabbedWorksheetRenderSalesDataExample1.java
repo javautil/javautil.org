@@ -8,7 +8,6 @@ import java.io.OutputStream;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -18,17 +17,11 @@ import org.javautil.document.style.ColorUtil;
 import org.javautil.document.style.Style;
 import org.javautil.document.style.StyleImpl;
 import org.javautil.poi.style.HSSFCellStyleFactory;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CrosstabbedWorksheetRenderSalesDataExample1 {
 
 	private final Logger logger = Logger.getLogger(getClass());
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	// TODO put this in a base class or a helper class
 	protected void initializeStyles(final HSSFCellStyleFactory styleFactory) {

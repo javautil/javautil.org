@@ -11,6 +11,8 @@ public interface ColumnAttributes {
 	//
 	// public abstract String getColumnNameAsAttributeNameInitCap();
 
+	public abstract String getAttributeName();
+
 	public abstract String getColumnName();
 
 	/**

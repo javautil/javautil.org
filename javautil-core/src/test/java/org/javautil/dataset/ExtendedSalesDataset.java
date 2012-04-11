@@ -3,13 +3,11 @@ package org.javautil.dataset;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.document.crosstab.CrosstabColumns;
 import org.javautil.document.crosstab.CrosstabColumnsImpl;
 import org.javautil.document.style.HorizontalAlignment;
 import org.javautil.util.Day;
-import org.junit.Before;
 
 /**
  * 
@@ -19,11 +17,6 @@ import org.junit.Before;
 public class ExtendedSalesDataset {
 	public Logger logger = Logger.getLogger(getClass());
 	private static final String newline = System.getProperty("line.separator");
-
-	@Before
-	public void before() {
-		BasicConfigurator.configure();
-	}
 
 	private static final ColumnMetadata invoiceDateMeta = new ColumnMetadata(
 			"INVOICE_DT", 2, DataType.DATE, null, null, null);

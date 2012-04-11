@@ -12,7 +12,6 @@ import java.util.Map;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.javautil.dataset.render.typewriter.TypewriterBehavior;
@@ -27,15 +26,9 @@ import org.javautil.document.style.DocumentStyles;
 import org.javautil.document.style.SimpleBorder;
 import org.javautil.document.style.Style;
 import org.javautil.document.style.StyleImpl;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class POIWorkbookRendererTest {
-
-	@BeforeClass
-	public static void before() {
-		BasicConfigurator.configure();
-	}
 
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	@Test

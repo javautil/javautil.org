@@ -4,10 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.text.CSVTokenizer;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CSVTokenizerTest {
@@ -15,11 +13,6 @@ public class CSVTokenizerTest {
 	CSVTokenizer tokenizer = new CSVTokenizer();
 
 	private final Logger logger = Logger.getLogger(getClass());
-
-	@BeforeClass()
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Test
 	public void test1() {

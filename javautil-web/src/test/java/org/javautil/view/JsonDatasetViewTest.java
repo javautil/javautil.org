@@ -4,11 +4,9 @@ import java.util.HashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.io.ClassPathResourceResolver;
 import org.javautil.sales.test.AbstractH2SmallSalesTest;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -16,14 +14,9 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 public class JsonDatasetViewTest extends AbstractH2SmallSalesTest {
 
-	private Log logger = LogFactory.getLog(getClass());
+	private final Log logger = LogFactory.getLog(getClass());
 
-	@BeforeClass
-	public static void setup() {
-		BasicConfigurator.configure();
-	}
-
-	private ResourceLoader resourceLoader = new ClassPathResourceResolver(
+	private final ResourceLoader resourceLoader = new ClassPathResourceResolver(
 			"sales");
 
 	@Test
@@ -46,7 +39,7 @@ public class JsonDatasetViewTest extends AbstractH2SmallSalesTest {
 		// 5 salespersons
 		Assert.assertEquals(5, content.split("\\},").length);
 	}
-	
+
 	@Test
 	public void testSingleColumnRender() throws Exception {
 		JsonDatasetView view = new JsonDatasetView();
@@ -67,6 +60,5 @@ public class JsonDatasetViewTest extends AbstractH2SmallSalesTest {
 		// 5 salespersons
 		Assert.assertEquals(5, content.split("\\\",").length);
 	}
-
 
 }

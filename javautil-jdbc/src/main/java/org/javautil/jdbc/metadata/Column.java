@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 
 import org.javautil.dataset.ColumnAttributes;
 import org.javautil.jdbc.metadata.renderer.XmlMeta;
+import org.javautil.text.StringHelper;
 
 //import org.dom4j.Element;
 
@@ -157,6 +158,7 @@ public class Column implements ColumnAttributes {
 		defaultValue = rs.getString("COLUMN_DEF");
 		charOctetLength = rs.getInt("CHAR_OCTET_LENGTH");
 		ordinalPosition = rs.getInt("ORDINAL_POSITION");
+		attributeName = StringHelper.attributeName(columnName);
 
 	}
 
@@ -341,6 +343,7 @@ public class Column implements ColumnAttributes {
 		this.ordinalPosition = ordinalPosition;
 	}
 
+	@Override
 	public String getAttributeName() {
 		return attributeName;
 	}

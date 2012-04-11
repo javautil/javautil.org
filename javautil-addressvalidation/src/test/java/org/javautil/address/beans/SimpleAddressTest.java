@@ -5,14 +5,14 @@ package org.javautil.address.beans;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
- * <p>SimpleAddressTest class.</p>
- *
+ * <p>
+ * SimpleAddressTest class.
+ * </p>
+ * 
  * @author siyer
  * @version $Id: SimpleAddressTest.java,v 1.3 2012/03/04 12:31:18 jjs Exp $
  * @since 0.11.0
@@ -22,17 +22,9 @@ public class SimpleAddressTest {
 	private final Logger logger = Logger.getLogger(getClass());
 
 	/**
-	 * <p>setUp.</p>
-	 *
-	 * @throws java.lang.Exception if any.
-	 */
-	@Before
-	public void setUp() throws Exception {
-		BasicConfigurator.configure();
-	}
-
-	/**
-	 * <p>test1.</p>
+	 * <p>
+	 * test1.
+	 * </p>
 	 */
 	@Test
 	public void test1() {
@@ -52,7 +44,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>test2.</p>
+	 * <p>
+	 * test2.
+	 * </p>
 	 */
 	@Test
 	public void test2() {
@@ -61,7 +55,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>getIdTest.</p>
+	 * <p>
+	 * getIdTest.
+	 * </p>
 	 */
 	@Test
 	public void getIdTest() {
@@ -72,7 +68,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>setStandardizationFlagsTest.</p>
+	 * <p>
+	 * setStandardizationFlagsTest.
+	 * </p>
 	 */
 	@Test
 	public void setStandardizationFlagsTest() {
@@ -83,7 +81,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>miscTest.</p>
+	 * <p>
+	 * miscTest.
+	 * </p>
 	 */
 	@Test
 	public void miscTest() {
@@ -97,7 +97,9 @@ public class SimpleAddressTest {
 	 * Both addresses are null. So Equal.
 	 */
 	/**
-	 * <p>equalsTest1.</p>
+	 * <p>
+	 * equalsTest1.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest1() {
@@ -110,7 +112,9 @@ public class SimpleAddressTest {
 	 * Address1.address1 is set. Not Equal.
 	 */
 	/**
-	 * <p>equalsTest2.</p>
+	 * <p>
+	 * equalsTest2.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest2() {
@@ -124,7 +128,9 @@ public class SimpleAddressTest {
 	 * Not the same object
 	 */
 	/**
-	 * <p>equalsTest3.</p>
+	 * <p>
+	 * equalsTest3.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest3() {
@@ -138,7 +144,9 @@ public class SimpleAddressTest {
 	 * Assert.
 	 */
 	/**
-	 * <p>equalsTest4.</p>
+	 * <p>
+	 * equalsTest4.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest4() {
@@ -150,7 +158,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest5.</p>
+	 * <p>
+	 * equalsTest5.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest5() {
@@ -161,7 +171,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest6.</p>
+	 * <p>
+	 * equalsTest6.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest6() {
@@ -173,7 +185,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest7.</p>
+	 * <p>
+	 * equalsTest7.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest7() {
@@ -186,7 +200,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest8.</p>
+	 * <p>
+	 * equalsTest8.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest8() {
@@ -200,7 +216,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest9.</p>
+	 * <p>
+	 * equalsTest9.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest9() {
@@ -214,7 +232,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest10.</p>
+	 * <p>
+	 * equalsTest10.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest10() {
@@ -229,7 +249,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest11.</p>
+	 * <p>
+	 * equalsTest11.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest11() {
@@ -245,7 +267,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest12.</p>
+	 * <p>
+	 * equalsTest12.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest12() {
@@ -261,7 +285,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest13.</p>
+	 * <p>
+	 * equalsTest13.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest13() {
@@ -278,7 +304,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest14.</p>
+	 * <p>
+	 * equalsTest14.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest14() {
@@ -296,7 +324,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest15.</p>
+	 * <p>
+	 * equalsTest15.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest15() {
@@ -314,7 +344,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest16.</p>
+	 * <p>
+	 * equalsTest16.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest16() {
@@ -333,7 +365,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest18.</p>
+	 * <p>
+	 * equalsTest18.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest18() {
@@ -353,7 +387,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest19.</p>
+	 * <p>
+	 * equalsTest19.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest19() {
@@ -373,7 +409,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest20.</p>
+	 * <p>
+	 * equalsTest20.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest20() {
@@ -396,7 +434,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest21.</p>
+	 * <p>
+	 * equalsTest21.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest21() {
@@ -420,7 +460,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest22.</p>
+	 * <p>
+	 * equalsTest22.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest22() {
@@ -444,7 +486,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest23.</p>
+	 * <p>
+	 * equalsTest23.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest23() {
@@ -469,7 +513,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest24.</p>
+	 * <p>
+	 * equalsTest24.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest24() {
@@ -495,7 +541,9 @@ public class SimpleAddressTest {
 	}
 
 	/**
-	 * <p>equalsTest25.</p>
+	 * <p>
+	 * equalsTest25.
+	 * </p>
 	 */
 	@Test
 	public void equalsTest25() {

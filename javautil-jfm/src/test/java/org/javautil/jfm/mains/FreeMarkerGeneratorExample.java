@@ -2,7 +2,6 @@ package org.javautil.jfm.mains;
 
 import java.io.File;
 
-import org.apache.log4j.BasicConfigurator;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -26,7 +25,6 @@ public class FreeMarkerGeneratorExample {
 	}
 
 	public File createReport() throws Exception {
-		BasicConfigurator.configure();
 		final String argsString = "-outputFile=target/examples/person_example.ftl" //
 				+ " -templateFile=src/main/resources/example.ftl" //
 				+ " -javaClassFile=src/main/resources/Person.class"; //

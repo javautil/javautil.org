@@ -1,9 +1,7 @@
 package org.javautil.sales.examples;
 
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.hibernate.persist.Persistence;
 import org.javautil.sales.dataservice.CustomerDAO;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -23,11 +21,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:application-context.xml" })
 public class CustomerServiceExample {
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Test
 	public void testServices() {

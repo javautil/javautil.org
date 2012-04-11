@@ -6,7 +6,6 @@ import java.util.Map;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.io.ClassPathResourceResolver;
 import org.javautil.io.IOUtils;
 import org.junit.BeforeClass;
@@ -20,7 +19,6 @@ public class SQLBindUtilsTest {
 
 	@BeforeClass
 	public static void setupClass() throws Exception {
-		BasicConfigurator.configure();
 		loader = new ClassPathResourceResolver("query");
 		((ClassPathResourceResolver) loader).afterPropertiesSet();
 	}

@@ -7,9 +7,9 @@
 	<table border="0">	
 	<#list bean.columns as column>	
 		<tr>
-		<#assign fieldId = '${column.columnNameAsAttributeName}' />
-		<td>${column.columnNameAsAttributeName}</td>
-		<#assign fieldValue='${column.columnNameAsAttributeName}'/>
+		<#assign fieldId = '${column.attributeName}' />
+		<td>${column.attributeName}</td>
+		<#assign fieldValue='${column.attributeName}'/>
 		<#assign fieldAttributes><#compress>
 			id='${fieldId}' size='${column.columnSize}' maxlength='${column.columnSize}'
 		</#compress></#assign>

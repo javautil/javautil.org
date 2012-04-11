@@ -6,7 +6,6 @@ import java.util.Map;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.SimpleLayout;
 import org.apache.log4j.WriterAppender;
 import org.junit.BeforeClass;
@@ -20,7 +19,6 @@ public class HtmlTableDatasetRendererTest extends AbstractTableRendererTest {
 		appender.setWriter(new PrintWriter(System.out));
 		appender.setLayout(new SimpleLayout());
 		appender.setName(HtmlTableDatasetRenderer.class.getName());
-		BasicConfigurator.configure(appender);
 	}
 
 	@SuppressWarnings("unchecked")

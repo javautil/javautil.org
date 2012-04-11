@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.dataset.ColumnAttributes;
 import org.javautil.jdbc.H2SingletonInstance;
 import org.javautil.jdbc.metadata.JDBCTable;
@@ -44,7 +43,6 @@ public class SpringTableMetaDataFTLFormGeneratorExample {
 
 	public File createForm(final ArrayList<ColumnAttributes> columns)
 			throws Exception {
-		BasicConfigurator.configure();
 		final String argsString = "-outputFile=target/examples/mvc/t_form.ftl" //
 				+ " -htmlFormAction=/myContext/myServlet/myController/myForm.html" //
 				+ " -javaClassFile=src/main/resources/Person.class"; //

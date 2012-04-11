@@ -1,6 +1,5 @@
 package org.javautil.exceptionprocessing;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
@@ -32,9 +31,6 @@ public class CreateDataBaseSchema {
 	}
 
 	public static void main(final String[] args) {
-		BasicConfigurator.configure();
-		// CreateDataBaseSchema hbm2ddl = new CreateDataBaseSchema();
-		// hbm2ddl.createSchema("exceptionScript.sql");
 		final ExceptionRuleServiceImpl epctl = new ExceptionRuleServiceImpl();
 		final Integer it = new Integer(1050464);
 		final ExceptionProcessingServerArgs sagr = new ExceptionProcessingServerArgs();

@@ -9,9 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,11 +23,6 @@ public class DateFactoryTest {
 			"yyyy-MM-dd HH:mm:ss");
 	private final Logger logger = Logger.getLogger(getClass());
 	private final DateFactory dateFactory = new DateFactory();
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Test
 	public void test() {

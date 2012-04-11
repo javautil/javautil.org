@@ -5,7 +5,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
@@ -51,7 +50,6 @@ public class SalesServiceDaoHQL implements SalesServicesInterface {
 
 	public static void main(final String[] args) {
 		final SalesServiceDaoHQL qe = new SalesServiceDaoHQL();
-		BasicConfigurator.configure();
 		final ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext(
 				"application-context.xml");
 

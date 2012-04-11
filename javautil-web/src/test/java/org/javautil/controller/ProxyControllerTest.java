@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.servlet.Context;
@@ -26,11 +24,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
 public class ProxyControllerTest {
 
 	private Server server;
-
-	@BeforeClass
-	public static void prepare() {
-		BasicConfigurator.configure();
-	}
 
 	@Before
 	public void setupJetty() throws Exception {
@@ -199,7 +192,7 @@ public class ProxyControllerTest {
 
 	class HelloServlet extends HttpServlet {
 		private static final long serialVersionUID = 3025114951037735265L;
-		private String data;
+		private final String data;
 
 		public HelloServlet(String data) {
 			this.data = data;

@@ -2,14 +2,15 @@ package org.javautil.address.parser;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * <p>SubunitParserTest class.</p>
- *
+ * <p>
+ * SubunitParserTest class.
+ * </p>
+ * 
  * @author jjs
  * @version $Id: SubunitParserTest.java,v 1.2 2012/03/04 12:31:20 jjs Exp $
  * @since 0.11.0
@@ -21,16 +22,19 @@ public class SubunitParserTest {
 	private static Logger logger = Logger.getLogger(SubunitParserTest.class);
 
 	/**
-	 * <p>beforeClass.</p>
+	 * <p>
+	 * beforeClass.
+	 * </p>
 	 */
 	@BeforeClass
 	public static void beforeClass() {
-		BasicConfigurator.configure();
 		logger.debug(parser.getCodes());
 	}
 
 	/**
-	 * <p>testApt.</p>
+	 * <p>
+	 * testApt.
+	 * </p>
 	 */
 	@Test
 	public void testApt() {
@@ -48,7 +52,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>testApartment.</p>
+	 * <p>
+	 * testApartment.
+	 * </p>
 	 */
 	@Test
 	public void testApartment() {
@@ -66,7 +72,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>test2.</p>
+	 * <p>
+	 * test2.
+	 * </p>
 	 */
 	@Test
 	public void test2() {
@@ -76,7 +84,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>test3.</p>
+	 * <p>
+	 * test3.
+	 * </p>
 	 */
 	@Test
 	public void test3() {
@@ -88,7 +98,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>testSuite.</p>
+	 * <p>
+	 * testSuite.
+	 * </p>
 	 */
 	@Test
 	public void testSuite() {
@@ -105,7 +117,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>testHangar.</p>
+	 * <p>
+	 * testHangar.
+	 * </p>
 	 */
 	@Test
 	public void testHangar() {
@@ -115,7 +129,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>testFloor.</p>
+	 * <p>
+	 * testFloor.
+	 * </p>
 	 */
 	@Test
 	public void testFloor() {
@@ -130,7 +146,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>testFrontUnqualified.</p>
+	 * <p>
+	 * testFrontUnqualified.
+	 * </p>
 	 */
 	@Test
 	public void testFrontUnqualified() {
@@ -140,7 +158,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>testFrontQualified.</p>
+	 * <p>
+	 * testFrontQualified.
+	 * </p>
 	 */
 	@Test
 	public void testFrontQualified() {
@@ -150,7 +170,9 @@ public class SubunitParserTest {
 	}
 
 	/**
-	 * <p>testSlip.</p>
+	 * <p>
+	 * testSlip.
+	 * </p>
 	 */
 	@Test
 	public void testSlip() {

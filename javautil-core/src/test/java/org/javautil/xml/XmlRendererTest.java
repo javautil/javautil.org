@@ -10,7 +10,6 @@ import junit.framework.Assert;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.dataset.ColumnMetadata;
 import org.javautil.dataset.DataType;
 import org.javautil.dataset.DatasetMetadataImpl;
@@ -26,7 +25,6 @@ public class XmlRendererTest {
 
 	@BeforeClass
 	public static void setup() {
-		BasicConfigurator.configure();
 		final DatasetMetadataImpl m = new DatasetMetadataImpl();
 		m.addColumn(new ColumnMetadata("yr", 1, DataType.INTEGER, 8, 0, null));
 		m.addColumn(new ColumnMetadata("per", 2, DataType.INTEGER, 1, 0, null));

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.oracle.stats.SessionStat;
 import org.javautil.oracle.stats.SessionStatDeltaFormatter;
@@ -18,7 +17,6 @@ import org.javautil.oracle.stats.SessionStatsDAO;
 import org.javautil.oracle.stats.StatNames;
 import org.javautil.oracle.stats.StaticStatName;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,11 +43,6 @@ public class SessionStatsTest {
 	private static StatNames fakeStatNames = StaticStatName.getStatNames();
 
 	private final String newline = System.getProperty("line.separator");
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Before
 	public void before() throws SQLException {
@@ -152,7 +145,6 @@ public class SessionStatsTest {
 	public static void main(final String[] args) throws SQLException {
 		// todo get Spring context
 		final SessionStatsTest sst = new SessionStatsTest();
-		SessionStatsTest.beforeClass();
 		sst.testDelta3();
 	}
 

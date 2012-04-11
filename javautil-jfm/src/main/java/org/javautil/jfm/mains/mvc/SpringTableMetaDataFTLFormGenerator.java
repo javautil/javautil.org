@@ -1,5 +1,6 @@
 package org.javautil.jfm.mains.mvc;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -46,11 +47,16 @@ public class SpringTableMetaDataFTLFormGenerator extends FreeMarkerGenerator {
 		final DatabaseMetaData dmd = conn.getMetaData();
 		configuration = getConfiguration();
 		final Reader reader = new FileReader(arguments.getTemplateFile());
+		File outputDir = arguments.getOutputFile().getParentFile();
+		outputDir.mkdirs();
 		final OutputStream os = new FileOutputStream(arguments.getOutputFile());
-		new TableDaoJdbc(conn, dmd, arguments.getSchemaName(),
-				arguments.getCatalogName(), arguments.getTableName());
-		// model.init(dmd, conn);
-		render(reader, os, arguments);
+		TableDaoJdbc dao = new TableDaoJdbc(conn, dmd,
+				arguments.getSchemaName(), arguments.getCatalogName(),
+				arguments.getTableName());
+		Table table = dao.getTable(dmd, conn, arguments.getSchemaName(),
+				arguments.getCatalogName(), arguments.getTableName(), "%");
+
+		render(reader, os, table, arguments);
 		conn.close();
 
 		// ArrayList<ColumnAttributes> columns = (ArrayList<ColumnAttributes>)
@@ -68,11 +74,12 @@ public class SpringTableMetaDataFTLFormGenerator extends FreeMarkerGenerator {
 	 *            the template that creates the output template
 	 * @param outputStream
 	 *            the result
+	 * @param table
 	 * @throws IOException
 	 * @throws TemplateException
 	 */
 	public void render(final Reader templateReader,
-			final OutputStream outputStream,
+			final OutputStream outputStream, Table table,
 			final SpringTableMetaDataFormGeneratorArguments args)
 			throws IOException, TemplateException {
 		Writer writer = null;
@@ -81,12 +88,23 @@ public class SpringTableMetaDataFTLFormGenerator extends FreeMarkerGenerator {
 			final Template template = new Template(this.toString(),
 					templateReader, configuration);
 			final Map<String, Object> map = new HashMap<String, Object>();
-			map.put("bean", model);
+			map.put("bean", table);
 			map.put("arguments", args);
+			if (logger.isDebugEnabled()) {
+				logger.debug(table.toString());
+				logger.debug(formatMap(map));
+			}
 			template.process(map, writer);
 		} finally {
 			writer.close();
 		}
+	}
+
+	public String formatMap(Map<String, Object> map) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(map.toString());
+		String retval = sb.toString();
+		return retval;
 	}
 
 	// public void afterPropertiesSet() throws Exception {

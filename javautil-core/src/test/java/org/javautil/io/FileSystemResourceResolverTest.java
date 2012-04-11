@@ -9,9 +9,7 @@ import junit.framework.Assert;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.BasicConfigurator;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.core.io.Resource;
 
@@ -29,11 +27,6 @@ public class FileSystemResourceResolverTest {
 	private final Log logger = LogFactory.getLog(getClass());
 
 	private FileSystemResourceResolver resolver;
-
-	@BeforeClass
-	public static void setupClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Before
 	public void setup() throws Exception {

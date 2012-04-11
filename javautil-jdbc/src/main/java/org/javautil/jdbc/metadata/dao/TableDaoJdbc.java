@@ -131,7 +131,8 @@ public class TableDaoJdbc {
 			final String tableName = rs.getString("table_name");
 			final String tableType = rs.getString("table_type");
 			logger.info("processing schema " + schemaName + "." + tableName);
-			processTable(conn, schemaName, catalog, tableName, tableType);
+			addTable(getTable(meta, conn, schemaName, catalog, tableName,
+					tableType));
 
 		}
 		rs.close();
@@ -183,9 +184,10 @@ public class TableDaoJdbc {
 	// // logger.info("metaUseCount " + metaUseCount);
 	// return meta;
 	// }
-	private void processTable(final Connection conn, final String schema,
-			final String catalog, final String tableName, final String tableType)
-			throws SQLException {
+	public TableJdbc getTable(final DatabaseMetaData meta,
+			final Connection conn, final String schema, final String catalog,
+			final String tableName, final String tableType) throws SQLException {
+		TableJdbc table = null;
 		try {
 			if (conn == null) {
 				throw new IllegalArgumentException("conn is null");
@@ -194,15 +196,15 @@ public class TableDaoJdbc {
 				logger.info("discarding " + tableName);
 			} else {
 				logger.info(tableType + " " + tableName);
-				final TableJdbc table = new TableJdbc(schema, catalog,
-						tableName, "" /* remarks */, tableType);
+				table = new TableJdbc(schema, catalog, tableName,
+						"" /* remarks */, tableType);
 				table.init(meta, conn);
-				tables.addTable(table);
+				return table;
 			}
 		} catch (final NonexistantTableException n) {
 			logger.warn(n.getMessage());
 		}
-
+		return table;
 	}
 
 }

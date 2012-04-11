@@ -53,11 +53,6 @@ public class AsStringTest {
 		}
 	};
 
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
-
 	@Test
 	public void test1() {
 		final AsString as = new AsString(DONT_EMIT_IDENTITY_HASH_CODE);

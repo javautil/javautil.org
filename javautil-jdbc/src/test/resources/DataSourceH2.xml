@@ -15,7 +15,7 @@
 			<value>data</value>
 		</property>
 		<property key="url">
-			<value>jdbc:h2:target/database/test</value>
+			<value>jdbc:h2:../javautil-databases/target/database/test</value>
 		</property>
 	</datasource>
 </ns2:datasources>

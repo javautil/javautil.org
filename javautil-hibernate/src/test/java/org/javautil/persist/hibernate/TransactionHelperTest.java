@@ -5,7 +5,6 @@ import java.util.Date;
 
 import junit.framework.Assert;
 
-import org.apache.log4j.BasicConfigurator;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.javautil.hibernate.persist.H2InMemorySessionFactory;
@@ -24,7 +23,6 @@ public class TransactionHelperTest {
 
 	@BeforeClass
 	public static void setupSesionFactory() {
-		BasicConfigurator.configure();
 		sessionFactory = H2InMemorySessionFactory
 				.getInstance(new File(HBM_DIR));
 	}

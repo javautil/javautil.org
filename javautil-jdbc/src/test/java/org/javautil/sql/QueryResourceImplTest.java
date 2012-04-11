@@ -12,7 +12,6 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.dataset.Dataset;
 import org.javautil.dataset.DatasetIterator;
@@ -28,7 +27,7 @@ import org.springframework.core.io.ResourceLoader;
 public abstract class QueryResourceImplTest {
 
 	private static DataSource datasource = new H2InMemoryDataSource();
-	
+
 	private static ResourceLoader loader;
 
 	private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -36,29 +35,31 @@ public abstract class QueryResourceImplTest {
 	private QueryResource resource;
 
 	private Connection conn;
-	
-	private static Logger logger = Logger.getLogger(QueryResourceImplTest.class);
-	
+
+	private static Logger logger = Logger
+			.getLogger(QueryResourceImplTest.class);
+
 	private static void dropTable(Connection conn) throws SQLException {
 		final String dropTable = "drop table friends";
 		final Statement s = conn.createStatement();
 		try {
-		s.execute(dropTable);
+			s.execute(dropTable);
 		} catch (SQLException sqe) {
 			logger.warn(sqe.getMessage());
 		}
 		s.close();
 	}
-	
+
 	private static void createTable(Connection conn) throws SQLException {
 		final String createTable = "create table friends (phone number(9) not null, name varchar2(32), birthday date)";
 		final Statement s = conn.createStatement();
 		s.execute(createTable);
 		s.close();
 	}
-	
-	private static void populateTable(Connection conn) throws SQLException, ParseException {
-		//conn.commit();
+
+	private static void populateTable(Connection conn) throws SQLException,
+			ParseException {
+		// conn.commit();
 		final String insert = "insert into friends (name, birthday, phone) values (?, ?, ?);";
 		final PreparedStatement ps = conn.prepareStatement(insert);
 		//
@@ -79,21 +80,18 @@ public abstract class QueryResourceImplTest {
 		conn.commit();
 		ps.close();
 	}
-		
+
 	@BeforeClass
 	public static void setupClass() throws Exception {
-		BasicConfigurator.configure();
 		final Connection conn = datasource.getConnection();
-	    dropTable(conn);
-	    createTable(conn);
-	    populateTable(conn);
-		
+		dropTable(conn);
+		createTable(conn);
+		populateTable(conn);
+
 		conn.close();
 		loader = new ClassPathResourceResolver("query");
 		((ClassPathResourceResolver) loader).afterPropertiesSet();
 	}
-
-
 
 	@After
 	public void after() throws Exception {
@@ -112,9 +110,9 @@ public abstract class QueryResourceImplTest {
 	}
 
 	//
-	//  Tests
+	// Tests
 	//
-	
+
 	@Test(expected = RuntimeException.class)
 	public void testResourceDoesNotExist() throws Exception {
 		resource.setQueryResourceName("non_existant_resource.sql");
@@ -126,8 +124,8 @@ public abstract class QueryResourceImplTest {
 		final Map<String, Object> parms = new HashMap<String, Object>();
 		resource.setParameters(parms);
 		resource.setQueryResourceName("friends_where_name.sql");
-		Dataset dataset = resource.getDataset();
-		
+		resource.getDataset();
+
 	}
 
 	@Test
@@ -138,7 +136,7 @@ public abstract class QueryResourceImplTest {
 		resource.setQueryResourceName("friends_where_name.sql");
 		final Dataset dataset = resource.getDataset();
 		Assert.assertNotNull(dataset);
-		//Assert.assertEquals(1, dataset.getDatasetIterator().getRowCount());
+		// Assert.assertEquals(1, dataset.getDatasetIterator().getRowCount());
 		final DatasetIterator iterator = dataset.getDatasetIterator();
 		iterator.next();
 		final Map<String, Object> row = iterator.getRowAsMap();
@@ -148,7 +146,6 @@ public abstract class QueryResourceImplTest {
 		Assert.assertEquals("05/21/1983",
 				sdf.format((Date) row.get("BIRTHDAY")));
 	}
-
 
 	public static DataSource getDatasource() {
 		return datasource;

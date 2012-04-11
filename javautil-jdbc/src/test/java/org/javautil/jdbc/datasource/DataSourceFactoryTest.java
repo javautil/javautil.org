@@ -4,17 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.jdbc.datasources.SimpleDatasourcesFactory;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DataSourceFactoryTest {
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	public void testConnection(final Connection conn) throws SQLException {
 		final Statement stmt = conn.createStatement();

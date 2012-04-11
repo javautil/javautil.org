@@ -7,21 +7,14 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.text.CommonDateFormat;
 import org.javautil.text.SimpleDateFormatter;
 import org.javautil.text.StringHelper;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ImmutableDateTest {
 	private final Logger logger = Logger.getLogger(getClass());
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Test
 	public void test1() {

@@ -1,11 +1,9 @@
 package org.javautil.persist.hibernate;
 
-import org.apache.log4j.BasicConfigurator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
@@ -26,11 +24,6 @@ public abstract class AbstractSpringHibernateTransactionalTest extends
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		BasicConfigurator.configure();
-	}
 
 	public Session getSession() {
 		if (sessionFactory == null) {

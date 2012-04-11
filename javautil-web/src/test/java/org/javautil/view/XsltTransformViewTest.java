@@ -7,11 +7,9 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.io.ClassPathResourceResolver;
 import org.javautil.sales.test.AbstractH2SmallSalesTest;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -19,14 +17,9 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 public class XsltTransformViewTest extends AbstractH2SmallSalesTest {
 
-	private Log logger = LogFactory.getLog(getClass());
+	private final Log logger = LogFactory.getLog(getClass());
 
-	@BeforeClass
-	public static void setup() {
-		BasicConfigurator.configure();
-	}
-
-	private ResourceLoader resourceLoader = new ClassPathResourceResolver(
+	private final ResourceLoader resourceLoader = new ClassPathResourceResolver(
 			"sales");
 
 	@Test
@@ -46,7 +39,7 @@ public class XsltTransformViewTest extends AbstractH2SmallSalesTest {
 		logger.info("XSLT transformed XmlDataset: " + content);
 		Assert.assertTrue(content.trim().length() > 0);
 	}
-	
+
 	@Test
 	public void testRenderWithXsltParameters() throws Exception {
 		XsltTransformView view = new XsltTransformView();
@@ -92,6 +85,5 @@ public class XsltTransformViewTest extends AbstractH2SmallSalesTest {
 		Assert.assertTrue(content.indexOf("<select") > -1);
 		Assert.assertTrue(content.indexOf("<option") > -1);
 	}
-	
-	
+
 }

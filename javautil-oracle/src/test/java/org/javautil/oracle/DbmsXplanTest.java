@@ -7,10 +7,8 @@ import java.sql.Statement;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,11 +29,6 @@ public class DbmsXplanTest {
 	private Connection conn;
 	private final Logger logger = Logger.getLogger(getClass());
 	private final String newline = System.getProperty("line.separator");
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	@Before
 	public void before() throws SQLException {
@@ -84,7 +77,6 @@ public class DbmsXplanTest {
 
 	public static void main(final String[] args) throws SQLException {
 		final DbmsXplanTest dxt = new DbmsXplanTest();
-		beforeClass();
 		dxt.logger.debug("starting");
 		dxt.before();
 		dxt.runStmt1();

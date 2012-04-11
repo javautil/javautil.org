@@ -3,6 +3,7 @@ package org.javautil.jfm;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
 import org.javautil.jfm.mains.mvc.SpringTableMetaDataFTLFormGenerator;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,7 +13,11 @@ import freemarker.template.TemplateException;
 // TODO fix so that it doesn't exit using security
 public class SpringTableMetaDataFormGeneratorTest {
 
-	private static final String schema = " -dataSource=hr -schema=HR -table=EMPLOYEES ";
+	private static final String schema = " -dataSource=h2 -schema=PUBLIC -table=PRODUCT ";
+
+	private static final String destinationDir = "target/actualData/";
+
+	private final Logger logger = Logger.getLogger(getClass());
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -26,16 +31,17 @@ public class SpringTableMetaDataFormGeneratorTest {
 	public void test1() throws SQLException, IOException, TemplateException {
 
 		final String args = "-templateFile=src/main/resources/tableList.ftl"
-				+ schema + "-outputFile=/tmp/snack";
+				+ schema + "-outputFile=" + destinationDir + "snack";
+		logger.debug(args);
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
-		// TODO what does this test
+		// TODO what does this test use FileComparator
 	}
 
 	// TODO fix this test
 	@Test
 	public void test2() throws SQLException, IOException, TemplateException {
 		final String args = "-templateFile=src/main/resources/tableList.ftl"
-				+ schema + "-outputFile=/tmp/snack2";
+				+ schema + "-outputFile=" + destinationDir + "snack2";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
 		// TODO comapre output to input
 	}
@@ -44,7 +50,7 @@ public class SpringTableMetaDataFormGeneratorTest {
 	@Test
 	public void test3() throws SQLException, IOException, TemplateException {
 		final String args = "-templateFile=src/main/resources/SimpleInputForm.ftl"
-				+ schema + "-outputFile=/tmp/snack3";
+				+ schema + "-outputFile=" + destinationDir + "snack3";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
 		// TODO compare output to input
 	}
@@ -53,7 +59,7 @@ public class SpringTableMetaDataFormGeneratorTest {
 	@Test
 	public void test4() throws SQLException, IOException, TemplateException {
 		final String args = "-templateFile=src/main/resources/SimpleInputForm.ftl"
-				+ schema + "-outputFile=/tmp/vp_dst.ftl";
+				+ schema + "-outputFile=" + destinationDir + "product.ftl";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
 	}
 
@@ -62,7 +68,9 @@ public class SpringTableMetaDataFormGeneratorTest {
 	public void test5() throws SQLException, IOException, TemplateException {
 		final String args = "-templateFile=src/main/resources/MetaDataInputFormTemplate.ftl"
 				+ schema
-				+ "-outputFile=target/examples/mvc/vs_dst_form.ftl"
+				+ "-outputFile="
+				+ destinationDir
+				+ "product.ftl"
 				+ " -htmlFormAction=/myContext/myServlet/myController/myView.html -htmlFormMethod=post -htmlTableClass=classtable";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
 	}
@@ -72,7 +80,9 @@ public class SpringTableMetaDataFormGeneratorTest {
 	public void test6() throws SQLException, IOException, TemplateException {
 		final String args = "-templateFile=src/main/resources/MetaDataInputFormTemplate.ftl"
 				+ schema
-				+ " -outputFile=target/examples/mvc/user_tran_cst_form.ftl"
+				+ "-outputFile="
+				+ destinationDir
+				+ "user_tran_cst_form.ftl"
 				+ " -htmlFormAction=/myContext/myServlet/myController/myView.html"
 				+ " -htmlFormMethod=post" + " -htmlTableClass=classtable";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
@@ -84,7 +94,9 @@ public class SpringTableMetaDataFormGeneratorTest {
 		// TODO this should be in resources
 		final String args = "-templateFile=src/main/resources/MetaDataInputFormTemplate.ftl"
 				+ schema
-				+ " -outputFile=target/examples/mvc/user_cst_mod_rqst.ftl"
+				+ "-outputFile="
+				+ destinationDir
+				+ "user_cst_mod_rqst.ftl"
 				+ " -htmlFormAction=/myContext/myServlet/myController/myView.html"
 				+ " -htmlFormMethod=post" + " -htmlTableClass=classtable";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
@@ -96,7 +108,9 @@ public class SpringTableMetaDataFormGeneratorTest {
 	public void test8() throws SQLException, IOException, TemplateException {
 		final String args = "-templateFile=src/main/resources/MetaDataInputFormTemplate.ftl"
 				+ schema
-				+ " -outputFile=target/examples/mvc/ut_user_rpt_grp_form.ftl"
+				+ "-outputFile="
+				+ destinationDir
+				+ "ut_user_rpt_grp_form.ftl"
 				+ " -htmlFormAction=/myContext/myServlet/myController/myView.html"
 				+ " -htmlFormMethod=post" + " -htmlTableClass=classtable";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
@@ -107,8 +121,9 @@ public class SpringTableMetaDataFormGeneratorTest {
 	public void test9() throws SQLException, IOException, TemplateException {
 		final String args = "-templateFile=src/main/resources/MetaDataListTemplate.ftl"
 				+ schema
-				+ " -outputFile=target/examples/mvc/ut_user_rpt_grp_list.ftl"
-				+ " -htmlTableClass=classtable";
+				+ "-outputFile="
+				+ destinationDir
+				+ "ut_user_rpt_grp_list.ftl" + " -htmlTableClass=classtable";
 		SpringTableMetaDataFTLFormGenerator.main(args.split(" "));
 	}
 

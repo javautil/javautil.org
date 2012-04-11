@@ -68,4 +68,27 @@
   </dependency>
  </dependencies>
 
+<build>
+  <plugins>
+   <plugin>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.7.2</version>
+    <configuration>
+     <configuration>
+      <forkMode>never</forkMode> 
+      <systemProperties>
+       <property>
+        <name>log4j.configuration</name>
+        <value>log4j-surefire.xml</value>
+       </property>
+      </systemProperties>
+     </configuration>
+     <excludes>
+     </excludes>
+     <skip>${skip.oracle.test}</skip>   
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+
 </project>

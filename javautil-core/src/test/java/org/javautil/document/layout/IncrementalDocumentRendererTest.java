@@ -15,7 +15,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.dataset.ColumnMetadata;
 import org.javautil.dataset.DataType;
 import org.javautil.dataset.Dataset;
@@ -34,7 +33,6 @@ import org.javautil.document.style.DocumentStyles;
 import org.javautil.document.style.StyleImpl;
 import org.javautil.io.IOUtils;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class IncrementalDocumentRendererTest {
@@ -42,11 +40,6 @@ public class IncrementalDocumentRendererTest {
 	private final Log logger = LogFactory.getLog(getClass());
 
 	private File tempFile;
-
-	@BeforeClass
-	public static void setup() {
-		BasicConfigurator.configure();
-	}
 
 	@Before
 	public void before() throws Exception {

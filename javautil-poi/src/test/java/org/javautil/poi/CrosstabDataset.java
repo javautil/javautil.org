@@ -3,7 +3,6 @@ package org.javautil.poi;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.dataset.AbstractDataset;
 import org.javautil.dataset.ColumnMetadata;
@@ -14,7 +13,6 @@ import org.javautil.dataset.DatasetMetadataImpl;
 import org.javautil.dataset.MatrixDataset;
 import org.javautil.document.crosstab.CrosstabColumns;
 import org.javautil.document.crosstab.CrosstabColumnsImpl;
-import org.junit.Before;
 
 /**
  * 
@@ -24,11 +22,6 @@ import org.junit.Before;
 public class CrosstabDataset {
 	public Logger logger = Logger.getLogger(getClass());
 	private static final String newline = System.getProperty("line.separator");
-
-	@Before
-	public void before() {
-		BasicConfigurator.configure();
-	}
 
 	@SuppressWarnings("boxing")
 	private final DatasetMetadataImpl meta = new DatasetMetadataImpl() {

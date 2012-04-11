@@ -2,7 +2,6 @@ package org.javautil.sales.populate;
 
 import java.sql.SQLException;
 
-import org.apache.log4j.BasicConfigurator;
 import org.javautil.commandline.CommandLineHandler;
 import org.javautil.sales.database.schema.CreateSchema;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,6 @@ public class DataPopulatorCli {
 		final CommandLineHandler clih = new CommandLineHandler(arguments);
 		clih.evaluateArguments(args);
 		final DataPopulatorCli populator = new DataPopulatorCli();
-		BasicConfigurator.configure();
 		final String fileName = arguments.getApplicationContextFile().getPath();
 		final FileSystemXmlApplicationContext springContext = new FileSystemXmlApplicationContext(
 				fileName);

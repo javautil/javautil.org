@@ -3,21 +3,14 @@ package org.javautil.mp3;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.mp3.formatter.Mp3MetadataFormatter;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
 public class Mp3MetaDataPopulatorTest {
 	private static Logger logger = Logger
 			.getLogger(Mp3MetaDataPopulatorTest.class);
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	// TODO write more
 	@Ignore

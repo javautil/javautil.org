@@ -12,10 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.javautil.text.ConfigurableToStringStyle;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -53,11 +51,6 @@ public class ConfigurableToStringTest {
 			add(new Date());
 		}
 	};
-
-	@BeforeClass
-	public static void beforeClass() {
-		BasicConfigurator.configure();
-	}
 
 	/**
 	 * Expect"yyyy-MM-dd HH:mm:ss" format
@@ -126,7 +119,6 @@ public class ConfigurableToStringTest {
 	}
 
 	public static void main(final String[] args) {
-		BasicConfigurator.configure();
 		final ConfigurableToStringTest t = new ConfigurableToStringTest();
 		t.test5();
 	}

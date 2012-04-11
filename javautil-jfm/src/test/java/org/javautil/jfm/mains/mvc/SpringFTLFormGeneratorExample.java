@@ -2,7 +2,6 @@ package org.javautil.jfm.mains.mvc;
 
 import java.io.File;
 
-import org.apache.log4j.BasicConfigurator;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -22,7 +21,6 @@ public class SpringFTLFormGeneratorExample {
 	}
 
 	public File createReport() throws Exception {
-		BasicConfigurator.configure();
 		final String argsString = "-outputFile=target/examples/mvc/person_form.ftl" //
 				+ " -htmlFormAction=/myContext/myServlet/myController/myView.html" //
 				+ " -javaClassFile=src/main/resources/Person.class"; //
