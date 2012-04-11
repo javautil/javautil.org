@@ -14,7 +14,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author siyer
- * @version $Id: SimpleAddressTest.java,v 1.3 2012/03/04 12:31:18 jjs Exp $
+ * @version $Id: SimpleAddressTest.java,v 1.4 2012/04/11 18:29:24 jjs Exp $
  * @since 0.11.0
  */
 public class SimpleAddressTest {

@@ -127,4 +127,81 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+
+<build>
+  <plugins>
+
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>sql-maven-plugin</artifactId>
+    <version>1.5</version>
+
+    <dependencies>
+     <!-- specify the dependent JDBC driver here -->
+     <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${com.h2database.version}</version>
+     </dependency>
+    </dependencies>
+
+    <!-- common configuration shared by all executions -->
+    <configuration>
+     <driver>org.h2.Driver</driver>
+     <!-- make it work both from javautil-pom and javautil-jdbc -->
+     <url>jdbc:h2:../javautil-hibernatesalesdata/target/database/test</url>
+     <username>sample</username>
+     <password>data</password>
+
+    </configuration>
+    <executions>
+     <execution>
+      <id>create-schema</id>
+      <phase>process-resources</phase>
+      <goals>
+       <goal>execute</goal>
+      </goals>
+      <configuration>
+       <srcFiles>
+        <srcFile>../javautil-databases/src/main/ddl/h2/drop_tables.sql</srcFile>
+        <srcFile>../javautil-databases/src/main/ddl/h2/sales_schema.sql</srcFile>
+       </srcFiles>
+       <onError>continue</onError>
+      </configuration>
+      
+     </execution>
+    </executions>
+   </plugin>
+  </plugins>
+  <pluginManagement>
+   <plugins>
+    <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    <plugin>
+     <groupId>org.eclipse.m2e</groupId>
+     <artifactId>lifecycle-mapping</artifactId>
+     <version>1.0.0</version>
+     <configuration>
+      <lifecycleMappingMetadata>
+       <pluginExecutions>
+        <pluginExecution>
+         <pluginExecutionFilter>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>sql-maven-plugin</artifactId>
+          <versionRange>[1.5,)</versionRange>
+          <goals>
+           <goal>execute</goal>
+          </goals>
+         </pluginExecutionFilter>
+         <action>
+          <ignore></ignore>
+         </action>
+        </pluginExecution>
+       </pluginExecutions>
+      </lifecycleMappingMetadata>
+     </configuration>
+    </plugin>
+   </plugins>
+  </pluginManagement>
+  </build>
 </project>

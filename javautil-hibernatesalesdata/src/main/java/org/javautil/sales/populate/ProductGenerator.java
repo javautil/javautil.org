@@ -74,7 +74,7 @@ public class ProductGenerator implements Serializable {
 		p.setUpc10(generateUPC());
 		p.setProductStatus("S");
 		productList.add(p);
-		logger.debug("created " + p.getUpc10());
+		// logger.debug("created " + p.getUpc10());
 		return p;
 	}
 

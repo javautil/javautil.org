@@ -12,7 +12,7 @@ import org.junit.Test;
  * </p>
  * 
  * @author jjs
- * @version $Id: SubunitParserTest.java,v 1.2 2012/03/04 12:31:20 jjs Exp $
+ * @version $Id: SubunitParserTest.java,v 1.3 2012/04/11 18:29:24 jjs Exp $
  * @since 0.11.0
  */
 public class SubunitParserTest {

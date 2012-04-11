@@ -73,6 +73,7 @@ public class CreateDatabaseSchema {
 				schema.setOutputFile(filename);
 				createScript = true;
 			}
+			schema.drop(true, true);
 			schema.create(createScript, createDatabaseObjects);
 			logger.debug("Ending process...");
 
