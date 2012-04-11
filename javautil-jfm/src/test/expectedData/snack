@@ -1,0 +1,46 @@
+[#ftl]
+
+<table>
+	<thead>
+		<tr>
+	
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td> var="PRODUCT_ID" </td>
+				<div class="field">
+		<label for="PRODUCT_ID">PRODUCT_ID</label>
+		[@spring.formInput path="${PRODUCT_ID}" attributes="id='PRODUCT_ID'" /]
+	</div>
+		</tr>
+		<tr>
+			<td> var="UPC10" </td>
+				<div class="field">
+		<label for="UPC10">UPC10</label>
+		[@spring.formInput path="${UPC10}" attributes="id='UPC10'" /]
+	</div>
+		</tr>
+		<tr>
+			<td> var="PRODUCT_STATUS" </td>
+				<div class="field">
+		<label for="PRODUCT_STATUS">PRODUCT_STATUS</label>
+		[@spring.formInput path="${PRODUCT_STATUS}" attributes="id='PRODUCT_STATUS'" /]
+	</div>
+		</tr>
+		<tr>
+			<td> var="DESCR" </td>
+				<div class="field">
+		<label for="DESCR">DESCR</label>
+		[@spring.formInput path="${DESCR}" attributes="id='DESCR'" /]
+	</div>
+		</tr>
+		<tr>
+			<td> var="NARRATIVE" </td>
+				<div class="field">
+		<label for="NARRATIVE">NARRATIVE</label>
+		[@spring.formInput path="${NARRATIVE}" attributes="id='NARRATIVE'" /]
+	</div>
+		</tr>
+	</tbody>
+</table>

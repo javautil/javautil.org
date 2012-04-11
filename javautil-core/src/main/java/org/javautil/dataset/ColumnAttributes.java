@@ -5,11 +5,6 @@ package org.javautil.dataset;
  * jjs from dbexperts
  */
 public interface ColumnAttributes {
-	//
-	// public abstract String getColumnNameAsAttributeName();
-
-	//
-	// public abstract String getColumnNameAsAttributeNameInitCap();
 
 	public abstract String getAttributeName();
 
@@ -41,12 +36,6 @@ public interface ColumnAttributes {
 	public abstract Boolean isNotNullable();
 
 	public abstract Boolean isUnknownNullable();
-
-	// /**
-	// *
-	// * @return type definition example varchar2(32)
-	// */
-	// public String getSqlType();
 
 	public String getComments();
 
