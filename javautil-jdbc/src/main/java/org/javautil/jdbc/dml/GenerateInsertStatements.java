@@ -146,6 +146,7 @@ public class GenerateInsertStatements {
 						columnValues += "TO_DATE('" + dateFormat.format(d)
 								+ "', 'YYYY/MM/DD HH24:MI:SS')";
 					}
+					d=null;
 					break;
 
 				default:
